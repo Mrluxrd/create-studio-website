@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#121214; }
+  a { color:#F8FAFC; text-decoration:none; }
+  a:hover { color:#8B5CF6; }
+  @keyframes csDrift { 0%{transform:translate3d(0,0,0) scale(1)} 50%{transform:translate3d(0,-14px,0) scale(1.02)} 100%{transform:translate3d(0,0,0) scale(1)} }
+  @keyframes csSweep { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
+  @keyframes csMarquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  @keyframes csPulse { 0%,100%{opacity:.35} 50%{opacity:.9} }
+
+  body { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; font-weight:400; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3,h4 { font-family: Sora, Inter, system-ui, sans-serif; font-weight:600; }
+  h1 { font-weight:700; }
+  button, input, select, textarea, label, a { font-family: Inter, system-ui, sans-serif; }
+</style>
+</helmet>
+
+<div style="font-family:Inter,system-ui,sans-serif;background:#121214;padding:64px 64px 120px;display:flex;flex-direction:column;gap:56px;color:#F8FAFC">
+
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:48px;max-width:1894px">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Create Studio / Homepage art direction / v1.0</div>
+      <div style="font-family:Sora,sans-serif;font-size:34px;font-weight:700;letter-spacing:-0.02em">We create. You grow.</div>
+      <div style="font-size:14px;color:#A1A1AA;max-width:720px;line-height:1.6">Desktop composition at 1440px and mobile at 390px. Every artwork zone is a labelled placeholder with the production spec for the Higgsfield asset — nothing below is final imagery.</div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#A1A1AA">
+      <div style="padding:8px 12px;border:1px solid rgba(248,250,252,.1);border-radius:999px">#2563FF</div>
+      <div style="padding:8px 12px;border:1px solid rgba(248,250,252,.1);border-radius:999px">#8B5CF6</div>
+      <div style="padding:8px 12px;border:1px solid rgba(248,250,252,.1);border-radius:999px">#09090B</div>
+      <div style="padding:8px 12px;border:1px solid rgba(248,250,252,.1);border-radius:999px">Sora / Inter</div>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:flex-start;gap:64px">
+
+    <!-- ============ DESKTOP 1440 ============ -->
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#A1A1AA">Desktop · 1440 × auto</div>
+      <div style="width:1440px;background:#09090B;border:1px solid rgba(248,250,252,.08);border-radius:28px;overflow:hidden;box-shadow:0 60px 140px rgba(0,0,0,.6)">
+
+        <!-- NAV -->
+        <div style="position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:22px 72px;background:rgba(9,9,11,.72);backdrop-filter:blur(18px);border-bottom:1px solid rgba(248,250,252,.06)">
+          <img src="assets/logo-lockup.png" alt="Create Studio" style="height:34px;width:auto;display:block">
+          <div style="display:flex;align-items:center;gap:34px;font-size:14px;color:#A1A1AA">
+            <a href="#work" style="color:#A1A1AA" style-hover="color:#F8FAFC">Work</a>
+            <a href="#services" style="color:#A1A1AA" style-hover="color:#F8FAFC">Services</a>
+            <a href="#process" style="color:#A1A1AA" style-hover="color:#F8FAFC">Process</a>
+            <a href="#pricing" style="color:#A1A1AA" style-hover="color:#F8FAFC">Pricing</a>
+            <a href="#about" style="color:#A1A1AA" style-hover="color:#F8FAFC">Studio</a>
+            <div style="padding:11px 22px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6);color:#F8FAFC;font-weight:600;font-size:14px;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease" style-hover="transform:translateY(-2px);box-shadow:0 12px 30px rgba(91,92,246,.35)">Start a project</div>
+          </div>
+        </div>
+
+        <!-- HERO -->
+        <div style="position:relative;min-height:820px;overflow:hidden;padding:120px 72px 96px;display:flex;flex-direction:column;justify-content:center">
+          <div data-art style="position:absolute;top:-90px;right:-140px;width:1020px;height:1020px;border-radius:40px;overflow:hidden;background:radial-gradient(circle at 40% 40%,rgba(37,99,255,.22),rgba(9,9,11,0) 62%),repeating-linear-gradient(58deg,rgba(248,250,252,.055) 0 2px,rgba(248,250,252,0) 2px 13px);border:1px dashed rgba(139,92,246,.32);animation:csDrift 14s ease-in-out infinite">
+            <div style="position:absolute;inset:0;background:linear-gradient(270deg,rgba(9,9,11,0) 30%,rgba(9,9,11,.92) 88%)"></div>
+            <div style="position:absolute;top:26px;left:26px;display:flex;align-items:center;gap:9px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#F8FAFC">
+              <span style="width:8px;height:8px;border-radius:99px;background:linear-gradient(90deg,#2563FF,#8B5CF6);animation:csPulse 2.6s ease-in-out infinite"></span>ART 01 · create-hero-motion
+            </div>
+            
+          </div>
+
+<div data-spec style="position:absolute;right:72px;bottom:56px;width:344px;z-index:5;display:flex;flex-direction:column;gap:7px;padding:20px;border-radius:18px;background:rgba(9,9,11,.78);border:1px solid rgba(248,250,252,.1);backdrop-filter:blur(8px);font-family:'JetBrains Mono',monospace;font-size:10.5px;line-height:1.45">
+              <div style="display:flex;gap:10px"><span style="width:96px;color:#A1A1AA;flex:none">RATIO</span><span>1:1 · square</span></div>
+              <div style="display:flex;gap:10px"><span style="width:96px;color:#A1A1AA;flex:none">SIZE</span><span>2400 × 2400 px @2x</span></div>
+              <div style="display:flex;gap:10px"><span style="width:96px;color:#A1A1AA;flex:none">SUBJECT</span><span>mass centred right-of-centre</span></div>
+              <div style="display:flex;gap:10px"><span style="width:96px;color:#A1A1AA;flex:none">NEG. SPACE</span><span>left 45% must stay empty</span></div>
+              <div style="display:flex;gap:10px"><span style="width:96px;color:#A1A1AA;flex:none">BACKGROUND</span><span>true #09090B, no vignette</span></div>
+              <div style="display:flex;gap:10px"><span style="width:96px;color:#A1A1AA;flex:none">TYPE REL.</span><span>bleeds past section edge, headline overlaps left tail</span></div>
+              <div style="display:flex;gap:10px"><span style="width:96px;color:#A1A1AA;flex:none">MOTION</span><span>animated · 12s seamless loop, ≤0.4 speed</span></div>
+              <div style="display:flex;gap:10px"><span style="width:96px;color:#A1A1AA;flex:none">CROP DESK</span><span>1020×1020, offset +140px right / −90px top</span></div>
+              <div style="display:flex;gap:10px"><span style="width:96px;color:#A1A1AA;flex:none">CROP MOB</span><span>centre square, 390×420 top-anchored</span></div>
+              <div style="display:flex;gap:10px"><span style="width:96px;color:#A1A1AA;flex:none">PARALLAX</span><span>y −0.18 of scroll, mask fades at 60vh</span></div>
+            </div>
+          <div style="position:relative;z-index:2;max-width:700px;display:flex;flex-direction:column;gap:30px">
+            <div style="display:inline-flex;align-items:center;gap:10px;align-self:flex-start;padding:9px 16px;border-radius:999px;border:1px solid rgba(248,250,252,.12);font-size:12px;color:#A1A1AA;letter-spacing:.04em">
+              <span style="width:6px;height:6px;border-radius:99px;background:#2563FF"></span>Digital studio · Santo Domingo, RD
+            </div>
+            <h1 style="margin:0;font-family:Sora,sans-serif;font-size:96px;line-height:0.98;font-weight:700;letter-spacing:-0.035em;text-wrap:balance">We create.<br><span style="background:linear-gradient(90deg,#2563FF,#8B5CF6);-webkit-background-clip:text;background-clip:text;color:transparent">You grow.</span></h1>
+            <p style="margin:0;font-size:19px;line-height:1.62;color:#A1A1AA;max-width:520px;text-wrap:pretty">Your website should do more than look good. We build custom digital experiences that earn trust, attract customers and give your business room to grow.</p>
+            <div style="display:flex;gap:14px;align-items:center">
+              <div style="padding:16px 30px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6);font-weight:600;font-size:15px;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease" style-hover="transform:translateY(-2px);box-shadow:0 16px 40px rgba(91,92,246,.4)">Start a project</div>
+              <div style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;color:#F8FAFC;cursor:pointer;transition:border-color .25s ease,background .25s ease" style-hover="border-color:rgba(248,250,252,.4);background:rgba(248,250,252,.04)">See our work</div>
+            </div>
+            <div style="display:flex;gap:44px;padding-top:26px;border-top:1px solid rgba(248,250,252,.08);margin-top:8px">
+              <div style="display:flex;flex-direction:column;gap:5px"><div style="font-family:Sora,sans-serif;font-size:28px;font-weight:600">40+</div><div style="font-size:12.5px;color:#A1A1AA">Projects delivered</div></div>
+              <div style="display:flex;flex-direction:column;gap:5px"><div style="font-family:Sora,sans-serif;font-size:28px;font-weight:600">98</div><div style="font-size:12.5px;color:#A1A1AA">Avg. performance score</div></div>
+              <div style="display:flex;flex-direction:column;gap:5px"><div style="font-family:Sora,sans-serif;font-size:28px;font-weight:600">6 yrs</div><div style="font-size:12.5px;color:#A1A1AA">Building for RD business</div></div>
+            </div>
+          </div>
+        </div>
+
+        
+
+        <!-- MARQUEE -->
+        <div style="border-top:1px solid rgba(248,250,252,.07);border-bottom:1px solid rgba(248,250,252,.07);padding:22px 0;overflow:hidden;background:#0B0B0E">
+          <div style="display:flex;gap:56px;width:max-content;animation:csMarquee 34s linear infinite;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#A1A1AA">
+            <span>Web design</span><span style="color:#8B5CF6">◆</span><span>Development</span><span style="color:#8B5CF6">◆</span><span>Redesign</span><span style="color:#8B5CF6">◆</span><span>CRM systems</span><span style="color:#8B5CF6">◆</span><span>SEO</span><span style="color:#8B5CF6">◆</span><span>Hosting</span><span style="color:#8B5CF6">◆</span><span>Branding</span><span style="color:#8B5CF6">◆</span>
+            <span>Web design</span><span style="color:#8B5CF6">◆</span><span>Development</span><span style="color:#8B5CF6">◆</span><span>Redesign</span><span style="color:#8B5CF6">◆</span><span>CRM systems</span><span style="color:#8B5CF6">◆</span><span>SEO</span><span style="color:#8B5CF6">◆</span><span>Hosting</span><span style="color:#8B5CF6">◆</span><span>Branding</span><span style="color:#8B5CF6">◆</span>
+          </div>
+        </div>
+
+        <!-- SELECTED WORK -->
+        <div id="work" style="position:relative;padding:130px 72px 120px;overflow:hidden">
+          <div data-art style="position:absolute;left:50%;top:60px;transform:translateX(-50%);width:1180px;height:520px;border-radius:32px;overflow:hidden;background:radial-gradient(ellipse at 50% 30%,rgba(139,92,246,.16),rgba(9,9,11,0) 70%),repeating-linear-gradient(122deg,rgba(248,250,252,.05) 0 2px,rgba(248,250,252,0) 2px 15px);border:1px dashed rgba(139,92,246,.28)">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,9,11,.2),rgba(9,9,11,.96))"></div>
+            <div style="position:absolute;top:24px;left:26px;display:flex;align-items:center;gap:9px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase"><span style="width:8px;height:8px;border-radius:99px;background:linear-gradient(90deg,#2563FF,#8B5CF6)"></span>ART 02 · create-portfolio-accent</div>
+            
+          </div>
+
+          <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:52px">
+            <div style="display:flex;align-items:flex-end;justify-content:space-between">
+              <div style="display:flex;flex-direction:column;gap:16px">
+                <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">01 / Selected work</div>
+                <h2 style="margin:0;font-family:Sora,sans-serif;font-size:56px;font-weight:600;letter-spacing:-0.03em;line-height:1.05;max-width:640px">Real work for real businesses.</h2>
+              </div>
+              <a href="#work" style="font-size:14px;color:#A1A1AA;border-bottom:1px solid rgba(248,250,252,.2);padding-bottom:6px">View all projects →</a>
+            </div>
+
+<div data-spec style="position:relative;z-index:3;display:grid;grid-template-columns:1fr 1fr;gap:6px 24px;max-width:820px;padding:18px;border-radius:16px;background:rgba(9,9,11,.8);border:1px solid rgba(248,250,252,.1);font-family:'JetBrains Mono',monospace;font-size:10.5px;line-height:1.45">
+              <div style="display:flex;gap:10px"><span style="width:92px;color:#A1A1AA;flex:none">RATIO</span><span>21:9 · panoramic</span></div>
+              <div style="display:flex;gap:10px"><span style="width:92px;color:#A1A1AA;flex:none">SIZE</span><span>2880 × 1234 px</span></div>
+              <div style="display:flex;gap:10px"><span style="width:92px;color:#A1A1AA;flex:none">SUBJECT</span><span>low horizontal band, bottom third</span></div>
+              <div style="display:flex;gap:10px"><span style="width:92px;color:#A1A1AA;flex:none">NEG. SPACE</span><span>top 55% empty for section title</span></div>
+              <div style="display:flex;gap:10px"><span style="width:92px;color:#A1A1AA;flex:none">BACKGROUND</span><span>atmospheric, full-width, fades to #09090B</span></div>
+              <div style="display:flex;gap:10px"><span style="width:92px;color:#A1A1AA;flex:none">TYPE REL.</span><span>sits behind heading, project cards overlap lower edge</span></div>
+              <div style="display:flex;gap:10px"><span style="width:92px;color:#A1A1AA;flex:none">MOTION</span><span>animated · slow lateral drift only</span></div>
+              <div style="display:flex;gap:10px"><span style="width:92px;color:#A1A1AA;flex:none">CROP DESK</span><span>full-bleed 1440 wide, 520 tall</span></div>
+              <div style="display:flex;gap:10px"><span style="width:92px;color:#A1A1AA;flex:none">CROP MOB</span><span>centre 16:9 slice, 40% opacity</span></div>
+              <div style="display:flex;gap:10px"><span style="width:92px;color:#A1A1AA;flex:none">PARALLAX</span><span>y +0.10, opacity 0.35→0.7 on enter</span></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1.35fr 1fr;gap:26px">
+              <div style="display:flex;flex-direction:column;gap:16px;padding:16px;border-radius:26px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);transition:transform .35s ease,border-color .35s ease" style-hover="transform:translateY(-6px);border-color:rgba(139,92,246,.45)">
+                <div style="position:relative;height:400px;border-radius:18px;overflow:hidden;background:repeating-linear-gradient(45deg,rgba(248,250,252,.05) 0 2px,rgba(248,250,252,0) 2px 12px);border:1px dashed rgba(248,250,252,.18);display:flex;align-items:center;justify-content:center">
+                  <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#A1A1AA;text-align:center;line-height:1.8">Client screenshot · 3:2<br>1800 × 1200 · authentic work only</div>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px 10px">
+                  <div><div style="font-family:Sora,sans-serif;font-size:20px;font-weight:600">Project name</div><div style="font-size:13px;color:#A1A1AA;margin-top:4px">Web design · Development</div></div>
+                  <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#A1A1AA">2026</div>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:26px">
+                <div style="display:flex;flex-direction:column;gap:14px;padding:16px;border-radius:26px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);transition:transform .35s ease,border-color .35s ease" style-hover="transform:translateY(-6px);border-color:rgba(37,99,255,.45)">
+                  <div style="position:relative;height:186px;border-radius:16px;overflow:hidden;background:repeating-linear-gradient(45deg,rgba(248,250,252,.05) 0 2px,rgba(248,250,252,0) 2px 12px);border:1px dashed rgba(248,250,252,.18);display:flex;align-items:center;justify-content:center">
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#A1A1AA">Client screenshot · 16:9</div>
+                  </div>
+                  <div style="padding:4px 8px 8px"><div style="font-family:Sora,sans-serif;font-size:17px;font-weight:600">Project name</div><div style="font-size:12.5px;color:#A1A1AA;margin-top:3px">CRM · Custom system</div></div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:14px;padding:16px;border-radius:26px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);transition:transform .35s ease,border-color .35s ease" style-hover="transform:translateY(-6px);border-color:rgba(37,99,255,.45)">
+                  <div style="position:relative;height:186px;border-radius:16px;overflow:hidden;background:repeating-linear-gradient(45deg,rgba(248,250,252,.05) 0 2px,rgba(248,250,252,0) 2px 12px);border:1px dashed rgba(248,250,252,.18);display:flex;align-items:center;justify-content:center">
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#A1A1AA">Client screenshot · 16:9</div>
+                  </div>
+                  <div style="padding:4px 8px 8px"><div style="font-family:Sora,sans-serif;font-size:17px;font-weight:600">Project name</div><div style="font-size:12.5px;color:#A1A1AA;margin-top:3px">Branding · SEO</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SERVICE 01 — WEB DESIGN & DEV (art inside interactive card) -->
+        <div id="services" style="padding:120px 72px 40px;display:flex;flex-direction:column;gap:18px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">02 / What we do</div>
+          <h2 style="margin:0 0 40px;font-family:Sora,sans-serif;font-size:56px;font-weight:600;letter-spacing:-0.03em;max-width:760px;line-height:1.05">Everything your digital presence needs, built in one studio.</h2>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px">
+            <div style="position:relative;border-radius:28px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);overflow:hidden;padding:36px;min-height:470px;display:flex;flex-direction:column;justify-content:space-between;transition:border-color .35s ease,transform .35s ease" style-hover="border-color:rgba(139,92,246,.5);transform:translateY(-5px)">
+              <div data-art style="position:absolute;right:-60px;top:-40px;width:420px;height:420px;border-radius:26px;overflow:hidden;background:radial-gradient(circle at 50% 50%,rgba(37,99,255,.24),rgba(9,9,11,0) 65%),repeating-linear-gradient(72deg,rgba(248,250,252,.06) 0 2px,rgba(248,250,252,0) 2px 12px);border:1px dashed rgba(139,92,246,.3)">
+                <div style="position:absolute;inset:0;background:linear-gradient(230deg,rgba(9,9,11,0) 35%,rgba(14,14,18,.95) 82%)"></div>
+                <div style="position:absolute;top:18px;left:18px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase">ART 03 · create-service-web</div>
+              </div>
+              <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:14px;max-width:400px;margin-top:120px">
+                <h3 style="margin:0;font-family:Sora,sans-serif;font-size:30px;font-weight:600;letter-spacing:-0.02em">Web design &amp; development</h3>
+                <p style="margin:0;font-size:15px;line-height:1.65;color:#A1A1AA">Custom sites designed around your customer's decision, then built fast, accessible and easy for your team to update. Redesigns of tired sites included.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px">
+                  <span style="padding:7px 13px;border-radius:999px;border:1px solid rgba(248,250,252,.12);font-size:12px;color:#A1A1AA">Design systems</span>
+                  <span style="padding:7px 13px;border-radius:999px;border:1px solid rgba(248,250,252,.12);font-size:12px;color:#A1A1AA">Website redesign</span>
+                  <span style="padding:7px 13px;border-radius:999px;border:1px solid rgba(248,250,252,.12);font-size:12px;color:#A1A1AA">CMS build</span>
+                </div>
+              </div>
+              <div data-spec style="position:relative;z-index:2;margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;padding:16px;border-radius:16px;background:rgba(9,9,11,.6);border:1px solid rgba(248,250,252,.09);font-family:'JetBrains Mono',monospace;font-size:10px;line-height:1.5;color:#F8FAFC">
+                <div><span style="color:#A1A1AA">RATIO</span> 1:1</div><div><span style="color:#A1A1AA">SIZE</span> 1680 × 1680</div>
+                <div><span style="color:#A1A1AA">SUBJECT</span> upper-right</div><div><span style="color:#A1A1AA">NEG.</span> lower-left 60%</div>
+                <div style="grid-column:1/-1"><span style="color:#A1A1AA">BACKGROUND</span> transparent PNG over card #0E0E12</div>
+                <div style="grid-column:1/-1"><span style="color:#A1A1AA">TYPE REL.</span> contained in card, headline clears it by 24px</div>
+                <div style="grid-column:1/-1"><span style="color:#A1A1AA">MOTION</span> static base + hover scale 1.06 / 600ms ease-out</div>
+                <div><span style="color:#A1A1AA">DESK</span> 420² bleed</div><div><span style="color:#A1A1AA">MOB</span> 240² top-right</div>
+                <div style="grid-column:1/-1"><span style="color:#A1A1AA">PARALLAX</span> pointer-tilt ±6px, no scroll offset</div>
+              </div>
+            </div>
+
+            <!-- SERVICE 02 — CRM (macro close-up) -->
+            <div style="position:relative;border-radius:28px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);overflow:hidden;min-height:470px;display:flex;flex-direction:column;justify-content:flex-end;transition:border-color .35s ease,transform .35s ease" style-hover="border-color:rgba(37,99,255,.5);transform:translateY(-5px)">
+              <div data-art style="position:absolute;inset:0;overflow:hidden;background:radial-gradient(circle at 70% 20%,rgba(139,92,246,.2),rgba(9,9,11,0) 60%),repeating-linear-gradient(94deg,rgba(248,250,252,.055) 0 3px,rgba(248,250,252,0) 3px 16px);border-bottom:1px dashed rgba(139,92,246,.25)">
+                <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,9,11,.15) 35%,rgba(9,9,11,.97) 88%)"></div>
+                <div style="position:absolute;top:18px;left:18px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase">ART 04 · create-service-crm</div>
+                <div data-spec style="position:absolute;top:16px;right:16px;width:250px;display:flex;flex-direction:column;gap:5px;padding:14px;border-radius:14px;background:rgba(9,9,11,.8);border:1px solid rgba(248,250,252,.1);font-family:'JetBrains Mono',monospace;font-size:9.5px;line-height:1.5">
+                  <div><span style="color:#A1A1AA">RATIO</span> 4:5 · macro crop</div>
+                  <div><span style="color:#A1A1AA">SIZE</span> 1600 × 2000</div>
+                  <div><span style="color:#A1A1AA">SUBJECT</span> extreme close-up, detail off-centre top</div>
+                  <div><span style="color:#A1A1AA">NEG.</span> bottom 45% dark falloff for copy</div>
+                  <div><span style="color:#A1A1AA">BG</span> fills card, no visible frame</div>
+                  <div><span style="color:#A1A1AA">TYPE</span> copy sits on gradient scrim, ≥7:1 contrast</div>
+                  <div><span style="color:#A1A1AA">MOTION</span> animated · 8s breathing loop</div>
+                  <div><span style="color:#A1A1AA">DESK</span> full card bleed</div>
+                  <div><span style="color:#A1A1AA">MOB</span> tighter 1:1 crop, top-anchored</div>
+                  <div><span style="color:#A1A1AA">PARALLAX</span> inner y −0.06, card fixed</div>
+                </div>
+              </div>
+              <div style="position:relative;z-index:2;padding:36px;display:flex;flex-direction:column;gap:14px">
+                <h3 style="margin:0;font-family:Sora,sans-serif;font-size:30px;font-weight:600;letter-spacing:-0.02em">CRM &amp; custom business systems</h3>
+                <p style="margin:0;font-size:15px;line-height:1.65;color:#A1A1AA;max-width:440px">Quoting, client portals, inventory, internal dashboards. We replace the spreadsheet trail with a system your team actually uses.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- SERVICE 03 / 04 / 05 row -->
+          <div style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:26px;margin-top:26px;align-items:stretch">
+            <div style="position:relative;border-radius:28px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);overflow:hidden;min-height:660px;padding:34px;display:flex;flex-direction:column;justify-content:flex-end;transition:border-color .35s ease,transform .35s ease" style-hover="border-color:rgba(139,92,246,.5);transform:translateY(-5px)">
+              <div data-art style="position:absolute;left:50%;top:34px;transform:translateX(-50%);width:300px;height:300px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 50% 45%,rgba(139,92,246,.3),rgba(9,9,11,0) 68%),repeating-linear-gradient(28deg,rgba(248,250,252,.07) 0 2px,rgba(248,250,252,0) 2px 11px);border:1px dashed rgba(139,92,246,.35);animation:csDrift 11s ease-in-out infinite">
+                <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;line-height:1.7">ART 05<br>create-service-branding<br><span style="color:#A1A1AA">floating sculpture</span></div>
+              </div>
+              <div data-spec style="position:absolute;left:22px;right:22px;top:326px;display:grid;grid-template-columns:1fr 1fr;gap:5px 14px;padding:14px;border-radius:14px;background:rgba(9,9,11,.7);border:1px solid rgba(248,250,252,.09);font-family:'JetBrains Mono',monospace;font-size:9.5px;line-height:1.5">
+                <div><span style="color:#A1A1AA">RATIO</span> 1:1</div><div><span style="color:#A1A1AA">SIZE</span> 1400²</div>
+                <div style="grid-column:1/-1"><span style="color:#A1A1AA">SUBJECT</span> centred sculpture, floats free of any frame</div>
+                <div style="grid-column:1/-1"><span style="color:#A1A1AA">NEG.</span> 15% margin all sides · transparent PNG, no box</div>
+                <div style="grid-column:1/-1"><span style="color:#A1A1AA">TYPE</span> headline 40px below, never overlaps</div>
+                <div style="grid-column:1/-1"><span style="color:#A1A1AA">MOTION</span> animated · 11s float, ±14px y</div>
+                <div><span style="color:#A1A1AA">DESK</span> 300²</div><div><span style="color:#A1A1AA">MOB</span> 200², centred</div>
+                <div style="grid-column:1/-1"><span style="color:#A1A1AA">PARALLAX</span> y −0.12 + 3° pointer rotate</div>
+              </div>
+              <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:12px">
+                <h3 style="margin:0;font-family:Sora,sans-serif;font-size:26px;font-weight:600;letter-spacing:-0.02em">Digital branding</h3>
+                <p style="margin:0;font-size:14.5px;line-height:1.65;color:#A1A1AA">Logo systems, colour, type and the rules that keep you consistent everywhere your business shows up.</p>
+              </div>
+            </div>
+
+            <div style="position:relative;border-radius:28px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);overflow:hidden;min-height:660px;padding:34px;display:flex;flex-direction:column;justify-content:flex-end;transition:border-color .35s ease,transform .35s ease" style-hover="border-color:rgba(37,99,255,.5);transform:translateY(-5px)">
+              <div data-art style="position:absolute;left:-40px;right:-40px;top:60px;height:280px;overflow:hidden;background:linear-gradient(100deg,rgba(37,99,255,.22),rgba(139,92,246,.12)),repeating-linear-gradient(80deg,rgba(248,250,252,.06) 0 2px,rgba(248,250,252,0) 2px 14px);border-top:1px dashed rgba(37,99,255,.3);border-bottom:1px dashed rgba(37,99,255,.3)">
+                <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,9,11,.25),rgba(14,14,18,.94))"></div>
+              </div>
+              <div style="position:absolute;top:96px;left:34px;right:34px;z-index:3;font-family:Sora,sans-serif;font-size:76px;font-weight:700;letter-spacing:-0.05em;line-height:.9;color:#F8FAFC;mix-blend-mode:normal">98<span style="font-size:34px;color:#A1A1AA">/100</span></div>
+              <div style="position:absolute;top:24px;left:24px;z-index:4;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase">ART 06 · create-service-seo</div>
+              <div data-spec style="position:absolute;left:24px;right:24px;top:318px;display:grid;grid-template-columns:1fr 1fr;gap:5px 14px;padding:14px;border-radius:14px;background:rgba(9,9,11,.72);border:1px solid rgba(248,250,252,.09);font-family:'JetBrains Mono',monospace;font-size:9.5px;line-height:1.5">
+                <div><span style="color:#A1A1AA">RATIO</span> 16:6</div><div><span style="color:#A1A1AA">SIZE</span> 2000 × 750</div>
+                <div style="grid-column:1/-1"><span style="color:#A1A1AA">SUBJECT</span> horizontal band, mass left of centre</div>
+                <div style="grid-column:1/-1"><span style="color:#A1A1AA">NEG.</span> right 40% quiet — number sits there</div>
+                <div style="grid-column:1/-1"><span style="color:#A1A1AA">TYPE</span> artwork partially concealed behind 76px numeral</div>
+                <div style="grid-column:1/-1"><span style="color:#A1A1AA">MOTION</span> animated · left→right sweep, 6s, non-looping ease</div>
+                <div><span style="color:#A1A1AA">DESK</span> bleeds ±40px</div><div><span style="color:#A1A1AA">MOB</span> 3:2 crop</div>
+                <div style="grid-column:1/-1"><span style="color:#A1A1AA">PARALLAX</span> x +0.08 on scroll (lateral only)</div>
+              </div>
+              <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:12px">
+                <h3 style="margin:0;font-family:Sora,sans-serif;font-size:26px;font-weight:600;letter-spacing:-0.02em">SEO &amp; performance</h3>
+                <p style="margin:0;font-size:14.5px;line-height:1.65;color:#A1A1AA">Technical SEO, local search and page speed work that gets you found and keeps visitors from leaving.</p>
+              </div>
+            </div>
+
+            <div style="position:relative;border-radius:28px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);overflow:hidden;min-height:660px;padding:34px;display:flex;flex-direction:column;justify-content:flex-end;transition:border-color .35s ease,transform .35s ease" style-hover="border-color:rgba(139,92,246,.5);transform:translateY(-5px)">
+              <div data-art style="position:absolute;left:34px;right:34px;top:34px;height:250px;border-radius:20px;overflow:hidden;background:radial-gradient(circle at 30% 70%,rgba(37,99,255,.2),rgba(9,9,11,0) 62%),repeating-linear-gradient(150deg,rgba(248,250,252,.06) 0 2px,rgba(248,250,252,0) 2px 13px);border:1px dashed rgba(248,250,252,.2)">
+                <div style="position:absolute;top:16px;left:16px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase">ART 07 · create-service-hosting</div>
+              </div>
+              <div data-spec style="position:absolute;left:34px;right:34px;top:318px;display:grid;grid-template-columns:1fr 1fr;gap:5px 14px;padding:14px;border-radius:14px;background:rgba(9,9,11,.72);border:1px solid rgba(248,250,252,.09);font-family:'JetBrains Mono',monospace;font-size:9.5px;line-height:1.5">
+                <div><span style="color:#A1A1AA">RATIO</span> 4:3</div><div><span style="color:#A1A1AA">SIZE</span> 1400 × 1050</div>
+                <div style="grid-column:1/-1"><span style="color:#A1A1AA">SUBJECT</span> contained in rounded 20px card, centred low-left</div>
+                <div style="grid-column:1/-1"><span style="color:#A1A1AA">NEG.</span> even 12% inset, calm — this is the quiet card</div>
+                <div style="grid-column:1/-1"><span style="color:#A1A1AA">TYPE</span> strictly outside the container, 24px gap</div>
+                <div style="grid-column:1/-1"><span style="color:#A1A1AA">MOTION</span> static · single frame WebP</div>
+                <div><span style="color:#A1A1AA">DESK</span> 380×250</div><div><span style="color:#A1A1AA">MOB</span> 342×200</div>
+                <div style="grid-column:1/-1"><span style="color:#A1A1AA">PARALLAX</span> none — anchors the rhythm</div>
+              </div>
+              <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:12px">
+                <h3 style="margin:0;font-family:Sora,sans-serif;font-size:26px;font-weight:600;letter-spacing:-0.02em">Hosting &amp; maintenance</h3>
+                <p style="margin:0;font-size:14.5px;line-height:1.65;color:#A1A1AA">Managed hosting, backups, updates and a person who answers when something needs fixing.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROCESS -->
+        <div id="process" style="position:relative;padding:130px 72px;overflow:hidden">
+          <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:56px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">03 / Our process</div>
+            <h2 style="margin:0;font-family:Sora,sans-serif;font-size:56px;font-weight:600;letter-spacing:-0.03em;max-width:640px;line-height:1.05">Four steps. No mystery.</h2>
+          </div>
+          <div data-art style="position:relative;height:260px;border-radius:24px;overflow:visible;margin-bottom:-20px;background:linear-gradient(90deg,rgba(37,99,255,.18),rgba(139,92,246,.18)),repeating-linear-gradient(90deg,rgba(248,250,252,.06) 0 2px,rgba(248,250,252,0) 2px 18px);border:1px dashed rgba(139,92,246,.3)">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,9,11,.1),rgba(9,9,11,.9))"></div>
+            <div style="position:absolute;top:18px;left:22px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase">ART 08 · create-process-flow</div>
+            <div data-spec style="position:absolute;top:16px;right:22px;display:grid;grid-template-columns:1fr 1fr;gap:5px 20px;padding:14px;border-radius:14px;background:rgba(9,9,11,.78);border:1px solid rgba(248,250,252,.1);font-family:'JetBrains Mono',monospace;font-size:9.5px;line-height:1.5;width:620px">
+              <div><span style="color:#A1A1AA">RATIO</span> 32:5 · ultra-wide ribbon</div><div><span style="color:#A1A1AA">SIZE</span> 3200 × 500</div>
+              <div><span style="color:#A1A1AA">SUBJECT</span> continuous left→right flow</div><div><span style="color:#A1A1AA">NEG.</span> bottom 40% for step cards</div>
+              <div style="grid-column:1/-1"><span style="color:#A1A1AA">BACKGROUND</span> seamless horizontal, no hard start/end</div>
+              <div style="grid-column:1/-1"><span style="color:#A1A1AA">TYPE</span> step cards overlap lower edge by 56px</div>
+              <div><span style="color:#A1A1AA">MOTION</span> animated · scrub-linked</div><div><span style="color:#A1A1AA">DESK</span> 1296 × 200</div>
+              <div><span style="color:#A1A1AA">MOB</span> stacked 1:1 chips per step</div><div><span style="color:#A1A1AA">PARALLAX</span> x −0.25, scroll-scrubbed</div>
+            </div>
+          </div>
+          <div style="position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+            <div style="padding:28px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:10px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#8B5CF6">01</div><div style="font-family:Sora,sans-serif;font-size:19px;font-weight:600">Discovery</div><div style="font-size:13.5px;color:#A1A1AA;line-height:1.6">We learn the business, the customer and the goal before anything is drawn.</div></div>
+            <div style="padding:28px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:10px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#8B5CF6">02</div><div style="font-family:Sora,sans-serif;font-size:19px;font-weight:600">Design</div><div style="font-size:13.5px;color:#A1A1AA;line-height:1.6">Structure, then look. You see real screens, not a mood board.</div></div>
+            <div style="padding:28px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:10px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#8B5CF6">03</div><div style="font-family:Sora,sans-serif;font-size:19px;font-weight:600">Build</div><div style="font-size:13.5px;color:#A1A1AA;line-height:1.6">Fast, accessible code and any systems your operation needs behind it.</div></div>
+            <div style="padding:28px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:10px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#8B5CF6">04</div><div style="font-family:Sora,sans-serif;font-size:19px;font-weight:600">Grow</div><div style="font-size:13.5px;color:#A1A1AA;line-height:1.6">Hosting, SEO and steady improvements once you are live.</div></div>
+          </div>
+        </div>
+
+        <!-- PRICING -->
+        <div id="pricing" style="position:relative;padding:120px 72px;overflow:hidden;background:#0B0B0E;border-top:1px solid rgba(248,250,252,.06);border-bottom:1px solid rgba(248,250,252,.06)">
+          <div data-art style="position:absolute;right:-160px;bottom:-160px;width:620px;height:620px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 50% 50%,rgba(139,92,246,.18),rgba(9,9,11,0) 66%),repeating-linear-gradient(38deg,rgba(248,250,252,.05) 0 2px,rgba(248,250,252,0) 2px 14px);border:1px dashed rgba(139,92,246,.25)">
+            
+            
+          </div>
+          <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:16px;margin-bottom:52px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">04 / Packages</div>
+            <h2 style="margin:0;font-family:Sora,sans-serif;font-size:56px;font-weight:600;letter-spacing:-0.03em;max-width:600px;line-height:1.05">Clear packages, honest scope.</h2>
+          </div>
+          <div style="position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+            <div style="padding:36px;border-radius:26px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:22px;min-height:440px">
+              <div style="display:flex;flex-direction:column;gap:8px"><div style="font-family:Sora,sans-serif;font-size:22px;font-weight:600">Presence</div><div style="font-size:14px;color:#A1A1AA">A credible site, live in weeks.</div></div>
+              <div style="font-family:Sora,sans-serif;font-size:40px;font-weight:600;letter-spacing:-0.03em">$1,200<span style="font-size:14px;color:#A1A1AA;font-family:Inter,sans-serif;font-weight:400"> / from</span></div>
+              <div style="display:flex;flex-direction:column;gap:11px;font-size:14px;color:#A1A1AA;line-height:1.5">
+                <div>Up to 5 custom pages</div><div>Mobile-first design</div><div>Basic SEO setup</div><div>1 month of support</div>
+              </div>
+              <div style="margin-top:auto;padding:14px;border-radius:999px;border:1px solid rgba(248,250,252,.16);text-align:center;font-weight:500;font-size:14px;cursor:pointer" style-hover="background:rgba(248,250,252,.05)">Choose Presence</div>
+            </div>
+            <div style="position:relative;padding:36px;border-radius:26px;background:#0E0E12;border:1px solid transparent;background-image:linear-gradient(#0E0E12,#0E0E12),linear-gradient(135deg,#2563FF,#8B5CF6);background-origin:border-box;background-clip:padding-box,border-box;display:flex;flex-direction:column;gap:22px;min-height:440px;box-shadow:0 30px 80px rgba(37,99,255,.12)">
+              <div style="position:absolute;top:-13px;left:36px;padding:6px 14px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6);font-size:11px;font-weight:600;letter-spacing:.06em">MOST CHOSEN</div>
+              <div style="display:flex;flex-direction:column;gap:8px"><div style="font-family:Sora,sans-serif;font-size:22px;font-weight:600">Growth</div><div style="font-size:14px;color:#A1A1AA">The full site, built to convert.</div></div>
+              <div style="font-family:Sora,sans-serif;font-size:40px;font-weight:600;letter-spacing:-0.03em">$3,500<span style="font-size:14px;color:#A1A1AA;font-family:Inter,sans-serif;font-weight:400"> / from</span></div>
+              <div style="display:flex;flex-direction:column;gap:11px;font-size:14px;color:#A1A1AA;line-height:1.5">
+                <div>Custom design system</div><div>Up to 12 pages + CMS</div><div>Technical &amp; local SEO</div><div>Analytics and lead tracking</div><div>3 months of support</div>
+              </div>
+              <div style="margin-top:auto;padding:14px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6);text-align:center;font-weight:600;font-size:14px;cursor:pointer;transition:transform .25s ease" style-hover="transform:translateY(-2px)">Choose Growth</div>
+            </div>
+            <div style="padding:36px;border-radius:26px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:22px;min-height:440px">
+              <div style="display:flex;flex-direction:column;gap:8px"><div style="font-family:Sora,sans-serif;font-size:22px;font-weight:600">Systems</div><div style="font-size:14px;color:#A1A1AA">Website plus the software behind it.</div></div>
+              <div style="font-family:Sora,sans-serif;font-size:40px;font-weight:600;letter-spacing:-0.03em">Custom<span style="font-size:14px;color:#A1A1AA;font-family:Inter,sans-serif;font-weight:400"> / quoted</span></div>
+              <div style="display:flex;flex-direction:column;gap:11px;font-size:14px;color:#A1A1AA;line-height:1.5">
+                <div>CRM or internal platform</div><div>Integrations and automations</div><div>Role-based access</div><div>Ongoing product partnership</div>
+              </div>
+              <div style="margin-top:auto;padding:14px;border-radius:999px;border:1px solid rgba(248,250,252,.16);text-align:center;font-weight:500;font-size:14px;cursor:pointer" style-hover="background:rgba(248,250,252,.05)">Book a scoping call</div>
+            </div>
+          </div>
+          <div data-spec style="position:relative;z-index:3;margin-top:26px;max-width:760px;display:grid;grid-template-columns:1fr 1fr;gap:5px 24px;padding:14px;border-radius:14px;background:rgba(9,9,11,.88);border:1px solid rgba(248,250,252,.1);font-family:'JetBrains Mono',monospace;font-size:9.5px;line-height:1.5;z-index:5">
+              <div style="grid-column:1/-1;letter-spacing:.18em;text-transform:uppercase;color:#8B5CF6;padding-bottom:4px">ART 09 · create-pricing-atmosphere</div>
+              <div><span style="color:#A1A1AA">RATIO</span> 1:1 · corner bleed</div>
+              <div><span style="color:#A1A1AA">SIZE</span> 1800²</div>
+              <div><span style="color:#A1A1AA">SUBJECT</span> mass in far corner, exits frame</div>
+              <div><span style="color:#A1A1AA">NEG.</span> upper-left 70% empty — cards live there</div>
+              <div><span style="color:#A1A1AA">BG</span> #0B0B0E, 35% max opacity</div>
+              <div><span style="color:#A1A1AA">TYPE</span> never behind price figures</div>
+              <div><span style="color:#A1A1AA">MOTION</span> static</div>
+              <div><span style="color:#A1A1AA">DESK</span> 620² offset −160/−160</div>
+              <div><span style="color:#A1A1AA">MOB</span> hidden below 640px</div>
+              <div><span style="color:#A1A1AA">PARALLAX</span> y −0.05, very subtle</div>
+            </div>
+          <div style="position:relative;z-index:2;margin-top:22px;font-size:13px;color:#A1A1AA">Hosting &amp; maintenance from $60/month. Every package includes a written scope before work begins.</div>
+        </div>
+
+        <!-- ABOUT -->
+        <div id="about" style="position:relative;padding:130px 72px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;overflow:hidden">
+          <div style="display:flex;flex-direction:column;gap:26px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">05 / The studio</div>
+            <h2 style="margin:0;font-family:Sora,sans-serif;font-size:52px;font-weight:600;letter-spacing:-0.03em;line-height:1.06">A small studio in the Dominican Republic with an unusually high standard.</h2>
+            <p style="margin:0;font-size:16px;line-height:1.7;color:#A1A1AA;max-width:520px">We work with a handful of clients at a time so each project gets real attention. You talk to the people building your site — no account layer, no template shortcuts, no jargon.</p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap">
+              <span style="padding:9px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.12);font-size:13px;color:#A1A1AA">Español / English</span>
+              <span style="padding:9px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.12);font-size:13px;color:#A1A1AA">Santo Domingo</span>
+              <span style="padding:9px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.12);font-size:13px;color:#A1A1AA">Since 2020</span>
+            </div>
+          </div>
+          <div data-art style="position:relative;height:560px;border-radius:0 28px 28px 0;margin-right:-72px;overflow:hidden;background:radial-gradient(circle at 65% 45%,rgba(37,99,255,.22),rgba(9,9,11,0) 64%),repeating-linear-gradient(-42deg,rgba(248,250,252,.055) 0 2px,rgba(248,250,252,0) 2px 14px);border:1px dashed rgba(139,92,246,.3);border-right:none">
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,9,11,.9),rgba(9,9,11,0) 45%)"></div>
+            <div style="position:absolute;top:22px;left:34px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase">ART 10 · create-about-gesture</div>
+            <div data-spec style="position:absolute;bottom:22px;left:34px;width:330px;display:flex;flex-direction:column;gap:5px;padding:16px;border-radius:14px;background:rgba(9,9,11,.8);border:1px solid rgba(248,250,252,.1);font-family:'JetBrains Mono',monospace;font-size:9.5px;line-height:1.5">
+              <div><span style="color:#A1A1AA">RATIO</span> 4:5 portrait, right-bleed</div>
+              <div><span style="color:#A1A1AA">SIZE</span> 1600 × 2000</div>
+              <div><span style="color:#A1A1AA">SUBJECT</span> mass right, soft dissolve on left edge</div>
+              <div><span style="color:#A1A1AA">NEG.</span> left 30% must dissolve to pure #09090B</div>
+              <div><span style="color:#A1A1AA">BG</span> extends past section, no right radius</div>
+              <div><span style="color:#A1A1AA">TYPE</span> copy column ends 80px before artwork</div>
+              <div><span style="color:#A1A1AA">MOTION</span> animated · 15s slow rotation loop</div>
+              <div><span style="color:#A1A1AA">DESK</span> 688 × 560, bleeds off right edge</div>
+              <div><span style="color:#A1A1AA">MOB</span> 390 × 300 full-bleed above copy</div>
+              <div><span style="color:#A1A1AA">PARALLAX</span> y −0.14, scale 1→1.04 through viewport</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FINAL CTA -->
+        <div style="position:relative;padding:150px 72px 130px;overflow:hidden;text-align:center;display:flex;flex-direction:column;align-items:center;gap:30px">
+          <div data-art style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:860px;height:860px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 50% 50%,rgba(37,99,255,.26),rgba(139,92,246,.12) 45%,rgba(9,9,11,0) 70%),repeating-linear-gradient(12deg,rgba(248,250,252,.045) 0 2px,rgba(248,250,252,0) 2px 16px);border:1px dashed rgba(139,92,246,.28);animation:csDrift 16s ease-in-out infinite">
+            <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(9,9,11,.86) 22%,rgba(9,9,11,.35) 62%)"></div>
+            <div style="position:absolute;top:60px;left:50%;transform:translateX(-50%);font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase">ART 11 · create-contact-expansion</div>
+          </div>
+          <div data-spec style="position:absolute;left:72px;bottom:40px;width:340px;text-align:left;display:flex;flex-direction:column;gap:5px;padding:16px;border-radius:14px;background:rgba(9,9,11,.8);border:1px solid rgba(248,250,252,.1);font-family:'JetBrains Mono',monospace;font-size:9.5px;line-height:1.5;z-index:3">
+            <div><span style="color:#A1A1AA">RATIO</span> 1:1 · centred</div>
+            <div><span style="color:#A1A1AA">SIZE</span> 2200²</div>
+            <div><span style="color:#A1A1AA">SUBJECT</span> radially symmetric, dead centre</div>
+            <div><span style="color:#A1A1AA">NEG.</span> centre 40% must read near-black for headline</div>
+            <div><span style="color:#A1A1AA">BG</span> full-width atmospheric, edges fade to #09090B</div>
+            <div><span style="color:#A1A1AA">TYPE</span> headline sits inside the artwork core</div>
+            <div><span style="color:#A1A1AA">MOTION</span> animated · 16s breathing loop, gradient bloom on CTA hover</div>
+            <div><span style="color:#A1A1AA">DESK</span> 860², centred</div>
+            <div><span style="color:#A1A1AA">MOB</span> 520², centred, 60% opacity</div>
+            <div><span style="color:#A1A1AA">PARALLAX</span> scale 0.9→1.05 through viewport, no y offset</div>
+          </div>
+          <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:30px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">06 / Start</div>
+            <h2 style="margin:0;font-family:Sora,sans-serif;font-size:78px;font-weight:700;letter-spacing:-0.035em;line-height:1;max-width:840px">Let's build something<br>worth visiting.</h2>
+            <p style="margin:0;font-size:18px;color:#A1A1AA;max-width:520px;line-height:1.6">Tell us about your business and we will send back a clear scope, timeline and price. No obligation.</p>
+            <div style="display:flex;gap:14px;margin-top:6px">
+              <div style="padding:17px 34px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6);font-weight:600;font-size:15px;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease" style-hover="transform:translateY(-2px);box-shadow:0 18px 46px rgba(91,92,246,.45)">Start a project</div>
+              <div style="padding:17px 34px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;cursor:pointer" style-hover="background:rgba(248,250,252,.05)">hola@createstudio.do</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div style="border-top:1px solid rgba(248,250,252,.07);padding:60px 72px 48px;display:flex;justify-content:space-between;gap:60px;background:#0B0B0E">
+          <div style="display:flex;flex-direction:column;gap:18px;max-width:300px">
+            <img src="assets/logo-lockup.png" alt="Create Studio" style="height:30px;width:auto">
+            <div style="font-size:13.5px;color:#A1A1AA;line-height:1.6">We create. You grow.<br>Santo Domingo, Dominican Republic</div>
+          </div>
+          <div style="display:flex;gap:72px;font-size:13.5px">
+            <div style="display:flex;flex-direction:column;gap:11px"><div style="color:#F8FAFC;font-weight:600;margin-bottom:4px">Services</div><a href="#services" style="color:#A1A1AA">Web design</a><a href="#services" style="color:#A1A1AA">Redesign</a><a href="#services" style="color:#A1A1AA">CRM systems</a><a href="#services" style="color:#A1A1AA">SEO</a></div>
+            <div style="display:flex;flex-direction:column;gap:11px"><div style="color:#F8FAFC;font-weight:600;margin-bottom:4px">Studio</div><a href="#work" style="color:#A1A1AA">Work</a><a href="#about" style="color:#A1A1AA">About</a><a href="#pricing" style="color:#A1A1AA">Pricing</a><a href="#process" style="color:#A1A1AA">Process</a></div>
+            <div style="display:flex;flex-direction:column;gap:11px"><div style="color:#F8FAFC;font-weight:600;margin-bottom:4px">Contact</div><a href="#" style="color:#A1A1AA">hola@createstudio.do</a><a href="#" style="color:#A1A1AA">+1 809 000 0000</a><a href="#" style="color:#A1A1AA">Instagram</a><a href="#" style="color:#A1A1AA">LinkedIn</a></div>
+          </div>
+        </div>
+        <div style="padding:22px 72px;background:#0B0B0E;border-top:1px solid rgba(248,250,252,.05);display:flex;justify-content:space-between;font-size:12px;color:#A1A1AA">
+          <div>© 2026 Create Studio</div><div>Privacy · Terms</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============ MOBILE 390 ============ -->
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#A1A1AA">Mobile · 390 × auto</div>
+      <div style="width:390px;background:#09090B;border:1px solid rgba(248,250,252,.08);border-radius:34px;overflow:hidden;box-shadow:0 60px 140px rgba(0,0,0,.6)">
+
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid rgba(248,250,252,.06)">
+          <img src="assets/logo-lockup.png" alt="Create Studio" style="height:26px;width:auto">
+          <div style="display:flex;flex-direction:column;gap:5px"><span style="width:22px;height:1.5px;background:#F8FAFC"></span><span style="width:14px;height:1.5px;background:#F8FAFC;align-self:flex-end"></span></div>
+        </div>
+
+        <div style="position:relative;padding:44px 22px 52px;overflow:hidden">
+          <div data-art style="position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:390px;height:420px;overflow:hidden;background:radial-gradient(circle at 50% 45%,rgba(37,99,255,.22),rgba(9,9,11,0) 62%),repeating-linear-gradient(58deg,rgba(248,250,252,.055) 0 2px,rgba(248,250,252,0) 2px 13px);border-bottom:1px dashed rgba(139,92,246,.3)">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,9,11,.35),rgba(9,9,11,.97))"></div>
+            <div style="position:absolute;top:14px;left:16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase">ART 01 · create-hero-motion · mobile 390×420</div>
+          </div>
+          <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:20px;padding-top:150px">
+            <h1 style="margin:0;font-family:Sora,sans-serif;font-size:44px;line-height:1.02;font-weight:700;letter-spacing:-0.035em">We create.<br><span style="background:linear-gradient(90deg,#2563FF,#8B5CF6);-webkit-background-clip:text;background-clip:text;color:transparent">You grow.</span></h1>
+            <p style="margin:0;font-size:15.5px;line-height:1.6;color:#A1A1AA">Custom websites and business systems that help Dominican businesses look credible and grow.</p>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="padding:16px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6);text-align:center;font-weight:600;font-size:15px">Start a project</div>
+              <div style="padding:16px;border-radius:999px;border:1px solid rgba(248,250,252,.16);text-align:center;font-weight:500;font-size:15px">See our work</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:14px 0;border-top:1px solid rgba(248,250,252,.07);border-bottom:1px solid rgba(248,250,252,.07);background:#0B0B0E;overflow:hidden">
+          <div style="display:flex;gap:32px;width:max-content;animation:csMarquee 26s linear infinite;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#A1A1AA">
+            <span>Web design</span><span style="color:#8B5CF6">◆</span><span>CRM</span><span style="color:#8B5CF6">◆</span><span>SEO</span><span style="color:#8B5CF6">◆</span><span>Hosting</span><span style="color:#8B5CF6">◆</span><span>Branding</span><span style="color:#8B5CF6">◆</span>
+            <span>Web design</span><span style="color:#8B5CF6">◆</span><span>CRM</span><span style="color:#8B5CF6">◆</span><span>SEO</span><span style="color:#8B5CF6">◆</span><span>Hosting</span><span style="color:#8B5CF6">◆</span><span>Branding</span><span style="color:#8B5CF6">◆</span>
+          </div>
+        </div>
+
+        <div style="padding:56px 22px;display:flex;flex-direction:column;gap:26px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">01 / Selected work</div>
+          <h2 style="margin:0;font-family:Sora,sans-serif;font-size:32px;font-weight:600;letter-spacing:-0.025em;line-height:1.1">Real work for real businesses.</h2>
+          <div style="position:relative;height:150px;border-radius:18px;overflow:hidden;background:radial-gradient(ellipse at 50% 40%,rgba(139,92,246,.16),rgba(9,9,11,0) 70%),repeating-linear-gradient(122deg,rgba(248,250,252,.05) 0 2px,rgba(248,250,252,0) 2px 15px);border:1px dashed rgba(139,92,246,.28);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;text-align:center;line-height:1.7">ART 02 · create-portfolio-accent · 16:9 slice<br><span style="color:#A1A1AA">opacity 0.4 · no parallax on mobile</span></div>
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div style="padding:12px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:12px">
+              <div style="height:190px;border-radius:14px;background:repeating-linear-gradient(45deg,rgba(248,250,252,.05) 0 2px,rgba(248,250,252,0) 2px 12px);border:1px dashed rgba(248,250,252,.18);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#A1A1AA;text-align:center;line-height:1.7">Client screenshot<br>3:2 · authentic only</div>
+              <div style="padding:2px 6px 8px"><div style="font-family:Sora,sans-serif;font-size:17px;font-weight:600">Project name</div><div style="font-size:12.5px;color:#A1A1AA;margin-top:3px">Web design · Development</div></div>
+            </div>
+            <div style="padding:12px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:12px">
+              <div style="height:150px;border-radius:14px;background:repeating-linear-gradient(45deg,rgba(248,250,252,.05) 0 2px,rgba(248,250,252,0) 2px 12px);border:1px dashed rgba(248,250,252,.18);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#A1A1AA">Client screenshot · 16:9</div>
+              <div style="padding:2px 6px 8px"><div style="font-family:Sora,sans-serif;font-size:17px;font-weight:600">Project name</div><div style="font-size:12.5px;color:#A1A1AA;margin-top:3px">CRM · Custom system</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:8px 22px 56px;display:flex;flex-direction:column;gap:16px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">02 / What we do</div>
+          <h2 style="margin:0 0 10px;font-family:Sora,sans-serif;font-size:32px;font-weight:600;letter-spacing:-0.025em;line-height:1.1">Everything your presence needs.</h2>
+
+          <div style="position:relative;padding:26px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);overflow:hidden;min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px">
+            <div data-art style="position:absolute;right:-30px;top:-30px;width:240px;height:240px;border-radius:20px;overflow:hidden;background:radial-gradient(circle at 50% 50%,rgba(37,99,255,.24),rgba(9,9,11,0) 65%),repeating-linear-gradient(72deg,rgba(248,250,252,.06) 0 2px,rgba(248,250,252,0) 2px 12px);border:1px dashed rgba(139,92,246,.3)">
+              <div style="position:absolute;inset:0;background:linear-gradient(220deg,rgba(9,9,11,0) 35%,rgba(14,14,18,.95) 85%)"></div>
+              <div style="position:absolute;top:12px;left:12px;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase">ART 03 · create-service-web · 240²</div>
+            </div>
+            <h3 style="margin:0;font-family:Sora,sans-serif;font-size:22px;font-weight:600;position:relative;z-index:2">Web design &amp; development</h3>
+            <p style="margin:0;font-size:14.5px;line-height:1.6;color:#A1A1AA;position:relative;z-index:2">Custom sites and redesigns, built fast and easy to update.</p>
+          </div>
+
+          <div style="position:relative;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);overflow:hidden;min-height:320px;display:flex;flex-direction:column;justify-content:flex-end">
+            <div data-art style="position:absolute;inset:0;background:radial-gradient(circle at 65% 25%,rgba(139,92,246,.2),rgba(9,9,11,0) 60%),repeating-linear-gradient(94deg,rgba(248,250,252,.055) 0 3px,rgba(248,250,252,0) 3px 16px)">
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,9,11,.1) 30%,rgba(9,9,11,.97) 85%)"></div>
+              <div style="position:absolute;top:14px;left:14px;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase">ART 04 · create-service-crm · 1:1 macro</div>
+            </div>
+            <div style="position:relative;z-index:2;padding:26px;display:flex;flex-direction:column;gap:10px">
+              <h3 style="margin:0;font-family:Sora,sans-serif;font-size:22px;font-weight:600">CRM &amp; custom systems</h3>
+              <p style="margin:0;font-size:14.5px;line-height:1.6;color:#A1A1AA">Portals, quoting and dashboards your team will actually use.</p>
+            </div>
+          </div>
+
+          <div style="position:relative;padding:26px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);min-height:330px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;overflow:hidden">
+            <div data-art style="position:absolute;left:50%;top:26px;transform:translateX(-50%);width:200px;height:200px;border-radius:50%;background:radial-gradient(circle at 50% 45%,rgba(139,92,246,.3),rgba(9,9,11,0) 68%),repeating-linear-gradient(28deg,rgba(248,250,252,.07) 0 2px,rgba(248,250,252,0) 2px 11px);border:1px dashed rgba(139,92,246,.35);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;text-align:center;line-height:1.7;animation:csDrift 11s ease-in-out infinite">ART 05 · create-service-branding<br>200² float</div>
+            <h3 style="margin:0;font-family:Sora,sans-serif;font-size:22px;font-weight:600">Digital branding</h3>
+            <p style="margin:0;font-size:14.5px;line-height:1.6;color:#A1A1AA">Logo systems, colour and type rules that keep you consistent.</p>
+          </div>
+
+          <div style="position:relative;padding:26px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;overflow:hidden">
+            <div data-art style="position:absolute;left:0;right:0;top:40px;height:170px;background:linear-gradient(100deg,rgba(37,99,255,.22),rgba(139,92,246,.12)),repeating-linear-gradient(80deg,rgba(248,250,252,.06) 0 2px,rgba(248,250,252,0) 2px 14px);border-top:1px dashed rgba(37,99,255,.3);border-bottom:1px dashed rgba(37,99,255,.3)">
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,9,11,.25),rgba(14,14,18,.94))"></div>
+              <div style="position:absolute;top:10px;left:14px;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase">ART 06 · create-service-seo · 3:2 crop</div>
+            </div>
+            <div style="position:absolute;top:64px;left:26px;font-family:Sora,sans-serif;font-size:52px;font-weight:700;letter-spacing:-0.045em;z-index:2">98<span style="font-size:22px;color:#A1A1AA">/100</span></div>
+            <h3 style="margin:0;font-family:Sora,sans-serif;font-size:22px;font-weight:600;position:relative;z-index:3">SEO &amp; performance</h3>
+            <p style="margin:0;font-size:14.5px;line-height:1.6;color:#A1A1AA;position:relative;z-index:3">Found in search, fast on every phone.</p>
+          </div>
+
+          <div style="position:relative;padding:26px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:14px">
+            <div data-art style="position:relative;height:200px;border-radius:16px;overflow:hidden;background:radial-gradient(circle at 30% 70%,rgba(37,99,255,.2),rgba(9,9,11,0) 62%),repeating-linear-gradient(150deg,rgba(248,250,252,.06) 0 2px,rgba(248,250,252,0) 2px 13px);border:1px dashed rgba(248,250,252,.2)">
+              <div style="position:absolute;top:12px;left:12px;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase">ART 07 · create-service-hosting · 342×200</div>
+            </div>
+            <h3 style="margin:0;font-family:Sora,sans-serif;font-size:22px;font-weight:600">Hosting &amp; maintenance</h3>
+            <p style="margin:0;font-size:14.5px;line-height:1.6;color:#A1A1AA">Backups, updates and a person who answers.</p>
+          </div>
+        </div>
+
+        <div style="padding:8px 22px 56px;display:flex;flex-direction:column;gap:16px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">03 / Process</div>
+          <h2 style="margin:0 0 8px;font-family:Sora,sans-serif;font-size:32px;font-weight:600;letter-spacing:-0.025em;line-height:1.1">Four steps. No mystery.</h2>
+          <div style="display:flex;gap:12px;overflow-x:auto;padding-bottom:6px">
+            <div data-art style="flex:none;width:104px;height:104px;border-radius:16px;background:linear-gradient(90deg,rgba(37,99,255,.18),rgba(139,92,246,.18)),repeating-linear-gradient(90deg,rgba(248,250,252,.06) 0 2px,rgba(248,250,252,0) 2px 18px);border:1px dashed rgba(139,92,246,.3);display:flex;align-items:flex-end;padding:10px;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase">create-process-flow · a</div>
+            <div data-art style="flex:none;width:104px;height:104px;border-radius:16px;background:linear-gradient(90deg,rgba(37,99,255,.18),rgba(139,92,246,.18)),repeating-linear-gradient(90deg,rgba(248,250,252,.06) 0 2px,rgba(248,250,252,0) 2px 18px);border:1px dashed rgba(139,92,246,.3);display:flex;align-items:flex-end;padding:10px;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase">create-process-flow · b</div>
+            <div data-art style="flex:none;width:104px;height:104px;border-radius:16px;background:linear-gradient(90deg,rgba(37,99,255,.18),rgba(139,92,246,.18)),repeating-linear-gradient(90deg,rgba(248,250,252,.06) 0 2px,rgba(248,250,252,0) 2px 18px);border:1px dashed rgba(139,92,246,.3);display:flex;align-items:flex-end;padding:10px;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase">create-process-flow · c</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="padding:20px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#8B5CF6;margin-bottom:6px">01</div><div style="font-family:Sora,sans-serif;font-size:17px;font-weight:600;margin-bottom:4px">Discovery</div><div style="font-size:13.5px;color:#A1A1AA;line-height:1.6">We learn the business before anything is drawn.</div></div>
+            <div style="padding:20px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#8B5CF6;margin-bottom:6px">02</div><div style="font-family:Sora,sans-serif;font-size:17px;font-weight:600;margin-bottom:4px">Design</div><div style="font-size:13.5px;color:#A1A1AA;line-height:1.6">Structure first, then look. Real screens.</div></div>
+            <div style="padding:20px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#8B5CF6;margin-bottom:6px">03</div><div style="font-family:Sora,sans-serif;font-size:17px;font-weight:600;margin-bottom:4px">Build</div><div style="font-size:13.5px;color:#A1A1AA;line-height:1.6">Fast, accessible code and the systems behind it.</div></div>
+            <div style="padding:20px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)"><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#8B5CF6;margin-bottom:6px">04</div><div style="font-family:Sora,sans-serif;font-size:17px;font-weight:600;margin-bottom:4px">Grow</div><div style="font-size:13.5px;color:#A1A1AA;line-height:1.6">Hosting, SEO and steady improvements.</div></div>
+          </div>
+        </div>
+
+        <div style="padding:56px 22px;background:#0B0B0E;border-top:1px solid rgba(248,250,252,.06);border-bottom:1px solid rgba(248,250,252,.06);display:flex;flex-direction:column;gap:16px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">04 / Packages</div>
+          <h2 style="margin:0 0 8px;font-family:Sora,sans-serif;font-size:32px;font-weight:600;letter-spacing:-0.025em;line-height:1.1">Clear packages, honest scope.</h2>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#A1A1AA;padding:10px 14px;border:1px dashed rgba(248,250,252,.16);border-radius:12px">ART 09 · create-pricing-atmosphere · hidden below 640px — cards carry the section</div>
+          <div style="display:flex;flex-direction:column;gap:14px;margin-top:6px">
+            <div style="padding:26px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:14px">
+              <div style="font-family:Sora,sans-serif;font-size:19px;font-weight:600">Presence</div>
+              <div style="font-family:Sora,sans-serif;font-size:32px;font-weight:600;letter-spacing:-0.03em">$1,200<span style="font-size:13px;color:#A1A1AA;font-family:Inter,sans-serif;font-weight:400"> / from</span></div>
+              <div style="font-size:13.5px;color:#A1A1AA;line-height:1.7">5 pages · mobile-first · basic SEO · 1 month support</div>
+              <div style="padding:14px;border-radius:999px;border:1px solid rgba(248,250,252,.16);text-align:center;font-size:14px;font-weight:500">Choose Presence</div>
+            </div>
+            <div style="position:relative;padding:26px;border-radius:22px;background:#0E0E12;border:1px solid transparent;background-image:linear-gradient(#0E0E12,#0E0E12),linear-gradient(135deg,#2563FF,#8B5CF6);background-origin:border-box;background-clip:padding-box,border-box;display:flex;flex-direction:column;gap:14px">
+              <div style="position:absolute;top:-12px;left:26px;padding:5px 12px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6);font-size:10px;font-weight:600;letter-spacing:.06em">MOST CHOSEN</div>
+              <div style="font-family:Sora,sans-serif;font-size:19px;font-weight:600">Growth</div>
+              <div style="font-family:Sora,sans-serif;font-size:32px;font-weight:600;letter-spacing:-0.03em">$3,500<span style="font-size:13px;color:#A1A1AA;font-family:Inter,sans-serif;font-weight:400"> / from</span></div>
+              <div style="font-size:13.5px;color:#A1A1AA;line-height:1.7">Design system · 12 pages + CMS · SEO · analytics · 3 months support</div>
+              <div style="padding:14px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6);text-align:center;font-size:14px;font-weight:600">Choose Growth</div>
+            </div>
+            <div style="padding:26px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:14px">
+              <div style="font-family:Sora,sans-serif;font-size:19px;font-weight:600">Systems</div>
+              <div style="font-family:Sora,sans-serif;font-size:32px;font-weight:600;letter-spacing:-0.03em">Custom<span style="font-size:13px;color:#A1A1AA;font-family:Inter,sans-serif;font-weight:400"> / quoted</span></div>
+              <div style="font-size:13.5px;color:#A1A1AA;line-height:1.7">CRM or internal platform · integrations · role-based access</div>
+              <div style="padding:14px;border-radius:999px;border:1px solid rgba(248,250,252,.16);text-align:center;font-size:14px;font-weight:500">Book a call</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column">
+          <div data-art style="position:relative;height:300px;overflow:hidden;background:radial-gradient(circle at 65% 45%,rgba(37,99,255,.22),rgba(9,9,11,0) 64%),repeating-linear-gradient(-42deg,rgba(248,250,252,.055) 0 2px,rgba(248,250,252,0) 2px 14px);border-bottom:1px dashed rgba(139,92,246,.3)">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,9,11,.2),rgba(9,9,11,.9))"></div>
+            <div style="position:absolute;top:14px;left:16px;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase">ART 10 · create-about-gesture · 390×300 full-bleed</div>
+          </div>
+          <div style="padding:40px 22px 56px;display:flex;flex-direction:column;gap:18px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">05 / The studio</div>
+            <h2 style="margin:0;font-family:Sora,sans-serif;font-size:30px;font-weight:600;letter-spacing:-0.025em;line-height:1.12">A small studio with an unusually high standard.</h2>
+            <p style="margin:0;font-size:15px;line-height:1.7;color:#A1A1AA">A handful of clients at a time. You talk to the people building your site — no account layer, no templates.</p>
+          </div>
+        </div>
+
+        <div style="position:relative;padding:80px 22px 90px;overflow:hidden;text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px">
+          <div data-art style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:520px;height:520px;border-radius:50%;opacity:.6;background:radial-gradient(circle at 50% 50%,rgba(37,99,255,.26),rgba(139,92,246,.12) 45%,rgba(9,9,11,0) 70%),repeating-linear-gradient(12deg,rgba(248,250,252,.045) 0 2px,rgba(248,250,252,0) 2px 16px);border:1px dashed rgba(139,92,246,.28)"></div>
+          <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:20px;align-items:center">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#A1A1AA">ART 11 · create-contact-expansion · 520² @60%</div>
+            <h2 style="margin:0;font-family:Sora,sans-serif;font-size:38px;font-weight:700;letter-spacing:-0.03em;line-height:1.05">Let's build something worth visiting.</h2>
+            <p style="margin:0;font-size:15px;color:#A1A1AA;line-height:1.6">Tell us about your business and we send back a clear scope and price.</p>
+            <div style="width:100%;display:flex;flex-direction:column;gap:10px;margin-top:4px">
+              <div style="padding:16px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6);font-weight:600;font-size:15px">Start a project</div>
+              <div style="padding:16px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:14.5px">hola@createstudio.do</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:36px 22px 40px;background:#0B0B0E;border-top:1px solid rgba(248,250,252,.07);display:flex;flex-direction:column;gap:18px">
+          <img src="assets/logo-lockup.png" alt="Create Studio" style="height:26px;width:auto">
+          <div style="font-size:13px;color:#A1A1AA;line-height:1.7">We create. You grow.<br>Santo Domingo, Dominican Republic<br>hola@createstudio.do · +1 809 000 0000</div>
+          <div style="display:flex;gap:18px;font-size:13px;color:#A1A1AA">Instagram · LinkedIn · WhatsApp</div>
+          <div style="font-size:11.5px;color:#A1A1AA;padding-top:12px;border-top:1px solid rgba(248,250,252,.06)">© 2026 Create Studio</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showSpecs&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Review&quot;},&quot;showArtZones&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Review&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Review&quot;}}">
+class Component extends DCLogic {
+  componentDidMount(){ this.apply(); }
+  componentDidUpdate(){ this.apply(); }
+  apply(){
+    const root = document.querySelector('x-dc') || document.body;
+    const showSpecs = this.props.showSpecs !== false;
+    root.querySelectorAll('[data-spec]').forEach(el => { el.style.display = showSpecs ? '' : 'none'; });
+    const showArt = this.props.showArtZones !== false;
+    root.querySelectorAll('[data-art]').forEach(el => { el.style.opacity = showArt ? '' : '0'; });
+    const motion = this.props.motion !== false;
+    root.querySelectorAll('*').forEach(el => {
+      const cs = el.style.animationName || getComputedStyle(el).animationName;
+      if (cs && cs !== 'none') el.style.animationPlayState = motion ? 'running' : 'paused';
+    });
+  }
+  renderVals(){ return {}; }
+}
+</script>
+</body>
+</html>

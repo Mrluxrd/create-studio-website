@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Process — Create Studio</title>
+<meta name="description" content="How a Create Studio project runs: Discovery, Visual Direction, Design & Development, Review and Launch. Typical timeline 2–4 weeks.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#09090B; color:#F8FAFC; }
+  body { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; font-weight:400; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3,h4 { font-family: Sora, Inter, system-ui, sans-serif; font-weight:600; }
+  h1 { font-weight:700; }
+  button, input, select, textarea, label, a { font-family: Inter, system-ui, sans-serif; }
+
+  a { color:#F8FAFC; text-decoration:none; }
+  a:hover { color:#8B5CF6; }
+  *:focus-visible { outline:2px solid #8B5CF6; outline-offset:3px; border-radius:4px; }
+  @keyframes csDrift { 0%{transform:translate3d(0,0,0) scale(1)} 50%{transform:translate3d(0,-14px,0) scale(1.02)} 100%{transform:translate3d(0,0,0) scale(1)} }
+  @media (max-width: 900px) {
+    [data-desk]{display:none !important}[data-mob]{display:flex !important}
+    [data-pad]{padding-left:22px !important;padding-right:22px !important}
+    [data-cols]{grid-template-columns:1fr !important}
+    [data-row]{flex-direction:column !important;align-items:flex-start !important}
+    [data-h1]{font-size:38px !important;line-height:1.05 !important}
+    [data-h2]{font-size:28px !important}[data-h3]{font-size:20px !important}[data-lead]{font-size:16px !important}
+    [data-hero]{padding-top:60px !important;padding-bottom:60px !important;min-height:0 !important}
+    [data-sect]{padding-top:60px !important;padding-bottom:60px !important}
+    [data-artbleed]{position:relative !important;inset:auto !important;left:auto !important;right:auto !important;top:auto !important;bottom:auto !important;width:100% !important;height:240px !important;transform:none !important;margin:0 0 24px !important;border-radius:20px !important}
+    [data-hide-mob]{display:none !important}[data-table]{display:none !important}[data-stack]{display:flex !important}
+    [data-scrollx]{overflow-x:auto !important;padding-bottom:8px}
+  }
+@media (prefers-reduced-motion: reduce) {
+    *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+    [data-rv]{opacity:1 !important;animation:none !important}
+    [data-art] *{animation:none !important}
+    [data-travel]{stroke-dashoffset:0 !important}
+  }
+
+  /* motion tokens */
+  @keyframes csEmerge { from{opacity:0;transform:scale(.97)} to{opacity:1;transform:scale(1)} }
+  @keyframes csHeroDrift { 0%{transform:perspective(1400px) rotateY(0deg) rotateX(0deg) translate3d(0,0,0)} 50%{transform:perspective(1400px) rotateY(-2.4deg) rotateX(1.2deg) translate3d(-10px,-12px,0)} 100%{transform:perspective(1400px) rotateY(0deg) rotateX(0deg) translate3d(0,0,0)} }
+  @keyframes csTravel { from{stroke-dashoffset:var(--len,2600)} to{stroke-dashoffset:0} }
+  @keyframes csTrail { 0%{stroke-dashoffset:var(--len,2600);opacity:0} 12%{opacity:1} 88%{opacity:1} 100%{stroke-dashoffset:calc(var(--len,2600) * -1);opacity:0} }
+  @keyframes csLateral { 0%{transform:translateX(-2.5%)} 50%{transform:translateX(2.5%)} 100%{transform:translateX(-2.5%)} }
+  @keyframes csBreath { 0%,100%{opacity:.5;transform:scale(.985)} 50%{opacity:1;transform:scale(1.015)} }
+  @keyframes csPulseRing { 0%{opacity:.65;transform:scale(.9)} 70%{opacity:0;transform:scale(1.18)} 100%{opacity:0;transform:scale(1.18)} }
+  @keyframes csLift { 0%,100%{transform:translateY(6px)} 50%{transform:translateY(-8px)} }
+  @keyframes csGlowShift { 0%,100%{opacity:.55} 50%{opacity:.9} }
+  @keyframes csSettle { from{opacity:0;transform:translateY(14px) scale(.99)} to{opacity:1;transform:translateY(0) scale(1)} }
+  @keyframes csRevealUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes csSpin { to{transform:rotate(360deg)} }
+
+  /* scroll reveal */
+  [data-rv]{opacity:0}
+  [data-rv].csv-in{animation:csRevealUp .72s cubic-bezier(.22,.61,.36,1) both}
+  html.csv-nojs [data-rv]{opacity:1;animation:none}
+
+  a, button { -webkit-tap-highlight-color: transparent; }
+  [data-btn-primary]{background-size:170% 100%;background-position:0% 50%;transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .3s ease,background-position .5s ease}
+  [data-btn-primary]:hover{transform:translateY(-2px);background-position:100% 50%;box-shadow:0 14px 34px rgba(91,92,246,.34)}
+  [data-btn-primary]:active{transform:translateY(0);box-shadow:0 6px 16px rgba(91,92,246,.28)}
+  [data-btn-ghost]{transition:border-color .25s ease,background-color .25s ease,transform .25s ease}
+  [data-btn-ghost]:hover{border-color:rgba(248,250,252,.42);background-color:rgba(248,250,252,.05)}
+  [data-btn-ghost]:active{transform:translateY(1px)}
+
+
+  [data-mob-only]{display:none}
+  @media (max-width:900px){
+    [data-mob-only]{display:block !important}
+    [data-hide-mob]{display:none !important}
+    [data-art]{filter:none}
+    [data-art="create-process-flow"]{position:relative !important;height:420px !important;margin:0 0 24px !important}
+  }
+</style>
+</helmet>
+<dc-import name="Header" active="process" hint-size="100%,74px"></dc-import>
+<main>
+<section data-hero data-pad style="position:relative;overflow:hidden;padding:110px 72px 70px;max-width:1440px;margin:0 auto;display:flex;flex-direction:column;gap:34px">
+  <div style="display:flex;flex-direction:column;gap:20px;max-width:760px">
+    <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Our process</div>
+    <h1 data-h1 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:66px;font-weight:700;letter-spacing:-0.035em;line-height:1.03">Five stages, one continuous project.</h1>
+    <p data-lead data-rv style="margin:0;font-size:18px;line-height:1.7;color:#A1A1AA;max-width:620px">You always know which stage the project is in, what is expected from you, and what happens next. Typical timeline: 2&ndash;4 weeks.</p>
+  </div>
+  <div data-art="create-process-flow" data-higgsfield style="position:relative;height:240px;border-radius:26px;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end;pointer-events:none">
+    <div style="padding:20px 22px;display:flex;flex-direction:column;gap:6px;max-width:520px">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">HIGGSFIELD — PROCESS FLOW</span>
+      <span style="font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#52525B">32:5 desktop · 21:9 tablet · 3:4 vertical mobile render required</span>
+    </div>
+  </div>
+</section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:20px 72px 40px;display:flex;flex-direction:column">
+  <div data-cols style="display:grid;grid-template-columns:0.9fr 1.4fr;gap:60px;padding:56px 0;border-top:1px solid rgba(248,250,252,.09);position:relative">
+    <div style="display:flex;flex-direction:column;gap:14px;position:sticky;top:110px;align-self:start">
+      <div style="display:flex;align-items:center;gap:14px"><span style="width:38px;height:38px;border-radius:99px;border:1px solid rgba(139,92,246,.4);display:flex;align-items:center;justify-content:center;font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:12px;color:#8B5CF6">01</span><span style="width:64px;height:1px;background:linear-gradient(90deg,#2563FF,#8B5CF6)"></span></div>
+      <h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:40px;font-weight:600;letter-spacing:-0.03em;line-height:1.06">Discovery</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <p style="margin:0;font-size:17px;line-height:1.8;color:#A1A1AA;max-width:620px">We learn the business before anything is drawn.</p>
+      <div data-cols style="display:grid;grid-template-columns:1fr 1fr;gap:10px 30px;padding:26px 30px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Business goals</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Audience</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Scope</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Content</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Requirements</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Research</span></div></div>
+    </div>
+  </div><div data-cols style="display:grid;grid-template-columns:0.9fr 1.4fr;gap:60px;padding:56px 0;border-top:1px solid rgba(248,250,252,.09);position:relative">
+    <div style="display:flex;flex-direction:column;gap:14px;position:sticky;top:110px;align-self:start">
+      <div style="display:flex;align-items:center;gap:14px"><span style="width:38px;height:38px;border-radius:99px;border:1px solid rgba(139,92,246,.4);display:flex;align-items:center;justify-content:center;font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:12px;color:#8B5CF6">02</span><span style="width:64px;height:1px;background:linear-gradient(90deg,#2563FF,#8B5CF6)"></span></div>
+      <h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:40px;font-weight:600;letter-spacing:-0.03em;line-height:1.06">Visual Direction</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <p style="margin:0;font-size:17px;line-height:1.8;color:#A1A1AA;max-width:620px">A direction proposed and agreed before production begins.</p>
+      <div data-cols style="display:grid;grid-template-columns:1fr 1fr;gap:10px 30px;padding:26px 30px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Website structure</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>References</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Creative direction</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Visual proposal</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Early experience decisions</span></div></div>
+    </div>
+  </div><div data-cols style="display:grid;grid-template-columns:0.9fr 1.4fr;gap:60px;padding:56px 0;border-top:1px solid rgba(248,250,252,.09);position:relative">
+    <div style="display:flex;flex-direction:column;gap:14px;position:sticky;top:110px;align-self:start">
+      <div style="display:flex;align-items:center;gap:14px"><span style="width:38px;height:38px;border-radius:99px;border:1px solid rgba(139,92,246,.4);display:flex;align-items:center;justify-content:center;font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:12px;color:#8B5CF6">03</span><span style="width:64px;height:1px;background:linear-gradient(90deg,#2563FF,#8B5CF6)"></span></div>
+      <h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:40px;font-weight:600;letter-spacing:-0.03em;line-height:1.06">Design &amp; Development</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <p style="margin:0;font-size:17px;line-height:1.8;color:#A1A1AA;max-width:620px">Design and build run together, on real pages.</p>
+      <div data-cols style="display:grid;grid-template-columns:1fr 1fr;gap:10px 30px;padding:26px 30px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Responsive design</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Page construction</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Features</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Integrations</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Content implementation</span></div></div>
+    </div>
+  </div><div data-cols style="display:grid;grid-template-columns:0.9fr 1.4fr;gap:60px;padding:56px 0;border-top:1px solid rgba(248,250,252,.09);position:relative">
+    <div style="display:flex;flex-direction:column;gap:14px;position:sticky;top:110px;align-self:start">
+      <div style="display:flex;align-items:center;gap:14px"><span style="width:38px;height:38px;border-radius:99px;border:1px solid rgba(139,92,246,.4);display:flex;align-items:center;justify-content:center;font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:12px;color:#8B5CF6">04</span><span style="width:64px;height:1px;background:linear-gradient(90deg,#2563FF,#8B5CF6)"></span></div>
+      <h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:40px;font-weight:600;letter-spacing:-0.03em;line-height:1.06">Review</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <p style="margin:0;font-size:17px;line-height:1.8;color:#A1A1AA;max-width:620px">Everything checked, then two consolidated revision rounds.</p>
+      <div data-cols style="display:grid;grid-template-columns:1fr 1fr;gap:10px 30px;padding:26px 30px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Testing</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Content review</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Responsive review</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Two consolidated revision rounds</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Final refinements</span></div></div>
+    </div>
+  </div><div data-cols style="display:grid;grid-template-columns:0.9fr 1.4fr;gap:60px;padding:56px 0;border-top:1px solid rgba(248,250,252,.09);position:relative">
+    <div style="display:flex;flex-direction:column;gap:14px;position:sticky;top:110px;align-self:start">
+      <div style="display:flex;align-items:center;gap:14px"><span style="width:38px;height:38px;border-radius:99px;border:1px solid rgba(139,92,246,.4);display:flex;align-items:center;justify-content:center;font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:12px;color:#8B5CF6">05</span><span style="width:64px;height:1px;background:linear-gradient(90deg,#2563FF,#8B5CF6)"></span></div>
+      <h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:40px;font-weight:600;letter-spacing:-0.03em;line-height:1.06">Launch</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <p style="margin:0;font-size:17px;line-height:1.8;color:#A1A1AA;max-width:620px">Published, verified and handed over properly.</p>
+      <div data-cols style="display:grid;grid-template-columns:1fr 1fr;gap:10px 30px;padding:26px 30px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Final quality assurance</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Domain connection</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Publication</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Initial support</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Handoff when applicable</span></div></div>
+    </div>
+  </div>
+</section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:20px 72px 100px;display:flex;flex-direction:column;gap:22px">
+  <div data-cols style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
+    <div style="padding:36px 40px;border-radius:24px;background:linear-gradient(120deg,rgba(37,99,255,.08),rgba(139,92,246,.05)),#0E0E12;border:1px solid rgba(139,92,246,.3);display:flex;flex-direction:column;gap:12px">
+      <h2 data-h3 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:22px;font-weight:600">Typical timeline: 2&ndash;4 weeks</h2>
+      <p style="margin:0;font-size:14.5px;color:#A1A1AA;line-height:1.75">The project calendar begins once the initial payment and complete content have been received. Two consolidated revision rounds are included in every website project.</p>
+    </div>
+    <div style="padding:36px 40px;border-radius:24px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:12px">
+      <h2 data-h3 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:22px;font-weight:600">Payment structure</h2>
+      <p style="margin:0;font-size:14.5px;color:#A1A1AA;line-height:1.75">50% to begin, 50% before launch. The final proposal may be adjusted according to scope, content and functionality.</p>
+    </div>
+  </div>
+  <div data-cols style="display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;padding:44px;border-radius:26px;background:#0B0B0E;border:1px solid rgba(248,250,252,.08)">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">After launch &mdash; optional</div>
+      <h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:34px;font-weight:600;letter-spacing:-0.03em;line-height:1.12">Growth is a separate, continuing relationship.</h2>
+      <p style="margin:0;font-size:15px;color:#A1A1AA;line-height:1.75;max-width:560px">The five stages above complete the project. If you want the site to keep improving afterwards &mdash; technical care, SEO, performance and strategic recommendations &mdash; that runs as a monthly plan, starting at US$100/month.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px"><a href="seo-growth-maintenance.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;transition:background .25s ease,border-color .25s ease;text-align:center" style-hover="background:rgba(248,250,252,.05);border-color:rgba(248,250,252,.4);color:#F8FAFC">See SEO Growth &amp; Maintenance</a><a href="contact.dc.html" data-btn-primary style="padding:16px 30px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6,#2563FF);font-weight:600;font-size:15px;transition:transform .25s ease,box-shadow .25s ease;text-align:center" style-hover="transform:translateY(-2px);box-shadow:0 16px 40px rgba(91,92,246,.4);color:#F8FAFC">Start a Project</a></div>
+  </div>
+</section>
+<section data-sect data-pad style="position:relative;overflow:hidden;padding:130px 72px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px">
+  <div data-art="create-contact-expansion" data-higgsfield style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:860px;height:860px;border-radius:50%;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end;pointer-events:none">
+    <div style="padding:20px 22px;display:flex;flex-direction:column;gap:6px;max-width:520px">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">HIGGSFIELD — CONTACT</span>
+      <span style="font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#52525B">1:1 centred · core 40% reserved for headline · no internal shape animation</span>
+    </div>
+  </div>
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:22px;max-width:780px">
+    <h2 data-h1 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:50px;font-weight:700;letter-spacing:-0.035em;line-height:1.07">You know the process. Let&rsquo;s discuss the project.</h2>
+    <p data-lead style="margin:0;font-size:17px;color:#A1A1AA;line-height:1.7;max-width:600px;text-wrap:pretty">Tell us what you are creating, improving or trying to solve. We will review your project and recommend the appropriate next step.</p>
+    <div data-row style="display:flex;gap:14px;margin-top:4px"><a href="contact.dc.html" data-btn-primary style="padding:16px 30px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6,#2563FF);font-weight:600;font-size:15px;text-align:center">Discuss Your Project</a><a href="pricing.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;text-align:center">Compare website packages</a></div>
+  </div>
+</section>
+</main>
+<dc-import name="Footer" hint-size="100%,620px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    this.root = document.querySelector('x-dc') || document.body;
+    this.observeReveals();
+    this.bindProcess();
+  }
+  componentWillUnmount(){ this.teardownMotion(); }
+
+  observeReveals(){
+    const root = this.root || document;
+    const els = root.querySelectorAll('[data-rv]');
+    if (!('IntersectionObserver' in window)) { els.forEach(e=>e.classList.add('csv-in')); return; }
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(!en.isIntersecting) return;
+        const el = en.target;
+        const sibs = el.parentElement ? [...el.parentElement.querySelectorAll('[data-rv]')] : [el];
+        const i = Math.max(0, sibs.indexOf(el));
+        el.style.animationDelay = Math.min(i*70, 280) + 'ms';
+        el.classList.add('csv-in');
+        io.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    els.forEach(e=>io.observe(e));
+  }
+  bindProcess(){
+    const root = this.root || document;
+    this.procs = [...root.querySelectorAll('[data-proc]')];
+    if (!this.procs.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      this.procs.forEach(w=>{
+        w.querySelectorAll('[data-proc-path]').forEach(p=>{ p.style.strokeDashoffset='0'; });
+        w.querySelectorAll('[data-proc-node]').forEach(n=>{ n.style.opacity='1'; });
+      });
+      return;
+    }
+    this.onScroll = () => {
+      this.procs.forEach(w=>{
+        if (!w.offsetParent) return;
+        const r = w.getBoundingClientRect();
+        const span = window.innerHeight * 0.85 + r.height;
+        const t = Math.max(0, Math.min(1, (window.innerHeight * 0.85 - r.top) / span));
+        w.querySelectorAll('[data-proc-path]').forEach(pp=>{ pp.style.strokeDashoffset = String(Math.round(1000 - t*1000)); });
+        const nodes = w.querySelectorAll('[data-proc-node]');
+        nodes.forEach((n,i)=>{
+          const on = t >= (i+0.4)/nodes.length;
+          n.style.opacity = on ? '1' : '.22';
+          n.style.transform = on ? 'scale(1.14)' : 'scale(1)';
+        });
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive:true });
+    window.addEventListener('resize', this.onScroll);
+    this.onScroll();
+  }
+  teardownMotion(){ if (this.onScroll){ window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onScroll); } }
+  renderVals(){ return {}; }
+}
+</script>
+</body>
+</html>

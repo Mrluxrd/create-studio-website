@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Web Design & Development — Create Studio</title>
+<meta name="description" content="Custom web design and development for Dominican businesses: strategy-led design, responsive build, performance, accessibility and scalable foundations. Packages from US$800.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#09090B; color:#F8FAFC; }
+  body { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; font-weight:400; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3,h4 { font-family: Sora, Inter, system-ui, sans-serif; font-weight:600; }
+  h1 { font-weight:700; }
+  button, input, select, textarea, label, a { font-family: Inter, system-ui, sans-serif; }
+
+  a { color:#F8FAFC; text-decoration:none; }
+  a:hover { color:#8B5CF6; }
+  *:focus-visible { outline:2px solid #8B5CF6; outline-offset:3px; border-radius:4px; }
+  @keyframes csDrift { 0%{transform:translate3d(0,0,0) scale(1)} 50%{transform:translate3d(0,-14px,0) scale(1.02)} 100%{transform:translate3d(0,0,0) scale(1)} }
+  @media (max-width: 900px) {
+    [data-desk]{display:none !important}[data-mob]{display:flex !important}
+    [data-pad]{padding-left:22px !important;padding-right:22px !important}
+    [data-cols]{grid-template-columns:1fr !important}
+    [data-row]{flex-direction:column !important;align-items:flex-start !important}
+    [data-h1]{font-size:38px !important;line-height:1.05 !important}
+    [data-h2]{font-size:28px !important}[data-h3]{font-size:20px !important}[data-lead]{font-size:16px !important}
+    [data-hero]{padding-top:60px !important;padding-bottom:60px !important;min-height:0 !important}
+    [data-sect]{padding-top:60px !important;padding-bottom:60px !important}
+    [data-artbleed]{position:relative !important;inset:auto !important;left:auto !important;right:auto !important;top:auto !important;bottom:auto !important;width:100% !important;height:240px !important;transform:none !important;margin:0 0 24px !important;border-radius:20px !important}
+    [data-hide-mob]{display:none !important}[data-scrollx]{overflow-x:auto !important;padding-bottom:8px}
+  }
+@media (prefers-reduced-motion: reduce) {
+    *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+    [data-rv]{opacity:1 !important;animation:none !important}
+    [data-art] *{animation:none !important}
+    [data-travel]{stroke-dashoffset:0 !important}
+  }
+
+  /* motion tokens */
+  @keyframes csEmerge { from{opacity:0;transform:scale(.97)} to{opacity:1;transform:scale(1)} }
+  @keyframes csHeroDrift { 0%{transform:perspective(1400px) rotateY(0deg) rotateX(0deg) translate3d(0,0,0)} 50%{transform:perspective(1400px) rotateY(-2.4deg) rotateX(1.2deg) translate3d(-10px,-12px,0)} 100%{transform:perspective(1400px) rotateY(0deg) rotateX(0deg) translate3d(0,0,0)} }
+  @keyframes csTravel { from{stroke-dashoffset:var(--len,2600)} to{stroke-dashoffset:0} }
+  @keyframes csTrail { 0%{stroke-dashoffset:var(--len,2600);opacity:0} 12%{opacity:1} 88%{opacity:1} 100%{stroke-dashoffset:calc(var(--len,2600) * -1);opacity:0} }
+  @keyframes csLateral { 0%{transform:translateX(-2.5%)} 50%{transform:translateX(2.5%)} 100%{transform:translateX(-2.5%)} }
+  @keyframes csBreath { 0%,100%{opacity:.5;transform:scale(.985)} 50%{opacity:1;transform:scale(1.015)} }
+  @keyframes csPulseRing { 0%{opacity:.65;transform:scale(.9)} 70%{opacity:0;transform:scale(1.18)} 100%{opacity:0;transform:scale(1.18)} }
+  @keyframes csLift { 0%,100%{transform:translateY(6px)} 50%{transform:translateY(-8px)} }
+  @keyframes csGlowShift { 0%,100%{opacity:.55} 50%{opacity:.9} }
+  @keyframes csSettle { from{opacity:0;transform:translateY(14px) scale(.99)} to{opacity:1;transform:translateY(0) scale(1)} }
+  @keyframes csRevealUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes csSpin { to{transform:rotate(360deg)} }
+
+  /* scroll reveal */
+  [data-rv]{opacity:0}
+  [data-rv].csv-in{animation:csRevealUp .72s cubic-bezier(.22,.61,.36,1) both}
+  html.csv-nojs [data-rv]{opacity:1;animation:none}
+
+  a, button { -webkit-tap-highlight-color: transparent; }
+  [data-btn-primary]{background-size:170% 100%;background-position:0% 50%;transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .3s ease,background-position .5s ease}
+  [data-btn-primary]:hover{transform:translateY(-2px);background-position:100% 50%;box-shadow:0 14px 34px rgba(91,92,246,.34)}
+  [data-btn-primary]:active{transform:translateY(0);box-shadow:0 6px 16px rgba(91,92,246,.28)}
+  [data-btn-ghost]{transition:border-color .25s ease,background-color .25s ease,transform .25s ease}
+  [data-btn-ghost]:hover{border-color:rgba(248,250,252,.42);background-color:rgba(248,250,252,.05)}
+  [data-btn-ghost]:active{transform:translateY(1px)}
+
+
+  [data-mob-only]{display:none}
+  @media (max-width:900px){
+    [data-mob-only]{display:block !important}
+    [data-hide-mob]{display:none !important}
+    [data-art]{filter:none}
+    [data-art="create-process-flow"]{position:relative !important;height:420px !important;margin:0 0 24px !important}
+  }
+</style>
+</helmet>
+<dc-import name="Header" active="services" hint-size="100%,74px"></dc-import>
+<main>
+<section data-hero data-pad style="position:relative;overflow:hidden;padding:110px 72px 90px;max-width:1440px;margin:0 auto">
+  <div data-art="create-service-web" data-higgsfield style="position:absolute;top:-150px;right:-170px;width:780px;height:780px;border-radius:40px;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end;pointer-events:none">
+    <div style="padding:20px 22px;display:flex;flex-direction:column;gap:6px;max-width:520px">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">HIGGSFIELD — WEB DESIGN</span>
+      <span style="font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#52525B">1:1 · focal upper-right · lower-left reserved for copy</span>
+    </div>
+  </div>
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:22px;max-width:760px;">
+    <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Primary service &middot; Web design &amp; development</div>
+    <h1 data-h1 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:64px;font-weight:700;letter-spacing:-0.035em;line-height:1.03">Websites designed around your business and your audience.</h1>
+    <p data-lead data-rv style="margin:0;font-size:18px;line-height:1.7;color:#A1A1AA;max-width:600px">Create Studio designs responsive websites that combine clear structure, thoughtful visual direction and purposeful interaction. Every website is planned around what the business needs to communicate and what visitors need to do next.</p>
+    <p style="margin:0;font-size:15px;line-height:1.8;color:#52525B;max-width:600px">The result is a professional digital experience built to represent the brand clearly across desktop, tablet and mobile.</p>
+    <div data-row style="display:flex;gap:14px;margin-top:8px"><a href="contact.dc.html" data-btn-primary style="padding:16px 30px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6,#2563FF);font-weight:600;font-size:15px;transition:transform .25s ease,box-shadow .25s ease;text-align:center" style-hover="transform:translateY(-2px);box-shadow:0 16px 40px rgba(91,92,246,.4);color:#F8FAFC">Start a Project</a><a href="pricing.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;transition:background .25s ease,border-color .25s ease;text-align:center" style-hover="background:rgba(248,250,252,.05);border-color:rgba(248,250,252,.4);color:#F8FAFC">See Website Packages</a></div>
+  </div>
+</section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;"><div data-cols style="display:grid;grid-template-columns:1fr 1.15fr;gap:70px;align-items:start">
+  <div style="display:flex;flex-direction:column;gap:14px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">The problem</div><h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:38px;font-weight:600;letter-spacing:-0.03em;line-height:1.1">A website that looks fine but does not sell.</h2></div>
+  <div style="display:flex;flex-direction:column;gap:18px"><p style="margin:0;font-size:16px;line-height:1.8;color:#A1A1AA">Most business websites are assembled from a template, then filled with whatever content existed already. The result looks acceptable and performs badly: visitors cannot find what they need, the mobile experience is an afterthought, and there is no clear next step on any page.</p><p style="margin:0;font-size:16px;line-height:1.8;color:#A1A1AA">A custom site is not about decoration. It is about structuring information so a visitor understands what you do, trusts you enough to continue, and reaches the action that matters to your business.</p></div>
+</div></section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;"><div style="display:flex;flex-direction:column;gap:30px;padding:48px;border-radius:28px;background:#0B0B0E;border:1px solid rgba(248,250,252,.08)">
+  <div data-row style="display:flex;justify-content:space-between;align-items:flex-end;gap:30px">
+    <div style="display:flex;flex-direction:column;gap:14px;max-width:640px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Our solution</div><h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:36px;font-weight:600;letter-spacing:-0.03em;line-height:1.12">Strategy first, then design, then code.</h2><p style="margin:0;font-size:15.5px;line-height:1.8;color:#A1A1AA">We start from your commercial goal and the decision your visitor has to make. Structure and page hierarchy come before visual exploration, and the build follows the design exactly — responsive, accessible, fast, and configured so your team can update content without calling us.</p></div>
+  </div>
+  <div data-cols style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px 32px;padding-top:26px;border-top:1px solid rgba(248,250,252,.08)"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Website strategy</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Information architecture</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>UX and user flows</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>UI design</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Responsive development</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>CMS configuration</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Forms and WhatsApp integration</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Analytics setup</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>SEO foundations</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Third-party integrations</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Testing and QA</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Launch support</span></div></div>
+  <div style="font-size:13px;color:#A1A1AA;line-height:1.7">Every website project includes visual direction, responsive design, technical configuration, forms and calls to action, domain connection, two consolidated revision rounds and initial launch support.</div>
+</div></section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;"><div style="display:flex;flex-direction:column;gap:26px"><div style="display:flex;flex-direction:column;gap:12px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">How the work runs</div><h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:34px;font-weight:600;letter-spacing:-0.03em">From first conversation to a live website in two to four weeks.</h2></div><div data-cols style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px"><div style="padding:24px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:8px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">01</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:16.5px;font-weight:600">Discovery</h3><p style="margin:0;font-size:12.5px;color:#A1A1AA;line-height:1.6">Goals, audience, scope, content and requirements.</p></div><div style="padding:24px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:8px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">02</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:16.5px;font-weight:600">Visual Direction</h3><p style="margin:0;font-size:12.5px;color:#A1A1AA;line-height:1.6">Structure, references and the creative proposal.</p></div><div style="padding:24px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:8px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">03</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:16.5px;font-weight:600">Design &amp; Development</h3><p style="margin:0;font-size:12.5px;color:#A1A1AA;line-height:1.6">Responsive design, pages, features and integrations.</p></div><div style="padding:24px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:8px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">04</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:16.5px;font-weight:600">Review</h3><p style="margin:0;font-size:12.5px;color:#A1A1AA;line-height:1.6">Testing, content review and two consolidated revision rounds.</p></div><div style="padding:24px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:8px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">05</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:16.5px;font-weight:600">Launch</h3><p style="margin:0;font-size:12.5px;color:#A1A1AA;line-height:1.6">Final QA, domain connection, publication and initial support.</p></div></div></div></section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;"><div data-cols style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+  <div style="display:flex;flex-direction:column;gap:16px;padding:40px;border-radius:26px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)">
+    <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">What you get</div>
+    <div style="display:flex;flex-direction:column;gap:11px;margin-top:4px"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>A site structured around a clear commercial action</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>A visual identity that matches your brand, not a theme</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Fast, accessible pages on phone, tablet and desktop</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Content you can update without a developer</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Analytics and SEO foundations in place from day one</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>A scalable base for the next stage of the business</span></div></div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:16px"><a href="work-luxury-listings-dr.dc.html" style="display:flex;flex-direction:column;gap:14px;padding:16px;border-radius:26px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);transition:border-color .3s ease" style-hover="border-color:rgba(139,92,246,.45);color:#F8FAFC"><div style="position:relative;height:300px;border-radius:16px;overflow:hidden;background:radial-gradient(120% 140% at 22% 12%,rgba(37,99,255,.14),rgba(9,9,11,0) 62%),#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:center;justify-content:center;text-align:center;"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#A1A1AA;line-height:1.8;padding:0 16px">Luxury Listings DR</div></div><div style="padding:6px 10px 10px"><div style="font-family:Sora,sans-serif;font-size:19px;font-weight:600">Luxury Listings DR</div><div style="font-size:13px;color:#A1A1AA;margin-top:6px;line-height:1.6">A premium real-estate platform combining strategic content, responsive navigation, property discovery and seller acquisition.</div><div style="font-size:12.5px;color:#8B5CF6;margin-top:10px">View case study &rarr;</div></div></a></div>
+</div></section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;"><div data-cols style="display:grid;grid-template-columns:1.15fr 1fr;gap:40px;align-items:center;padding:44px;border-radius:26px;background:linear-gradient(120deg,rgba(37,99,255,.08),rgba(139,92,246,.05)),#0E0E12;border:1px solid rgba(139,92,246,.3)">
+   <div style="display:flex;flex-direction:column;gap:14px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Website packages</div><h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:34px;font-weight:600;letter-spacing:-0.03em;line-height:1.12">Essential US$800 &middot; Business US$1,000 &middot; Premium US$1,500</h2><p style="margin:0;font-size:15px;color:#A1A1AA;line-height:1.75;max-width:560px">Advanced projects with heavier functionality, integrations or technical complexity are quoted individually. Payment is 50% to begin and 50% before launch.</p></div>
+   <div style="display:flex;flex-direction:column;gap:12px"><a href="pricing.dc.html" data-btn-primary style="padding:16px 30px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6,#2563FF);font-weight:600;font-size:15px;transition:transform .25s ease,box-shadow .25s ease;text-align:center" style-hover="transform:translateY(-2px);box-shadow:0 16px 40px rgba(91,92,246,.4);color:#F8FAFC">Compare Website Packages</a><a href="contact.dc.html?package=custom-website" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;transition:background .25s ease,border-color .25s ease;text-align:center" style-hover="background:rgba(248,250,252,.05);border-color:rgba(248,250,252,.4);color:#F8FAFC">Request a Custom Quote</a></div>
+ </div></section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;display:flex;flex-direction:column;gap:22px">
+  <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Related services</div>
+  <div data-cols style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+    <a href="service-website-redesign.dc.html" style="padding:26px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:9px;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:rgba(139,92,246,.45);transform:translateY(-4px);color:#F8FAFC"><h3 style="margin:0;font-family:Sora,sans-serif;font-size:18px;font-weight:600">Website Redesign</h3><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">Visual modernization, content reorganization, better mobile experience and conversion improvements.</p><span style="font-size:12.5px;color:#8B5CF6;margin-top:4px">Explore &rarr;</span></a><a href="service-crm-custom-systems.dc.html" style="padding:26px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:9px;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:rgba(139,92,246,.45);transform:translateY(-4px);color:#F8FAFC"><h3 style="margin:0;font-family:Sora,sans-serif;font-size:18px;font-weight:600">CRM &amp; Custom Systems</h3><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">Dashboards, contacts, pipelines, calendars, reports, automations and integrations.</p><span style="font-size:12.5px;color:#8B5CF6;margin-top:4px">Explore &rarr;</span></a><a href="service-seo-performance.dc.html" style="padding:26px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:9px;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:rgba(139,92,246,.45);transform:translateY(-4px);color:#F8FAFC"><h3 style="margin:0;font-family:Sora,sans-serif;font-size:18px;font-weight:600">SEO &amp; Performance</h3><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">On-page structure, speed, indexing, analytics and continuous optimization.</p><span style="font-size:12.5px;color:#8B5CF6;margin-top:4px">Explore &rarr;</span></a>
+  </div>
+</section>
+<section data-sect data-pad style="position:relative;overflow:hidden;padding:130px 72px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px">
+  <div data-art="create-contact-expansion" data-higgsfield style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:860px;height:860px;border-radius:50%;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end;pointer-events:none">
+    <div style="padding:20px 22px;display:flex;flex-direction:column;gap:6px;max-width:520px">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">HIGGSFIELD — CONTACT</span>
+      <span style="font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#52525B">1:1 centred · core 40% reserved for headline · no internal shape animation</span>
+    </div>
+  </div>
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:22px;max-width:780px">
+    <h2 data-h1 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:50px;font-weight:700;letter-spacing:-0.035em;line-height:1.07">Ready for a website designed around your business?</h2>
+    <p data-lead style="margin:0;font-size:17px;color:#A1A1AA;line-height:1.7;max-width:600px;text-wrap:pretty">Tell us what the website needs to communicate and what visitors need to do next. We will recommend the appropriate package or prepare a custom scope.</p>
+    <div data-row style="display:flex;gap:14px;margin-top:4px"><a href="contact.dc.html" data-btn-primary style="padding:16px 30px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6,#2563FF);font-weight:600;font-size:15px;text-align:center">Start Your Website</a><a href="pricing.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;text-align:center">Compare website packages</a></div>
+  </div>
+</section>
+</main>
+<dc-import name="Footer" hint-size="100%,620px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    this.root = document.querySelector('x-dc') || document.body;
+    this.observeReveals();
+    this.bindProcess();
+  }
+  componentWillUnmount(){ this.teardownMotion(); }
+
+  observeReveals(){
+    const root = this.root || document;
+    const els = root.querySelectorAll('[data-rv]');
+    if (!('IntersectionObserver' in window)) { els.forEach(e=>e.classList.add('csv-in')); return; }
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(!en.isIntersecting) return;
+        const el = en.target;
+        const sibs = el.parentElement ? [...el.parentElement.querySelectorAll('[data-rv]')] : [el];
+        const i = Math.max(0, sibs.indexOf(el));
+        el.style.animationDelay = Math.min(i*70, 280) + 'ms';
+        el.classList.add('csv-in');
+        io.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    els.forEach(e=>io.observe(e));
+  }
+  bindProcess(){
+    const root = this.root || document;
+    this.procs = [...root.querySelectorAll('[data-proc]')];
+    if (!this.procs.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      this.procs.forEach(w=>{
+        w.querySelectorAll('[data-proc-path]').forEach(p=>{ p.style.strokeDashoffset='0'; });
+        w.querySelectorAll('[data-proc-node]').forEach(n=>{ n.style.opacity='1'; });
+      });
+      return;
+    }
+    this.onScroll = () => {
+      this.procs.forEach(w=>{
+        if (!w.offsetParent) return;
+        const r = w.getBoundingClientRect();
+        const span = window.innerHeight * 0.85 + r.height;
+        const t = Math.max(0, Math.min(1, (window.innerHeight * 0.85 - r.top) / span));
+        w.querySelectorAll('[data-proc-path]').forEach(pp=>{ pp.style.strokeDashoffset = String(Math.round(1000 - t*1000)); });
+        const nodes = w.querySelectorAll('[data-proc-node]');
+        nodes.forEach((n,i)=>{
+          const on = t >= (i+0.4)/nodes.length;
+          n.style.opacity = on ? '1' : '.22';
+          n.style.transform = on ? 'scale(1.14)' : 'scale(1)';
+        });
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive:true });
+    window.addEventListener('resize', this.onScroll);
+    this.onScroll();
+  }
+  teardownMotion(){ if (this.onScroll){ window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onScroll); } }
+  renderVals(){ return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#09090B; }
+  body { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; font-weight:400; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3,h4 { font-family: Sora, Inter, system-ui, sans-serif; font-weight:600; }
+  h1 { font-weight:700; }
+  button, input, select, textarea, label, a { font-family: Inter, system-ui, sans-serif; }
+
+  a { color:#8B5CF6; text-decoration:none; }
+  a:hover { color:#2563FF; }
+</style>
+</helmet>
+
+<div style="font-family:Inter,system-ui,sans-serif;background:#09090B;color:#F8FAFC;padding:80px 72px 140px;display:flex;flex-direction:column;gap:64px;max-width:1240px;margin:0 auto">
+
+  <div style="display:flex;flex-direction:column;gap:18px;padding-bottom:44px;border-bottom:1px solid rgba(248,250,252,.1)">
+    <img src="assets/logo-lockup.png" alt="Create Studio" style="height:34px;width:auto;align-self:flex-start">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Higgsfield artwork plan · homepage v1.0 · August 2026</div>
+    <h1 style="margin:0;font-family:Sora,sans-serif;font-size:52px;font-weight:700;letter-spacing:-0.03em;line-height:1.05;max-width:900px">One continuous visual story, generated in twelve pieces.</h1>
+    <p style="margin:0;font-size:16px;line-height:1.7;color:#A1A1AA;max-width:760px;text-wrap:pretty">The approved layout is unchanged. This document specifies every artwork slot already present in that layout — ratio, export size, subject placement, negative space, crops, motion and parallax — so Higgsfield prompts can be written against exact measurements. No final artwork is produced here.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px">
+    <div style="padding:30px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:14px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">Visual family — constant across all twelve</div>
+      <div style="font-size:14.5px;line-height:1.75;color:#A1A1AA">
+        Background: true #09090B, no vignette, no lighter panel.<br>
+        Colour: #2563FF → #8B5CF6 only. No third hue, no white light, no neon.<br>
+        Form: fluid open curves drawn from the monogram's unclosed C — one gesture, never a lattice.<br>
+        Line: single stroke weight family, 6–14px at 2400px export.<br>
+        Texture: fine even grain, 2–4% opacity, identical across every asset.<br>
+        Depth: one soft focal falloff, no cast shadows on the background.<br>
+        Motion: ease-in-out, no bounce, no strobe, ≤0.4 perceived speed.
+      </div>
+    </div>
+    <div style="padding:30px;border-radius:22px;background:#0E0E12;border:1px solid rgba(139,92,246,.28);display:flex;flex-direction:column;gap:14px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">Never generate</div>
+      <div style="font-size:14.5px;line-height:1.75;color:#A1A1AA">Smoked glass · glass sculpture · cubes · repeated squares · floating UI panels · data nodes · metallic machinery · generic tech imagery · robots · AI brains · cyberpunk environments · random neon · fake website screens · fake portfolio work · any readable text or numerals inside the artwork.</div>
+      <div style="font-size:13.5px;line-height:1.7;color:#F8FAFC;padding-top:12px;border-top:1px solid rgba(248,250,252,.08)">The interface keeps its approved cards and containers. This restriction governs generated artwork only.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Energy curve across the scroll</div>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:14px">
+      <div style="padding:18px;border-radius:16px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)"><div style="font-family:Sora,sans-serif;font-size:15px;font-weight:600;margin-bottom:6px">Hero</div><div style="font-size:12.5px;color:#A1A1AA;line-height:1.6">Concentrated. Highest gradient density of the page.</div></div>
+      <div style="padding:18px;border-radius:16px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)"><div style="font-family:Sora,sans-serif;font-size:15px;font-weight:600;margin-bottom:6px">Portfolio</div><div style="font-size:12.5px;color:#A1A1AA;line-height:1.6">Receding. Artwork yields to real client work.</div></div>
+      <div style="padding:18px;border-radius:16px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)"><div style="font-family:Sora,sans-serif;font-size:15px;font-weight:600;margin-bottom:6px">Services</div><div style="font-size:12.5px;color:#A1A1AA;line-height:1.6">Directional. One family, six distinct behaviours.</div></div>
+      <div style="padding:18px;border-radius:16px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)"><div style="font-family:Sora,sans-serif;font-size:15px;font-weight:600;margin-bottom:6px">Process</div><div style="font-size:12.5px;color:#A1A1AA;line-height:1.6">Linear. A single path carries left to right.</div></div>
+      <div style="padding:18px;border-radius:16px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)"><div style="font-family:Sora,sans-serif;font-size:15px;font-weight:600;margin-bottom:6px">Pricing</div><div style="font-size:12.5px;color:#A1A1AA;line-height:1.6">Restrained. Atmosphere only, never a subject.</div></div>
+      <div style="padding:18px;border-radius:16px;background:#0E0E12;border:1px solid rgba(139,92,246,.35)"><div style="font-family:Sora,sans-serif;font-size:15px;font-weight:600;margin-bottom:6px">Contact</div><div style="font-size:12.5px;color:#A1A1AA;line-height:1.6">Expanding. Echoes the hero, opened outward.</div></div>
+    </div>
+    <div style="font-size:13.5px;color:#A1A1AA;line-height:1.7;max-width:900px">Gradient direction rotates clockwise by roughly 30° per section — hero reads blue-lower-left to violet-upper-right; by the contact section the same axis has travelled a half turn. Never reverse it between adjacent sections.</div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:26px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Asset map · 12 generations, 5 requiring a separate mobile render</div>
+
+    <!-- 01 -->
+    <div style="border-radius:24px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);overflow:hidden">
+      <div style="padding:26px 30px;display:flex;align-items:baseline;justify-content:space-between;gap:24px;border-bottom:1px solid rgba(248,250,252,.07);background:linear-gradient(90deg,rgba(37,99,255,.14),rgba(139,92,246,.06))">
+        <div style="display:flex;align-items:baseline;gap:18px"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8B5CF6">01</span><span style="font-family:Sora,sans-serif;font-size:24px;font-weight:600">create-hero-motion</span></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#A1A1AA">Hero · ART 01</div>
+      </div>
+      <div style="padding:28px 30px;display:grid;grid-template-columns:1fr 1fr;gap:10px 40px;font-size:13.5px;line-height:1.6">
+        <div style="grid-column:1/-1;color:#A1A1AA;padding-bottom:10px">Purpose — the creative spark. A concentrated blue-violet signal releasing into one expressive open curve. This is the seed gesture every later asset descends from.</div>
+        <div><span style="color:#A1A1AA">Ratio</span> · 1:1</div><div><span style="color:#A1A1AA">Export</span> · 2400 × 2400 px</div>
+        <div><span style="color:#A1A1AA">Subject</span> · core mass at 62% x / 45% y, tail sweeping upper-right</div><div><span style="color:#A1A1AA">Negative space</span> · left 45% and lower-left quadrant fully empty</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Text relationship</span> · 96px headline, body and both buttons occupy the left 700px of the 1440 section; artwork core must never fall behind them. Scrim already applied in layout at 88% black on the left edge.</div>
+        <div><span style="color:#A1A1AA">Desktop crop</span> · 1020 × 1020, offset −140px right / −90px top (bleeds off frame)</div><div><span style="color:#A1A1AA">Mobile crop</span> · 390 × 420 top-anchored square, subject re-centred</div>
+        <div><span style="color:#A1A1AA">Motion</span> · animated</div><div><span style="color:#A1A1AA">Loop</span> · 12s, seamless, no visible cut</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Parallax</span> · y translate −0.18 of scroll; mask fades to zero at 60vh so the marquee edge stays clean</div>
+        <div><span style="color:#A1A1AA">Format</span> · WebM (alpha) + WebP poster</div><div style="color:#F8FAFC"><span style="color:#A1A1AA">Separate mobile render</span> · YES — subject re-centred, 30% less spread</div>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div style="border-radius:24px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);overflow:hidden">
+      <div style="padding:26px 30px;display:flex;align-items:baseline;justify-content:space-between;gap:24px;border-bottom:1px solid rgba(248,250,252,.07)">
+        <div style="display:flex;align-items:baseline;gap:18px"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8B5CF6">02</span><span style="font-family:Sora,sans-serif;font-size:24px;font-weight:600">create-portfolio-accent</span></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#A1A1AA">Selected work · ART 02</div>
+      </div>
+      <div style="padding:28px 30px;display:grid;grid-template-columns:1fr 1fr;gap:10px 40px;font-size:13.5px;line-height:1.6">
+        <div style="grid-column:1/-1;color:#A1A1AA;padding-bottom:10px">Purpose — the hero energy travelling toward real work. Supporting motion only: a low curved gradient path and soft illumination behind the project cards. The client screenshots stay dominant; no decorative illustration may compete with them.</div>
+        <div><span style="color:#A1A1AA">Ratio</span> · 21:9</div><div><span style="color:#A1A1AA">Export</span> · 2880 × 1234 px</div>
+        <div><span style="color:#A1A1AA">Subject</span> · single horizontal band in the bottom third, entering left, exiting right</div><div><span style="color:#A1A1AA">Negative space</span> · top 55% empty for the section title</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Text relationship</span> · sits behind the h2 and spec row; project cards overlap its lower edge. Peak luminance must stay under 18% where cards land, so card borders keep contrast.</div>
+        <div><span style="color:#A1A1AA">Desktop crop</span> · 1440 × 520, full-bleed, centred at section top +60px</div><div><span style="color:#A1A1AA">Mobile crop</span> · 16:9 centre slice at 342 × 150, opacity 0.4</div>
+        <div><span style="color:#A1A1AA">Motion</span> · animated</div><div><span style="color:#A1A1AA">Loop</span> · 18s lateral drift, no vertical movement</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Parallax</span> · y +0.10; opacity ramps 0.35 → 0.7 as the section enters the viewport, then holds</div>
+        <div><span style="color:#A1A1AA">Format</span> · WebM + WebP poster</div><div><span style="color:#A1A1AA">Separate mobile render</span> · no — crop the desktop master</div>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div style="border-radius:24px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);overflow:hidden">
+      <div style="padding:26px 30px;display:flex;align-items:baseline;justify-content:space-between;gap:24px;border-bottom:1px solid rgba(248,250,252,.07)">
+        <div style="display:flex;align-items:baseline;gap:18px"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8B5CF6">03</span><span style="font-family:Sora,sans-serif;font-size:24px;font-weight:600">create-service-web</span></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#A1A1AA">Web design &amp; development · ART 03</div>
+      </div>
+      <div style="padding:28px 30px;display:grid;grid-template-columns:1fr 1fr;gap:10px 40px;font-size:13.5px;line-height:1.6">
+        <div style="grid-column:1/-1;color:#A1A1AA;padding-bottom:10px">Purpose — a fluid path organising itself into a clean responsive rhythm: the curve resolves into evenly spaced parallel runs without ever becoming a grid or a wireframe.</div>
+        <div><span style="color:#A1A1AA">Ratio</span> · 1:1</div><div><span style="color:#A1A1AA">Export</span> · 1680 × 1680 px</div>
+        <div><span style="color:#A1A1AA">Subject</span> · upper-right, resolution phase exits the top edge</div><div><span style="color:#A1A1AA">Negative space</span> · lower-left 60% clear</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Text relationship</span> · contained inside the card; the h3 begins 24px below the artwork's lowest visible energy. Card fill #0E0E12 shows through, so export on transparency.</div>
+        <div><span style="color:#A1A1AA">Desktop crop</span> · 420 × 420, offset −60px right / −40px top inside the card</div><div><span style="color:#A1A1AA">Mobile crop</span> · 240 × 240, top-right, same offsets scaled</div>
+        <div><span style="color:#A1A1AA">Motion</span> · static base, hover-driven</div><div><span style="color:#A1A1AA">Loop</span> · n/a — hover scale 1.06 over 600ms ease-out</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Parallax</span> · pointer tilt ±6px only; no scroll offset (the card row must stay visually locked)</div>
+        <div><span style="color:#A1A1AA">Format</span> · transparent PNG @2x</div><div><span style="color:#A1A1AA">Separate mobile render</span> · no</div>
+      </div>
+    </div>
+
+    <!-- 04 redesign -->
+    <div style="border-radius:24px;background:#0E0E12;border:1px dashed rgba(139,92,246,.4);overflow:hidden">
+      <div style="padding:26px 30px;display:flex;align-items:baseline;justify-content:space-between;gap:24px;border-bottom:1px solid rgba(248,250,252,.07)">
+        <div style="display:flex;align-items:baseline;gap:18px"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8B5CF6">04</span><span style="font-family:Sora,sans-serif;font-size:24px;font-weight:600">create-service-redesign</span></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#8B5CF6">No dedicated slot in the approved layout</div>
+      </div>
+      <div style="padding:28px 30px;display:grid;grid-template-columns:1fr 1fr;gap:10px 40px;font-size:13.5px;line-height:1.6">
+        <div style="grid-column:1/-1;color:#A1A1AA;padding-bottom:10px">Purpose — a constrained movement opening into a clearer composition. In the approved homepage, redesign lives as a chip inside the Web Design &amp; Development card, so this asset is generated as the <strong style="color:#F8FAFC">hover state of create-service-web</strong> (same frame, same camera, tighter start → looser finish) and as the hero asset for the future /website-redesign page. Adding a new homepage slot would change the approved layout, so none is proposed.</div>
+        <div><span style="color:#A1A1AA">Ratio</span> · 1:1 (homepage hover) · 16:9 (future page hero)</div><div><span style="color:#A1A1AA">Export</span> · 1680 × 1680 and 2560 × 1440</div>
+        <div><span style="color:#A1A1AA">Subject</span> · identical placement to create-service-web so the crossfade registers</div><div><span style="color:#A1A1AA">Negative space</span> · matches create-service-web exactly</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Text relationship</span> · none on the homepage — it appears only under the pointer, behind existing copy that does not move.</div>
+        <div><span style="color:#A1A1AA">Desktop crop</span> · 420 × 420, same as 03</div><div><span style="color:#A1A1AA">Mobile crop</span> · not used on mobile (no hover)</div>
+        <div><span style="color:#A1A1AA">Motion</span> · animated on hover</div><div><span style="color:#A1A1AA">Loop</span> · 900ms one-shot, reverses on pointer-out</div>
+        <div><span style="color:#A1A1AA">Parallax</span> · none</div><div><span style="color:#A1A1AA">Format</span> · transparent PNG pair, or 2-state WebM</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Separate mobile render</span> · no</div>
+      </div>
+    </div>
+
+    <!-- 05 crm -->
+    <div style="border-radius:24px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);overflow:hidden">
+      <div style="padding:26px 30px;display:flex;align-items:baseline;justify-content:space-between;gap:24px;border-bottom:1px solid rgba(248,250,252,.07)">
+        <div style="display:flex;align-items:baseline;gap:18px"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8B5CF6">05</span><span style="font-family:Sora,sans-serif;font-size:24px;font-weight:600">create-service-crm</span></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#A1A1AA">CRM &amp; custom systems · ART 04</div>
+      </div>
+      <div style="padding:28px 30px;display:grid;grid-template-columns:1fr 1fr;gap:10px 40px;font-size:13.5px;line-height:1.6">
+        <div style="grid-column:1/-1;color:#A1A1AA;padding-bottom:10px">Purpose — multiple flowing paths converging into one coordinated movement. Shot as a macro close-up of a much larger system, so the frame edges cut through the forms rather than containing them.</div>
+        <div><span style="color:#A1A1AA">Ratio</span> · 4:5</div><div><span style="color:#A1A1AA">Export</span> · 1600 × 2000 px</div>
+        <div><span style="color:#A1A1AA">Subject</span> · convergence point at 68% x / 24% y, off-centre and cropped</div><div><span style="color:#A1A1AA">Negative space</span> · bottom 45% falls to near-black for the copy scrim</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Text relationship</span> · h3 and paragraph sit directly on the artwork over a gradient scrim; measured contrast must stay ≥7:1. No bright energy below 55% height.</div>
+        <div><span style="color:#A1A1AA">Desktop crop</span> · fills the card, 708 × 470, no visible frame or radius of its own</div><div><span style="color:#A1A1AA">Mobile crop</span> · tighter 1:1 at 342 × 320, top-anchored</div>
+        <div><span style="color:#A1A1AA">Motion</span> · animated</div><div><span style="color:#A1A1AA">Loop</span> · 8s breathing cycle, ±2% scale</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Parallax</span> · inner y −0.06 within the card mask; the card itself never moves</div>
+        <div><span style="color:#A1A1AA">Format</span> · WebM + WebP poster</div><div style="color:#F8FAFC"><span style="color:#A1A1AA">Separate mobile render</span> · YES — 1:1 recomposition</div>
+      </div>
+    </div>
+
+    <!-- 06 branding -->
+    <div style="border-radius:24px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);overflow:hidden">
+      <div style="padding:26px 30px;display:flex;align-items:baseline;justify-content:space-between;gap:24px;border-bottom:1px solid rgba(248,250,252,.07)">
+        <div style="display:flex;align-items:baseline;gap:18px"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8B5CF6">06</span><span style="font-family:Sora,sans-serif;font-size:24px;font-weight:600">create-service-branding</span></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#A1A1AA">Digital branding · ART 05</div>
+      </div>
+      <div style="padding:28px 30px;display:grid;grid-template-columns:1fr 1fr;gap:10px 40px;font-size:13.5px;line-height:1.6">
+        <div style="grid-column:1/-1;color:#A1A1AA;padding-bottom:10px">Purpose — one original gesture developing into a consistent family of forms: a primary curve with three smaller descendants sharing its DNA. Floats free, with no container of any kind.</div>
+        <div><span style="color:#A1A1AA">Ratio</span> · 1:1</div><div><span style="color:#A1A1AA">Export</span> · 1400 × 1400 px</div>
+        <div><span style="color:#A1A1AA">Subject</span> · dead centre, family members orbiting within the inner 70%</div><div><span style="color:#A1A1AA">Negative space</span> · 15% clear margin on all four sides — nothing may touch an edge</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Text relationship</span> · headline sits 40px below the artwork and never overlaps it. Transparent background is mandatory: a visible box here breaks the floating-sculpture treatment.</div>
+        <div><span style="color:#A1A1AA">Desktop crop</span> · 300 × 300, centred, top +34px in the card</div><div><span style="color:#A1A1AA">Mobile crop</span> · 200 × 200, centred, same anchor</div>
+        <div><span style="color:#A1A1AA">Motion</span> · animated</div><div><span style="color:#A1A1AA">Loop</span> · 11s float, ±14px on y</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Parallax</span> · y −0.12 plus 3° pointer rotation, damped 200ms</div>
+        <div><span style="color:#A1A1AA">Format</span> · transparent WebM (alpha) + PNG fallback</div><div><span style="color:#A1A1AA">Separate mobile render</span> · no — scales cleanly</div>
+      </div>
+    </div>
+
+    <!-- 07 seo -->
+    <div style="border-radius:24px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);overflow:hidden">
+      <div style="padding:26px 30px;display:flex;align-items:baseline;justify-content:space-between;gap:24px;border-bottom:1px solid rgba(248,250,252,.07)">
+        <div style="display:flex;align-items:baseline;gap:18px"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8B5CF6">07</span><span style="font-family:Sora,sans-serif;font-size:24px;font-weight:600">create-service-seo</span></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#A1A1AA">SEO &amp; performance · ART 06</div>
+      </div>
+      <div style="padding:28px 30px;display:grid;grid-template-columns:1fr 1fr;gap:10px 40px;font-size:13.5px;line-height:1.6">
+        <div style="grid-column:1/-1;color:#A1A1AA;padding-bottom:10px">Purpose — a controlled path expanding upward and forward. Rising trajectory expressed as one accelerating curve, never as a chart, arrow or bar.</div>
+        <div><span style="color:#A1A1AA">Ratio</span> · 16:6</div><div><span style="color:#A1A1AA">Export</span> · 2000 × 750 px</div>
+        <div><span style="color:#A1A1AA">Subject</span> · mass left of centre, ascending toward the right edge</div><div><span style="color:#A1A1AA">Negative space</span> · right 40% quiet — the 98/100 numeral lives there</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Text relationship</span> · artwork is partially concealed behind the 76px numeral; the numeral is layout type, so no numerals may appear in the artwork itself.</div>
+        <div><span style="color:#A1A1AA">Desktop crop</span> · 460 × 280 band bleeding ±40px past the card edges</div><div><span style="color:#A1A1AA">Mobile crop</span> · 3:2 at 390 × 170, full card width</div>
+        <div><span style="color:#A1A1AA">Motion</span> · animated</div><div><span style="color:#A1A1AA">Loop</span> · 6s left-to-right sweep, ease-out, triggered on enter — not continuously looping</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Parallax</span> · x +0.08 lateral only; vertical movement would fight the rising gesture</div>
+        <div><span style="color:#A1A1AA">Format</span> · WebM + WebP poster</div><div style="color:#F8FAFC"><span style="color:#A1A1AA">Separate mobile render</span> · YES — 3:2 recomposition</div>
+      </div>
+    </div>
+
+    <!-- 08 hosting -->
+    <div style="border-radius:24px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);overflow:hidden">
+      <div style="padding:26px 30px;display:flex;align-items:baseline;justify-content:space-between;gap:24px;border-bottom:1px solid rgba(248,250,252,.07)">
+        <div style="display:flex;align-items:baseline;gap:18px"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8B5CF6">08</span><span style="font-family:Sora,sans-serif;font-size:24px;font-weight:600">create-service-hosting</span></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#A1A1AA">Hosting &amp; maintenance · ART 07</div>
+      </div>
+      <div style="padding:28px 30px;display:grid;grid-template-columns:1fr 1fr;gap:10px 40px;font-size:13.5px;line-height:1.6">
+        <div style="grid-column:1/-1;color:#A1A1AA;padding-bottom:10px">Purpose — a continuous looping movement expressing stability and continuity. The calmest asset on the page: one closed circuit of flow, low contrast, no incident.</div>
+        <div><span style="color:#A1A1AA">Ratio</span> · 4:3</div><div><span style="color:#A1A1AA">Export</span> · 1400 × 1050 px</div>
+        <div><span style="color:#A1A1AA">Subject</span> · centred low-left, fully inside the frame</div><div><span style="color:#A1A1AA">Negative space</span> · even 12% inset all round</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Text relationship</span> · strictly outside the container; 24px gap to the h3. This is the one slot where the artwork stays inside a rounded 20px container — it anchors the rhythm of the row.</div>
+        <div><span style="color:#A1A1AA">Desktop crop</span> · 380 × 250 inside the card container</div><div><span style="color:#A1A1AA">Mobile crop</span> · 342 × 200, same composition</div>
+        <div><span style="color:#A1A1AA">Motion</span> · static</div><div><span style="color:#A1A1AA">Loop</span> · n/a — deliberately still, to let the animated neighbours read</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Parallax</span> · none</div>
+        <div><span style="color:#A1A1AA">Format</span> · WebP, single frame</div><div><span style="color:#A1A1AA">Separate mobile render</span> · no</div>
+      </div>
+    </div>
+
+    <!-- 09 process -->
+    <div style="border-radius:24px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);overflow:hidden">
+      <div style="padding:26px 30px;display:flex;align-items:baseline;justify-content:space-between;gap:24px;border-bottom:1px solid rgba(248,250,252,.07)">
+        <div style="display:flex;align-items:baseline;gap:18px"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8B5CF6">09</span><span style="font-family:Sora,sans-serif;font-size:24px;font-weight:600">create-process-flow</span></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#A1A1AA">Our process · ART 08 (+ 08a/b/c mobile chips)</div>
+      </div>
+      <div style="padding:28px 30px;display:grid;grid-template-columns:1fr 1fr;gap:10px 40px;font-size:13.5px;line-height:1.6">
+        <div style="grid-column:1/-1;color:#A1A1AA;padding-bottom:10px">Purpose — one unbroken blue-to-violet path carrying the stages left to right. Along its length it evolves: concentrated point → curve forming → structured movement → form opening forward → field expanding. The approved layout shows four step cards; the ribbon reads as five moments so it also serves a five-stage variant without re-generation.</div>
+        <div><span style="color:#A1A1AA">Ratio</span> · 32:5</div><div><span style="color:#A1A1AA">Export</span> · 3200 × 500 px</div>
+        <div><span style="color:#A1A1AA">Subject</span> · continuous flow across the full width, vertical centre ±15%</div><div><span style="color:#A1A1AA">Negative space</span> · bottom 40% clear — step cards overlap it by 20px</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Text relationship</span> · stage evolution points must land at 12% / 37% / 62% / 87% of the width to sit above the four card centres at 1440.</div>
+        <div><span style="color:#A1A1AA">Desktop crop</span> · 1296 × 260, seamless — no hard start or end frame</div><div><span style="color:#A1A1AA">Mobile crop</span> · three 104 × 104 chips cut at 8% / 45% / 82% of the master</div>
+        <div><span style="color:#A1A1AA">Motion</span> · animated, scroll-scrubbed (not autoplaying)</div><div><span style="color:#A1A1AA">Loop</span> · 5s of source footage mapped to the section's scroll range</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Parallax</span> · x −0.25, driven by scroll position so the path advances as the reader descends</div>
+        <div><span style="color:#A1A1AA">Format</span> · WebM (scrub-friendly, keyframe every 6 frames) + WebP chips</div><div style="color:#F8FAFC"><span style="color:#A1A1AA">Separate mobile render</span> · YES — three square chips</div>
+      </div>
+    </div>
+
+    <!-- 10 pricing -->
+    <div style="border-radius:24px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);overflow:hidden">
+      <div style="padding:26px 30px;display:flex;align-items:baseline;justify-content:space-between;gap:24px;border-bottom:1px solid rgba(248,250,252,.07)">
+        <div style="display:flex;align-items:baseline;gap:18px"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8B5CF6">10</span><span style="font-family:Sora,sans-serif;font-size:24px;font-weight:600">create-pricing-atmosphere</span></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#A1A1AA">Packages · ART 09</div>
+      </div>
+      <div style="padding:28px 30px;display:grid;grid-template-columns:1fr 1fr;gap:10px 40px;font-size:13.5px;line-height:1.6">
+        <div style="grid-column:1/-1;color:#A1A1AA;padding-bottom:10px">Purpose — atmosphere, not subject. A quiet blue-violet field in the far corner, plus a fine gradient path that passes behind the three packages and a soft bloom behind Growth. Small fluid marks may suggest increasing scope, but nothing may read as a shape competing with the prices.</div>
+        <div><span style="color:#A1A1AA">Ratio</span> · 1:1 corner bleed</div><div><span style="color:#A1A1AA">Export</span> · 1800 × 1800 px</div>
+        <div><span style="color:#A1A1AA">Subject</span> · mass in the bottom-right corner, exiting the frame on two edges</div><div><span style="color:#A1A1AA">Negative space</span> · upper-left 70% empty — the cards live there</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Text relationship</span> · nothing may pass behind the price figures or CTA buttons. Maximum opacity 35% over #0B0B0E; recommended-card bloom capped at 12% luminance so the gradient border stays the brightest element.</div>
+        <div><span style="color:#A1A1AA">Desktop crop</span> · 620 × 620, offset −160px right / −160px bottom</div><div><span style="color:#A1A1AA">Mobile crop</span> · not used — hidden below 640px</div>
+        <div><span style="color:#A1A1AA">Motion</span> · static (optional 20s ultra-slow drift if performance allows)</div><div><span style="color:#A1A1AA">Loop</span> · 20s if animated</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Parallax</span> · y −0.05, barely perceptible</div>
+        <div><span style="color:#A1A1AA">Format</span> · WebP</div><div><span style="color:#A1A1AA">Separate mobile render</span> · no — asset is suppressed on mobile</div>
+      </div>
+    </div>
+
+    <!-- 11 about -->
+    <div style="border-radius:24px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);overflow:hidden">
+      <div style="padding:26px 30px;display:flex;align-items:baseline;justify-content:space-between;gap:24px;border-bottom:1px solid rgba(248,250,252,.07)">
+        <div style="display:flex;align-items:baseline;gap:18px"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8B5CF6">11</span><span style="font-family:Sora,sans-serif;font-size:24px;font-weight:600">create-about-gesture</span></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#A1A1AA">About Create Studio · ART 10</div>
+      </div>
+      <div style="padding:28px 30px;display:grid;grid-template-columns:1fr 1fr;gap:10px 40px;font-size:13.5px;line-height:1.6">
+        <div style="grid-column:1/-1;color:#A1A1AA;padding-bottom:10px">Purpose — creativity meeting strategy. One gesture that starts loose and expressive on the right and becomes progressively more deliberate and refined as it travels left, dissolving before it reaches the copy.</div>
+        <div><span style="color:#A1A1AA">Ratio</span> · 4:5 portrait, right-bleed</div><div><span style="color:#A1A1AA">Export</span> · 1600 × 2000 px</div>
+        <div><span style="color:#A1A1AA">Subject</span> · mass on the right third, refinement phase reading toward the left</div><div><span style="color:#A1A1AA">Negative space</span> · left 30% must dissolve to pure #09090B, not to a soft grey</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Text relationship</span> · the copy column ends 80px before the artwork begins; the dissolve does the transition, no scrim is used here.</div>
+        <div><span style="color:#A1A1AA">Desktop crop</span> · 688 × 560, bleeding off the right edge, no right radius</div><div><span style="color:#A1A1AA">Mobile crop</span> · 390 × 300 full-bleed band above the copy</div>
+        <div><span style="color:#A1A1AA">Motion</span> · animated</div><div><span style="color:#A1A1AA">Loop</span> · 15s slow rotation, under 8° total travel</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Parallax</span> · y −0.14 with scale 1.00 → 1.04 across the viewport pass</div>
+        <div><span style="color:#A1A1AA">Format</span> · WebM + WebP poster</div><div style="color:#F8FAFC"><span style="color:#A1A1AA">Separate mobile render</span> · YES — landscape recomposition</div>
+      </div>
+    </div>
+
+    <!-- 12 contact -->
+    <div style="border-radius:24px;background:#0E0E12;border:1px solid rgba(139,92,246,.3);overflow:hidden">
+      <div style="padding:26px 30px;display:flex;align-items:baseline;justify-content:space-between;gap:24px;border-bottom:1px solid rgba(248,250,252,.07);background:linear-gradient(90deg,rgba(139,92,246,.14),rgba(37,99,255,.06))">
+        <div style="display:flex;align-items:baseline;gap:18px"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8B5CF6">12</span><span style="font-family:Sora,sans-serif;font-size:24px;font-weight:600">create-contact-expansion</span></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#A1A1AA">Final CTA · ART 11</div>
+      </div>
+      <div style="padding:28px 30px;display:grid;grid-template-columns:1fr 1fr;gap:10px 40px;font-size:13.5px;line-height:1.6">
+        <div style="grid-column:1/-1;color:#A1A1AA;padding-bottom:10px">Purpose — a new project begins. The hero gesture returned and opened outward: same curve DNA, radially symmetric, expanding past the frame. Inviting and spacious. Not a portal, doorway or gateway — the opening reads as room to grow, not an entrance to somewhere.</div>
+        <div><span style="color:#A1A1AA">Ratio</span> · 1:1</div><div><span style="color:#A1A1AA">Export</span> · 2200 × 2200 px</div>
+        <div><span style="color:#A1A1AA">Subject</span> · radially symmetric about dead centre</div><div><span style="color:#A1A1AA">Negative space</span> · the centre 40% must read near-black — the headline sits inside the core</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Text relationship</span> · 78px headline, body and two buttons all sit within the artwork's core. Energy belongs in the 40–85% radius band only.</div>
+        <div><span style="color:#A1A1AA">Desktop crop</span> · 860 × 860, centred; edges fade fully to #09090B before the section boundary</div><div><span style="color:#A1A1AA">Mobile crop</span> · 520 × 520, centred, 60% opacity</div>
+        <div><span style="color:#A1A1AA">Motion</span> · animated</div><div><span style="color:#A1A1AA">Loop</span> · 16s breathing expansion; CTA hover triggers a 400ms gradient bloom</div>
+        <div style="grid-column:1/-1"><span style="color:#A1A1AA">Parallax</span> · scale 0.90 → 1.05 across the viewport pass, no y offset — the composition must stay centred on the headline</div>
+        <div><span style="color:#A1A1AA">Format</span> · WebM (alpha) + WebP poster</div><div><span style="color:#A1A1AA">Separate mobile render</span> · no — scale the master, drop opacity</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px;padding-top:20px;border-top:1px solid rgba(248,250,252,.1)">
+    <div style="padding:30px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:12px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">Delivery &amp; naming</div>
+      <div style="font-size:14px;line-height:1.75;color:#A1A1AA">
+        <strong style="color:#F8FAFC">/artwork/create-[slot]-[breakpoint].[ext]</strong><br>
+        e.g. create-hero-motion-desktop.webm · create-hero-motion-mobile.webm · create-hero-motion-desktop.webp<br><br>
+        Deliver every animated asset with a poster frame taken at t=0 for first paint and reduced-motion users. Total homepage artwork budget: 4.5 MB desktop, 1.8 MB mobile — hero and contact may each take up to 1.2 MB, all others 400 KB or less.
+      </div>
+    </div>
+    <div style="padding:30px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:12px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">Open items before generation</div>
+      <div style="font-size:14px;line-height:1.75;color:#A1A1AA">
+        01 — Confirm whether the process section stays at four steps or moves to five (Discover / Design / Build / Launch / Grow). The ribbon is specced to serve both.<br>
+        02 — Portfolio card copy still reads "Project name"; supply the Luxury Listings DR, Joan Leonardo and CRM titles plus screenshots.<br>
+        03 — Confirm the redesign treatment as a hover state rather than a new homepage slot.
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+  [data-svc-wrap]:hover [data-dropdown], [data-svc-wrap]:focus-within [data-dropdown] { display:grid !important; opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); pointer-events:auto; }
+  [data-svc-wrap] { position:relative; }
+  @media (max-width: 900px) { [data-desk] { display:none !important; } [data-mob] { display:flex !important; } }
+
+  /* motion tokens */
+  @keyframes csEmerge { from{opacity:0;transform:scale(.97)} to{opacity:1;transform:scale(1)} }
+  @keyframes csHeroDrift { 0%{transform:perspective(1400px) rotateY(0deg) rotateX(0deg) translate3d(0,0,0)} 50%{transform:perspective(1400px) rotateY(-2.4deg) rotateX(1.2deg) translate3d(-10px,-12px,0)} 100%{transform:perspective(1400px) rotateY(0deg) rotateX(0deg) translate3d(0,0,0)} }
+  @keyframes csTravel { from{stroke-dashoffset:var(--len,2600)} to{stroke-dashoffset:0} }
+  @keyframes csTrail { 0%{stroke-dashoffset:var(--len,2600);opacity:0} 12%{opacity:1} 88%{opacity:1} 100%{stroke-dashoffset:calc(var(--len,2600) * -1);opacity:0} }
+  @keyframes csLateral { 0%{transform:translateX(-2.5%)} 50%{transform:translateX(2.5%)} 100%{transform:translateX(-2.5%)} }
+  @keyframes csBreath { 0%,100%{opacity:.5;transform:scale(.985)} 50%{opacity:1;transform:scale(1.015)} }
+  @keyframes csPulseRing { 0%{opacity:.65;transform:scale(.9)} 70%{opacity:0;transform:scale(1.18)} 100%{opacity:0;transform:scale(1.18)} }
+  @keyframes csLift { 0%,100%{transform:translateY(6px)} 50%{transform:translateY(-8px)} }
+  @keyframes csGlowShift { 0%,100%{opacity:.55} 50%{opacity:.9} }
+  @keyframes csSettle { from{opacity:0;transform:translateY(14px) scale(.99)} to{opacity:1;transform:translateY(0) scale(1)} }
+  @keyframes csRevealUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes csSpin { to{transform:rotate(360deg)} }
+
+  /* scroll reveal */
+  [data-rv]{opacity:0}
+  [data-rv].csv-in{animation:csRevealUp .72s cubic-bezier(.22,.61,.36,1) both}
+  html.csv-nojs [data-rv]{opacity:1;animation:none}
+
+  a, button { -webkit-tap-highlight-color: transparent; }
+  [data-btn-primary]{background-size:170% 100%;background-position:0% 50%;transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .3s ease,background-position .5s ease}
+  [data-btn-primary]:hover{transform:translateY(-2px);background-position:100% 50%;box-shadow:0 14px 34px rgba(91,92,246,.34)}
+  [data-btn-primary]:active{transform:translateY(0);box-shadow:0 6px 16px rgba(91,92,246,.28)}
+  [data-btn-ghost]{transition:border-color .25s ease,background-color .25s ease,transform .25s ease}
+  [data-btn-ghost]:hover{border-color:rgba(248,250,252,.42);background-color:rgba(248,250,252,.05)}
+  [data-btn-ghost]:active{transform:translateY(1px)}
+
+
+  body { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; font-weight:400; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3,h4 { font-family: Sora, Inter, system-ui, sans-serif; font-weight:600; }
+  h1 { font-weight:700; }
+  button, input, select, textarea, label, a { font-family: Inter, system-ui, sans-serif; }
+</style>
+</helmet>
+<header style="position:sticky;top:0;z-index:60;background:rgba(9,9,11,.8);backdrop-filter:blur(18px);border-bottom:1px solid rgba(248,250,252,.06)">
+  <div data-pad style="max-width:1440px;margin:0 auto;padding:18px 72px;display:flex;align-items:center;justify-content:space-between;gap:32px">
+    <a href="home.dc.html" aria-label="Create Studio home" style="display:flex;flex:none"><img src="assets/logo-lockup.png" alt="Create Studio logo" style="height:32px;width:auto;display:block"></a>
+    <nav data-desk aria-label="Primary" style="display:flex;align-items:center;gap:30px;font-size:14px">
+      <a href="work.dc.html" data-nav="work" style="color:#A1A1AA">Work</a>
+      <div data-svc-wrap style="position:relative;display:flex;align-items:center">
+        <a href="services.dc.html" data-nav="services" aria-haspopup="true" style="color:#A1A1AA;display:flex;align-items:center;gap:7px">Services<span style="display:inline-block;width:5px;height:5px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-1px)"></span></a>
+        <div data-dropdown style="position:fixed;top:82px;left:50%;transform:translateX(-50%) translateY(-8px);width:min(680px, calc(100vw - 44px));box-sizing:border-box;padding:14px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.1);box-shadow:0 40px 90px rgba(0,0,0,.65);display:grid;grid-template-columns:1fr 1fr;gap:6px;display:none;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s ease,transform .28s ease,visibility .28s">
+          <a href="service-web-design-development.dc.html" style="grid-column:1/-1;padding:20px;border-radius:16px;background:linear-gradient(120deg,rgba(37,99,255,.16),rgba(139,92,246,.09));border:1px solid rgba(139,92,246,.3);display:flex;flex-direction:column;gap:6px;transition:border-color .25s ease" style-hover="border-color:rgba(139,92,246,.6);color:#F8FAFC"><span style="display:flex;align-items:center;gap:10px;font-family:Sora,sans-serif;font-size:17px;font-weight:600">Web Design &amp; Development<span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#8B5CF6;border:1px solid rgba(139,92,246,.4);border-radius:999px;padding:4px 9px">Primary service</span></span><span style="font-size:13px;color:#A1A1AA;line-height:1.55">Landing pages, corporate sites, catalogs and multilingual platforms.</span></a><a href="service-website-redesign.dc.html" style="padding:15px 16px;border-radius:14px;display:flex;flex-direction:column;gap:4px;transition:background .25s ease" style-hover="background:rgba(248,250,252,.05);color:#F8FAFC"><span style="display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:500">Website Redesign</span><span style="font-size:12.5px;color:#A1A1AA;line-height:1.5">Modernise, reorganise and convert better.</span></a><a href="service-crm-custom-systems.dc.html" style="padding:15px 16px;border-radius:14px;display:flex;flex-direction:column;gap:4px;transition:background .25s ease" style-hover="background:rgba(248,250,252,.05);color:#F8FAFC"><span style="display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:500">CRM &amp; Custom Systems</span><span style="font-size:12.5px;color:#A1A1AA;line-height:1.5">Dashboards, pipelines, calendars, reports, automations.</span></a><a href="service-seo-performance.dc.html" style="padding:15px 16px;border-radius:14px;display:flex;flex-direction:column;gap:4px;transition:background .25s ease" style-hover="background:rgba(248,250,252,.05);color:#F8FAFC"><span style="display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:500">SEO &amp; Performance</span><span style="font-size:12.5px;color:#A1A1AA;line-height:1.5">Structure, speed, indexing and continuous optimisation.</span></a><a href="service-hosting-maintenance.dc.html" style="padding:15px 16px;border-radius:14px;display:flex;flex-direction:column;gap:4px;transition:background .25s ease" style-hover="background:rgba(248,250,252,.05);color:#F8FAFC"><span style="display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:500">Hosting &amp; Maintenance</span><span style="font-size:12.5px;color:#A1A1AA;line-height:1.5">SSL, monitoring, backups and technical support.</span></a><a href="service-digital-branding.dc.html" style="padding:15px 16px;border-radius:14px;display:flex;flex-direction:column;gap:4px;transition:background .25s ease" style-hover="background:rgba(248,250,252,.05);color:#F8FAFC"><span style="display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:500">Digital Branding</span><span style="font-size:12.5px;color:#A1A1AA;line-height:1.5">Visual direction, logo systems, colour and typography.</span></a>
+          <a href="services.dc.html" style="grid-column:1/-1;margin-top:2px;padding:14px 16px;border-top:1px solid rgba(248,250,252,.07);font-size:13px;color:#A1A1AA">All services &rarr;</a>
+        </div>
+      </div>
+      <a href="process.dc.html" data-nav="process" style="color:#A1A1AA">Process</a>
+      <a href="pricing.dc.html" data-nav="pricing" style="color:#A1A1AA">Pricing</a>
+      <a href="about.dc.html" data-nav="about" style="color:#A1A1AA">About</a>
+      <a href="contact.dc.html" data-nav="contact" style="color:#A1A1AA">Contact</a>
+    </nav>
+    <a data-desk href="contact.dc.html" style="flex:none;padding:12px 24px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6);font-weight:600;font-size:14px;transition:transform .25s ease,box-shadow .25s ease" style-hover="transform:translateY(-2px);box-shadow:0 12px 30px rgba(91,92,246,.35);color:#F8FAFC">Start a Project</a>
+    <button data-mob aria-label="Open menu" aria-expanded="false" onClick="{{openMenu}}" style="display:none;flex:none;align-items:center;justify-content:center;width:46px;height:46px;border-radius:14px;border:1px solid rgba(248,250,252,.14);background:transparent;cursor:pointer;flex-direction:column;gap:5px">
+      <span style="width:20px;height:1.5px;background:#F8FAFC;display:block"></span>
+      <span style="width:13px;height:1.5px;background:#F8FAFC;display:block;align-self:flex-end;margin-right:13px"></span>
+    </button>
+  </div>
+</header>
+<div data-menu role="dialog" aria-modal="true" aria-label="Menu" style="display:none;position:fixed;inset:0;z-index:80;background:#09090B;flex-direction:column">
+  <div style="padding:18px 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(248,250,252,.07)">
+    <img src="assets/logo-lockup.png" alt="Create Studio logo" style="height:28px;width:auto">
+    <button aria-label="Close menu" onClick="{{closeMenu}}" style="width:46px;height:46px;border-radius:14px;border:1px solid rgba(248,250,252,.14);background:transparent;color:#F8FAFC;font-size:24px;line-height:1;cursor:pointer">&times;</button>
+  </div>
+  <div style="flex:1;overflow-y:auto;padding:24px 22px 40px;display:flex;flex-direction:column;gap:2px">
+    <a href="work.dc.html" style="padding:17px 4px;font-family:Sora,sans-serif;font-size:25px;font-weight:600;border-bottom:1px solid rgba(248,250,252,.07)">Work</a>
+    <button onClick="{{toggleSub}}" aria-expanded="false" data-sub-toggle style="padding:17px 4px;font-family:Sora,sans-serif;font-size:25px;font-weight:600;background:transparent;border:none;border-bottom:1px solid rgba(248,250,252,.07);color:#F8FAFC;text-align:left;display:flex;align-items:center;justify-content:space-between;cursor:pointer;width:100%">Services<span data-sub-icon style="font-size:21px;color:#8B5CF6;transition:transform .3s ease">+</span></button>
+    <div data-sub style="display:none;flex-direction:column;gap:2px;padding:8px 0 12px 4px;border-bottom:1px solid rgba(248,250,252,.07)">
+      <a href="service-web-design-development.dc.html" style="padding:13px 0;font-size:16px;color:#A1A1AA;display:flex;align-items:center;gap:10px;min-height:44px"><span style="width:5px;height:5px;border-radius:99px;background:linear-gradient(90deg,#2563FF,#8B5CF6);flex:none"></span>Web Design &amp; Development</a><a href="service-website-redesign.dc.html" style="padding:13px 0;font-size:16px;color:#A1A1AA;display:flex;align-items:center;gap:10px;min-height:44px"><span style="width:5px;height:5px;border-radius:99px;background:linear-gradient(90deg,#2563FF,#8B5CF6);flex:none"></span>Website Redesign</a><a href="service-crm-custom-systems.dc.html" style="padding:13px 0;font-size:16px;color:#A1A1AA;display:flex;align-items:center;gap:10px;min-height:44px"><span style="width:5px;height:5px;border-radius:99px;background:linear-gradient(90deg,#2563FF,#8B5CF6);flex:none"></span>CRM &amp; Custom Systems</a><a href="service-seo-performance.dc.html" style="padding:13px 0;font-size:16px;color:#A1A1AA;display:flex;align-items:center;gap:10px;min-height:44px"><span style="width:5px;height:5px;border-radius:99px;background:linear-gradient(90deg,#2563FF,#8B5CF6);flex:none"></span>SEO &amp; Performance</a><a href="service-hosting-maintenance.dc.html" style="padding:13px 0;font-size:16px;color:#A1A1AA;display:flex;align-items:center;gap:10px;min-height:44px"><span style="width:5px;height:5px;border-radius:99px;background:linear-gradient(90deg,#2563FF,#8B5CF6);flex:none"></span>Hosting &amp; Maintenance</a><a href="service-digital-branding.dc.html" style="padding:13px 0;font-size:16px;color:#A1A1AA;display:flex;align-items:center;gap:10px;min-height:44px"><span style="width:5px;height:5px;border-radius:99px;background:linear-gradient(90deg,#2563FF,#8B5CF6);flex:none"></span>Digital Branding</a>
+    </div>
+    <a href="process.dc.html" style="padding:17px 4px;font-family:Sora,sans-serif;font-size:25px;font-weight:600;border-bottom:1px solid rgba(248,250,252,.07)">Process</a>
+    <a href="pricing.dc.html" style="padding:17px 4px;font-family:Sora,sans-serif;font-size:25px;font-weight:600;border-bottom:1px solid rgba(248,250,252,.07)">Pricing</a>
+    <a href="seo-growth-maintenance.dc.html" style="padding:17px 4px;font-size:16px;color:#A1A1AA;border-bottom:1px solid rgba(248,250,252,.07)">SEO Growth &amp; Maintenance</a>
+    <a href="about.dc.html" style="padding:17px 4px;font-family:Sora,sans-serif;font-size:25px;font-weight:600;border-bottom:1px solid rgba(248,250,252,.07)">About</a>
+    <a href="contact.dc.html" style="padding:17px 4px;font-family:Sora,sans-serif;font-size:25px;font-weight:600;border-bottom:1px solid rgba(248,250,252,.07)">Contact</a>
+    <a href="contact.dc.html" style="margin-top:24px;padding:18px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6);text-align:center;font-weight:600;font-size:16px">Start a Project</a>
+    <div style="margin-top:24px;font-size:13.5px;color:#A1A1AA;line-height:1.8">Oscar Lauzardo<br><a href="tel:+18297786137" style="color:#A1A1AA">+1 829.778.6137</a><br><a href="mailto:lauzardo1991@gmail.com" style="color:#A1A1AA">lauzardo1991@gmail.com</a></div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;active&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.root = document.querySelector('x-dc') || document.body;
+    this.esc = e => { if (e.key === 'Escape') this.closeMenu(); };
+    document.addEventListener('keydown', this.esc);
+    const a = this.props.active;
+    if (a) { const el = this.root.querySelector('[data-nav="' + a + '"]'); if (el) { el.style.color = '#F8FAFC'; el.setAttribute('aria-current','page'); } }
+  }
+  componentWillUnmount(){ document.removeEventListener('keydown', this.esc); document.body.style.overflow = ''; }
+  openMenu = () => { const m = this.root.querySelector('[data-menu]'); if(!m) return; m.style.display='flex'; document.body.style.overflow='hidden'; const b=this.root.querySelector('button[aria-label="Open menu"]'); if(b) b.setAttribute('aria-expanded','true'); };
+  closeMenu = () => { const m = this.root.querySelector('[data-menu]'); if(!m) return; m.style.display='none'; document.body.style.overflow=''; const b=this.root.querySelector('button[aria-label="Open menu"]'); if(b) b.setAttribute('aria-expanded','false'); };
+  toggleSub = () => { const s=this.root.querySelector('[data-sub]'), t=this.root.querySelector('[data-sub-toggle]'), i=this.root.querySelector('[data-sub-icon]'); if(!s) return; const open = s.style.display==='flex'; s.style.display = open?'none':'flex'; if(t) t.setAttribute('aria-expanded', String(!open)); if(i) i.style.transform = open?'rotate(0deg)':'rotate(45deg)'; };
+  renderVals(){ return { openMenu:this.openMenu, closeMenu:this.closeMenu, toggleSub:this.toggleSub }; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Hosting & Maintenance — Create Studio</title>
+<meta name="description" content="Managed hosting, SSL, backups, uptime monitoring, security checks, technical maintenance, minor content changes and support. Plans from US$100/month.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#09090B; color:#F8FAFC; }
+  body { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; font-weight:400; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3,h4 { font-family: Sora, Inter, system-ui, sans-serif; font-weight:600; }
+  h1 { font-weight:700; }
+  button, input, select, textarea, label, a { font-family: Inter, system-ui, sans-serif; }
+
+  a { color:#F8FAFC; text-decoration:none; }
+  a:hover { color:#8B5CF6; }
+  *:focus-visible { outline:2px solid #8B5CF6; outline-offset:3px; border-radius:4px; }
+  @keyframes csDrift { 0%{transform:translate3d(0,0,0) scale(1)} 50%{transform:translate3d(0,-14px,0) scale(1.02)} 100%{transform:translate3d(0,0,0) scale(1)} }
+  @media (max-width: 900px) {
+    [data-desk]{display:none !important}[data-mob]{display:flex !important}
+    [data-pad]{padding-left:22px !important;padding-right:22px !important}
+    [data-cols]{grid-template-columns:1fr !important}
+    [data-row]{flex-direction:column !important;align-items:flex-start !important}
+    [data-h1]{font-size:38px !important;line-height:1.05 !important}
+    [data-h2]{font-size:28px !important}[data-h3]{font-size:20px !important}[data-lead]{font-size:16px !important}
+    [data-hero]{padding-top:60px !important;padding-bottom:60px !important;min-height:0 !important}
+    [data-sect]{padding-top:60px !important;padding-bottom:60px !important}
+    [data-artbleed]{position:relative !important;inset:auto !important;left:auto !important;right:auto !important;top:auto !important;bottom:auto !important;width:100% !important;height:240px !important;transform:none !important;margin:0 0 24px !important;border-radius:20px !important}
+    [data-hide-mob]{display:none !important}[data-scrollx]{overflow-x:auto !important;padding-bottom:8px}
+  }
+@media (prefers-reduced-motion: reduce) {
+    *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+    [data-rv]{opacity:1 !important;animation:none !important}
+    [data-art] *{animation:none !important}
+    [data-travel]{stroke-dashoffset:0 !important}
+  }
+
+  /* motion tokens */
+  @keyframes csEmerge { from{opacity:0;transform:scale(.97)} to{opacity:1;transform:scale(1)} }
+  @keyframes csHeroDrift { 0%{transform:perspective(1400px) rotateY(0deg) rotateX(0deg) translate3d(0,0,0)} 50%{transform:perspective(1400px) rotateY(-2.4deg) rotateX(1.2deg) translate3d(-10px,-12px,0)} 100%{transform:perspective(1400px) rotateY(0deg) rotateX(0deg) translate3d(0,0,0)} }
+  @keyframes csTravel { from{stroke-dashoffset:var(--len,2600)} to{stroke-dashoffset:0} }
+  @keyframes csTrail { 0%{stroke-dashoffset:var(--len,2600);opacity:0} 12%{opacity:1} 88%{opacity:1} 100%{stroke-dashoffset:calc(var(--len,2600) * -1);opacity:0} }
+  @keyframes csLateral { 0%{transform:translateX(-2.5%)} 50%{transform:translateX(2.5%)} 100%{transform:translateX(-2.5%)} }
+  @keyframes csBreath { 0%,100%{opacity:.5;transform:scale(.985)} 50%{opacity:1;transform:scale(1.015)} }
+  @keyframes csPulseRing { 0%{opacity:.65;transform:scale(.9)} 70%{opacity:0;transform:scale(1.18)} 100%{opacity:0;transform:scale(1.18)} }
+  @keyframes csLift { 0%,100%{transform:translateY(6px)} 50%{transform:translateY(-8px)} }
+  @keyframes csGlowShift { 0%,100%{opacity:.55} 50%{opacity:.9} }
+  @keyframes csSettle { from{opacity:0;transform:translateY(14px) scale(.99)} to{opacity:1;transform:translateY(0) scale(1)} }
+  @keyframes csRevealUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes csSpin { to{transform:rotate(360deg)} }
+
+  /* scroll reveal */
+  [data-rv]{opacity:0}
+  [data-rv].csv-in{animation:csRevealUp .72s cubic-bezier(.22,.61,.36,1) both}
+  html.csv-nojs [data-rv]{opacity:1;animation:none}
+
+  a, button { -webkit-tap-highlight-color: transparent; }
+  [data-btn-primary]{background-size:170% 100%;background-position:0% 50%;transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .3s ease,background-position .5s ease}
+  [data-btn-primary]:hover{transform:translateY(-2px);background-position:100% 50%;box-shadow:0 14px 34px rgba(91,92,246,.34)}
+  [data-btn-primary]:active{transform:translateY(0);box-shadow:0 6px 16px rgba(91,92,246,.28)}
+  [data-btn-ghost]{transition:border-color .25s ease,background-color .25s ease,transform .25s ease}
+  [data-btn-ghost]:hover{border-color:rgba(248,250,252,.42);background-color:rgba(248,250,252,.05)}
+  [data-btn-ghost]:active{transform:translateY(1px)}
+
+
+  [data-mob-only]{display:none}
+  @media (max-width:900px){
+    [data-mob-only]{display:block !important}
+    [data-hide-mob]{display:none !important}
+    [data-art]{filter:none}
+    [data-art="create-process-flow"]{position:relative !important;height:420px !important;margin:0 0 24px !important}
+  }
+</style>
+</helmet>
+<dc-import name="Header" active="services" hint-size="100%,74px"></dc-import>
+<main>
+<section data-hero data-pad style="position:relative;overflow:hidden;padding:110px 72px 90px;max-width:1440px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center">
+  <div data-art="create-service-hosting" data-higgsfield style="position:absolute;left:50%;top:-180px;transform:translateX(-50%);width:820px;height:820px;border-radius:50%;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end;pointer-events:none">
+    <div style="padding:20px 22px;display:flex;flex-direction:column;gap:6px;max-width:520px">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">HIGGSFIELD — HOSTING & MAINTENANCE</span>
+      <span style="font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#52525B">4:3 desktop · 4:3 tablet · 1:1 mobile · centred focal point</span>
+    </div>
+  </div>
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:22px;max-width:760px;align-items:center">
+    <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Hosting &amp; maintenance</div>
+    <h1 data-h1 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:64px;font-weight:700;letter-spacing:-0.035em;line-height:1.03">Reliable technical management after your website is launched.</h1>
+    <p data-lead data-rv style="margin:0;font-size:18px;line-height:1.7;color:#A1A1AA;max-width:600px">Create Studio can coordinate the setup, configuration, monitoring, maintenance and technical management required to keep an approved website available and properly maintained.</p>
+    <p style="margin:0;font-size:15px;line-height:1.8;color:#52525B;max-width:600px">Domain registration, hosting, SSL configuration, maintenance, renewals and other third-party services are quoted separately from the website project and SEO plans.</p>
+    <div data-row style="display:flex;gap:14px;margin-top:8px"><a href="contact.dc.html" data-btn-primary style="padding:16px 30px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6,#2563FF);font-weight:600;font-size:15px;transition:transform .25s ease,box-shadow .25s ease;text-align:center" style-hover="transform:translateY(-2px);box-shadow:0 16px 40px rgba(91,92,246,.4);color:#F8FAFC">Start a Project</a><a href="seo-growth-maintenance.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;transition:background .25s ease,border-color .25s ease;text-align:center" style-hover="background:rgba(248,250,252,.05);border-color:rgba(248,250,252,.4);color:#F8FAFC">Compare Plans</a></div>
+  </div>
+</section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;"><div data-cols style="display:grid;grid-template-columns:1fr 1.15fr;gap:70px;align-items:start">
+  <div style="display:flex;flex-direction:column;gap:14px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">The problem</div><h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:38px;font-weight:600;letter-spacing:-0.03em;line-height:1.1">Nobody notices maintenance until something breaks.</h2></div>
+  <div style="display:flex;flex-direction:column;gap:18px"><p style="margin:0;font-size:16px;line-height:1.8;color:#A1A1AA">Expired certificates, plugin updates left for months, no recent backup, a contact form quietly failing for weeks. None of it is visible from the outside until a customer cannot reach you.</p><p style="margin:0;font-size:16px;line-height:1.8;color:#A1A1AA">Support needs also differ by site. A five-page informational site and an active platform with integrations do not require the same attention, so a single fixed plan for everyone rarely fits.</p></div>
+</div></section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;"><div style="display:flex;flex-direction:column;gap:28px;padding:48px;border-radius:28px;background:#0B0B0E;border:1px solid rgba(248,250,252,.08)">
+  <div style="display:flex;flex-direction:column;gap:14px;max-width:660px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Our solution</div><h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:36px;font-weight:600;letter-spacing:-0.03em;line-height:1.12">Quiet, consistent care at the level your site needs.</h2><p style="margin:0;font-size:15.5px;line-height:1.8;color:#A1A1AA">We keep the technical base healthy — hosting, SSL, updates, backups, monitoring — handle minor content changes, and flag improvements worth making. Three plan levels exist so you pay for the attention your site actually requires.</p></div>
+  <div data-cols style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px 32px;padding-top:26px;border-top:1px solid rgba(248,250,252,.08)"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Hosting setup and administration when applicable<//span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>SSL configuration and renewal monitoring<//span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Backups</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Uptime monitoring</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Security checks</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Technical maintenance</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Performance monitoring</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Minor content changes</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Technical support</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Continued improvements</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Website health reporting</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Recovery support</span></div></div>
+  <div style="font-size:13px;color:#A1A1AA;line-height:1.7">Plans do not include unlimited changes or unlimited development. Larger requests are scoped and quoted separately so the monthly cost stays predictable.</div>
+</div></section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;"><div style="display:flex;flex-direction:column;gap:26px"><div style="display:flex;flex-direction:column;gap:12px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">How the work runs</div><h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:34px;font-weight:600;letter-spacing:-0.03em">Onboarding once, then a steady monthly cycle.</h2></div><div data-cols style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px"><div style="padding:24px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:8px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">01</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:16.5px;font-weight:600">Handover</h3><p style="margin:0;font-size:12.5px;color:#A1A1AA;line-height:1.6">Access, hosting review and baseline checks.</p></div><div style="padding:24px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:8px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">02</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:16.5px;font-weight:600">Setup</h3><p style="margin:0;font-size:12.5px;color:#A1A1AA;line-height:1.6">Backups, monitoring and update schedule.</p></div><div style="padding:24px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:8px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">03</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:16.5px;font-weight:600">Monitor</h3><p style="margin:0;font-size:12.5px;color:#A1A1AA;line-height:1.6">Uptime, security and performance watched continuously.</p></div><div style="padding:24px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:8px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">04</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:16.5px;font-weight:600">Maintain</h3><p style="margin:0;font-size:12.5px;color:#A1A1AA;line-height:1.6">Updates, minor changes and fixes.</p></div><div style="padding:24px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:8px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">05</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:16.5px;font-weight:600">Report</h3><p style="margin:0;font-size:12.5px;color:#A1A1AA;line-height:1.6">Website health summary and recommendations.</p></div></div></div></section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;"><div data-cols style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+  <div style="display:flex;flex-direction:column;gap:16px;padding:40px;border-radius:26px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)">
+    <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">What you get</div>
+    <div style="display:flex;flex-direction:column;gap:11px;margin-top:4px"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>A site that stays online and current</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Recent backups you can actually restore from</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Certificates and updates handled before they expire</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Minor changes made without a new project</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>One person accountable for the technical side</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Predictable monthly cost</span></div></div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:16px"><div style="display:flex;flex-direction:column;gap:16px;padding:34px;border-radius:26px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)">
+   <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Plans begin at US$100/month</div>
+   <div style="display:flex;flex-direction:column;gap:10px"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Essential Care &mdash; starting at US$100/month</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Growth &mdash; starting at US$200/month</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Growth Pro &mdash; starting at US$350/month</span></div></div>
+   <p style="margin:0;font-size:13.5px;color:#A1A1AA;line-height:1.7">Not sure which level your website needs? We&rsquo;ll review its size, platform, condition and objectives before recommending a plan.</p>
+   <a href="seo-growth-maintenance.dc.html" style="font-size:13px;color:#8B5CF6">See the full comparison &rarr;</a>
+ </div></div>
+</div></section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;"><div data-cols style="display:grid;grid-template-columns:1fr 1fr;gap:20px"><div data-ownership style="padding:30px 32px;border-radius:22px;background:#0B0B0E;border:1px solid rgba(139,92,246,.28);display:flex;flex-direction:column;gap:11px">
+  <h3 style="margin:0;font-family:Sora,sans-serif;font-size:18px;font-weight:600">Client Ownership</h3>
+  <p style="margin:0;font-size:14px;line-height:1.8;color:#A1A1AA">Your domain and hosting account are purchased and registered under your legal name or business name. You retain ownership and control of both assets. Create Studio handles the approved setup, configuration and technical management while the service agreement remains active.</p>
+</div><div style="padding:30px 32px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:14px">
+  <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#A1A1AA">Quoted separately</div>
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Domain Registration &mdash; Quoted separately</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Hosting &mdash; Quoted separately</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>SSL Setup &amp; Management &mdash; Quoted separately when applicable</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Website Maintenance &mdash; Quoted separately</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Email services, premium licenses and other third-party services &mdash; Quoted separately</span></div>
+  </div>
+  <p style="margin:0;font-size:12.5px;line-height:1.75;color:#52525B">SSL configuration and management requirements will be confirmed after the hosting environment is reviewed. Third-party providers set their own prices and renewal terms.</p>
+</div></div>
+ </div></section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;display:flex;flex-direction:column;gap:22px">
+  <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Related services</div>
+  <div data-cols style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+    <a href="service-web-design-development.dc.html" style="padding:26px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:9px;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:rgba(139,92,246,.45);transform:translateY(-4px);color:#F8FAFC"><h3 style="margin:0;font-family:Sora,sans-serif;font-size:18px;font-weight:600">Web Design &amp; Development</h3><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">Landing pages, corporate websites, catalogs, portfolios and multilingual platforms.</p><span style="font-size:12.5px;color:#8B5CF6;margin-top:4px">Explore &rarr;</span></a><a href="service-website-redesign.dc.html" style="padding:26px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:9px;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:rgba(139,92,246,.45);transform:translateY(-4px);color:#F8FAFC"><h3 style="margin:0;font-family:Sora,sans-serif;font-size:18px;font-weight:600">Website Redesign</h3><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">Visual modernization, content reorganization, better mobile experience and conversion improvements.</p><span style="font-size:12.5px;color:#8B5CF6;margin-top:4px">Explore &rarr;</span></a><a href="service-crm-custom-systems.dc.html" style="padding:26px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:9px;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:rgba(139,92,246,.45);transform:translateY(-4px);color:#F8FAFC"><h3 style="margin:0;font-family:Sora,sans-serif;font-size:18px;font-weight:600">CRM &amp; Custom Systems</h3><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">Dashboards, contacts, pipelines, calendars, reports, automations and integrations.</p><span style="font-size:12.5px;color:#8B5CF6;margin-top:4px">Explore &rarr;</span></a>
+  </div>
+</section>
+<section data-sect data-pad style="position:relative;overflow:hidden;padding:130px 72px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px">
+  <div data-art="create-contact-expansion" data-higgsfield style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:860px;height:860px;border-radius:50%;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end;pointer-events:none">
+    <div style="padding:20px 22px;display:flex;flex-direction:column;gap:6px;max-width:520px">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">HIGGSFIELD — CONTACT</span>
+      <span style="font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#52525B">1:1 centred · core 40% reserved for headline · no internal shape animation</span>
+    </div>
+  </div>
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:22px;max-width:780px">
+    <h2 data-h1 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:50px;font-weight:700;letter-spacing:-0.035em;line-height:1.07">Reliable technical management after launch.</h2>
+    <p data-lead style="margin:0;font-size:17px;color:#A1A1AA;line-height:1.7;max-width:600px;text-wrap:pretty">Tell us where the website is hosted and what it runs on. We will review the environment and recommend the appropriate level of ongoing support.</p>
+    <div data-row style="display:flex;gap:14px;margin-top:4px"><a href="contact.dc.html" data-btn-primary style="padding:16px 30px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6,#2563FF);font-weight:600;font-size:15px;text-align:center">Discuss Ongoing Support</a><a href="seo-growth-maintenance.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;text-align:center">Compare plans</a></div>
+  </div>
+</section>
+</main>
+<dc-import name="Footer" hint-size="100%,620px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    this.root = document.querySelector('x-dc') || document.body;
+    this.observeReveals();
+    this.bindProcess();
+  }
+  componentWillUnmount(){ this.teardownMotion(); }
+
+  observeReveals(){
+    const root = this.root || document;
+    const els = root.querySelectorAll('[data-rv]');
+    if (!('IntersectionObserver' in window)) { els.forEach(e=>e.classList.add('csv-in')); return; }
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(!en.isIntersecting) return;
+        const el = en.target;
+        const sibs = el.parentElement ? [...el.parentElement.querySelectorAll('[data-rv]')] : [el];
+        const i = Math.max(0, sibs.indexOf(el));
+        el.style.animationDelay = Math.min(i*70, 280) + 'ms';
+        el.classList.add('csv-in');
+        io.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    els.forEach(e=>io.observe(e));
+  }
+  bindProcess(){
+    const root = this.root || document;
+    this.procs = [...root.querySelectorAll('[data-proc]')];
+    if (!this.procs.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      this.procs.forEach(w=>{
+        w.querySelectorAll('[data-proc-path]').forEach(p=>{ p.style.strokeDashoffset='0'; });
+        w.querySelectorAll('[data-proc-node]').forEach(n=>{ n.style.opacity='1'; });
+      });
+      return;
+    }
+    this.onScroll = () => {
+      this.procs.forEach(w=>{
+        if (!w.offsetParent) return;
+        const r = w.getBoundingClientRect();
+        const span = window.innerHeight * 0.85 + r.height;
+        const t = Math.max(0, Math.min(1, (window.innerHeight * 0.85 - r.top) / span));
+        w.querySelectorAll('[data-proc-path]').forEach(pp=>{ pp.style.strokeDashoffset = String(Math.round(1000 - t*1000)); });
+        const nodes = w.querySelectorAll('[data-proc-node]');
+        nodes.forEach((n,i)=>{
+          const on = t >= (i+0.4)/nodes.length;
+          n.style.opacity = on ? '1' : '.22';
+          n.style.transform = on ? 'scale(1.14)' : 'scale(1)';
+        });
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive:true });
+    window.addEventListener('resize', this.onScroll);
+    this.onScroll();
+  }
+  teardownMotion(){ if (this.onScroll){ window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onScroll); } }
+  renderVals(){ return {}; }
+}
+</script>
+</body>
+</html>

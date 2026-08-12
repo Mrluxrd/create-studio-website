@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Website Redesign — Create Studio</title>
+<meta name="description" content="Website redesign for Dominican businesses: clearer positioning, modernised design, reorganised content, better mobile experience and stronger conversion paths.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#09090B; color:#F8FAFC; }
+  body { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; font-weight:400; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3,h4 { font-family: Sora, Inter, system-ui, sans-serif; font-weight:600; }
+  h1 { font-weight:700; }
+  button, input, select, textarea, label, a { font-family: Inter, system-ui, sans-serif; }
+
+  a { color:#F8FAFC; text-decoration:none; }
+  a:hover { color:#8B5CF6; }
+  *:focus-visible { outline:2px solid #8B5CF6; outline-offset:3px; border-radius:4px; }
+  @keyframes csDrift { 0%{transform:translate3d(0,0,0) scale(1)} 50%{transform:translate3d(0,-14px,0) scale(1.02)} 100%{transform:translate3d(0,0,0) scale(1)} }
+  @media (max-width: 900px) {
+    [data-desk]{display:none !important}[data-mob]{display:flex !important}
+    [data-pad]{padding-left:22px !important;padding-right:22px !important}
+    [data-cols]{grid-template-columns:1fr !important}
+    [data-row]{flex-direction:column !important;align-items:flex-start !important}
+    [data-h1]{font-size:38px !important;line-height:1.05 !important}
+    [data-h2]{font-size:28px !important}[data-h3]{font-size:20px !important}[data-lead]{font-size:16px !important}
+    [data-hero]{padding-top:60px !important;padding-bottom:60px !important;min-height:0 !important}
+    [data-sect]{padding-top:60px !important;padding-bottom:60px !important}
+    [data-artbleed]{position:relative !important;inset:auto !important;left:auto !important;right:auto !important;top:auto !important;bottom:auto !important;width:100% !important;height:240px !important;transform:none !important;margin:0 0 24px !important;border-radius:20px !important}
+    [data-hide-mob]{display:none !important}[data-scrollx]{overflow-x:auto !important;padding-bottom:8px}
+  }
+@media (prefers-reduced-motion: reduce) {
+    *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+    [data-rv]{opacity:1 !important;animation:none !important}
+    [data-art] *{animation:none !important}
+    [data-travel]{stroke-dashoffset:0 !important}
+  }
+
+  /* motion tokens */
+  @keyframes csEmerge { from{opacity:0;transform:scale(.97)} to{opacity:1;transform:scale(1)} }
+  @keyframes csHeroDrift { 0%{transform:perspective(1400px) rotateY(0deg) rotateX(0deg) translate3d(0,0,0)} 50%{transform:perspective(1400px) rotateY(-2.4deg) rotateX(1.2deg) translate3d(-10px,-12px,0)} 100%{transform:perspective(1400px) rotateY(0deg) rotateX(0deg) translate3d(0,0,0)} }
+  @keyframes csTravel { from{stroke-dashoffset:var(--len,2600)} to{stroke-dashoffset:0} }
+  @keyframes csTrail { 0%{stroke-dashoffset:var(--len,2600);opacity:0} 12%{opacity:1} 88%{opacity:1} 100%{stroke-dashoffset:calc(var(--len,2600) * -1);opacity:0} }
+  @keyframes csLateral { 0%{transform:translateX(-2.5%)} 50%{transform:translateX(2.5%)} 100%{transform:translateX(-2.5%)} }
+  @keyframes csBreath { 0%,100%{opacity:.5;transform:scale(.985)} 50%{opacity:1;transform:scale(1.015)} }
+  @keyframes csPulseRing { 0%{opacity:.65;transform:scale(.9)} 70%{opacity:0;transform:scale(1.18)} 100%{opacity:0;transform:scale(1.18)} }
+  @keyframes csLift { 0%,100%{transform:translateY(6px)} 50%{transform:translateY(-8px)} }
+  @keyframes csGlowShift { 0%,100%{opacity:.55} 50%{opacity:.9} }
+  @keyframes csSettle { from{opacity:0;transform:translateY(14px) scale(.99)} to{opacity:1;transform:translateY(0) scale(1)} }
+  @keyframes csRevealUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes csSpin { to{transform:rotate(360deg)} }
+
+  /* scroll reveal */
+  [data-rv]{opacity:0}
+  [data-rv].csv-in{animation:csRevealUp .72s cubic-bezier(.22,.61,.36,1) both}
+  html.csv-nojs [data-rv]{opacity:1;animation:none}
+
+  a, button { -webkit-tap-highlight-color: transparent; }
+  [data-btn-primary]{background-size:170% 100%;background-position:0% 50%;transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .3s ease,background-position .5s ease}
+  [data-btn-primary]:hover{transform:translateY(-2px);background-position:100% 50%;box-shadow:0 14px 34px rgba(91,92,246,.34)}
+  [data-btn-primary]:active{transform:translateY(0);box-shadow:0 6px 16px rgba(91,92,246,.28)}
+  [data-btn-ghost]{transition:border-color .25s ease,background-color .25s ease,transform .25s ease}
+  [data-btn-ghost]:hover{border-color:rgba(248,250,252,.42);background-color:rgba(248,250,252,.05)}
+  [data-btn-ghost]:active{transform:translateY(1px)}
+
+
+  [data-mob-only]{display:none}
+  @media (max-width:900px){
+    [data-mob-only]{display:block !important}
+    [data-hide-mob]{display:none !important}
+    [data-art]{filter:none}
+    [data-art="create-process-flow"]{position:relative !important;height:420px !important;margin:0 0 24px !important}
+  }
+</style>
+</helmet>
+<dc-import name="Header" active="services" hint-size="100%,74px"></dc-import>
+<main>
+<section data-hero data-pad style="position:relative;overflow:hidden;padding:110px 72px 90px;max-width:1440px;margin:0 auto">
+  <div data-art="create-service-redesign" data-higgsfield style="position:absolute;left:-60px;right:-60px;top:120px;height:420px;border-radius:0;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end;pointer-events:none">
+    <div style="padding:20px 22px;display:flex;flex-direction:column;gap:6px;max-width:520px">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">HIGGSFIELD — WEBSITE REDESIGN</span>
+      <span style="font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#52525B">16:9 desktop · 3:2 tablet · 4:3 mobile · centred band</span>
+    </div>
+  </div>
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:22px;max-width:760px;">
+    <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Website redesign</div>
+    <h1 data-h1 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:64px;font-weight:700;letter-spacing:-0.035em;line-height:1.03">A stronger digital foundation for an existing website.</h1>
+    <p data-lead data-rv style="margin:0;font-size:18px;line-height:1.7;color:#A1A1AA;max-width:600px">Website redesign is more than changing colors or updating a homepage. Create Studio reviews the existing experience, identifies what should be preserved or improved, and restructures the website around clearer content, modern usability, responsive behavior and current business objectives.</p>
+    <p style="margin:0;font-size:15px;line-height:1.8;color:#52525B;max-width:600px">Existing content, URLs, integrations, analytics, domain configuration, hosting environment and search visibility must be reviewed before the final redesign scope is confirmed.</p>
+    <div data-row style="display:flex;gap:14px;margin-top:8px"><a href="contact.dc.html" data-btn-primary style="padding:16px 30px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6,#2563FF);font-weight:600;font-size:15px;transition:transform .25s ease,box-shadow .25s ease;text-align:center" style-hover="transform:translateY(-2px);box-shadow:0 16px 40px rgba(91,92,246,.4);color:#F8FAFC">Start a Project</a><a href="pricing.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;transition:background .25s ease,border-color .25s ease;text-align:center" style-hover="background:rgba(248,250,252,.05);border-color:rgba(248,250,252,.4);color:#F8FAFC">See Website Packages</a></div>
+  </div>
+</section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;"><div data-cols style="display:grid;grid-template-columns:1fr 1.15fr;gap:70px;align-items:start">
+  <div style="display:flex;flex-direction:column;gap:14px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">The problem</div><h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:38px;font-weight:600;letter-spacing:-0.03em;line-height:1.1">The site is not wrong. It is out of date.</h2></div>
+  <div style="display:flex;flex-direction:column;gap:18px"><p style="margin:0;font-size:16px;line-height:1.8;color:#A1A1AA">Dated visual design, content added page by page over the years, a mobile experience that was never really considered, and slow pages that lose visitors before they read anything.</p><p style="margin:0;font-size:16px;line-height:1.8;color:#A1A1AA">The instinct is to start from zero. That usually destroys value: existing content, search rankings and recognisable brand elements are worth keeping. The job is to identify what still works and rebuild around it.</p></div>
+</div></section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;"><div style="display:flex;flex-direction:column;gap:30px;padding:48px;border-radius:28px;background:#0B0B0E;border:1px solid rgba(248,250,252,.08)">
+  <div data-row style="display:flex;justify-content:space-between;align-items:flex-end;gap:30px">
+    <div style="display:flex;flex-direction:column;gap:14px;max-width:640px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Our solution</div><h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:36px;font-weight:600;letter-spacing:-0.03em;line-height:1.12">Audit first, then rebuild what matters.</h2><p style="margin:0;font-size:15.5px;line-height:1.8;color:#A1A1AA">We audit the current site — structure, content, mobile behaviour, speed and conversion paths — then reorganise the content architecture and apply a modern visual direction. Valuable pages, URLs and content are preserved deliberately, not by accident.</p></div>
+  </div>
+  <div data-cols style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px 32px;padding-top:26px;border-top:1px solid rgba(248,250,252,.08)"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Current-site audit</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Clearer positioning</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Content reorganization</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Modernised visual direction</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Improved usability</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Mobile experience rebuild</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Conversion path design</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Performance improvements</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Preservation of valuable content</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>URL and redirect planning</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Accessibility improvements</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Post-launch monitoring</span></div></div>
+  
+</div></section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;"><div style="display:flex;flex-direction:column;gap:26px"><div style="display:flex;flex-direction:column;gap:12px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">How the work runs</div><h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:34px;font-weight:600;letter-spacing:-0.03em">A redesign runs on the same five stages, with an audit ahead of Discovery.</h2></div><div data-cols style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px"><div style="padding:24px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:8px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">01</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:16.5px;font-weight:600">Audit</h3><p style="margin:0;font-size:12.5px;color:#A1A1AA;line-height:1.6">What works, what fails, what must be preserved.</p></div><div style="padding:24px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:8px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">02</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:16.5px;font-weight:600">Discovery</h3><p style="margin:0;font-size:12.5px;color:#A1A1AA;line-height:1.6">Goals, audience and the new content structure.</p></div><div style="padding:24px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:8px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">03</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:16.5px;font-weight:600">Visual Direction</h3><p style="margin:0;font-size:12.5px;color:#A1A1AA;line-height:1.6">A modern direction proposed on real pages.</p></div><div style="padding:24px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:8px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">04</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:16.5px;font-weight:600">Design &amp; Build</h3><p style="margin:0;font-size:12.5px;color:#A1A1AA;line-height:1.6">Rebuild, migrate content, redirects.</p></div><div style="padding:24px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:8px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">05</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:16.5px;font-weight:600">Launch</h3><p style="margin:0;font-size:12.5px;color:#A1A1AA;line-height:1.6">QA, redirects verified, publication and monitoring.</p></div></div></div></section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;"><div data-cols style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+  <div style="display:flex;flex-direction:column;gap:16px;padding:40px;border-radius:26px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)">
+    <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">What you get</div>
+    <div style="display:flex;flex-direction:column;gap:11px;margin-top:4px"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>A site that matches where the business is today</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Content a visitor can actually navigate</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>A mobile experience designed, not shrunk</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Faster pages and a healthier technical base</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Preserved rankings and valuable content</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Clear conversion paths on every page</span></div></div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:16px"><div style="display:flex;flex-direction:column;gap:14px;padding:24px;border-radius:26px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)">
+   <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#A1A1AA">Before &amp; after</div>
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div style="position:relative;height:200px;border-radius:16px;overflow:hidden;background:radial-gradient(120% 140% at 22% 12%,rgba(37,99,255,.14),rgba(9,9,11,0) 62%),#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:center;justify-content:center;text-align:center;"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#A1A1AA;line-height:1.8;padding:0 16px">Before &middot; current site</div></div><div style="position:relative;height:200px;border-radius:16px;overflow:hidden;background:radial-gradient(120% 140% at 22% 12%,rgba(37,99,255,.14),rgba(9,9,11,0) 62%),#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:center;justify-content:center;text-align:center;"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#A1A1AA;line-height:1.8;padding:0 16px">After &middot; redesign</div></div></div>
+   <a href="work-joan-leonardo.dc.html" style="font-size:13px;color:#8B5CF6">Joan Leonardo &amp; Asociados case study &rarr;</a>
+ </div></div>
+</div></section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;"><div data-cols style="display:grid;grid-template-columns:1.15fr 1fr;gap:40px;align-items:center;padding:44px;border-radius:26px;background:#0B0B0E;border:1px solid rgba(248,250,252,.08)">
+   <div style="display:flex;flex-direction:column;gap:14px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Scope and price</div><h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:32px;font-weight:600;letter-spacing:-0.03em;line-height:1.12">Redesigns are quoted from the same website packages.</h2><p style="margin:0;font-size:15px;color:#A1A1AA;line-height:1.75;max-width:560px">The package depends on page count and functionality; the audit tells us which one fits. Sites with heavy content migration or custom functionality are quoted individually.</p></div>
+   <div style="display:flex;flex-direction:column;gap:12px"><a href="contact.dc.html?package=custom-website" data-btn-primary style="padding:16px 30px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6,#2563FF);font-weight:600;font-size:15px;transition:transform .25s ease,box-shadow .25s ease;text-align:center" style-hover="transform:translateY(-2px);box-shadow:0 16px 40px rgba(91,92,246,.4);color:#F8FAFC">Request a Redesign Quote</a><a href="pricing.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;transition:background .25s ease,border-color .25s ease;text-align:center" style-hover="background:rgba(248,250,252,.05);border-color:rgba(248,250,252,.4);color:#F8FAFC">Compare Website Packages</a></div>
+ </div></section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 90px;display:flex;flex-direction:column;gap:22px">
+  <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Migration, hosting and ownership</div>
+  <h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:34px;font-weight:600;letter-spacing:-0.03em;line-height:1.12;max-width:700px">What we review before the redesign scope is confirmed.</h2>
+  <div data-cols style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    <div style="padding:32px 34px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:12px">
+      <h3 style="margin:0;font-family:Sora,sans-serif;font-size:18px;font-weight:600">Migration and search visibility</h3>
+      <p style="margin:0;font-size:14px;line-height:1.8;color:#A1A1AA">When page URLs, content, structure or platform technology change, Create Studio reviews the migration requirements and prepares the appropriate redirect and launch plan. Search visibility cannot be guaranteed.</p>
+      <div style="display:flex;flex-direction:column;gap:9px;margin-top:4px"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Existing-site, content and navigation audit</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Technical SEO and existing metadata review</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Redirect planning when URLs change</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Sitemap, analytics and Search Console continuity review</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Content and CMS migration when included</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Pre-launch quality assurance</span></div></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="padding:32px 34px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:12px">
+        <h3 style="margin:0;font-family:Sora,sans-serif;font-size:18px;font-weight:600">Existing hosting and domains</h3>
+        <p style="margin:0;font-size:14px;line-height:1.8;color:#A1A1AA">If you already have an active hosting account, Create Studio will review the server, platform, access level, performance, compatibility and technical requirements before confirming whether it can support the redesigned website. A new hosting charge may not be required once an existing account is reviewed and confirmed suitable.</p>
+        <p style="margin:0;font-size:14px;line-height:1.8;color:#A1A1AA">If new hosting is required, the account will be purchased and registered under your legal name. Create Studio may configure and manage the account, but you remain its owner. An existing domain must remain registered under your name &mdash; we may assist with DNS configuration and technical management but do not assume ownership.</p>
+      </div>
+      <div style="padding:30px 32px;border-radius:22px;background:#0B0B0E;border:1px solid rgba(139,92,246,.28);display:flex;flex-direction:column;gap:11px">
+  <h3 style="margin:0;font-family:Sora,sans-serif;font-size:18px;font-weight:600">Client Ownership</h3>
+  <p style="margin:0;font-size:14px;line-height:1.8;color:#A1A1AA">Your domain and hosting account are purchased and registered under your legal name or business name. You retain ownership and control of both assets. Create Studio handles the approved setup, configuration and technical management while the service agreement remains active.</p>
+</div>
+    </div>
+  </div>
+</section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;display:flex;flex-direction:column;gap:22px">
+  <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Related services</div>
+  <div data-cols style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+    <a href="service-web-design-development.dc.html" style="padding:26px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:9px;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:rgba(139,92,246,.45);transform:translateY(-4px);color:#F8FAFC"><h3 style="margin:0;font-family:Sora,sans-serif;font-size:18px;font-weight:600">Web Design &amp; Development</h3><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">Landing pages, corporate websites, catalogs, portfolios and multilingual platforms.</p><span style="font-size:12.5px;color:#8B5CF6;margin-top:4px">Explore &rarr;</span></a><a href="service-crm-custom-systems.dc.html" style="padding:26px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:9px;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:rgba(139,92,246,.45);transform:translateY(-4px);color:#F8FAFC"><h3 style="margin:0;font-family:Sora,sans-serif;font-size:18px;font-weight:600">CRM &amp; Custom Systems</h3><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">Dashboards, contacts, pipelines, calendars, reports, automations and integrations.</p><span style="font-size:12.5px;color:#8B5CF6;margin-top:4px">Explore &rarr;</span></a><a href="service-seo-performance.dc.html" style="padding:26px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:9px;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:rgba(139,92,246,.45);transform:translateY(-4px);color:#F8FAFC"><h3 style="margin:0;font-family:Sora,sans-serif;font-size:18px;font-weight:600">SEO &amp; Performance</h3><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">On-page structure, speed, indexing, analytics and continuous optimization.</p><span style="font-size:12.5px;color:#8B5CF6;margin-top:4px">Explore &rarr;</span></a>
+  </div>
+</section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 90px;display:flex;flex-direction:column;gap:24px">
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Redesign inclusions by package</div>
+    <h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:34px;font-weight:600;letter-spacing:-0.03em;line-height:1.12;max-width:700px">What a redesign covers depends on the approved package level.</h2>
+  </div>
+  <div data-cols style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    <div style="padding:32px 34px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:13px">
+      <h3 style="margin:0;font-family:Sora,sans-serif;font-size:18px;font-weight:600">Reviewed on every redesign</h3>
+      <div style="display:flex;flex-direction:column;gap:9px"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Existing-site review</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Content and navigation audit</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>User-experience review</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Responsive-layout correction</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Visual modernization and brand alignment</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Existing-form review</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Technical SEO and existing metadata review</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Accessibility improvements</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Pre-launch quality assurance</span></div></div>
+    </div>
+    <div style="padding:32px 34px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:13px">
+      <h3 style="margin:0;font-family:Sora,sans-serif;font-size:18px;font-weight:600">Package-dependent or quoted separately</h3>
+      <div style="display:flex;flex-direction:column;gap:9px"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Content restructuring and copy work</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Content and CMS migration</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Redirect planning when URLs change</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Sitemap, analytics and Search Console continuity review</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Integration review and reconfiguration</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Existing domain, hosting, DNS and SSL assessment</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Performance optimization beyond the initial review</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.6"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Launch or migration support</span></div></div>
+      <p style="margin:0;font-size:12.5px;line-height:1.75;color:#52525B">No redesign package includes every item on these lists. Anything outside the written scope is quoted before work begins.</p>
+    </div>
+  </div>
+</section>
+<section data-sect data-pad style="position:relative;overflow:hidden;padding:130px 72px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px">
+  <div data-art="create-contact-expansion" data-higgsfield style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:860px;height:860px;border-radius:50%;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end;pointer-events:none">
+    <div style="padding:20px 22px;display:flex;flex-direction:column;gap:6px;max-width:520px">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">HIGGSFIELD — CONTACT</span>
+      <span style="font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#52525B">1:1 centred · core 40% reserved for headline · no internal shape animation</span>
+    </div>
+  </div>
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:22px;max-width:780px">
+    <h2 data-h1 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:50px;font-weight:700;letter-spacing:-0.035em;line-height:1.07">Does your website still support the business it represents?</h2>
+    <p data-lead style="margin:0;font-size:17px;color:#A1A1AA;line-height:1.7;max-width:600px;text-wrap:pretty">Send us the current site. We will review the existing experience, content, hosting environment and search visibility before confirming a redesign scope.</p>
+    <div data-row style="display:flex;gap:14px;margin-top:4px"><a href="contact.dc.html" data-btn-primary style="padding:16px 30px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6,#2563FF);font-weight:600;font-size:15px;text-align:center">Discuss Your Redesign</a><a href="work.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;text-align:center">See our work</a></div>
+  </div>
+</section>
+</main>
+<dc-import name="Footer" hint-size="100%,620px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    this.root = document.querySelector('x-dc') || document.body;
+    this.observeReveals();
+    this.bindProcess();
+  }
+  componentWillUnmount(){ this.teardownMotion(); }
+
+  observeReveals(){
+    const root = this.root || document;
+    const els = root.querySelectorAll('[data-rv]');
+    if (!('IntersectionObserver' in window)) { els.forEach(e=>e.classList.add('csv-in')); return; }
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(!en.isIntersecting) return;
+        const el = en.target;
+        const sibs = el.parentElement ? [...el.parentElement.querySelectorAll('[data-rv]')] : [el];
+        const i = Math.max(0, sibs.indexOf(el));
+        el.style.animationDelay = Math.min(i*70, 280) + 'ms';
+        el.classList.add('csv-in');
+        io.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    els.forEach(e=>io.observe(e));
+  }
+  bindProcess(){
+    const root = this.root || document;
+    this.procs = [...root.querySelectorAll('[data-proc]')];
+    if (!this.procs.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      this.procs.forEach(w=>{
+        w.querySelectorAll('[data-proc-path]').forEach(p=>{ p.style.strokeDashoffset='0'; });
+        w.querySelectorAll('[data-proc-node]').forEach(n=>{ n.style.opacity='1'; });
+      });
+      return;
+    }
+    this.onScroll = () => {
+      this.procs.forEach(w=>{
+        if (!w.offsetParent) return;
+        const r = w.getBoundingClientRect();
+        const span = window.innerHeight * 0.85 + r.height;
+        const t = Math.max(0, Math.min(1, (window.innerHeight * 0.85 - r.top) / span));
+        w.querySelectorAll('[data-proc-path]').forEach(pp=>{ pp.style.strokeDashoffset = String(Math.round(1000 - t*1000)); });
+        const nodes = w.querySelectorAll('[data-proc-node]');
+        nodes.forEach((n,i)=>{
+          const on = t >= (i+0.4)/nodes.length;
+          n.style.opacity = on ? '1' : '.22';
+          n.style.transform = on ? 'scale(1.14)' : 'scale(1)';
+        });
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive:true });
+    window.addEventListener('resize', this.onScroll);
+    this.onScroll();
+  }
+  teardownMotion(){ if (this.onScroll){ window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onScroll); } }
+  renderVals(){ return {}; }
+}
+</script>
+</body>
+</html>

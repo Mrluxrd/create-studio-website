@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>About — Create Studio</title>
+<meta name="description" content="Create Studio is a digital studio in the Dominican Republic designing creative, strategic and custom websites. Design with intention. Technology with purpose.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#09090B; color:#F8FAFC; }
+  body { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; font-weight:400; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3,h4 { font-family: Sora, Inter, system-ui, sans-serif; font-weight:600; }
+  h1 { font-weight:700; }
+  button, input, select, textarea, label, a { font-family: Inter, system-ui, sans-serif; }
+
+  a { color:#F8FAFC; text-decoration:none; }
+  a:hover { color:#8B5CF6; }
+  *:focus-visible { outline:2px solid #8B5CF6; outline-offset:3px; border-radius:4px; }
+  @keyframes csDrift { 0%{transform:translate3d(0,0,0) scale(1)} 50%{transform:translate3d(0,-14px,0) scale(1.02)} 100%{transform:translate3d(0,0,0) scale(1)} }
+  @media (max-width: 900px) {
+    [data-desk]{display:none !important}[data-mob]{display:flex !important}
+    [data-pad]{padding-left:22px !important;padding-right:22px !important}
+    [data-cols]{grid-template-columns:1fr !important}
+    [data-row]{flex-direction:column !important;align-items:flex-start !important}
+    [data-h1]{font-size:38px !important;line-height:1.05 !important}
+    [data-h2]{font-size:28px !important}[data-h3]{font-size:20px !important}[data-lead]{font-size:16px !important}
+    [data-hero]{padding-top:60px !important;padding-bottom:60px !important;min-height:0 !important}
+    [data-sect]{padding-top:60px !important;padding-bottom:60px !important}
+    [data-artbleed]{position:relative !important;inset:auto !important;left:auto !important;right:auto !important;top:auto !important;bottom:auto !important;width:100% !important;height:240px !important;transform:none !important;margin:0 0 24px !important;border-radius:20px !important}
+    [data-hide-mob]{display:none !important}[data-table]{display:none !important}[data-stack]{display:flex !important}
+    [data-scrollx]{overflow-x:auto !important;padding-bottom:8px}
+  }
+@media (prefers-reduced-motion: reduce) {
+    *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+    [data-rv]{opacity:1 !important;animation:none !important}
+    [data-art] *{animation:none !important}
+    [data-travel]{stroke-dashoffset:0 !important}
+  }
+
+  /* motion tokens */
+  @keyframes csEmerge { from{opacity:0;transform:scale(.97)} to{opacity:1;transform:scale(1)} }
+  @keyframes csHeroDrift { 0%{transform:perspective(1400px) rotateY(0deg) rotateX(0deg) translate3d(0,0,0)} 50%{transform:perspective(1400px) rotateY(-2.4deg) rotateX(1.2deg) translate3d(-10px,-12px,0)} 100%{transform:perspective(1400px) rotateY(0deg) rotateX(0deg) translate3d(0,0,0)} }
+  @keyframes csTravel { from{stroke-dashoffset:var(--len,2600)} to{stroke-dashoffset:0} }
+  @keyframes csTrail { 0%{stroke-dashoffset:var(--len,2600);opacity:0} 12%{opacity:1} 88%{opacity:1} 100%{stroke-dashoffset:calc(var(--len,2600) * -1);opacity:0} }
+  @keyframes csLateral { 0%{transform:translateX(-2.5%)} 50%{transform:translateX(2.5%)} 100%{transform:translateX(-2.5%)} }
+  @keyframes csBreath { 0%,100%{opacity:.5;transform:scale(.985)} 50%{opacity:1;transform:scale(1.015)} }
+  @keyframes csPulseRing { 0%{opacity:.65;transform:scale(.9)} 70%{opacity:0;transform:scale(1.18)} 100%{opacity:0;transform:scale(1.18)} }
+  @keyframes csLift { 0%,100%{transform:translateY(6px)} 50%{transform:translateY(-8px)} }
+  @keyframes csGlowShift { 0%,100%{opacity:.55} 50%{opacity:.9} }
+  @keyframes csSettle { from{opacity:0;transform:translateY(14px) scale(.99)} to{opacity:1;transform:translateY(0) scale(1)} }
+  @keyframes csRevealUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes csSpin { to{transform:rotate(360deg)} }
+
+  /* scroll reveal */
+  [data-rv]{opacity:0}
+  [data-rv].csv-in{animation:csRevealUp .72s cubic-bezier(.22,.61,.36,1) both}
+  html.csv-nojs [data-rv]{opacity:1;animation:none}
+
+  a, button { -webkit-tap-highlight-color: transparent; }
+  [data-btn-primary]{background-size:170% 100%;background-position:0% 50%;transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .3s ease,background-position .5s ease}
+  [data-btn-primary]:hover{transform:translateY(-2px);background-position:100% 50%;box-shadow:0 14px 34px rgba(91,92,246,.34)}
+  [data-btn-primary]:active{transform:translateY(0);box-shadow:0 6px 16px rgba(91,92,246,.28)}
+  [data-btn-ghost]{transition:border-color .25s ease,background-color .25s ease,transform .25s ease}
+  [data-btn-ghost]:hover{border-color:rgba(248,250,252,.42);background-color:rgba(248,250,252,.05)}
+  [data-btn-ghost]:active{transform:translateY(1px)}
+
+
+  [data-mob-only]{display:none}
+  @media (max-width:900px){
+    [data-mob-only]{display:block !important}
+    [data-hide-mob]{display:none !important}
+    [data-art]{filter:none}
+    [data-art="create-process-flow"]{position:relative !important;height:420px !important;margin:0 0 24px !important}
+  }
+</style>
+</helmet>
+<dc-import name="Header" active="about" hint-size="100%,74px"></dc-import>
+<main>
+<section data-hero data-pad style="position:relative;overflow:hidden;padding:110px 72px 90px;max-width:1440px;margin:0 auto">
+  <div data-art="create-about-gesture" data-higgsfield style="position:absolute;top:0;right:0;width:620px;height:620px;border-radius:28px 0 0 28px;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end;pointer-events:none">
+    <div style="padding:20px 22px;display:flex;flex-direction:column;gap:6px;max-width:520px">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">HIGGSFIELD — ABOUT</span>
+      <span style="font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#52525B">4:5 desktop right-bleed · 16:9 tablet · 4:3 mobile · left 30% must fall to #09090B</span>
+    </div>
+  </div>
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:22px;max-width:720px">
+    <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">About Create Studio</div>
+    <h1 data-h1 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:64px;font-weight:700;letter-spacing:-0.035em;line-height:1.03">Design with intention.<br>Technology with purpose.</h1>
+    <p data-lead data-rv style="margin:0;font-size:18px;line-height:1.75;color:#A1A1AA;max-width:600px">Create Studio is a digital studio based in the Dominican Republic. We design and build custom websites and business systems for companies that want their digital presence to represent the true value of what they do.</p>
+  </div>
+</section>
+<section data-sect data-pad data-cols style="max-width:1440px;margin:0 auto;padding:0 72px 100px;display:grid;grid-template-columns:0.9fr 1.3fr;gap:70px;align-items:start">
+  <div style="display:flex;flex-direction:column;gap:14px;position:sticky;top:110px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">The studio</div><h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:38px;font-weight:600;letter-spacing:-0.03em;line-height:1.1">Creativity, with a commercial brief attached.</h2></div>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <p style="margin:0;font-size:16.5px;line-height:1.85;color:#A1A1AA">Most business websites are built the same way: pick a template, fill it with the content that already exists, publish. It is fast, and it produces a site that looks like everyone else&rsquo;s and works for nobody in particular.</p>
+    <p style="margin:0;font-size:16.5px;line-height:1.85;color:#A1A1AA">We work the other way around. Every project starts with the business &mdash; what it sells, who decides, what makes it credible &mdash; and the design follows from that. Technology is chosen because it serves the project, not because it is fashionable. The result is a site that is genuinely custom: built around your processes, your content and your objectives.</p>
+    <p style="margin:0;font-size:16.5px;line-height:1.85;color:#A1A1AA">We work with a small number of clients at a time, in Spanish and English, and you speak directly with the people doing the work.</p>
+  </div>
+</section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;display:flex;flex-direction:column;gap:24px">
+  <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">What guides the work</div>
+  <div data-cols style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+    <div style="padding:30px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:10px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">01</div><h3 data-h3 style="margin:0;font-family:Sora,sans-serif;font-size:20px;font-weight:600">Creative</h3><p style="margin:0;font-size:14px;color:#A1A1AA;line-height:1.7">A memorable visual identity aligned with your brand &mdash; never a theme with your logo dropped on top.</p></div><div style="padding:30px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:10px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">02</div><h3 data-h3 style="margin:0;font-family:Sora,sans-serif;font-size:20px;font-weight:600">Strategic</h3><p style="margin:0;font-size:14px;color:#A1A1AA;line-height:1.7">Every page guides the visitor toward a clear action. Structure comes before decoration.</p></div><div style="padding:30px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:10px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">03</div><h3 data-h3 style="margin:0;font-family:Sora,sans-serif;font-size:20px;font-weight:600">Custom</h3><p style="margin:0;font-size:14px;color:#A1A1AA;line-height:1.7">Built around your processes, content and objectives, so the site fits how the business actually runs.</p></div><div style="padding:30px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:10px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">04</div><h3 data-h3 style="margin:0;font-family:Sora,sans-serif;font-size:20px;font-weight:600">Clear</h3><p style="margin:0;font-size:14px;color:#A1A1AA;line-height:1.7">We explain decisions in plain language. No jargon, no mystery about what you are paying for.</p></div><div style="padding:30px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:10px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">05</div><h3 data-h3 style="margin:0;font-family:Sora,sans-serif;font-size:20px;font-weight:600">Committed</h3><p style="margin:0;font-size:14px;color:#A1A1AA;line-height:1.7">Scope, timeline and price are written down before work begins, and we hold to them.</p></div><div style="padding:30px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:10px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">06</div><h3 data-h3 style="margin:0;font-family:Sora,sans-serif;font-size:20px;font-weight:600">Continuing</h3><p style="margin:0;font-size:14px;color:#A1A1AA;line-height:1.7">Launch is a milestone, not the end. Most clients stay on for technical care and growth.</p></div>
+  </div>
+</section>
+<section data-sect data-pad data-cols style="max-width:1440px;margin:0 auto;padding:0 72px 100px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center">
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Capabilities</div>
+    <h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:36px;font-weight:600;letter-spacing:-0.03em;line-height:1.1">Everything a digital presence needs, in one studio.</h2>
+    <div data-cols style="display:grid;grid-template-columns:1fr 1fr;gap:10px 30px;margin-top:8px"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Web design and development</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Website redesign</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>CRM and custom systems</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>SEO and performance</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Hosting and maintenance</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Digital branding</span></div></div>
+    <div style="margin-top:10px"><a href="services.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;transition:background .25s ease,border-color .25s ease;text-align:center" style-hover="background:rgba(248,250,252,.05);border-color:rgba(248,250,252,.4);color:#F8FAFC">See all services</a></div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:16px;padding:40px;border-radius:26px;background:#0B0B0E;border:1px solid rgba(248,250,252,.08)">
+    <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Studio details</div>
+    <div style="display:flex;flex-direction:column;gap:14px;font-size:14.5px;line-height:1.7">
+      <div><div style="color:#A1A1AA;font-size:12.5px;margin-bottom:3px">Location</div>Santo Domingo, Dominican Republic</div>
+      <div><div style="color:#A1A1AA;font-size:12.5px;margin-bottom:3px">Languages</div>Español and English</div>
+      <div><div style="color:#A1A1AA;font-size:12.5px;margin-bottom:3px">Contact</div>Oscar Lauzardo<br><a href="tel:+18297786137" style="color:#A1A1AA">+1 829.778.6137</a><br><a href="mailto:lauzardo1991@gmail.com" style="color:#A1A1AA">lauzardo1991@gmail.com</a></div>
+    </div>
+  </div>
+</section>
+<section data-sect data-pad style="position:relative;overflow:hidden;padding:130px 72px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px">
+  <div data-art="create-contact-expansion" data-higgsfield style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:860px;height:860px;border-radius:50%;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end;pointer-events:none">
+    <div style="padding:20px 22px;display:flex;flex-direction:column;gap:6px;max-width:520px">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">HIGGSFIELD — CONTACT</span>
+      <span style="font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#52525B">1:1 centred · core 40% reserved for headline · no internal shape animation</span>
+    </div>
+  </div>
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:22px;max-width:780px">
+    <h2 data-h1 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:50px;font-weight:700;letter-spacing:-0.035em;line-height:1.07">Let&rsquo;s build the right digital experience for your business.</h2>
+    <p data-lead style="margin:0;font-size:17px;color:#A1A1AA;line-height:1.7;max-width:600px;text-wrap:pretty">Tell us what you are creating, improving or trying to solve. We will review your project and recommend the appropriate next step.</p>
+    <div data-row style="display:flex;gap:14px;margin-top:4px"><a href="contact.dc.html" data-btn-primary style="padding:16px 30px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6,#2563FF);font-weight:600;font-size:15px;text-align:center">Discuss Your Project</a><a href="work.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;text-align:center">View Our Work</a></div>
+  </div>
+</section>
+</main>
+<dc-import name="Footer" hint-size="100%,620px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    this.root = document.querySelector('x-dc') || document.body;
+    this.observeReveals();
+    this.bindProcess();
+  }
+  componentWillUnmount(){ this.teardownMotion(); }
+
+  observeReveals(){
+    const root = this.root || document;
+    const els = root.querySelectorAll('[data-rv]');
+    if (!('IntersectionObserver' in window)) { els.forEach(e=>e.classList.add('csv-in')); return; }
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(!en.isIntersecting) return;
+        const el = en.target;
+        const sibs = el.parentElement ? [...el.parentElement.querySelectorAll('[data-rv]')] : [el];
+        const i = Math.max(0, sibs.indexOf(el));
+        el.style.animationDelay = Math.min(i*70, 280) + 'ms';
+        el.classList.add('csv-in');
+        io.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    els.forEach(e=>io.observe(e));
+  }
+  bindProcess(){
+    const root = this.root || document;
+    this.procs = [...root.querySelectorAll('[data-proc]')];
+    if (!this.procs.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      this.procs.forEach(w=>{
+        w.querySelectorAll('[data-proc-path]').forEach(p=>{ p.style.strokeDashoffset='0'; });
+        w.querySelectorAll('[data-proc-node]').forEach(n=>{ n.style.opacity='1'; });
+      });
+      return;
+    }
+    this.onScroll = () => {
+      this.procs.forEach(w=>{
+        if (!w.offsetParent) return;
+        const r = w.getBoundingClientRect();
+        const span = window.innerHeight * 0.85 + r.height;
+        const t = Math.max(0, Math.min(1, (window.innerHeight * 0.85 - r.top) / span));
+        w.querySelectorAll('[data-proc-path]').forEach(pp=>{ pp.style.strokeDashoffset = String(Math.round(1000 - t*1000)); });
+        const nodes = w.querySelectorAll('[data-proc-node]');
+        nodes.forEach((n,i)=>{
+          const on = t >= (i+0.4)/nodes.length;
+          n.style.opacity = on ? '1' : '.22';
+          n.style.transform = on ? 'scale(1.14)' : 'scale(1)';
+        });
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive:true });
+    window.addEventListener('resize', this.onScroll);
+    this.onScroll();
+  }
+  teardownMotion(){ if (this.onScroll){ window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onScroll); } }
+  renderVals(){ return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Digital Branding — Create Studio</title>
+<meta name="description" content="Brand strategy, positioning, visual direction, logo systems, colour palettes, typography, digital brand guidelines and social-media direction.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#09090B; color:#F8FAFC; }
+  body { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; font-weight:400; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3,h4 { font-family: Sora, Inter, system-ui, sans-serif; font-weight:600; }
+  h1 { font-weight:700; }
+  button, input, select, textarea, label, a { font-family: Inter, system-ui, sans-serif; }
+
+  a { color:#F8FAFC; text-decoration:none; }
+  a:hover { color:#8B5CF6; }
+  *:focus-visible { outline:2px solid #8B5CF6; outline-offset:3px; border-radius:4px; }
+  @keyframes csDrift { 0%{transform:translate3d(0,0,0) scale(1)} 50%{transform:translate3d(0,-14px,0) scale(1.02)} 100%{transform:translate3d(0,0,0) scale(1)} }
+  @media (max-width: 900px) {
+    [data-desk]{display:none !important}[data-mob]{display:flex !important}
+    [data-pad]{padding-left:22px !important;padding-right:22px !important}
+    [data-cols]{grid-template-columns:1fr !important}
+    [data-row]{flex-direction:column !important;align-items:flex-start !important}
+    [data-h1]{font-size:38px !important;line-height:1.05 !important}
+    [data-h2]{font-size:28px !important}[data-h3]{font-size:20px !important}[data-lead]{font-size:16px !important}
+    [data-hero]{padding-top:60px !important;padding-bottom:60px !important;min-height:0 !important}
+    [data-sect]{padding-top:60px !important;padding-bottom:60px !important}
+    [data-artbleed]{position:relative !important;inset:auto !important;left:auto !important;right:auto !important;top:auto !important;bottom:auto !important;width:100% !important;height:240px !important;transform:none !important;margin:0 0 24px !important;border-radius:20px !important}
+    [data-hide-mob]{display:none !important}[data-scrollx]{overflow-x:auto !important;padding-bottom:8px}
+  }
+@media (prefers-reduced-motion: reduce) {
+    *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+    [data-rv]{opacity:1 !important;animation:none !important}
+    [data-art] *{animation:none !important}
+    [data-travel]{stroke-dashoffset:0 !important}
+  }
+
+  /* motion tokens */
+  @keyframes csEmerge { from{opacity:0;transform:scale(.97)} to{opacity:1;transform:scale(1)} }
+  @keyframes csHeroDrift { 0%{transform:perspective(1400px) rotateY(0deg) rotateX(0deg) translate3d(0,0,0)} 50%{transform:perspective(1400px) rotateY(-2.4deg) rotateX(1.2deg) translate3d(-10px,-12px,0)} 100%{transform:perspective(1400px) rotateY(0deg) rotateX(0deg) translate3d(0,0,0)} }
+  @keyframes csTravel { from{stroke-dashoffset:var(--len,2600)} to{stroke-dashoffset:0} }
+  @keyframes csTrail { 0%{stroke-dashoffset:var(--len,2600);opacity:0} 12%{opacity:1} 88%{opacity:1} 100%{stroke-dashoffset:calc(var(--len,2600) * -1);opacity:0} }
+  @keyframes csLateral { 0%{transform:translateX(-2.5%)} 50%{transform:translateX(2.5%)} 100%{transform:translateX(-2.5%)} }
+  @keyframes csBreath { 0%,100%{opacity:.5;transform:scale(.985)} 50%{opacity:1;transform:scale(1.015)} }
+  @keyframes csPulseRing { 0%{opacity:.65;transform:scale(.9)} 70%{opacity:0;transform:scale(1.18)} 100%{opacity:0;transform:scale(1.18)} }
+  @keyframes csLift { 0%,100%{transform:translateY(6px)} 50%{transform:translateY(-8px)} }
+  @keyframes csGlowShift { 0%,100%{opacity:.55} 50%{opacity:.9} }
+  @keyframes csSettle { from{opacity:0;transform:translateY(14px) scale(.99)} to{opacity:1;transform:translateY(0) scale(1)} }
+  @keyframes csRevealUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes csSpin { to{transform:rotate(360deg)} }
+
+  /* scroll reveal */
+  [data-rv]{opacity:0}
+  [data-rv].csv-in{animation:csRevealUp .72s cubic-bezier(.22,.61,.36,1) both}
+  html.csv-nojs [data-rv]{opacity:1;animation:none}
+
+  a, button { -webkit-tap-highlight-color: transparent; }
+  [data-btn-primary]{background-size:170% 100%;background-position:0% 50%;transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .3s ease,background-position .5s ease}
+  [data-btn-primary]:hover{transform:translateY(-2px);background-position:100% 50%;box-shadow:0 14px 34px rgba(91,92,246,.34)}
+  [data-btn-primary]:active{transform:translateY(0);box-shadow:0 6px 16px rgba(91,92,246,.28)}
+  [data-btn-ghost]{transition:border-color .25s ease,background-color .25s ease,transform .25s ease}
+  [data-btn-ghost]:hover{border-color:rgba(248,250,252,.42);background-color:rgba(248,250,252,.05)}
+  [data-btn-ghost]:active{transform:translateY(1px)}
+
+
+  [data-mob-only]{display:none}
+  @media (max-width:900px){
+    [data-mob-only]{display:block !important}
+    [data-hide-mob]{display:none !important}
+    [data-art]{filter:none}
+    [data-art="create-process-flow"]{position:relative !important;height:420px !important;margin:0 0 24px !important}
+  }
+</style>
+</helmet>
+<dc-import name="Header" active="services" hint-size="100%,74px"></dc-import>
+<main>
+<section data-hero data-pad style="position:relative;overflow:hidden;padding:110px 72px 90px;max-width:1440px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center">
+  <div data-art="create-service-branding" data-higgsfield style="position:absolute;left:50%;top:-180px;transform:translateX(-50%);width:820px;height:820px;border-radius:50%;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end;pointer-events:none">
+    <div style="padding:20px 22px;display:flex;flex-direction:column;gap:6px;max-width:520px">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">HIGGSFIELD — DIGITAL BRANDING</span>
+      <span style="font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#52525B">1:1 · centred · transparency required · 15% clear margin</span>
+    </div>
+  </div>
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:22px;max-width:760px;align-items:center">
+    <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Digital branding</div>
+    <h1 data-h1 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:64px;font-weight:700;letter-spacing:-0.035em;line-height:1.03">A clear visual system for a recognizable brand.</h1>
+    <p data-lead data-rv style="margin:0;font-size:18px;line-height:1.7;color:#A1A1AA;max-width:600px">Digital Branding establishes the visual and verbal foundation a business needs to present itself consistently. Create Studio develops identity systems that connect strategy, logo usage, typography, color, imagery and brand application across digital touchpoints.</p>
+    <p style="margin:0;font-size:15px;line-height:1.8;color:#52525B;max-width:600px">The exact branding deliverables depend on the selected package and approved project scope.</p>
+    <div data-row style="display:flex;gap:14px;margin-top:8px"><a href="contact.dc.html" data-btn-primary style="padding:16px 30px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6,#2563FF);font-weight:600;font-size:15px;transition:transform .25s ease,box-shadow .25s ease;text-align:center" style-hover="transform:translateY(-2px);box-shadow:0 16px 40px rgba(91,92,246,.4);color:#F8FAFC">Start a Project</a><a href="work.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;transition:background .25s ease,border-color .25s ease;text-align:center" style-hover="background:rgba(248,250,252,.05);border-color:rgba(248,250,252,.4);color:#F8FAFC">See Our Work</a></div>
+  </div>
+
+  <p style="margin:14px 0 0;font-size:13px;line-height:1.8;color:#52525B;max-width:640px">Each package states clearly whether it provides a focused visual identity or a more complete brand system. Trademark registration, naming clearance, printing, photography, copywriting and social-media management are not included.</p></section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;"><div data-cols style="display:grid;grid-template-columns:1fr 1.15fr;gap:70px;align-items:start">
+  <div style="display:flex;flex-direction:column;gap:14px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">The problem</div><h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:38px;font-weight:600;letter-spacing:-0.03em;line-height:1.1">The logo is fine. Everything around it is improvised.</h2></div>
+  <div style="display:flex;flex-direction:column;gap:18px"><p style="margin:0;font-size:16px;line-height:1.8;color:#A1A1AA">A logo made once, then colours picked per post, three fonts across four documents, and a website that looks unrelated to the Instagram account. Each piece is defensible; together they read as a business that has not decided who it is.</p><p style="margin:0;font-size:16px;line-height:1.8;color:#A1A1AA">Consistency is what makes a small business look established. It is also the cheapest advantage available, because it costs decisions rather than budget.</p></div>
+</div></section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;"><div style="display:flex;flex-direction:column;gap:28px;padding:48px;border-radius:28px;background:#0B0B0E;border:1px solid rgba(248,250,252,.08)">
+  <div style="display:flex;flex-direction:column;gap:14px;max-width:660px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Our solution</div><h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:36px;font-weight:600;letter-spacing:-0.03em;line-height:1.12">Decide once, write it down, apply it everywhere.</h2><p style="margin:0;font-size:15.5px;line-height:1.8;color:#A1A1AA">We define positioning and visual direction, build the logo system and the colour and type rules, then document them so every future piece — website, social, proposal, presentation — starts from the same place instead of from scratch.</p></div>
+  <div data-cols style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px 32px;padding-top:26px;border-top:1px solid rgba(248,250,252,.08)"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Brand strategy</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Positioning</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Visual direction</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Logo system</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Colour palette</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Typography</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Digital brand guidelines</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Social-media direction</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Website application</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Launch resources</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Template starters</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Asset library</span></div></div>
+  <div style="font-size:13px;color:#A1A1AA;line-height:1.7">We do not present invented client logos or fabricated brand walls. Every example shown is real work.</div>
+</div></section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;"><div style="display:flex;flex-direction:column;gap:26px"><div style="display:flex;flex-direction:column;gap:12px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">How the work runs</div><h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:34px;font-weight:600;letter-spacing:-0.03em">Strategy, then form, then documentation.</h2></div><div data-cols style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px"><div style="padding:24px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:8px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">01</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:16.5px;font-weight:600">Positioning</h3><p style="margin:0;font-size:12.5px;color:#A1A1AA;line-height:1.6">Audience, promise, personality and tone.</p></div><div style="padding:24px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:8px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">02</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:16.5px;font-weight:600">Direction</h3><p style="margin:0;font-size:12.5px;color:#A1A1AA;line-height:1.6">Visual territory explored and agreed.</p></div><div style="padding:24px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:8px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">03</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:16.5px;font-weight:600">System</h3><p style="margin:0;font-size:12.5px;color:#A1A1AA;line-height:1.6">Logo, colour, type and layout rules.</p></div><div style="padding:24px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:8px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">04</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:16.5px;font-weight:600">Guidelines</h3><p style="margin:0;font-size:12.5px;color:#A1A1AA;line-height:1.6">A short, usable digital brand guide.</p></div><div style="padding:24px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:8px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">05</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:16.5px;font-weight:600">Application</h3><p style="margin:0;font-size:12.5px;color:#A1A1AA;line-height:1.6">Applied to the website and launch assets.</p></div></div></div></section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;"><div data-cols style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+  <div style="display:flex;flex-direction:column;gap:16px;padding:40px;border-radius:26px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)">
+    <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">What you get</div>
+    <div style="display:flex;flex-direction:column;gap:11px;margin-top:4px"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>A logo system that works at every size</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Colour and type rules with no ambiguity</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>A short guide your team can actually follow</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>A website and social presence that match</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Launch assets ready to publish</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>A consistent look as you add new material</span></div></div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:16px"><div style="display:flex;flex-direction:column;gap:14px;padding:24px;border-radius:26px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)">
+   <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#A1A1AA">Identity work</div>
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div style="position:relative;height:190px;border-radius:16px;overflow:hidden;background:radial-gradient(120% 140% at 22% 12%,rgba(37,99,255,.14),rgba(9,9,11,0) 62%),#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:center;justify-content:center;text-align:center;"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#A1A1AA;line-height:1.8;padding:0 16px">Identity</div></div><div style="position:relative;height:190px;border-radius:16px;overflow:hidden;background:radial-gradient(120% 140% at 22% 12%,rgba(37,99,255,.14),rgba(9,9,11,0) 62%),#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:center;justify-content:center;text-align:center;"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#A1A1AA;line-height:1.8;padding:0 16px">Applied on web</div></div></div>
+ </div></div>
+</div></section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;"><div data-cols style="display:grid;grid-template-columns:1.15fr 1fr;gap:40px;align-items:center;padding:44px;border-radius:26px;background:#0B0B0E;border:1px solid rgba(248,250,252,.08)">
+   <div style="display:flex;flex-direction:column;gap:14px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Pricing</div><h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:32px;font-weight:600;letter-spacing:-0.03em;line-height:1.12">Quoted according to scope.</h2><p style="margin:0;font-size:15px;color:#A1A1AA;line-height:1.75;max-width:560px">Branding is most often scoped alongside a website project, where the identity is applied immediately. It can also run on its own.</p></div>
+   <div style="display:flex;flex-direction:column;gap:12px"><a href="contact.dc.html?package=custom-website" data-btn-primary style="padding:16px 30px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6,#2563FF);font-weight:600;font-size:15px;transition:transform .25s ease,box-shadow .25s ease;text-align:center" style-hover="transform:translateY(-2px);box-shadow:0 16px 40px rgba(91,92,246,.4);color:#F8FAFC">Request a Branding Quote</a><a href="service-web-design-development.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;transition:background .25s ease,border-color .25s ease;text-align:center" style-hover="background:rgba(248,250,252,.05);border-color:rgba(248,250,252,.4);color:#F8FAFC">Explore Web Design</a></div>
+ </div></section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 100px;display:flex;flex-direction:column;gap:22px">
+  <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Related services</div>
+  <div data-cols style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+    <a href="service-web-design-development.dc.html" style="padding:26px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:9px;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:rgba(139,92,246,.45);transform:translateY(-4px);color:#F8FAFC"><h3 style="margin:0;font-family:Sora,sans-serif;font-size:18px;font-weight:600">Web Design &amp; Development</h3><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">Landing pages, corporate websites, catalogs, portfolios and multilingual platforms.</p><span style="font-size:12.5px;color:#8B5CF6;margin-top:4px">Explore &rarr;</span></a><a href="service-website-redesign.dc.html" style="padding:26px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:9px;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:rgba(139,92,246,.45);transform:translateY(-4px);color:#F8FAFC"><h3 style="margin:0;font-family:Sora,sans-serif;font-size:18px;font-weight:600">Website Redesign</h3><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">Visual modernization, content reorganization, better mobile experience and conversion improvements.</p><span style="font-size:12.5px;color:#8B5CF6;margin-top:4px">Explore &rarr;</span></a><a href="service-crm-custom-systems.dc.html" style="padding:26px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:9px;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:rgba(139,92,246,.45);transform:translateY(-4px);color:#F8FAFC"><h3 style="margin:0;font-family:Sora,sans-serif;font-size:18px;font-weight:600">CRM &amp; Custom Systems</h3><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">Dashboards, contacts, pipelines, calendars, reports, automations and integrations.</p><span style="font-size:12.5px;color:#8B5CF6;margin-top:4px">Explore &rarr;</span></a>
+  </div>
+</section>
+<section data-sect data-pad style="position:relative;overflow:hidden;padding:130px 72px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px">
+  <div data-art="create-contact-expansion" data-higgsfield style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:860px;height:860px;border-radius:50%;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end;pointer-events:none">
+    <div style="padding:20px 22px;display:flex;flex-direction:column;gap:6px;max-width:520px">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">HIGGSFIELD — CONTACT</span>
+      <span style="font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#52525B">1:1 centred · core 40% reserved for headline · no internal shape animation</span>
+    </div>
+  </div>
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:22px;max-width:780px">
+    <h2 data-h1 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:50px;font-weight:700;letter-spacing:-0.035em;line-height:1.07">A clear visual system for a recognizable brand.</h2>
+    <p data-lead style="margin:0;font-size:17px;color:#A1A1AA;line-height:1.7;max-width:600px;text-wrap:pretty">Tell us where your identity feels inconsistent and we will recommend the appropriate branding scope.</p>
+    <div data-row style="display:flex;gap:14px;margin-top:4px"><a href="contact.dc.html" data-btn-primary style="padding:16px 30px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6,#2563FF);font-weight:600;font-size:15px;text-align:center">Build Your Brand</a><a href="service-web-design-development.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;text-align:center">Explore web design</a></div>
+  </div>
+</section>
+</main>
+<dc-import name="Footer" hint-size="100%,620px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    this.root = document.querySelector('x-dc') || document.body;
+    this.observeReveals();
+    this.bindProcess();
+  }
+  componentWillUnmount(){ this.teardownMotion(); }
+
+  observeReveals(){
+    const root = this.root || document;
+    const els = root.querySelectorAll('[data-rv]');
+    if (!('IntersectionObserver' in window)) { els.forEach(e=>e.classList.add('csv-in')); return; }
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(!en.isIntersecting) return;
+        const el = en.target;
+        const sibs = el.parentElement ? [...el.parentElement.querySelectorAll('[data-rv]')] : [el];
+        const i = Math.max(0, sibs.indexOf(el));
+        el.style.animationDelay = Math.min(i*70, 280) + 'ms';
+        el.classList.add('csv-in');
+        io.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    els.forEach(e=>io.observe(e));
+  }
+  bindProcess(){
+    const root = this.root || document;
+    this.procs = [...root.querySelectorAll('[data-proc]')];
+    if (!this.procs.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      this.procs.forEach(w=>{
+        w.querySelectorAll('[data-proc-path]').forEach(p=>{ p.style.strokeDashoffset='0'; });
+        w.querySelectorAll('[data-proc-node]').forEach(n=>{ n.style.opacity='1'; });
+      });
+      return;
+    }
+    this.onScroll = () => {
+      this.procs.forEach(w=>{
+        if (!w.offsetParent) return;
+        const r = w.getBoundingClientRect();
+        const span = window.innerHeight * 0.85 + r.height;
+        const t = Math.max(0, Math.min(1, (window.innerHeight * 0.85 - r.top) / span));
+        w.querySelectorAll('[data-proc-path]').forEach(pp=>{ pp.style.strokeDashoffset = String(Math.round(1000 - t*1000)); });
+        const nodes = w.querySelectorAll('[data-proc-node]');
+        nodes.forEach((n,i)=>{
+          const on = t >= (i+0.4)/nodes.length;
+          n.style.opacity = on ? '1' : '.22';
+          n.style.transform = on ? 'scale(1.14)' : 'scale(1)';
+        });
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive:true });
+    window.addEventListener('resize', this.onScroll);
+    this.onScroll();
+  }
+  teardownMotion(){ if (this.onScroll){ window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onScroll); } }
+  renderVals(){ return {}; }
+}
+</script>
+</body>
+</html>

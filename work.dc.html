@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Selected Work — Create Studio</title>
+<meta name="description" content="A collection of digital experiences created to bring greater clarity, stronger positioning and more purposeful interaction to each business.">
+<link rel="canonical" href="/work">
+<meta property="og:title" content="Selected Work — Create Studio">
+<meta property="og:description" content="Digital experiences developed around the identity, objectives and operational needs of each project.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#09090B; color:#F8FAFC; }
+  body { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; font-weight:400; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3,h4 { font-family: Sora, Inter, system-ui, sans-serif; font-weight:600; }
+  h1 { font-weight:700; }
+  button, input, select, textarea, label, a { font-family: Inter, system-ui, sans-serif; }
+
+  a { color:#F8FAFC; text-decoration:none; }
+  a:hover { color:#8B5CF6; }
+  *:focus-visible { outline:2px solid #8B5CF6; outline-offset:3px; border-radius:4px; }
+  @keyframes csRevealUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+  [data-rv]{opacity:0}
+  [data-rv].csv-in{animation:csRevealUp .72s cubic-bezier(.22,.61,.36,1) both}
+  [data-btn-primary]{background-size:170% 100%;background-position:0% 50%;transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .3s ease,background-position .5s ease}
+  [data-btn-primary]:hover{transform:translateY(-2px);background-position:100% 50%;box-shadow:0 14px 34px rgba(91,92,246,.34)}
+  [data-btn-primary]:active{transform:translateY(0)}
+  [data-btn-ghost]{transition:border-color .25s ease,background-color .25s ease,transform .25s ease}
+  [data-btn-ghost]:hover{border-color:rgba(248,250,252,.42);background-color:rgba(248,250,252,.05)}
+  @media (max-width:900px){
+    [data-pad]{padding-left:22px !important;padding-right:22px !important}
+    [data-cols]{grid-template-columns:1fr !important}
+    [data-row]{flex-direction:column !important;align-items:flex-start !important}
+    [data-h1]{font-size:38px !important;line-height:1.05 !important}
+    [data-h2]{font-size:28px !important}[data-h3]{font-size:20px !important}[data-lead]{font-size:16px !important}
+    [data-hero]{padding-top:60px !important;padding-bottom:40px !important}
+    [data-sect]{padding-bottom:60px !important}
+    [data-art]{height:260px !important}
+    [data-sticky]{position:static !important}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+    [data-rv]{opacity:1 !important;animation:none !important}
+  }
+
+  [data-grid]{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  @media (max-width:1100px){[data-grid]{grid-template-columns:1fr 1fr}}
+  @media (max-width:760px){[data-grid]{grid-template-columns:1fr}}
+  @media (max-width:900px){[data-art]{height:auto !important}[data-scrollx]{overflow-x:auto;padding-bottom:8px}}
+</style>
+</helmet>
+<dc-import name="Header" active="work" hint-size="100%,74px"></dc-import>
+<main>
+<section data-hero data-pad style="max-width:1440px;margin:0 auto;padding:96px 72px 56px;display:flex;flex-direction:column;gap:22px">
+  <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Portfolio</div>
+  <h1 data-h1 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:64px;font-weight:700;letter-spacing:-0.035em;line-height:1.03">Selected Work</h1>
+  <p data-lead data-rv style="margin:0;font-size:19px;line-height:1.7;color:#A1A1AA;max-width:720px;text-wrap:pretty">A collection of digital experiences created to bring greater clarity, stronger positioning and more purposeful interaction to each business.</p>
+</section>
+<section data-sect data-pad style="max-width:1440px;margin:0 auto;padding:0 72px 110px;display:flex;flex-direction:column;gap:34px">
+  <div data-scrollx role="group" aria-label="Filter projects by category" style="display:flex;gap:10px;flex-wrap:wrap">
+    <button type="button" data-filter="All" aria-pressed="true" onClick="{{setFilter}}" style="padding:11px 20px;border-radius:999px;border:1px solid rgba(139,92,246,.55);background:rgba(139,92,246,.12);color:#F8FAFC;font-family:Inter,sans-serif;font-size:13.5px;cursor:pointer;min-height:44px;display:flex;align-items:center;gap:8px;transition:border-color .25s ease,background .25s ease,color .25s ease"><span data-dot style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;transition:background .25s ease"></span>All</button><button type="button" data-filter="Websites" aria-pressed="false" onClick="{{setFilter}}" style="padding:11px 20px;border-radius:999px;border:1px solid rgba(248,250,252,.14);background:transparent;color:#A1A1AA;font-family:Inter,sans-serif;font-size:13.5px;cursor:pointer;min-height:44px;display:flex;align-items:center;gap:8px;transition:border-color .25s ease,background .25s ease,color .25s ease"><span data-dot style="width:5px;height:5px;border-radius:99px;background:transparent;transition:background .25s ease"></span>Websites</button><button type="button" data-filter="Website Redesign" aria-pressed="false" onClick="{{setFilter}}" style="padding:11px 20px;border-radius:999px;border:1px solid rgba(248,250,252,.14);background:transparent;color:#A1A1AA;font-family:Inter,sans-serif;font-size:13.5px;cursor:pointer;min-height:44px;display:flex;align-items:center;gap:8px;transition:border-color .25s ease,background .25s ease,color .25s ease"><span data-dot style="width:5px;height:5px;border-radius:99px;background:transparent;transition:background .25s ease"></span>Website Redesign</button><button type="button" data-filter="CRM &amp; Systems" aria-pressed="false" onClick="{{setFilter}}" style="padding:11px 20px;border-radius:999px;border:1px solid rgba(248,250,252,.14);background:transparent;color:#A1A1AA;font-family:Inter,sans-serif;font-size:13.5px;cursor:pointer;min-height:44px;display:flex;align-items:center;gap:8px;transition:border-color .25s ease,background .25s ease,color .25s ease"><span data-dot style="width:5px;height:5px;border-radius:99px;background:transparent;transition:background .25s ease"></span>CRM &amp; Systems</button><button type="button" data-filter="Brand &amp; Digital" aria-pressed="false" onClick="{{setFilter}}" style="padding:11px 20px;border-radius:999px;border:1px solid rgba(248,250,252,.14);background:transparent;color:#A1A1AA;font-family:Inter,sans-serif;font-size:13.5px;cursor:pointer;min-height:44px;display:flex;align-items:center;gap:8px;transition:border-color .25s ease,background .25s ease,color .25s ease"><span data-dot style="width:5px;height:5px;border-radius:99px;background:transparent;transition:background .25s ease"></span>Brand &amp; Digital</button>
+  </div>
+  <div data-grid><a href="work-luxury-listings-dr.dc.html" data-card="Websites" aria-label="View the Luxury Listings DR case study" style="display:flex;flex-direction:column;gap:0;border-radius:26px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);overflow:hidden;transition:transform .35s cubic-bezier(.22,.61,.36,1),border-color .35s ease" style-hover="transform:translateY(-6px);border-color:rgba(139,92,246,.45);color:#F8FAFC">
+  <div data-art data-higgsfield style="position:relative;aspect-ratio:16/9;width:100%;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end">
+  <div style="padding:18px 20px;display:flex;flex-direction:column;gap:5px;max-width:520px">
+    <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">HIGGSFIELD — LUXURY LISTINGS DR CASE STUDY</span>
+    <span style="font-family:Inter,system-ui,sans-serif;font-size:10.5px;line-height:1.6;color:#52525B">16:9 card crop · focal centre-right</span>
+  </div></div>
+  <div style="padding:28px 30px 30px;display:flex;flex-direction:column;gap:12px;flex:1">
+    <div data-row style="display:flex;align-items:baseline;justify-content:space-between;gap:14px">
+      <h2 data-h3 style="margin:0;font-family:Sora,sans-serif;font-size:24px;font-weight:600;letter-spacing:-0.02em">Luxury Listings DR</h2>
+      
+    </div>
+    <div style="font-size:12.5px;color:#8B5CF6">Luxury Real Estate Platform</div>
+    <p style="margin:2px 0 0;font-size:14.5px;color:#A1A1AA;line-height:1.7">A refined digital platform designed to make luxury real estate discovery feel clear, visual and effortless.</p>
+    <div style="font-size:12.5px;color:#52525B;line-height:1.6">Web Design · User Experience · Responsive Design</div>
+    <span style="margin-top:auto;padding-top:16px;font-size:13.5px;color:#8B5CF6;display:flex;align-items:center;gap:8px">View Case Study <span aria-hidden="true">&rarr;</span></span>
+  </div>
+</a><a href="work-joan-leonardo.dc.html" data-card="Website Redesign" aria-label="View the Joan Leonardo case study" style="display:flex;flex-direction:column;gap:0;border-radius:26px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);overflow:hidden;transition:transform .35s cubic-bezier(.22,.61,.36,1),border-color .35s ease" style-hover="transform:translateY(-6px);border-color:rgba(139,92,246,.45);color:#F8FAFC">
+  <div data-art data-higgsfield style="position:relative;aspect-ratio:16/9;width:100%;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end">
+  <div style="padding:18px 20px;display:flex;flex-direction:column;gap:5px;max-width:520px">
+    <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">HIGGSFIELD — JOAN LEONARDO CASE STUDY</span>
+    <span style="font-family:Inter,system-ui,sans-serif;font-size:10.5px;line-height:1.6;color:#52525B">16:9 card crop · focal left of centre</span>
+  </div></div>
+  <div style="padding:28px 30px 30px;display:flex;flex-direction:column;gap:12px;flex:1">
+    <div data-row style="display:flex;align-items:baseline;justify-content:space-between;gap:14px">
+      <h2 data-h3 style="margin:0;font-family:Sora,sans-serif;font-size:24px;font-weight:600;letter-spacing:-0.02em">Joan Leonardo</h2>
+      
+    </div>
+    <div style="font-size:12.5px;color:#8B5CF6">Legal Website</div>
+    <p style="margin:2px 0 0;font-size:14.5px;color:#A1A1AA;line-height:1.7">A modern legal website designed around clarity, authority and client confidence.</p>
+    <div style="font-size:12.5px;color:#52525B;line-height:1.6">Website Redesign · Content Hierarchy · User Experience</div>
+    <span style="margin-top:auto;padding-top:16px;font-size:13.5px;color:#8B5CF6;display:flex;align-items:center;gap:8px">View Case Study <span aria-hidden="true">&rarr;</span></span>
+  </div>
+</a><a href="work-custom-real-estate-crm.dc.html" data-card="CRM &amp; Systems" aria-label="View the Custom Real Estate CRM case study" style="display:flex;flex-direction:column;gap:0;border-radius:26px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);overflow:hidden;transition:transform .35s cubic-bezier(.22,.61,.36,1),border-color .35s ease" style-hover="transform:translateY(-6px);border-color:rgba(139,92,246,.45);color:#F8FAFC">
+  <div data-art data-higgsfield style="position:relative;aspect-ratio:16/9;width:100%;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end">
+  <div style="padding:18px 20px;display:flex;flex-direction:column;gap:5px;max-width:520px">
+    <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">HIGGSFIELD — CUSTOM REAL ESTATE CRM CASE STUDY</span>
+    <span style="font-family:Inter,system-ui,sans-serif;font-size:10.5px;line-height:1.6;color:#52525B">16:9 card crop · convergence focal point</span>
+  </div></div>
+  <div style="padding:28px 30px 30px;display:flex;flex-direction:column;gap:12px;flex:1">
+    <div data-row style="display:flex;align-items:baseline;justify-content:space-between;gap:14px">
+      <h2 data-h3 style="margin:0;font-family:Sora,sans-serif;font-size:24px;font-weight:600;letter-spacing:-0.02em">Custom Real Estate CRM</h2>
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#8B5CF6;border:1px solid rgba(139,92,246,.35);border-radius:999px;padding:4px 10px;flex:none">In Development</span>
+    </div>
+    <div style="font-size:12.5px;color:#8B5CF6">CRM &amp; Custom Systems</div>
+    <p style="margin:2px 0 0;font-size:14.5px;color:#A1A1AA;line-height:1.7">A purpose-built system designed to organize the relationships, properties, opportunities and follow-ups behind a luxury real estate business.</p>
+    <div style="font-size:12.5px;color:#52525B;line-height:1.6">Product Strategy · CRM Architecture · Interface Design</div>
+    <span style="margin-top:auto;padding-top:16px;font-size:13.5px;color:#8B5CF6;display:flex;align-items:center;gap:8px">View Case Study <span aria-hidden="true">&rarr;</span></span>
+  </div>
+</a><a href="work-create-studio.dc.html" data-card="Brand &amp; Digital" aria-label="View the Create Studio case study" style="display:flex;flex-direction:column;gap:0;border-radius:26px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);overflow:hidden;transition:transform .35s cubic-bezier(.22,.61,.36,1),border-color .35s ease" style-hover="transform:translateY(-6px);border-color:rgba(139,92,246,.45);color:#F8FAFC">
+  <div data-art data-higgsfield style="position:relative;aspect-ratio:16/9;width:100%;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end">
+  <div style="padding:18px 20px;display:flex;flex-direction:column;gap:5px;max-width:520px">
+    <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">HIGGSFIELD — CREATE STUDIO CASE STUDY</span>
+    <span style="font-family:Inter,system-ui,sans-serif;font-size:10.5px;line-height:1.6;color:#52525B">16:9 card crop · focal centre</span>
+  </div></div>
+  <div style="padding:28px 30px 30px;display:flex;flex-direction:column;gap:12px;flex:1">
+    <div data-row style="display:flex;align-items:baseline;justify-content:space-between;gap:14px">
+      <h2 data-h3 style="margin:0;font-family:Sora,sans-serif;font-size:24px;font-weight:600;letter-spacing:-0.02em">Create Studio</h2>
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#8B5CF6;border:1px solid rgba(139,92,246,.35);border-radius:999px;padding:4px 10px;flex:none">Studio Project</span>
+    </div>
+    <div style="font-size:12.5px;color:#8B5CF6">Brand &amp; Digital Experience</div>
+    <p style="margin:2px 0 0;font-size:14.5px;color:#A1A1AA;line-height:1.7">A connected brand and website system created to express the studio&rsquo;s approach to strategy, design, technology and digital growth.</p>
+    <div style="font-size:12.5px;color:#52525B;line-height:1.6">Brand Application · Digital Art Direction · Web Design</div>
+    <span style="margin-top:auto;padding-top:16px;font-size:13.5px;color:#8B5CF6;display:flex;align-items:center;gap:8px">View Case Study <span aria-hidden="true">&rarr;</span></span>
+  </div>
+</a></div>
+</section>
+<section data-sect data-pad style="padding:0 72px 120px;max-width:1440px;margin:0 auto">
+  <div style="padding:80px 60px;border-radius:28px;background:#0B0B0E;border:1px solid rgba(248,250,252,.08);text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px">
+    <h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:42px;font-weight:700;letter-spacing:-0.03em;line-height:1.08;max-width:720px">Let&rsquo;s build the right digital experience for your business.</h2>
+    <p data-lead style="margin:0;font-size:17px;color:#A1A1AA;line-height:1.7;max-width:600px">Tell us what you are creating, improving or trying to solve. We will review your project and recommend the appropriate next step.</p>
+    <div data-row style="display:flex;gap:14px;margin-top:4px"><a href="contact.dc.html" data-btn-primary style="padding:16px 30px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6,#2563FF);font-weight:600;font-size:15px;text-align:center">Discuss Your Project</a><a href="services.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;text-align:center">Explore services</a></div>
+  </div>
+</section>
+</main>
+<dc-import name="Footer" hint-size="100%,620px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    this.root = document.querySelector('x-dc') || document.body;
+    const els = this.root.querySelectorAll('[data-rv]');
+    if ('IntersectionObserver' in window){
+      const io = new IntersectionObserver((en)=>{ en.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('csv-in'); io.unobserve(e.target); } }); }, { rootMargin:'0px 0px -12% 0px', threshold:0.08 });
+      els.forEach(e=>io.observe(e));
+    } else els.forEach(e=>e.classList.add('csv-in'));
+  }
+  setFilter = (e) => {
+    const f = e.currentTarget.getAttribute('data-filter');
+    this.root.querySelectorAll('[data-filter]').forEach(b => {
+      const on = b.getAttribute('data-filter') === f;
+      b.setAttribute('aria-pressed', String(on));
+      b.style.borderColor = on ? 'rgba(139,92,246,.55)' : 'rgba(248,250,252,.14)';
+      b.style.background = on ? 'rgba(139,92,246,.12)' : 'transparent';
+      b.style.color = on ? '#F8FAFC' : '#A1A1AA';
+      const dot = b.querySelector('[data-dot]');
+      if (dot) dot.style.background = on ? '#8B5CF6' : 'transparent';
+    });
+    this.root.querySelectorAll('[data-card]').forEach(c => {
+      c.style.display = (f === 'All' || c.getAttribute('data-card') === f) ? 'flex' : 'none';
+    });
+  };
+  renderVals(){ return { setFilter: this.setFilter }; }
+}
+</script>
+</body>
+</html>

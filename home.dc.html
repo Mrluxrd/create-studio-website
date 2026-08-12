@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Create Studio — Digital experiences shaped with purpose</title>
+<meta name="description" content="Create Studio designs creative, strategic and custom websites for businesses in the Dominican Republic. Website packages from US$800, plus SEO growth and maintenance plans from US$100/month.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#09090B; color:#F8FAFC; }
+  body { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; font-weight:400; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3,h4 { font-family: Sora, Inter, system-ui, sans-serif; font-weight:600; }
+  h1 { font-weight:700; }
+  button, input, select, textarea, label, a { font-family: Inter, system-ui, sans-serif; }
+
+  a { color:#F8FAFC; text-decoration:none; }
+  a:hover { color:#8B5CF6; }
+  *:focus-visible { outline:2px solid #8B5CF6; outline-offset:3px; border-radius:4px; }
+  @keyframes csDrift { 0%{transform:translate3d(0,0,0) scale(1)} 50%{transform:translate3d(0,-14px,0) scale(1.02)} 100%{transform:translate3d(0,0,0) scale(1)} }
+  @keyframes csMarquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  @media (max-width: 900px) {
+    [data-desk]{display:none !important}
+    [data-mob]{display:flex !important}
+    [data-pad]{padding-left:22px !important;padding-right:22px !important}
+    [data-cols]{grid-template-columns:1fr !important}
+    [data-row]{flex-direction:column !important;align-items:flex-start !important}
+    [data-h1]{font-size:40px !important;line-height:1.04 !important}
+    [data-h2]{font-size:29px !important}
+    [data-h3]{font-size:20px !important}
+    [data-lead]{font-size:16px !important}
+    [data-hero]{padding-top:60px !important;padding-bottom:60px !important;min-height:0 !important}
+    [data-sect]{padding-top:64px !important;padding-bottom:64px !important}
+    [data-artbleed]{position:relative !important;inset:auto !important;left:auto !important;right:auto !important;top:auto !important;bottom:auto !important;width:100% !important;height:250px !important;transform:none !important;margin:0 0 26px !important;border-radius:20px !important}
+    [data-hide-mob]{display:none !important}
+    [data-scrollx]{overflow-x:auto !important}
+  }
+@media (prefers-reduced-motion: reduce) {
+    *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+    [data-rv]{opacity:1 !important;animation:none !important}
+    [data-art] *{animation:none !important}
+    [data-travel]{stroke-dashoffset:0 !important}
+  }
+
+  /* motion tokens */
+  @keyframes csEmerge { from{opacity:0;transform:scale(.97)} to{opacity:1;transform:scale(1)} }
+  @keyframes csHeroDrift { 0%{transform:perspective(1400px) rotateY(0deg) rotateX(0deg) translate3d(0,0,0)} 50%{transform:perspective(1400px) rotateY(-2.4deg) rotateX(1.2deg) translate3d(-10px,-12px,0)} 100%{transform:perspective(1400px) rotateY(0deg) rotateX(0deg) translate3d(0,0,0)} }
+  @keyframes csTravel { from{stroke-dashoffset:var(--len,2600)} to{stroke-dashoffset:0} }
+  @keyframes csTrail { 0%{stroke-dashoffset:var(--len,2600);opacity:0} 12%{opacity:1} 88%{opacity:1} 100%{stroke-dashoffset:calc(var(--len,2600) * -1);opacity:0} }
+  @keyframes csLateral { 0%{transform:translateX(-2.5%)} 50%{transform:translateX(2.5%)} 100%{transform:translateX(-2.5%)} }
+  @keyframes csBreath { 0%,100%{opacity:.5;transform:scale(.985)} 50%{opacity:1;transform:scale(1.015)} }
+  @keyframes csPulseRing { 0%{opacity:.65;transform:scale(.9)} 70%{opacity:0;transform:scale(1.18)} 100%{opacity:0;transform:scale(1.18)} }
+  @keyframes csLift { 0%,100%{transform:translateY(6px)} 50%{transform:translateY(-8px)} }
+  @keyframes csGlowShift { 0%,100%{opacity:.55} 50%{opacity:.9} }
+  @keyframes csSettle { from{opacity:0;transform:translateY(14px) scale(.99)} to{opacity:1;transform:translateY(0) scale(1)} }
+  @keyframes csRevealUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes csSpin { to{transform:rotate(360deg)} }
+
+  /* scroll reveal */
+  [data-rv]{opacity:0}
+  [data-rv].csv-in{animation:csRevealUp .72s cubic-bezier(.22,.61,.36,1) both}
+  html.csv-nojs [data-rv]{opacity:1;animation:none}
+
+  a, button { -webkit-tap-highlight-color: transparent; }
+  [data-btn-primary]{background-size:170% 100%;background-position:0% 50%;transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .3s ease,background-position .5s ease}
+  [data-btn-primary]:hover{transform:translateY(-2px);background-position:100% 50%;box-shadow:0 14px 34px rgba(91,92,246,.34)}
+  [data-btn-primary]:active{transform:translateY(0);box-shadow:0 6px 16px rgba(91,92,246,.28)}
+  [data-btn-ghost]{transition:border-color .25s ease,background-color .25s ease,transform .25s ease}
+  [data-btn-ghost]:hover{border-color:rgba(248,250,252,.42);background-color:rgba(248,250,252,.05)}
+  [data-btn-ghost]:active{transform:translateY(1px)}
+
+
+  [data-mob-only]{display:none}
+  @media (max-width:900px){
+    [data-mob-only]{display:block !important}
+    [data-hide-mob]{display:none !important}
+    [data-art]{filter:none}
+    [data-art="create-process-flow"]{position:relative !important;height:420px !important;margin:0 0 24px !important}
+  }
+</style>
+</helmet>
+<dc-import name="Header" active="home" hint-size="100%,74px"></dc-import>
+<main>
+<section data-hero data-pad style="position:relative;min-height:800px;overflow:hidden;padding:118px 72px 100px;display:flex;flex-direction:column;justify-content:center;max-width:1440px;margin:0 auto">
+  <div data-art="create-hero-motion" data-higgsfield style="position:absolute;top:-90px;right:-140px;width:1020px;height:1020px;border-radius:40px;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end;pointer-events:none">
+    <div style="padding:20px 22px;display:flex;flex-direction:column;gap:6px;max-width:520px">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">HIGGSFIELD — HOMEPAGE HERO</span>
+      <span style="font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#52525B">1:1 desktop · 4:5 tablet · 4:5 mobile · focal right-of-centre · left 45% reserved for headline</span>
+    </div>
+  </div>
+  <div style="position:relative;z-index:2;max-width:720px;display:flex;flex-direction:column;gap:28px">
+    <div style="display:inline-flex;align-items:center;gap:10px;align-self:flex-start;padding:9px 16px;border-radius:999px;border:1px solid rgba(248,250,252,.12);font-size:12px;color:#A1A1AA"><span style="width:6px;height:6px;border-radius:99px;background:#2563FF"></span>Independent Digital Studio</div>
+    <h1 data-h1 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:88px;line-height:.99;font-weight:700;letter-spacing:-0.035em">Digital experiences<br>shaped with <span style="background:linear-gradient(90deg,#2563FF,#8B5CF6);-webkit-background-clip:text;background-clip:text;color:transparent">purpose.</span></h1>
+    <p data-lead data-rv style="margin:0;font-size:19px;line-height:1.62;color:#A1A1AA;max-width:540px;text-wrap:pretty">Create Studio designs websites, digital brands and custom systems that help businesses communicate clearly, operate more effectively and grow with a stronger digital foundation.</p>
+    <div data-row style="display:flex;gap:14px;align-items:center"><a href="contact.dc.html" data-btn-primary style="padding:16px 30px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6,#2563FF);font-weight:600;font-size:15px;transition:transform .25s ease,box-shadow .25s ease;text-align:center" style-hover="transform:translateY(-2px);box-shadow:0 16px 40px rgba(91,92,246,.4);color:#F8FAFC">Start a Project</a><a href="work.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;transition:background .25s ease,border-color .25s ease;text-align:center" style-hover="background:rgba(248,250,252,.05);border-color:rgba(248,250,252,.4);color:#F8FAFC">View Our Work</a></div>
+    <div data-row style="display:flex;gap:40px;padding-top:26px;border-top:1px solid rgba(248,250,252,.08);margin-top:8px">
+      <div style="display:flex;flex-direction:column;gap:5px"><div style="font-family:Sora,sans-serif;font-size:26px;font-weight:600">From US$800</div><div style="font-size:12.5px;color:#A1A1AA">Website packages</div></div>
+      <div style="display:flex;flex-direction:column;gap:5px"><div style="font-family:Sora,sans-serif;font-size:26px;font-weight:600">2&ndash;4 weeks</div><div style="font-size:12.5px;color:#A1A1AA">Typical project timeline</div></div>
+      <div style="display:flex;flex-direction:column;gap:5px"><div style="font-family:Sora,sans-serif;font-size:26px;font-weight:600">Custom</div><div style="font-size:12.5px;color:#A1A1AA">Never a template</div></div>
+    </div>
+  </div>
+</section>
+
+<div style="border-top:1px solid rgba(248,250,252,.07);border-bottom:1px solid rgba(248,250,252,.07);padding:20px 0;overflow:hidden;background:#0B0B0E">
+  <div style="display:flex;gap:52px;width:max-content;animation:csMarquee 34s linear infinite;font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#A1A1AA">
+    <span>Design with intention</span><span style="color:#8B5CF6">&#9670;</span><span>Technology with purpose</span><span style="color:#8B5CF6">&#9670;</span><span>We create. You grow.</span><span style="color:#8B5CF6">&#9670;</span><span>Design with intention</span><span style="color:#8B5CF6">&#9670;</span><span>Technology with purpose</span><span style="color:#8B5CF6">&#9670;</span><span>We create. You grow.</span><span style="color:#8B5CF6">&#9670;</span>
+  </div>
+</div>
+
+<section data-sect data-pad style="position:relative;overflow:hidden;padding:118px 72px;max-width:1440px;margin:0 auto">
+  <div data-art="create-portfolio-accent" data-higgsfield style="position:absolute;left:50%;top:50px;transform:translateX(-50%);width:1180px;height:470px;border-radius:32px;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end;pointer-events:none">
+    <div style="padding:20px 22px;display:flex;flex-direction:column;gap:6px;max-width:520px">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">HIGGSFIELD — SELECTED WORK</span>
+      <span style="font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#52525B">21:9 desktop · 16:9 tablet · 3:2 mobile · low band · upper 55% reserved for heading</span>
+    </div>
+  </div>
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:44px">
+    <div data-row style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px">
+      <div style="display:flex;flex-direction:column;gap:14px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Portfolio</div><h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:52px;font-weight:600;letter-spacing:-0.03em;line-height:1.06;max-width:600px">Selected Work</h2></div>
+      <a href="work.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;transition:background .25s ease,border-color .25s ease;text-align:center" style-hover="background:rgba(248,250,252,.05);border-color:rgba(248,250,252,.4);color:#F8FAFC">View All Work</a>
+    </div>
+    <div data-cols style="display:grid;grid-template-columns:1.4fr 1fr;gap:24px">
+      <a href="work-luxury-listings-dr.dc.html" style="display:flex;flex-direction:column;gap:16px;padding:16px;border-radius:26px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);transition:transform .35s ease,border-color .35s ease" style-hover="transform:translateY(-6px);border-color:rgba(139,92,246,.45);color:#F8FAFC">
+        <div style="position:relative;height:390px;border-radius:16px;overflow:hidden;background:radial-gradient(120% 140% at 22% 12%,rgba(37,99,255,.14),rgba(9,9,11,0) 62%),#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:center;justify-content:center;text-align:center;"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#A1A1AA;line-height:1.8;padding:0 16px">Luxury Listings DR</div></div>
+        <div style="padding:8px 10px 12px;display:flex;flex-direction:column;gap:9px">
+          <div data-row style="display:flex;align-items:baseline;justify-content:space-between;gap:12px"><h3 data-h3 style="margin:0;font-family:Sora,sans-serif;font-size:23px;font-weight:600">Luxury Listings DR</h3><span style="font-size:12.5px;color:#A1A1AA">Website</span></div>
+          <p style="margin:0;font-size:14px;color:#A1A1AA;line-height:1.65;max-width:520px">A premium real-estate platform combining strategic content, responsive navigation, property discovery and seller acquisition.</p>
+          <span style="font-size:13px;color:#8B5CF6">View case study &rarr;</span>
+        </div>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <a href="work-joan-leonardo.dc.html" style="display:flex;flex-direction:column;gap:14px;padding:16px;border-radius:26px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);transition:transform .35s ease,border-color .35s ease;flex:1" style-hover="transform:translateY(-6px);border-color:rgba(37,99,255,.45);color:#F8FAFC">
+          <div style="position:relative;height:150px;border-radius:16px;overflow:hidden;background:radial-gradient(120% 140% at 22% 12%,rgba(37,99,255,.14),rgba(9,9,11,0) 62%),#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:center;justify-content:center;text-align:center;"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#A1A1AA;line-height:1.8;padding:0 16px">Project imagery</div></div>
+          <div style="padding:4px 8px 8px;display:flex;flex-direction:column;gap:7px">
+            <div data-row style="display:flex;align-items:baseline;justify-content:space-between;gap:10px"><h3 style="margin:0;font-family:Sora,sans-serif;font-size:18px;font-weight:600">Joan Leonardo &amp; Asociados</h3><span style="font-size:12px;color:#A1A1AA">Website redesign</span></div>
+            <p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">A complete website redesign created to communicate experience, authority and trust through a contemporary legal experience.</p>
+            <span style="font-size:12.5px;color:#8B5CF6">View case study &rarr;</span>
+          </div></a><a href="work-custom-real-estate-crm.dc.html" style="display:flex;flex-direction:column;gap:14px;padding:16px;border-radius:26px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);transition:transform .35s ease,border-color .35s ease;flex:1" style-hover="transform:translateY(-6px);border-color:rgba(37,99,255,.45);color:#F8FAFC">
+          <div style="position:relative;height:150px;border-radius:16px;overflow:hidden;background:radial-gradient(120% 140% at 22% 12%,rgba(37,99,255,.14),rgba(9,9,11,0) 62%),#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:center;justify-content:center;text-align:center;"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#A1A1AA;line-height:1.8;padding:0 16px">Project imagery</div></div>
+          <div style="padding:4px 8px 8px;display:flex;flex-direction:column;gap:7px">
+            <div data-row style="display:flex;align-items:baseline;justify-content:space-between;gap:10px"><h3 style="margin:0;font-family:Sora,sans-serif;font-size:18px;font-weight:600">Custom Real Estate CRM</h3><span style="font-size:12px;color:#A1A1AA">CRM &amp; systems</span></div>
+            <p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">A centralized real-estate system for managing opportunities, buyer pipelines, calendars, commissions, reporting and business intelligence.</p>
+            <span style="font-size:12.5px;color:#8B5CF6">View case study &rarr;</span>
+          </div></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-sect data-pad style="padding:110px 72px;max-width:1440px;margin:0 auto;display:flex;flex-direction:column;gap:48px;background:#0B0B0E;border-top:1px solid rgba(248,250,252,.06);border-bottom:1px solid rgba(248,250,252,.06)">
+  <div data-cols style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Web design &amp; development &mdash; our primary service</div>
+      <h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:52px;font-weight:600;letter-spacing:-0.03em;line-height:1.06">Connected services for a stronger digital presence.</h2>
+      <p data-lead data-rv style="margin:0;font-size:16.5px;line-height:1.75;color:#A1A1AA;max-width:520px">From the first strategic decision to launch and ongoing support, every service is designed to work as part of one clear and cohesive system.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:4px"><span style="padding:9px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.12);font-size:12.5px;color:#A1A1AA">Landing pages</span><span style="padding:9px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.12);font-size:12.5px;color:#A1A1AA">Corporate websites</span><span style="padding:9px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.12);font-size:12.5px;color:#A1A1AA">Professional services</span><span style="padding:9px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.12);font-size:12.5px;color:#A1A1AA">Portfolio</span><span style="padding:9px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.12);font-size:12.5px;color:#A1A1AA">Catalog</span><span style="padding:9px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.12);font-size:12.5px;color:#A1A1AA">Multilingual</span><span style="padding:9px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.12);font-size:12.5px;color:#A1A1AA">Conversion-focused</span><span style="padding:9px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.12);font-size:12.5px;color:#A1A1AA">Responsive on every device</span></div>
+      <div style="margin-top:8px"><a href="service-web-design-development.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;transition:background .25s ease,border-color .25s ease;text-align:center" style-hover="background:rgba(248,250,252,.05);border-color:rgba(248,250,252,.4);color:#F8FAFC">Explore Web Design &amp; Development</a></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="padding:28px 30px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;gap:22px;align-items:flex-start;transition:border-color .3s ease" style-hover="border-color:rgba(139,92,246,.4)"><span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6;padding-top:5px">01</span><div><h3 data-h3 style="margin:0 0 7px;font-family:Sora,sans-serif;font-size:22px;font-weight:600">Creative</h3><p style="margin:0;font-size:14.5px;color:#A1A1AA;line-height:1.65">A memorable visual identity aligned with the client&rsquo;s brand.</p></div></div><div style="padding:28px 30px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;gap:22px;align-items:flex-start;transition:border-color .3s ease" style-hover="border-color:rgba(139,92,246,.4)"><span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6;padding-top:5px">02</span><div><h3 data-h3 style="margin:0 0 7px;font-family:Sora,sans-serif;font-size:22px;font-weight:600">Strategic</h3><p style="margin:0;font-size:14.5px;color:#A1A1AA;line-height:1.65">Every page guides the visitor toward a clear action.</p></div></div><div style="padding:28px 30px;border-radius:22px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;gap:22px;align-items:flex-start;transition:border-color .3s ease" style-hover="border-color:rgba(139,92,246,.4)"><span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6;padding-top:5px">03</span><div><h3 data-h3 style="margin:0 0 7px;font-family:Sora,sans-serif;font-size:22px;font-weight:600">Custom</h3><p style="margin:0;font-size:14.5px;color:#A1A1AA;line-height:1.65">Built around the client&rsquo;s processes, content and objectives.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section data-sect data-pad style="padding:110px 72px;max-width:1440px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+  <div data-row style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px">
+    <div style="display:flex;flex-direction:column;gap:14px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Website packages &middot; one-time project price</div><h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:48px;font-weight:600;letter-spacing:-0.03em;line-height:1.08;max-width:620px">Clear packages for the website you need now.</h2></div>
+    <a href="pricing.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;transition:background .25s ease,border-color .25s ease;text-align:center" style-hover="background:rgba(248,250,252,.05);border-color:rgba(248,250,252,.4);color:#F8FAFC">Compare Website Packages</a>
+  </div>
+  <div data-cols style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:stretch">
+    <div style="position:relative;padding:32px 28px;border-radius:24px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:18px">
+      
+      <div style="display:flex;flex-direction:column;gap:8px"><h3 data-h3 style="margin:0;font-family:Sora,sans-serif;font-size:20px;font-weight:600">Essential</h3><div style="font-family:Sora,sans-serif;font-size:32px;font-weight:600;letter-spacing:-0.03em">US$800</div><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">Landing page or compact digital presence.</p></div>
+      <div style="display:flex;flex-direction:column;gap:9px;padding-top:16px;border-top:1px solid rgba(248,250,252,.08)"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Up to 3 pages</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Custom design</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Responsive design</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Contact form and WhatsApp</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Basic SEO</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Website publication</span></div></div>
+      <a href="contact.dc.html?package=essential" style="margin-top:auto;padding:14px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;text-align:center;font-size:13.5px;transition:transform .25s ease" style-hover="transform:translateY(-2px);color:#F8FAFC">Choose Essential</a>
+    </div><div style="position:relative;padding:32px 28px;border-radius:24px;background:#0E0E12;border:1px solid transparent;background-image:linear-gradient(#0E0E12,#0E0E12),linear-gradient(135deg,#2563FF,#8B5CF6);background-origin:border-box;background-clip:padding-box,border-box;display:flex;flex-direction:column;gap:18px">
+      <div style="position:absolute;top:-11px;left:28px;padding:5px 12px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6);font-size:10px;font-weight:600;letter-spacing:.08em">MOST POPULAR</div>
+      <div style="display:flex;flex-direction:column;gap:8px"><h3 data-h3 style="margin:0;font-family:Sora,sans-serif;font-size:20px;font-weight:600">Business</h3><div style="font-family:Sora,sans-serif;font-size:32px;font-weight:600;letter-spacing:-0.03em">US$1,000</div><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">A professional website designed to present the business and convert visitors.</p></div>
+      <div style="display:flex;flex-direction:column;gap:9px;padding-top:16px;border-top:1px solid rgba(248,250,252,.08)"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Up to 5 pages</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Custom UX</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Analytics</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>On-page SEO</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Two revision rounds</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Launch</span></div></div>
+      <a href="contact.dc.html?package=business" style="margin-top:auto;padding:14px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6);font-weight:600;text-align:center;font-size:13.5px;transition:transform .25s ease" style-hover="transform:translateY(-2px);color:#F8FAFC">Choose Business</a>
+    </div><div style="position:relative;padding:32px 28px;border-radius:24px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:18px">
+      
+      <div style="display:flex;flex-direction:column;gap:8px"><h3 data-h3 style="margin:0;font-family:Sora,sans-serif;font-size:20px;font-weight:600">Premium</h3><div style="font-family:Sora,sans-serif;font-size:32px;font-weight:600;letter-spacing:-0.03em">US$1,500</div><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">An advanced digital presence with expanded content and functionality.</p></div>
+      <div style="display:flex;flex-direction:column;gap:9px;padding-top:16px;border-top:1px solid rgba(248,250,252,.08)"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Up to 10 pages</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Blog or catalog</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Integrations</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Optional multilingual setup</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Advanced optimization</span></div></div>
+      <a href="contact.dc.html?package=premium" style="margin-top:auto;padding:14px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;text-align:center;font-size:13.5px;transition:transform .25s ease" style-hover="transform:translateY(-2px);color:#F8FAFC">Choose Premium</a>
+    </div><div style="position:relative;padding:32px 28px;border-radius:24px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:18px">
+      
+      <div style="display:flex;flex-direction:column;gap:8px"><h3 data-h3 style="margin:0;font-family:Sora,sans-serif;font-size:20px;font-weight:600">Custom</h3><div style="font-family:Sora,sans-serif;font-size:32px;font-weight:600;letter-spacing:-0.03em">Custom quote</div><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">For websites requiring advanced design, functionality, integrations or technical complexity.</p></div>
+      <div style="display:flex;flex-direction:column;gap:9px;padding-top:16px;border-top:1px solid rgba(248,250,252,.08)"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Design requirements</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Number of pages and content</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Integrations and functionality</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Technical complexity</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Custom systems</span></div></div>
+      <a href="contact.dc.html?package=custom-website" style="margin-top:auto;padding:14px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;text-align:center;font-size:13.5px;transition:transform .25s ease" style-hover="transform:translateY(-2px);color:#F8FAFC">Request a Custom Quote</a>
+    </div>
+  </div>
+  <div data-cols style="display:grid;grid-template-columns:2fr 1fr;gap:20px;margin-top:6px">
+    <div style="padding:28px 30px;border-radius:22px;background:#0B0B0E;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:14px">
+      <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#A1A1AA">Included in every website project</div>
+      <div data-cols style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px 24px"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Visual direction</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Responsive design</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Technical configuration</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Forms and calls to action</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Domain connection</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Two consolidated revision rounds</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Initial launch support</span></div></div>
+    </div>
+    <div style="padding:28px 30px;border-radius:22px;background:#0B0B0E;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:12px">
+      <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#A1A1AA">Payment structure</div>
+      <div style="font-size:14.5px;color:#F8FAFC;line-height:1.7">50% to begin<br>50% before launch</div>
+      <div style="font-size:13px;color:#A1A1AA;line-height:1.65">Final proposals are adjusted to scope, content and functionality.</div>
+    </div>
+  </div>
+</section>
+
+<section data-sect data-pad style="padding:110px 72px;max-width:1440px;margin:0 auto;display:flex;flex-direction:column;gap:40px;background:#0B0B0E;border-top:1px solid rgba(248,250,252,.06);border-bottom:1px solid rgba(248,250,252,.06)">
+  <div data-row style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px">
+    <div style="display:flex;flex-direction:column;gap:14px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">SEO growth &amp; maintenance &middot; monthly</div><h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:48px;font-weight:600;letter-spacing:-0.03em;line-height:1.08;max-width:560px">Keep growing after launch.</h2><p data-lead data-rv style="margin:0;font-size:16px;color:#A1A1AA;line-height:1.7;max-width:600px">Maintenance and SEO requirements vary with a website&rsquo;s size, technology, content and growth objectives. These are starting prices &mdash; the final monthly figure depends on your site.</p></div>
+    <a href="seo-growth-maintenance.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;transition:background .25s ease,border-color .25s ease;text-align:center" style-hover="background:rgba(248,250,252,.05);border-color:rgba(248,250,252,.4);color:#F8FAFC">Compare SEO &amp; Maintenance Plans</a>
+  </div>
+  <div data-cols style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch">
+    <a href="seo-growth-maintenance.dc.html#essential-care" style="position:relative;padding:34px 30px;border-radius:24px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:18px;transition:transform .3s ease,border-color .3s ease" style-hover="transform:translateY(-5px);border-color:rgba(139,92,246,.6);color:#F8FAFC">
+      
+      <div style="display:flex;flex-direction:column;gap:8px"><h3 data-h3 style="margin:0;font-family:Sora,sans-serif;font-size:21px;font-weight:600">Essential Care</h3><div style="font-family:Sora,sans-serif;font-size:28px;font-weight:600;letter-spacing:-0.03em">Starting at US$100<span style="font-family:Inter,sans-serif;font-size:13px;font-weight:400;color:#A1A1AA">/month</span></div><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6"><span style="color:#F8FAFC">Best for:</span> Small informational websites that need reliable technical care.</p></div>
+      <div style="display:flex;flex-direction:column;gap:9px;padding-top:16px;border-top:1px solid rgba(248,250,252,.08)"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Hosting and SSL when applicable</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Technical maintenance</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Backups</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Uptime monitoring</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Security checks</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Basic performance checks</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Minor website changes</span></div></div>
+      <span style="margin-top:auto;padding-top:14px;font-size:13.5px;color:#8B5CF6">View Essential Care &rarr;</span>
+    </a><a href="seo-growth-maintenance.dc.html#growth" style="position:relative;padding:34px 30px;border-radius:24px;background:#0E0E12;border:1px solid rgba(139,92,246,.45);display:flex;flex-direction:column;gap:18px;transition:transform .3s ease,border-color .3s ease" style-hover="transform:translateY(-5px);border-color:rgba(139,92,246,.6);color:#F8FAFC">
+      <div style="position:absolute;top:-11px;left:30px;padding:5px 12px;border-radius:999px;border:1px solid rgba(139,92,246,.5);background:#0E0E12;font-size:10px;letter-spacing:.08em;color:#8B5CF6">RECOMMENDED</div>
+      <div style="display:flex;flex-direction:column;gap:8px"><h3 data-h3 style="margin:0;font-family:Sora,sans-serif;font-size:21px;font-weight:600">Growth</h3><div style="font-family:Sora,sans-serif;font-size:28px;font-weight:600;letter-spacing:-0.03em">Starting at US$200<span style="font-family:Inter,sans-serif;font-size:13px;font-weight:400;color:#A1A1AA">/month</span></div><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6"><span style="color:#F8FAFC">Best for:</span> Businesses that want maintenance plus continuous SEO and performance improvement.</p></div>
+      <div style="display:flex;flex-direction:column;gap:9px;padding-top:16px;border-top:1px solid rgba(248,250,252,.08)"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Everything in Essential Care</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Ongoing on-page SEO</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Analytics monitoring</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Metadata improvements</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Search-performance review</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Performance optimization</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Monthly SEO and analytics summary</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Priority minor changes</span></div></div>
+      <span style="margin-top:auto;padding-top:14px;font-size:13.5px;color:#8B5CF6">View Growth &rarr;</span>
+    </a><a href="seo-growth-maintenance.dc.html#growth-pro" style="position:relative;padding:34px 30px;border-radius:24px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:18px;transition:transform .3s ease,border-color .3s ease" style-hover="transform:translateY(-5px);border-color:rgba(139,92,246,.6);color:#F8FAFC">
+      
+      <div style="display:flex;flex-direction:column;gap:8px"><h3 data-h3 style="margin:0;font-family:Sora,sans-serif;font-size:21px;font-weight:600">Growth Pro</h3><div style="font-family:Sora,sans-serif;font-size:28px;font-weight:600;letter-spacing:-0.03em">Starting at US$350<span style="font-family:Inter,sans-serif;font-size:13px;font-weight:400;color:#A1A1AA">/month</span></div><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6"><span style="color:#F8FAFC">Best for:</span> Larger or more competitive websites requiring proactive growth and deeper optimization.</p></div>
+      <div style="display:flex;flex-direction:column;gap:9px;padding-top:16px;border-top:1px solid rgba(248,250,252,.08)"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Everything in Growth</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Technical SEO reviews</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Keyword and content opportunity analysis</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Landing-page optimization</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Conversion-path review</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Advanced performance improvements</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Priority support</span></div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#A1A1AA;line-height:1.55"><span style="width:5px;height:5px;border-radius:99px;background:#8B5CF6;margin-top:7px;flex:none"></span><span>Quarterly optimization roadmap</span></div></div>
+      <span style="margin-top:auto;padding-top:14px;font-size:13.5px;color:#8B5CF6">View Growth Pro &rarr;</span>
+    </a>
+  </div>
+  <div style="font-size:13px;color:#A1A1AA;line-height:1.7;max-width:900px">Final monthly pricing depends on website size, platform, technical complexity, update frequency, SEO competition, content requirements, integrations and the level of support required. Domains, licenses, subscriptions and premium third-party services are quoted separately.</div>
+</section>
+
+<section data-sect data-pad style="padding:110px 72px;max-width:1440px;margin:0 auto;display:flex;flex-direction:column;gap:36px">
+  <div style="display:flex;flex-direction:column;gap:14px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Supporting services</div><h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:42px;font-weight:600;letter-spacing:-0.03em;line-height:1.08;max-width:640px">Capabilities that strengthen the website you already have.</h2></div>
+  <div style="display:flex;flex-direction:column;border-top:1px solid rgba(248,250,252,.09)">
+    <a href="service-website-redesign.dc.html" data-row style="display:flex;align-items:center;gap:28px;padding:26px 18px;border-bottom:1px solid rgba(248,250,252,.09);transition:background .3s ease,padding-left .3s ease" style-hover="background:rgba(248,250,252,.03);padding-left:30px;color:#F8FAFC">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11.5px;color:#8B5CF6;width:30px;flex:none">01</span>
+      <span data-h3 style="font-family:Sora,sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.02em;width:330px;flex:none">Website Redesign</span>
+      <span style="font-size:14px;color:#A1A1AA;flex:1;line-height:1.6">Visual modernization, content reorganization, better mobile experience and stronger conversion paths.</span>
+      <span style="width:32px;height:32px;border-radius:99px;border:1px solid rgba(248,250,252,.16);display:flex;align-items:center;justify-content:center;flex:none;font-size:13px;color:#8B5CF6">&rarr;</span>
+    </a><a href="service-crm-custom-systems.dc.html" data-row style="display:flex;align-items:center;gap:28px;padding:26px 18px;border-bottom:1px solid rgba(248,250,252,.09);transition:background .3s ease,padding-left .3s ease" style-hover="background:rgba(248,250,252,.03);padding-left:30px;color:#F8FAFC">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11.5px;color:#8B5CF6;width:30px;flex:none">02</span>
+      <span data-h3 style="font-family:Sora,sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.02em;width:330px;flex:none">CRM &amp; Custom Systems</span>
+      <span style="font-size:14px;color:#A1A1AA;flex:1;line-height:1.6">Dashboards, contacts, pipelines, calendars, reports, automations and integrations.</span>
+      <span style="width:32px;height:32px;border-radius:99px;border:1px solid rgba(248,250,252,.16);display:flex;align-items:center;justify-content:center;flex:none;font-size:13px;color:#8B5CF6">&rarr;</span>
+    </a><a href="service-seo-performance.dc.html" data-row style="display:flex;align-items:center;gap:28px;padding:26px 18px;border-bottom:1px solid rgba(248,250,252,.09);transition:background .3s ease,padding-left .3s ease" style-hover="background:rgba(248,250,252,.03);padding-left:30px;color:#F8FAFC">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11.5px;color:#8B5CF6;width:30px;flex:none">03</span>
+      <span data-h3 style="font-family:Sora,sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.02em;width:330px;flex:none">SEO &amp; Performance</span>
+      <span style="font-size:14px;color:#A1A1AA;flex:1;line-height:1.6">On-page structure, speed, indexing, analytics and continuous optimization.</span>
+      <span style="width:32px;height:32px;border-radius:99px;border:1px solid rgba(248,250,252,.16);display:flex;align-items:center;justify-content:center;flex:none;font-size:13px;color:#8B5CF6">&rarr;</span>
+    </a><a href="service-hosting-maintenance.dc.html" data-row style="display:flex;align-items:center;gap:28px;padding:26px 18px;border-bottom:1px solid rgba(248,250,252,.09);transition:background .3s ease,padding-left .3s ease" style-hover="background:rgba(248,250,252,.03);padding-left:30px;color:#F8FAFC">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11.5px;color:#8B5CF6;width:30px;flex:none">04</span>
+      <span data-h3 style="font-family:Sora,sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.02em;width:330px;flex:none">Hosting &amp; Maintenance</span>
+      <span style="font-size:14px;color:#A1A1AA;flex:1;line-height:1.6">SSL, monitoring, backups, technical support and minor changes.</span>
+      <span style="width:32px;height:32px;border-radius:99px;border:1px solid rgba(248,250,252,.16);display:flex;align-items:center;justify-content:center;flex:none;font-size:13px;color:#8B5CF6">&rarr;</span>
+    </a><a href="service-digital-branding.dc.html" data-row style="display:flex;align-items:center;gap:28px;padding:26px 18px;border-bottom:1px solid rgba(248,250,252,.09);transition:background .3s ease,padding-left .3s ease" style-hover="background:rgba(248,250,252,.03);padding-left:30px;color:#F8FAFC">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11.5px;color:#8B5CF6;width:30px;flex:none">05</span>
+      <span data-h3 style="font-family:Sora,sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.02em;width:330px;flex:none">Digital Branding</span>
+      <span style="font-size:14px;color:#A1A1AA;flex:1;line-height:1.6">Visual direction, logo systems, colour palettes and typography for a coherent presence.</span>
+      <span style="width:32px;height:32px;border-radius:99px;border:1px solid rgba(248,250,252,.16);display:flex;align-items:center;justify-content:center;flex:none;font-size:13px;color:#8B5CF6">&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<section data-sect data-pad style="position:relative;overflow:hidden;padding:110px 72px;max-width:1440px;margin:0 auto;display:flex;flex-direction:column;gap:36px">
+  <div data-row style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px">
+    <div style="display:flex;flex-direction:column;gap:14px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Our process</div><h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:48px;font-weight:600;letter-spacing:-0.03em;line-height:1.08;max-width:560px">A clear process from first idea to final experience.</h2></div>
+    <a href="process.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;transition:background .25s ease,border-color .25s ease;text-align:center" style-hover="background:rgba(248,250,252,.05);border-color:rgba(248,250,252,.4);color:#F8FAFC">Explore Our Process</a>
+  </div>
+  <div data-art="create-process-flow" data-higgsfield style="position:relative;height:210px;border-radius:24px;margin-bottom:-28px;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end;pointer-events:none">
+    <div style="padding:20px 22px;display:flex;flex-direction:column;gap:6px;max-width:520px">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">HIGGSFIELD — PROCESS FLOW</span>
+      <span style="font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#52525B">32:5 desktop · 21:9 tablet · 3:4 vertical mobile render required</span>
+    </div>
+  </div>
+  <div data-cols style="position:relative;z-index:2;display:grid;grid-template-columns:repeat(5,1fr);gap:16px">
+    <div style="padding:26px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:9px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">01</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:17px;font-weight:600">Discovery</h3><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">Goals, audience, scope, content and requirements.</p></div><div style="padding:26px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:9px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">02</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:17px;font-weight:600">Visual Direction</h3><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">Structure, references and the creative proposal.</p></div><div style="padding:26px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:9px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">03</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:17px;font-weight:600">Design &amp; Development</h3><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">Responsive design, pages, features and integrations.</p></div><div style="padding:26px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:9px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">04</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:17px;font-weight:600">Review</h3><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">Testing, content review and two consolidated revision rounds.</p></div><div style="padding:26px;border-radius:20px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:9px"><div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;color:#8B5CF6">05</div><h3 style="margin:0;font-family:Sora,sans-serif;font-size:17px;font-weight:600">Launch</h3><p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.6">Final QA, domain connection, publication and initial support.</p></div>
+  </div>
+  <div style="font-size:13.5px;color:#A1A1AA;line-height:1.7;max-width:760px">Typical project timeline: 2&ndash;4 weeks. The schedule begins once the initial payment and complete content have been received. Two consolidated revision rounds are included.</div>
+</section>
+
+<section data-sect data-pad data-cols style="padding:110px 72px;max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center">
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">About Create Studio</div>
+    <h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:44px;font-weight:600;letter-spacing:-0.03em;line-height:1.08">A website should represent the true value of your business.</h2>
+    <p data-lead data-rv style="margin:0;font-size:16.5px;line-height:1.75;color:#A1A1AA;max-width:520px">Create Studio is a digital studio in the Dominican Republic. We combine creativity with strategy: design decisions are argued from your commercial goals, technology is chosen for a reason, and every project is built custom rather than assembled from a template.</p>
+    <div style="margin-top:6px"><a href="about.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;transition:background .25s ease,border-color .25s ease;text-align:center" style-hover="background:rgba(248,250,252,.05);border-color:rgba(248,250,252,.4);color:#F8FAFC">About Create Studio</a></div>
+  </div>
+  <div data-art="create-about-gesture" data-higgsfield style="position:relative;height:520px;border-radius:28px;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end;pointer-events:none">
+    <div style="padding:20px 22px;display:flex;flex-direction:column;gap:6px;max-width:520px">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">HIGGSFIELD — ABOUT</span>
+      <span style="font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#52525B">4:5 desktop right-bleed · 16:9 tablet · 4:3 mobile · left 30% must fall to #09090B</span>
+    </div>
+  </div>
+</section>
+
+<section data-sect data-pad style="position:relative;overflow:hidden;padding:130px 72px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px">
+  <div data-art="create-contact-expansion" data-higgsfield style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:860px;height:860px;border-radius:50%;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end;pointer-events:none">
+    <div style="padding:20px 22px;display:flex;flex-direction:column;gap:6px;max-width:520px">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">HIGGSFIELD — CONTACT</span>
+      <span style="font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#52525B">1:1 centred · core 40% reserved for headline · no internal shape animation</span>
+    </div>
+  </div>
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:22px;max-width:780px">
+    <h2 data-h1 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:50px;font-weight:700;letter-spacing:-0.035em;line-height:1.07">Let&rsquo;s build the right digital experience for your business.</h2>
+    <p data-lead style="margin:0;font-size:17px;color:#A1A1AA;line-height:1.7;max-width:600px;text-wrap:pretty">Tell us what you are creating, improving or trying to solve. We will review your project and recommend the appropriate next step.</p>
+    <div data-row style="display:flex;gap:14px;margin-top:4px"><a href="contact.dc.html" data-btn-primary style="padding:16px 30px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6,#2563FF);font-weight:600;font-size:15px;text-align:center">Discuss Your Project</a><a href="work.dc.html" data-btn-ghost style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px;text-align:center">View Our Work</a></div>
+  </div>
+</section>
+</main>
+<dc-import name="Footer" hint-size="100%,620px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    this.root = document.querySelector('x-dc') || document.body;
+    this.observeReveals();
+    this.bindProcess();
+  }
+  componentWillUnmount(){ this.teardownMotion(); }
+
+  observeReveals(){
+    const root = this.root || document;
+    const els = root.querySelectorAll('[data-rv]');
+    if (!('IntersectionObserver' in window)) { els.forEach(e=>e.classList.add('csv-in')); return; }
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(!en.isIntersecting) return;
+        const el = en.target;
+        const sibs = el.parentElement ? [...el.parentElement.querySelectorAll('[data-rv]')] : [el];
+        const i = Math.max(0, sibs.indexOf(el));
+        el.style.animationDelay = Math.min(i*70, 280) + 'ms';
+        el.classList.add('csv-in');
+        io.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    els.forEach(e=>io.observe(e));
+  }
+  bindProcess(){
+    const root = this.root || document;
+    this.procs = [...root.querySelectorAll('[data-proc]')];
+    if (!this.procs.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      this.procs.forEach(w=>{
+        w.querySelectorAll('[data-proc-path]').forEach(p=>{ p.style.strokeDashoffset='0'; });
+        w.querySelectorAll('[data-proc-node]').forEach(n=>{ n.style.opacity='1'; });
+      });
+      return;
+    }
+    this.onScroll = () => {
+      this.procs.forEach(w=>{
+        if (!w.offsetParent) return;
+        const r = w.getBoundingClientRect();
+        const span = window.innerHeight * 0.85 + r.height;
+        const t = Math.max(0, Math.min(1, (window.innerHeight * 0.85 - r.top) / span));
+        w.querySelectorAll('[data-proc-path]').forEach(pp=>{ pp.style.strokeDashoffset = String(Math.round(1000 - t*1000)); });
+        const nodes = w.querySelectorAll('[data-proc-node]');
+        nodes.forEach((n,i)=>{
+          const on = t >= (i+0.4)/nodes.length;
+          n.style.opacity = on ? '1' : '.22';
+          n.style.transform = on ? 'scale(1.14)' : 'scale(1)';
+        });
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive:true });
+    window.addEventListener('resize', this.onScroll);
+    this.onScroll();
+  }
+  teardownMotion(){ if (this.onScroll){ window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onScroll); } }
+  renderVals(){ return {}; }
+}
+</script>
+</body>
+</html>

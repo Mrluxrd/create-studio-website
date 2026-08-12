@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Create Studio — Production Routes &amp; Metadata Specification</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#09090B;color:#F8FAFC;font-family:Inter,system-ui,sans-serif}
+h1,h2,h3{font-family:Sora,Inter,sans-serif}
+a{color:#8B5CF6;text-decoration:none}
+a:hover{color:#F8FAFC}
+*:focus-visible{outline:2px solid #8B5CF6;outline-offset:3px;border-radius:4px}
+@media(max-width:860px){[data-pad]{padding-left:22px !important;padding-right:22px !important}[data-cols]{grid-template-columns:1fr !important}[data-scrollx]{overflow-x:auto}}
+</style>
+</helmet>
+<main data-pad style="max-width:1180px;margin:0 auto;padding:80px 56px 120px;display:flex;flex-direction:column;gap:56px">
+
+<header style="display:flex;flex-direction:column;gap:16px">
+  <div style="font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Handoff specification</div>
+  <h1 style="margin:0;font-size:46px;font-weight:700;letter-spacing:-0.035em;line-height:1.05">Production routes &amp; page metadata</h1>
+  <p style="margin:0;font-size:16.5px;line-height:1.75;color:#A1A1AA;max-width:760px;text-wrap:pretty">The prototype uses hash routes so every page can be reviewed inside one file. They are <strong style="color:#F8FAFC">not</strong> the production URL structure. Claude Code must implement the production routes below with real server-side or framework routing.</p>
+  <div style="padding:20px 24px;border-radius:16px;background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.3);font-size:14px;line-height:1.75;color:#A1A1AA;max-width:820px">Canonical and Open Graph URLs currently use the placeholder origin <code style="color:#F8FAFC">https://PRODUCTION-DOMAIN.example</code>. Replace it everywhere once the official Create Studio domain is confirmed. Do not use the Claude preview address as a canonical domain.</div>
+</header>
+
+<section style="display:flex;flex-direction:column;gap:20px">
+  <h2 style="margin:0;font-size:28px;font-weight:600;letter-spacing:-0.02em">Route map</h2>
+  <div data-scrollx style="border-radius:18px;border:1px solid rgba(248,250,252,.09);overflow:hidden">
+    <div style="display:grid;grid-template-columns:1.1fr 1.1fr 1.4fr;gap:0;min-width:760px;font-size:13.5px">
+      <div style="padding:14px 18px;background:#0E0E12;font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8B5CF6">Prototype route</div>
+      <div style="padding:14px 18px;background:#0E0E12;font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8B5CF6">Production route</div>
+      <div style="padding:14px 18px;background:#0E0E12;font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8B5CF6">Page title</div>
+      <sc-for list="{{ routes }}" as="r" hint-placeholder-count="19">
+        <div style="padding:13px 18px;border-top:1px solid rgba(248,250,252,.07);color:#A1A1AA;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px">{{ r.hash }}</div>
+        <div style="padding:13px 18px;border-top:1px solid rgba(248,250,252,.07);color:#F8FAFC;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px">{{ r.prod }}</div>
+        <div style="padding:13px 18px;border-top:1px solid rgba(248,250,252,.07);color:#A1A1AA;line-height:1.6">{{ r.title }}</div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="display:flex;flex-direction:column;gap:20px">
+  <h2 style="margin:0;font-size:28px;font-weight:600;letter-spacing:-0.02em">Case-study routing requirements</h2>
+  <div data-cols style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+    <div style="padding:26px 28px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:12px">
+      <h3 style="margin:0;font-size:18px;font-weight:600">Four unique project routes</h3>
+      <div style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;line-height:2;color:#A1A1AA">/work/luxury-listings-dr<br>/work/joan-leonardo<br>/work/custom-real-estate-crm<br>/work/create-studio</div>
+    </div>
+    <div style="padding:26px 28px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:10px">
+      <h3 style="margin:0;font-size:18px;font-weight:600">Must be true in production</h3>
+      <div style="display:flex;flex-direction:column;gap:9px;font-size:13.5px;color:#A1A1AA;line-height:1.6">
+        <div>Direct route loading works from a cold request.</div>
+        <div>Refreshing any route re-renders that page, not the homepage.</div>
+        <div>Each route serves unique title, description, canonical and Open Graph values.</div>
+        <div>Previous / next project navigation stays in the fixed order above.</div>
+        <div>Back to Work returns to <code style="color:#F8FAFC">/work</code>.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="display:flex;flex-direction:column;gap:20px">
+  <h2 style="margin:0;font-size:28px;font-weight:600;letter-spacing:-0.02em">Metadata required on every page</h2>
+  <div data-cols style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+    <div style="padding:26px 28px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:10px">
+      <h3 style="margin:0;font-size:18px;font-weight:600">Tags</h3>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:13.5px;color:#A1A1AA;line-height:1.6">
+        <div><code style="color:#F8FAFC">&lt;title&gt;</code> — unique per route</div>
+        <div><code style="color:#F8FAFC">meta name="description"</code> — unique per route</div>
+        <div><code style="color:#F8FAFC">link rel="canonical"</code> — absolute, production origin</div>
+        <div><code style="color:#F8FAFC">og:title</code>, <code style="color:#F8FAFC">og:description</code>, <code style="color:#F8FAFC">og:url</code></div>
+        <div><code style="color:#F8FAFC">og:image</code> — 1200×630, absolute URL</div>
+        <div><code style="color:#F8FAFC">og:type</code> — <code style="color:#F8FAFC">website</code> site-wide, <code style="color:#F8FAFC">article</code> on case studies</div>
+        <div><code style="color:#F8FAFC">og:site_name</code> — Create Studio</div>
+        <div><code style="color:#F8FAFC">twitter:card</code> — summary_large_image</div>
+        <div><code style="color:#F8FAFC">html lang</code> — set per language version</div>
+      </div>
+    </div>
+    <div style="padding:26px 28px;border-radius:18px;background:#0B0B0E;border:1px solid rgba(139,92,246,.28);display:flex;flex-direction:column;gap:10px">
+      <h3 style="margin:0;font-size:18px;font-weight:600">Structured data limits</h3>
+      <p style="margin:0;font-size:13.5px;color:#A1A1AA;line-height:1.75">Only include structured data that represents visible, verified business information — organisation name, contact details, location and service descriptions that already appear on the page.</p>
+      <p style="margin:0;font-size:13.5px;color:#A1A1AA;line-height:1.75">Do not add review, rating, aggregate-rating, client-count, statistic or results markup. None of it is verified, and none of it appears on the site.</p>
+      <p style="margin:0;font-size:12.5px;color:#52525B;line-height:1.7">Social profile URLs are not yet confirmed. Omit <code style="color:#A1A1AA">sameAs</code> until Instagram and LinkedIn addresses are supplied.</p>
+    </div>
+  </div>
+</section>
+
+<section style="display:flex;flex-direction:column;gap:20px">
+  <h2 style="margin:0;font-size:28px;font-weight:600;letter-spacing:-0.02em">Contact prefill parameters</h2>
+  <div style="padding:26px 28px;border-radius:18px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:14px;font-size:13.5px;color:#A1A1AA;line-height:1.75">
+    <div><code style="color:#F8FAFC">?service=crm-custom-systems</code> — selects CRM or Custom System, shows <em>CRM or Custom System — Custom Quote</em>, reveals the CRM question set, disables the budget subtotal. Used by every CRM call to action.</div>
+    <div><code style="color:#F8FAFC">?package=essential | business | premium | custom-website | essential-care | growth | growth-pro | help-me-choose</code> — website and plan calls to action only.</div>
+    <div style="color:#52525B;font-size:12.5px">A CRM call to action must never pass <code>package=custom-website</code>. The visitor can still change the selected service after arriving.</div>
+  </div>
+</section>
+
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals(){
+    const rows = [
+      ['#/home','/','Create Studio — Digital experiences shaped with purpose'],
+      ['#/work','/work','Selected Work — Create Studio'],
+      ['#/work-luxury-listings-dr','/work/luxury-listings-dr','Luxury Listings DR — Luxury Real Estate Platform — Create Studio'],
+      ['#/work-joan-leonardo','/work/joan-leonardo','Joan Leonardo — Legal Website — Create Studio'],
+      ['#/work-custom-real-estate-crm','/work/custom-real-estate-crm','Custom Real Estate CRM — Custom Digital System — Create Studio'],
+      ['#/work-create-studio','/work/create-studio','Create Studio — Studio Website and Digital Brand — Create Studio'],
+      ['#/services','/services','Services — Create Studio'],
+      ['#/service-web-design-development','/services/web-design-development','Web Design & Development — Create Studio'],
+      ['#/service-website-redesign','/services/website-redesign','Website Redesign — Create Studio'],
+      ['#/service-crm-custom-systems','/services/crm-custom-systems','CRM & Custom Systems — Create Studio'],
+      ['#/service-seo-performance','/services/seo-performance','SEO & Performance — Create Studio'],
+      ['#/service-hosting-maintenance','/services/hosting-maintenance','Hosting & Maintenance — Create Studio'],
+      ['#/service-digital-branding','/services/digital-branding','Digital Branding — Create Studio'],
+      ['#/process','/process','Process — Create Studio'],
+      ['#/pricing','/pricing','Pricing — Create Studio'],
+      ['#/seo-growth-maintenance','/seo-growth-maintenance','SEO Growth & Maintenance Plans — Create Studio'],
+      ['#/about','/about','About — Create Studio'],
+      ['#/contact','/contact','Contact — Create Studio'],
+      ['#/privacy','/privacy','Privacy Policy — Create Studio']
+    ];
+    return { routes: rows.map(r => ({ hash: r[0], prod: r[1], title: r[2] })) };
+  }
+}
+</script>
+</body>
+</html>

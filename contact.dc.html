@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Contact — Create Studio</title>
+<meta name="description" content="Tell Create Studio what you want to achieve and receive a personalized proposal with scope, timeline and investment. Oscar Lauzardo, +1 829.778.6137.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#09090B; color:#F8FAFC; }
+  body { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; font-weight:400; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3,h4 { font-family: Sora, Inter, system-ui, sans-serif; font-weight:600; }
+  h1 { font-weight:700; }
+  button, input, select, textarea, label, a { font-family: Inter, system-ui, sans-serif; }
+
+  a { color:#F8FAFC; text-decoration:none; }
+  a:hover { color:#8B5CF6; }
+  *:focus-visible { outline:2px solid #8B5CF6; outline-offset:3px; border-radius:4px; }
+  input::placeholder, textarea::placeholder { color:#52525B; }
+  select option { background:#0E0E12; color:#F8FAFC; }
+  @keyframes csDrift { 0%{transform:translate3d(0,0,0) scale(1)} 50%{transform:translate3d(0,-14px,0) scale(1.02)} 100%{transform:translate3d(0,0,0) scale(1)} }
+  @keyframes csSpin { to { transform:rotate(360deg) } }
+  @media (max-width: 900px) {
+    [data-desk]{display:none !important}[data-mob]{display:flex !important}
+    [data-pad]{padding-left:22px !important;padding-right:22px !important}
+    [data-cols]{grid-template-columns:1fr !important}
+    [data-row]{flex-direction:column !important;align-items:flex-start !important}
+    [data-h1]{font-size:38px !important;line-height:1.05 !important}
+    [data-h2]{font-size:28px !important}[data-h3]{font-size:20px !important}[data-lead]{font-size:16px !important}
+    [data-hero]{padding-top:60px !important;padding-bottom:40px !important}
+    [data-sect]{padding-top:50px !important;padding-bottom:60px !important}
+    [data-artbleed]{position:relative !important;inset:auto !important;left:auto !important;right:auto !important;top:auto !important;bottom:auto !important;width:100% !important;height:220px !important;transform:none !important;margin:0 0 24px !important;border-radius:20px !important}
+  }
+@media (prefers-reduced-motion: reduce) {
+    *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+    [data-rv]{opacity:1 !important;animation:none !important}
+    [data-art] *{animation:none !important}
+    [data-travel]{stroke-dashoffset:0 !important}
+  }
+
+  /* motion tokens */
+  @keyframes csEmerge { from{opacity:0;transform:scale(.97)} to{opacity:1;transform:scale(1)} }
+  @keyframes csHeroDrift { 0%{transform:perspective(1400px) rotateY(0deg) rotateX(0deg) translate3d(0,0,0)} 50%{transform:perspective(1400px) rotateY(-2.4deg) rotateX(1.2deg) translate3d(-10px,-12px,0)} 100%{transform:perspective(1400px) rotateY(0deg) rotateX(0deg) translate3d(0,0,0)} }
+  @keyframes csTravel { from{stroke-dashoffset:var(--len,2600)} to{stroke-dashoffset:0} }
+  @keyframes csTrail { 0%{stroke-dashoffset:var(--len,2600);opacity:0} 12%{opacity:1} 88%{opacity:1} 100%{stroke-dashoffset:calc(var(--len,2600) * -1);opacity:0} }
+  @keyframes csLateral { 0%{transform:translateX(-2.5%)} 50%{transform:translateX(2.5%)} 100%{transform:translateX(-2.5%)} }
+  @keyframes csBreath { 0%,100%{opacity:.5;transform:scale(.985)} 50%{opacity:1;transform:scale(1.015)} }
+  @keyframes csPulseRing { 0%{opacity:.65;transform:scale(.9)} 70%{opacity:0;transform:scale(1.18)} 100%{opacity:0;transform:scale(1.18)} }
+  @keyframes csLift { 0%,100%{transform:translateY(6px)} 50%{transform:translateY(-8px)} }
+  @keyframes csGlowShift { 0%,100%{opacity:.55} 50%{opacity:.9} }
+  @keyframes csSettle { from{opacity:0;transform:translateY(14px) scale(.99)} to{opacity:1;transform:translateY(0) scale(1)} }
+  @keyframes csRevealUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes csSpin { to{transform:rotate(360deg)} }
+
+  /* scroll reveal */
+  [data-rv]{opacity:0}
+  [data-rv].csv-in{animation:csRevealUp .72s cubic-bezier(.22,.61,.36,1) both}
+  html.csv-nojs [data-rv]{opacity:1;animation:none}
+
+  a, button { -webkit-tap-highlight-color: transparent; }
+  [data-btn-primary]{background-size:170% 100%;background-position:0% 50%;transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .3s ease,background-position .5s ease}
+  [data-btn-primary]:hover{transform:translateY(-2px);background-position:100% 50%;box-shadow:0 14px 34px rgba(91,92,246,.34)}
+  [data-btn-primary]:active{transform:translateY(0);box-shadow:0 6px 16px rgba(91,92,246,.28)}
+  [data-btn-ghost]{transition:border-color .25s ease,background-color .25s ease,transform .25s ease}
+  [data-btn-ghost]:hover{border-color:rgba(248,250,252,.42);background-color:rgba(248,250,252,.05)}
+  [data-btn-ghost]:active{transform:translateY(1px)}
+
+
+  [data-mob-only]{display:none}
+  @media (max-width:900px){
+    [data-mob-only]{display:block !important}
+    [data-hide-mob]{display:none !important}
+    [data-art]{filter:none}
+    [data-art="create-process-flow"]{position:relative !important;height:420px !important;margin:0 0 24px !important}
+  }
+</style>
+</helmet>
+<dc-import name="Header" active="contact" hint-size="100%,74px"></dc-import>
+<main>
+<section data-hero data-pad style="position:relative;overflow:hidden;padding:100px 72px 60px;max-width:1440px;margin:0 auto">
+  <div data-art="create-contact-expansion" data-higgsfield style="position:absolute;top:-160px;right:-160px;width:700px;height:700px;border-radius:36px;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end;pointer-events:none">
+    <div style="padding:20px 22px;display:flex;flex-direction:column;gap:6px;max-width:480px">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">HIGGSFIELD — CONTACT</span>
+      <span style="font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#52525B">1:1 desktop corner crop · 16:9 mobile band · no moving detail behind form fields</span>
+    </div>
+  </div>
+<div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:20px;max-width:720px">
+    <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Contact</div>
+    <h1 data-h1 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:62px;font-weight:700;letter-spacing:-0.035em;line-height:1.03">Let&rsquo;s talk about your project.</h1>
+    <p data-lead data-rv style="margin:0;font-size:18px;line-height:1.75;color:#A1A1AA;max-width:620px;text-wrap:pretty">Tell us what you are creating, improving or trying to solve. We will review your project and recommend the appropriate next step, with the scope, timeline and investment set out in writing.</p>
+  </div>
+</section>
+
+<section data-sect data-pad data-cols style="max-width:1440px;margin:0 auto;padding:40px 72px 110px;display:grid;grid-template-columns:1.5fr 1fr;gap:44px;align-items:start">
+  <div style="padding:44px;border-radius:28px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)">
+    <form data-form novalidate onSubmit="{{submit}}" style="display:flex;flex-direction:column;gap:22px">
+      <h2 data-h2 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:26px;font-weight:600;letter-spacing:-0.02em">Project inquiry</h2>
+      <div data-summary role="alert" style="display:none;padding:14px 16px;border-radius:14px;border:1px solid rgba(248,113,113,.4);background:rgba(248,113,113,.08);font-size:13.5px;color:#F87171"></div>
+      <div data-cols style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+        <div style="display:flex;flex-direction:column">
+  <label for="name" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Name <span style="color:#8B5CF6">*</span></label>
+  <input id="name" name="name" type="text" placeholder="Your full name" aria-required="true" aria-describedby="name-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease" style-focus="border-color:#8B5CF6">
+  <div id="name-error" data-error-for="name" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div>
+</div>
+        <div style="display:flex;flex-direction:column">
+  <label for="company" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Company</label>
+  <input id="company" name="company" type="text" placeholder="Business name"  aria-describedby="company-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease" style-focus="border-color:#8B5CF6">
+  <div id="company-error" data-error-for="company" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div>
+</div>
+        <div style="display:flex;flex-direction:column">
+  <label for="email" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Email <span style="color:#8B5CF6">*</span></label>
+  <input id="email" name="email" type="email" placeholder="you@company.com" aria-required="true" aria-describedby="email-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease" style-focus="border-color:#8B5CF6">
+  <div id="email-error" data-error-for="email" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div>
+</div>
+        <div style="display:flex;flex-direction:column">
+  <label for="phone" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Phone or WhatsApp</label>
+  <input id="phone" name="phone" type="tel" placeholder="+1 809 000 0000"  aria-describedby="phone-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease" style-focus="border-color:#8B5CF6">
+  <div id="phone-error" data-error-for="phone" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div>
+</div>
+      </div>
+      <div style="display:flex;flex-direction:column">
+  <label for="website" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Existing website</label>
+  <input id="website" name="website" type="url" placeholder="https://"  aria-describedby="website-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease" style-focus="border-color:#8B5CF6">
+  <div id="website-error" data-error-for="website" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div>
+</div>
+      <div data-cols style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+        <div style="display:flex;flex-direction:column">
+  <label for="projectType" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Project type <span style="color:#8B5CF6">*</span></label>
+  <select id="projectType" name="projectType" aria-required="true" aria-describedby="projectType-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#A1A1AA 50%),linear-gradient(135deg,#A1A1AA 50%,transparent 50%);background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px;background-size:6px 6px,6px 6px;background-repeat:no-repeat" style-focus="border-color:#8B5CF6">
+    <option value="">Select a project type</option><option value="New Website">New Website</option><option value="Website Redesign">Website Redesign</option><option value="CRM or Custom System">CRM or Custom System</option><option value="Digital Branding">Digital Branding</option><option value="SEO &amp; Performance">SEO &amp; Performance</option><option value="Hosting &amp; Maintenance">Hosting &amp; Maintenance</option><option value="Multiple Services">Multiple Services</option><option value="Other">Other</option>
+  </select>
+  <div id="projectType-error" data-error-for="projectType" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div>
+</div>
+        <div style="display:flex;flex-direction:column">
+  <label for="package" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Selected package</label>
+  <select id="package" name="package"  aria-describedby="package-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#A1A1AA 50%),linear-gradient(135deg,#A1A1AA 50%,transparent 50%);background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px;background-size:6px 6px,6px 6px;background-repeat:no-repeat" style-focus="border-color:#8B5CF6">
+    <option value="">Select if you already know</option><option value="essential">Essential — US$800</option><option value="business">Business — US$1,000</option><option value="premium">Premium — US$1,500</option><option value="custom-website">Custom Website Quote</option>
+      <option value="crm-custom-quote">CRM or Custom System — Custom Quote</option><option value="essential-care">Essential Care — from US$100/month</option><option value="growth">Growth — from US$200/month</option><option value="growth-pro">Growth Pro — from US$350/month</option><option value="help-me-choose">Help Me Choose</option>
+  </select>
+  <div id="package-error" data-error-for="package" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div>
+</div>
+        <div style="display:flex;flex-direction:column">
+  <label for="budget" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Estimated budget</label>
+  <select id="budget" name="budget"  aria-describedby="budget-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#A1A1AA 50%),linear-gradient(135deg,#A1A1AA 50%,transparent 50%);background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px;background-size:6px 6px,6px 6px;background-repeat:no-repeat" style-focus="border-color:#8B5CF6">
+    <option value="">Select a range</option><option value="Under US$800">Under US$800</option><option value="US$800 – US$1,000">US$800 – US$1,000</option><option value="US$1,000 – US$1,500">US$1,000 – US$1,500</option><option value="US$1,500 – US$3,000">US$1,500 – US$3,000</option><option value="US$3,000+">US$3,000+</option><option value="Monthly plan only">Monthly plan only</option><option value="Not sure yet">Not sure yet</option>
+  </select>
+  <div id="budget-error" data-error-for="budget" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div>
+</div>
+        <div style="display:flex;flex-direction:column">
+  <label for="timeline" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Desired timeline</label>
+  <select id="timeline" name="timeline"  aria-describedby="timeline-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#A1A1AA 50%),linear-gradient(135deg,#A1A1AA 50%,transparent 50%);background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px;background-size:6px 6px,6px 6px;background-repeat:no-repeat" style-focus="border-color:#8B5CF6">
+    <option value="">Select a timeline</option><option value="As soon as possible">As soon as possible</option><option value="Within 1 month">Within 1 month</option><option value="1–3 months">1–3 months</option><option value="3+ months">3+ months</option><option value="Just exploring">Just exploring</option>
+  </select>
+  <div id="timeline-error" data-error-for="timeline" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div>
+</div>
+      </div>
+      <div data-crm-fields style="display:none;flex-direction:column;gap:20px;padding:28px;border-radius:20px;background:#0B0B0E;border:1px solid rgba(139,92,246,.28)">
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <h3 style="margin:0;font-family:Sora,sans-serif;font-size:19px;font-weight:600">CRM &amp; Custom Systems &mdash; Custom Quote</h3>
+    <p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.7">Based on the approved features, workflows, users, integrations, data requirements, infrastructure and overall system complexity. A few questions help us understand the project.</p>
+  </div>
+  <div style="display:flex;flex-direction:column">
+  <label for="crmType" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">What type of system do you need?</label>
+  <select id="crmType" name="crmType" aria-describedby="crmType-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#A1A1AA 50%),linear-gradient(135deg,#A1A1AA 50%,transparent 50%);background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px;background-size:6px 6px,6px 6px;background-repeat:no-repeat" style-focus="border-color:#8B5CF6">
+    <option value="Select an option">Select an option</option><option value="CRM">CRM</option><option value="Internal Management System">Internal Management System</option><option value="Client Portal">Client Portal</option><option value="Sales or Lead Management System">Sales or Lead Management System</option><option value="Property or Inventory Management System">Property or Inventory Management System</option><option value="Workflow Automation System">Workflow Automation System</option><option value="Custom Dashboard">Custom Dashboard</option><option value="Other">Other</option><option value="I’m not sure">I’m not sure</option>
+  </select><div id="crmType-error" data-error-for="crmType" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div></div>
+  <div style="display:flex;flex-direction:column">
+  <label for="crmGoal" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">What would you like the system to help you manage or improve?</label>
+  <textarea id="crmGoal" name="crmGoal" rows="4" placeholder="Describe the process you are trying to organize or replace." style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;resize:vertical;line-height:1.6" style-focus="border-color:#8B5CF6"></textarea></div>
+  <fieldset style="border:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
+  <legend style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px;padding:0">Which functions do you think you need?</legend>
+  <div style="display:flex;flex-wrap:wrap;gap:9px">
+    <label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="Contacts or Clients" style="accent-color:#8B5CF6;width:15px;height:15px">Contacts or Clients</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="Leads and Sales Pipeline" style="accent-color:#8B5CF6;width:15px;height:15px">Leads and Sales Pipeline</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="Tasks and Follow-Ups" style="accent-color:#8B5CF6;width:15px;height:15px">Tasks and Follow-Ups</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="Properties or Inventory" style="accent-color:#8B5CF6;width:15px;height:15px">Properties or Inventory</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="Documents and Files" style="accent-color:#8B5CF6;width:15px;height:15px">Documents and Files</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="Calendar or Appointments" style="accent-color:#8B5CF6;width:15px;height:15px">Calendar or Appointments</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="Dashboards and Reports" style="accent-color:#8B5CF6;width:15px;height:15px">Dashboards and Reports</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="Workflow Automations" style="accent-color:#8B5CF6;width:15px;height:15px">Workflow Automations</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="Notifications" style="accent-color:#8B5CF6;width:15px;height:15px">Notifications</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="User Roles and Permissions" style="accent-color:#8B5CF6;width:15px;height:15px">User Roles and Permissions</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="External Integrations" style="accent-color:#8B5CF6;width:15px;height:15px">External Integrations</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="Other" style="accent-color:#8B5CF6;width:15px;height:15px">Other</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="I’m not sure yet" style="accent-color:#8B5CF6;width:15px;height:15px">I’m not sure yet</label>
+  </div></fieldset>
+  <div data-cols style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+    <div style="display:flex;flex-direction:column">
+  <label for="crmUsers" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Who will use the system?</label>
+  <select id="crmUsers" name="crmUsers" aria-describedby="crmUsers-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#A1A1AA 50%),linear-gradient(135deg,#A1A1AA 50%,transparent 50%);background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px;background-size:6px 6px,6px 6px;background-repeat:no-repeat" style-focus="border-color:#8B5CF6">
+    <option value="Select an option">Select an option</option><option value="Only me">Only me</option><option value="A small team">A small team</option><option value="Multiple departments">Multiple departments</option><option value="Employees and clients">Employees and clients</option><option value="I’m not sure yet">I’m not sure yet</option>
+  </select><div id="crmUsers-error" data-error-for="crmUsers" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div></div>
+    <div style="display:flex;flex-direction:column">
+  <label for="crmUserCount" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Approximately how many users will need access?</label>
+  <input id="crmUserCount" name="crmUserCount" type="text" placeholder="e.g. 5" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease" style-focus="border-color:#8B5CF6"></div>
+    <div style="display:flex;flex-direction:column">
+  <label for="crmExisting" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Are you currently using another CRM or system?</label>
+  <select id="crmExisting" name="crmExisting" aria-describedby="crmExisting-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#A1A1AA 50%),linear-gradient(135deg,#A1A1AA 50%,transparent 50%);background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px;background-size:6px 6px,6px 6px;background-repeat:no-repeat" style-focus="border-color:#8B5CF6">
+    <option value="Select an option">Select an option</option><option value="Yes">Yes</option><option value="No">No</option><option value="I’m not sure">I’m not sure</option>
+  </select><div id="crmExisting-error" data-error-for="crmExisting" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div></div>
+    <div style="display:flex;flex-direction:column">
+  <label for="crmMigration" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Do you need information migrated from an existing system?</label>
+  <select id="crmMigration" name="crmMigration" aria-describedby="crmMigration-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#A1A1AA 50%),linear-gradient(135deg,#A1A1AA 50%,transparent 50%);background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px;background-size:6px 6px,6px 6px;background-repeat:no-repeat" style-focus="border-color:#8B5CF6">
+    <option value="Select an option">Select an option</option><option value="Yes">Yes</option><option value="No">No</option><option value="I’m not sure">I’m not sure</option>
+  </select><div id="crmMigration-error" data-error-for="crmMigration" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div></div>
+  </div>
+  <div data-crm-existing style="display:none"><div style="display:flex;flex-direction:column">
+  <label for="crmExistingDetail" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">What system are you currently using, and what would you like to improve or replace?</label>
+  <textarea id="crmExistingDetail" name="crmExistingDetail" rows="4" placeholder="Current tool and what is not working." style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;resize:vertical;line-height:1.6" style-focus="border-color:#8B5CF6"></textarea></div></div>
+  <div style="display:flex;flex-direction:column">
+  <label for="crmIntegrations" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Do you need the system to connect with tools you already use?</label>
+  <select id="crmIntegrations" name="crmIntegrations" aria-describedby="crmIntegrations-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#A1A1AA 50%),linear-gradient(135deg,#A1A1AA 50%,transparent 50%);background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px;background-size:6px 6px,6px 6px;background-repeat:no-repeat" style-focus="border-color:#8B5CF6">
+    <option value="Select an option">Select an option</option><option value="Yes">Yes</option><option value="No">No</option><option value="I’m not sure">I’m not sure</option>
+  </select><div id="crmIntegrations-error" data-error-for="crmIntegrations" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div></div>
+  <div data-crm-integrations style="display:none"><div style="display:flex;flex-direction:column">
+  <label for="crmIntegrationDetail" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Which tools or services should the system connect with?</label>
+  <textarea id="crmIntegrationDetail" name="crmIntegrationDetail" rows="4" placeholder="We review compatibility before confirming any integration." style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;resize:vertical;line-height:1.6" style-focus="border-color:#8B5CF6"></textarea></div></div>
+  <div style="display:flex;flex-direction:column">
+  <label for="crmAssets" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Do you already own a domain or hosting account for this project?</label>
+  <select id="crmAssets" name="crmAssets" aria-describedby="crmAssets-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#A1A1AA 50%),linear-gradient(135deg,#A1A1AA 50%,transparent 50%);background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px;background-size:6px 6px,6px 6px;background-repeat:no-repeat" style-focus="border-color:#8B5CF6">
+    <option value="Select an option">Select an option</option><option value="I own both">I own both</option><option value="I own a domain only">I own a domain only</option><option value="I own hosting only">I own hosting only</option><option value="I do not own either">I do not own either</option><option value="I’m not sure">I’m not sure</option>
+  </select><div id="crmAssets-error" data-error-for="crmAssets" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div></div>
+  <p style="margin:0;font-size:12.5px;line-height:1.75;color:#52525B">Existing domain and hosting services must be reviewed before their suitability can be confirmed. If new services are required, they will be purchased and registered under the client&rsquo;s name.</p>
+  <div style="display:flex;flex-direction:column">
+  <label for="crmNotes" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Is there anything else Create Studio should understand about your project?</label>
+  <textarea id="crmNotes" name="crmNotes" rows="4" placeholder="Anything that affects scope, timing or technical requirements." style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;resize:vertical;line-height:1.6" style-focus="border-color:#8B5CF6"></textarea></div>
+  <p style="margin:0;font-size:12.5px;line-height:1.8;color:#A1A1AA;padding-top:14px;border-top:1px solid rgba(248,250,252,.08)">The information provided will help Create Studio understand your project. CRM &amp; Custom Systems are individually scoped and quoted. This submission is a project inquiry and does not constitute a final price or confirmed technical scope. Create Studio will review the requirements before preparing a custom proposal.</p>
+  <p style="margin:0;font-size:12px;line-height:1.7;color:#52525B">Never send passwords, API keys, access tokens or account credentials through this form.</p>
+</div>
+      <div style="display:flex;flex-direction:column">
+        <label for="description" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Project description <span style="color:#8B5CF6">*</span></label>
+        <textarea id="description" name="description" rows="5" placeholder="What does the business do, and what should the project achieve?" aria-required="true" aria-describedby="description-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;resize:vertical;line-height:1.6" style-focus="border-color:#8B5CF6"></textarea>
+        <div id="description-error" data-error-for="description" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div>
+      </div>
+      <div style="display:flex;flex-direction:column">
+  <label for="source" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">How did you hear about Create Studio?</label>
+  <select id="source" name="source"  aria-describedby="source-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#A1A1AA 50%),linear-gradient(135deg,#A1A1AA 50%,transparent 50%);background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px;background-size:6px 6px,6px 6px;background-repeat:no-repeat" style-focus="border-color:#8B5CF6">
+    <option value="">Select an option</option><option value="Referral">Referral</option><option value="Instagram">Instagram</option><option value="LinkedIn">LinkedIn</option><option value="Google search">Google search</option><option value="Existing client">Existing client</option><option value="Other">Other</option>
+  </select>
+  <div id="source-error" data-error-for="source" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div>
+</div>
+      <button data-submit type="submit" style="margin-top:6px;padding:17px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6);color:#F8FAFC;font-family:Inter,sans-serif;font-weight:600;font-size:15px;border:none;cursor:pointer;min-height:56px;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .25s ease,box-shadow .25s ease" style-hover="transform:translateY(-2px);box-shadow:0 16px 40px rgba(91,92,246,.4)">
+        <span data-spinner style="display:none;width:16px;height:16px;border-radius:99px;border:2px solid rgba(248,250,252,.35);border-top-color:#F8FAFC;animation:csSpin .8s linear infinite"></span>
+        <span data-submit-label>Send project inquiry</span>
+      </button>
+      <p style="margin:0;font-size:12.5px;color:#A1A1AA;line-height:1.7">Your details are used only to respond to this inquiry and prepare a proposal. We never sell or share them. See the <a href="privacy.dc.html" style="color:#8B5CF6">Privacy Policy</a>.</p>
+    </form>
+    <div data-success role="status" style="display:none;flex-direction:column;gap:16px;padding:40px;border-radius:22px;border:1px solid rgba(139,92,246,.4);background:linear-gradient(120deg,rgba(37,99,255,.1),rgba(139,92,246,.06));text-align:center">
+      <div style="width:48px;height:48px;border-radius:99px;background:linear-gradient(90deg,#2563FF,#8B5CF6);display:flex;align-items:center;justify-content:center;align-self:center;font-size:22px">&#10003;</div>
+      <h2 data-h3 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:24px;font-weight:600">Inquiry sent.</h2>
+      <p style="margin:0;font-size:14.5px;color:#A1A1AA;line-height:1.75">Thank you &mdash; we have your details and will follow up personally. Expected response time: [to supply]. If it is urgent, write on WhatsApp at <a href="https://wa.me/18297786137" style="color:#8B5CF6">+1 829.778.6137</a>.</p>
+      <button data-reset type="button" onClick="{{reset}}" style="align-self:center;margin-top:6px;padding:13px 26px;border-radius:999px;border:1px solid rgba(248,250,252,.18);background:transparent;color:#F8FAFC;font-family:Inter,sans-serif;font-size:14px;cursor:pointer;min-height:44px">Send another inquiry</button>
+    </div>
+    <div data-failure role="alert" style="display:none;flex-direction:column;gap:14px;padding:36px;border-radius:22px;border:1px solid rgba(248,113,113,.4);background:rgba(248,113,113,.06)">
+      <h2 data-h3 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:22px;font-weight:600">That did not send.</h2>
+      <p style="margin:0;font-size:14.5px;color:#A1A1AA;line-height:1.75">Something went wrong on our side. Please try again, or write directly to <a href="mailto:lauzardo1991@gmail.com" style="color:#8B5CF6">lauzardo1991@gmail.com</a>.</p>
+      <button type="button" onClick="{{retry}}" style="align-self:flex-start;padding:13px 26px;border-radius:999px;border:1px solid rgba(248,250,252,.18);background:transparent;color:#F8FAFC;font-family:Inter,sans-serif;font-size:14px;cursor:pointer;min-height:44px">Try again</button>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <div style="padding:34px;border-radius:26px;background:#0B0B0E;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:16px">
+      <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Direct contact</div>
+      <div style="display:flex;flex-direction:column;gap:14px;font-size:15px;line-height:1.7">
+        <div><div style="color:#A1A1AA;font-size:12.5px;margin-bottom:3px">Studio contact</div>Oscar Lauzardo</div>
+        <div><div style="color:#A1A1AA;font-size:12.5px;margin-bottom:3px">Phone / WhatsApp</div><a href="tel:+18297786137" style="color:#F8FAFC">+1 829.778.6137</a></div>
+        <div><div style="color:#A1A1AA;font-size:12.5px;margin-bottom:3px">Email</div><a href="mailto:lauzardo1991@gmail.com" style="color:#F8FAFC">lauzardo1991@gmail.com</a></div>
+        <div><div style="color:#A1A1AA;font-size:12.5px;margin-bottom:3px">Location</div>Santo Domingo, Dominican Republic</div>
+        <div><div style="color:#A1A1AA;font-size:12.5px;margin-bottom:3px">Languages</div>Español and English</div>
+      </div>
+      <a href="https://wa.me/18297786137" style="margin-top:4px;padding:15px;border-radius:999px;border:1px solid rgba(248,250,252,.16);text-align:center;font-size:14.5px;font-weight:500;min-height:48px;display:flex;align-items:center;justify-content:center" style-hover="background:rgba(248,250,252,.05);color:#F8FAFC">Message on WhatsApp</a>
+    </div>
+    <div style="padding:30px 34px;border-radius:26px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:10px">
+      <h2 data-h3 data-rv style="margin:0;font-family:Sora,sans-serif;font-size:18px;font-weight:600">Response time</h2>
+      <p style="margin:0;font-size:13.5px;color:#A1A1AA;line-height:1.75">[Expected response time to supply.] Every inquiry is answered personally &mdash; there is no automated pipeline.</p>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="Footer" hint-size="100%,620px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    this.root = document.querySelector('x-dc') || document.body;
+    this.observeReveals();
+    this.bindCrm();
+    this.bindProcess();
+    const p = new URLSearchParams(location.search).get('package');
+    if (p) {
+      const sel = this.root.querySelector('#package');
+      if (sel && [...sel.options].some(o => o.value === p)) {
+        sel.value = p;
+        sel.style.borderColor = 'rgba(139,92,246,.6)';
+        const type = this.root.querySelector('#projectType');
+        const map = { 'crm-custom-quote':'CRM or Custom System', essential:'New Website', business:'New Website', premium:'New Website', 'custom-website':'Other', 'essential-care':'Hosting & Maintenance', growth:'SEO & Performance', 'growth-pro':'SEO & Performance' };
+        if (type && map[p]) { const m = [...type.options].find(o => o.value === map[p]); if (m) type.value = m.value; }
+      if (this.syncCrm) this.syncCrm();
+      }
+    }
+  }
+  preselect(p){
+    if (!p) return;
+    const sel = this.root.querySelector('#package');
+    if (sel && [...sel.options].some(o => o.value === p)) {
+      sel.value = p;
+      sel.style.borderColor = 'rgba(139,92,246,.6)';
+      sel.style.boxShadow = '0 0 0 3px rgba(139,92,246,.14)';
+      setTimeout(()=>{ sel.style.boxShadow='none'; }, 1600);
+      const type = this.root.querySelector('#projectType');
+      const map = { 'crm-custom-quote':'CRM or Custom System', essential:'New Website', business:'New Website', premium:'New Website', 'custom-website':'Other', 'essential-care':'Hosting & Maintenance', growth:'SEO & Performance', 'growth-pro':'SEO & Performance' };
+      if (type && map[p]) { const m = [...type.options].find(o => o.value === map[p]); if (m) type.value = m.value; }
+    }
+    if (this.syncCrm) this.syncCrm();
+  }
+  bindCrm(){
+    const type = this.root.querySelector('#projectType');
+    const pkg = this.root.querySelector('#package');
+    const panel = this.root.querySelector('[data-crm-fields]');
+    const budget = this.root.querySelector('#budget');
+    if (!type || !panel) return;
+    const isCrm = () => /CRM or Custom System/i.test(type.value) || (pkg && /crm-custom-quote/.test(pkg.value));
+    this.syncCrm = () => {
+      const on = isCrm();
+      panel.style.display = on ? 'flex' : 'none';
+      if (on) {
+        if (pkg && pkg.value !== 'crm-custom-quote') pkg.value = 'crm-custom-quote';
+        if (budget) { budget.value = ''; budget.disabled = true; budget.style.opacity = '.5'; }
+      } else if (budget) { budget.disabled = false; budget.style.opacity = '1'; }
+    };
+    type.addEventListener('change', this.syncCrm);
+    if (pkg) pkg.addEventListener('change', this.syncCrm);
+    const pair = (selId, boxSel) => {
+      const el = this.root.querySelector(selId), box = this.root.querySelector(boxSel);
+      if (!el || !box) return;
+      const upd = () => { box.style.display = el.value === 'Yes' ? 'block' : 'none'; };
+      el.addEventListener('change', upd); upd();
+    };
+    pair('#crmExisting','[data-crm-existing]');
+    pair('#crmIntegrations','[data-crm-integrations]');
+    this.syncCrm();
+  }
+  showError(id, msg){
+    const box = this.root.querySelector('[data-error-for="' + id + '"]');
+    const input = this.root.querySelector('#' + id);
+    if (box) { box.textContent = msg; box.style.display = 'block'; }
+    if (input) { input.style.borderColor = 'rgba(248,113,113,.7)'; input.setAttribute('aria-invalid','true'); }
+  }
+  clearError(id){
+    const box = this.root.querySelector('[data-error-for="' + id + '"]');
+    const input = this.root.querySelector('#' + id);
+    if (box) { box.textContent = ''; box.style.display = 'none'; }
+    if (input) { input.style.borderColor = 'rgba(248,250,252,.12)'; input.removeAttribute('aria-invalid'); }
+  }
+  validate(){
+    const v = id => (this.root.querySelector('#' + id) || {}).value || '';
+    const errors = [];
+    ['name','email','projectType','description'].forEach(id => this.clearError(id));
+    if (!v('name').trim()) { this.showError('name','Please tell us your name.'); errors.push('name'); }
+    const email = v('email').trim();
+    if (!email) { this.showError('email','We need an email to send the proposal.'); errors.push('email'); }
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { this.showError('email','That email address does not look complete.'); errors.push('email'); }
+    if (!v('projectType')) { this.showError('projectType','Choose the type of project.'); errors.push('projectType'); }
+    if (v('description').trim().length < 20) { this.showError('description','A sentence or two about the project helps us quote it properly.'); errors.push('description'); }
+    return errors;
+  }
+  submit = (e) => {
+    e.preventDefault();
+    const summary = this.root.querySelector('[data-summary]');
+    const errors = this.validate();
+    if (errors.length) {
+      if (summary) { summary.textContent = errors.length + ' field' + (errors.length > 1 ? 's need' : ' needs') + ' attention before this can be sent.'; summary.style.display = 'block'; }
+      const first = this.root.querySelector('#' + errors[0]);
+      if (first) first.focus();
+      return;
+    }
+    if (summary) summary.style.display = 'none';
+    const btn = this.root.querySelector('[data-submit]');
+    const spin = this.root.querySelector('[data-spinner]');
+    const label = this.root.querySelector('[data-submit-label]');
+    if (btn) { btn.disabled = true; btn.style.opacity = '.75'; btn.style.cursor = 'wait'; }
+    if (spin) spin.style.display = 'block';
+    if (label) label.textContent = 'Sending…';
+    setTimeout(() => {
+      if (spin) spin.style.display = 'none';
+      if (label) label.textContent = 'Send project inquiry';
+      if (btn) { btn.disabled = false; btn.style.opacity = '1'; btn.style.cursor = 'pointer'; }
+      const form = this.root.querySelector('[data-form]');
+      const ok = this.root.querySelector('[data-success]');
+      if (form) form.style.display = 'none';
+      if (ok) { ok.style.display = 'flex'; ok.focus && ok.focus(); }
+    }, 1400);
+  };
+  retry = () => {
+    const fail = this.root.querySelector('[data-failure]');
+    const form = this.root.querySelector('[data-form]');
+    if (fail) fail.style.display = 'none';
+    if (form) form.style.display = 'flex';
+  };
+  reset = () => {
+    const form = this.root.querySelector('[data-form]');
+    const ok = this.root.querySelector('[data-success]');
+    if (ok) ok.style.display = 'none';
+    if (form) { form.reset(); form.style.display = 'flex'; }
+  };
+  componentWillUnmount(){ this.teardownMotion(); }
+  observeReveals(){
+    const root = this.root || document;
+    const els = root.querySelectorAll('[data-rv]');
+    if (!('IntersectionObserver' in window)) { els.forEach(e=>e.classList.add('csv-in')); return; }
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(!en.isIntersecting) return;
+        const el = en.target;
+        const sibs = el.parentElement ? [...el.parentElement.querySelectorAll('[data-rv]')] : [el];
+        const i = Math.max(0, sibs.indexOf(el));
+        el.style.animationDelay = Math.min(i*70, 280) + 'ms';
+        el.classList.add('csv-in');
+        io.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    els.forEach(e=>io.observe(e));
+  }
+  bindProcess(){
+    const root = this.root || document;
+    this.procs = [...root.querySelectorAll('[data-proc]')];
+    if (!this.procs.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      this.procs.forEach(w=>{
+        w.querySelectorAll('[data-proc-path]').forEach(p=>{ p.style.strokeDashoffset='0'; });
+        w.querySelectorAll('[data-proc-node]').forEach(n=>{ n.style.opacity='1'; });
+      });
+      return;
+    }
+    this.onScroll = () => {
+      this.procs.forEach(w=>{
+        if (!w.offsetParent) return;
+        const r = w.getBoundingClientRect();
+        const span = window.innerHeight * 0.85 + r.height;
+        const t = Math.max(0, Math.min(1, (window.innerHeight * 0.85 - r.top) / span));
+        w.querySelectorAll('[data-proc-path]').forEach(pp=>{ pp.style.strokeDashoffset = String(Math.round(1000 - t*1000)); });
+        const nodes = w.querySelectorAll('[data-proc-node]');
+        nodes.forEach((n,i)=>{
+          const on = t >= (i+0.4)/nodes.length;
+          n.style.opacity = on ? '1' : '.22';
+          n.style.transform = on ? 'scale(1.14)' : 'scale(1)';
+        });
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive:true });
+    window.addEventListener('resize', this.onScroll);
+    this.onScroll();
+  }
+  teardownMotion(){ if (this.onScroll){ window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onScroll); } }
+  renderVals(){ return { submit: this.submit, retry: this.retry, reset: this.reset }; }
+}
+</script>
+</body>
+</html>
