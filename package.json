@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "check": "astro check",
     "verify:routes": "node scripts/verify-routes.mjs",
-    "verify:behaviour": "node scripts/verify-behaviour.mjs"
+    "verify:behaviour": "node scripts/verify-behaviour.mjs",
+    "verify:preview": "node scripts/capture-preview.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
