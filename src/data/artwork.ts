@@ -26,6 +26,25 @@ import serviceSeoPerformance from '../assets/services/service-seo-performance.pn
 import serviceHostingMaintenance from '../assets/services/service-hosting-maintenance.png';
 import serviceDigitalBranding from '../assets/services/service-digital-branding.png';
 
+import luxuryListingsPrimary from '../assets/work/case-study-luxury-listings-dr-primary.png';
+import luxuryListingsDetail from '../assets/work/case-study-luxury-listings-dr-detail.png';
+import joanLeonardoPrimary from '../assets/work/case-study-joan-leonardo-primary.png';
+import joanLeonardoDetail from '../assets/work/case-study-joan-leonardo-detail.png';
+import customCrmPrimary from '../assets/work/case-study-custom-real-estate-crm-primary.png';
+import customCrmDetail from '../assets/work/case-study-custom-real-estate-crm-detail.png';
+import createStudioPrimary from '../assets/work/case-study-create-studio-primary.png';
+import createStudioDetail from '../assets/work/case-study-create-studio-detail.png';
+
+/**
+ * Case-study placements render at very different sizes for the same asset —
+ * a 415px card in the /work grid and a 1296px band on the case-study page —
+ * so they carry their own variant widths rather than the service-card defaults.
+ */
+const PRIMARY_WIDTHS = [400, 700, 1100, 1440];
+const PRIMARY_SIZES = '(max-width: 900px) 92vw, 1300px';
+const DETAIL_WIDTHS = [360, 620, 900];
+const DETAIL_SIZES = '(max-width: 900px) 92vw, 620px';
+
 export interface ArtworkEntry {
   /**
    * Imported asset, processed by Astro's image pipeline (optimised, intrinsic
@@ -55,6 +74,13 @@ export interface ArtworkEntry {
    * `cover` fills the box and crops. Defaults to `cover`.
    */
   fit?: 'cover' | 'contain';
+  /**
+   * Responsive variants to generate, and the `sizes` hint describing how wide
+   * the placement renders. Defaults suit the small service cards; larger
+   * placements (the case-study bands) set their own.
+   */
+  widths?: number[];
+  sizes?: string;
   /** Suggested filename for the final asset, kept descriptive on purpose. */
   filename: string;
   /** What the placement is for — kept out of the rendered page. */
@@ -171,48 +197,98 @@ export const ARTWORK: Record<string, ArtworkEntry> = {
     note: 'Digital Branding card on /services. Square master, 1254x1254, near-black background by design.',
   },
 
-  /* --- case-study imagery ------------------------------------------------ */
-  // These communicate real project work, so they take meaningful alt text
-  // once the client-approved screenshots are supplied.
+  /* --- case-study imagery ------------------------------------------------
+   * These communicate real client work, so each carries meaningful alt text
+   * describing what is actually on screen.
+   *
+   * A project's primary asset is intentionally shared between its card in the
+   * /work grid and the lead band on its own case-study page, so no `routes`
+   * scoping is applied — both placements are approved and visible. The detail
+   * asset appears only on the case-study page.
+   *
+   * `fit: 'contain'` throughout: the masters range from 2.39:1 to 0.80:1 while
+   * the boxes range from 2.48:1 to 1.10:1, so `cover` would crop through
+   * devices and screens. The placement's own dark background fills the rest.
+   */
   'luxury-listings-dr-case-study': {
+    image: luxuryListingsPrimary,
+    alt: 'The Luxury Listings DR homepage on a laptop and phone, showing the luxury real estate hero and property search.',
     decorative: false,
-    filename: 'work-luxury-listings-dr-card.webp',
-    note: 'Luxury Listings DR — 16:9 card crop, focal centre-right.',
+    fit: 'contain',
+    widths: PRIMARY_WIDTHS,
+    sizes: PRIMARY_SIZES,
+    filename: 'case-study-luxury-listings-dr-primary.png',
+    note: 'Luxury Listings DR primary — /work card and case-study lead band. 1915x821.',
   },
   'luxury-listings-dr-case-study-detail': {
+    image: luxuryListingsDetail,
+    alt: 'Luxury Listings DR property search and market insight pages across laptop and phone screens.',
     decorative: false,
-    filename: 'work-luxury-listings-dr-detail.webp',
-    note: 'Luxury Listings DR — case-study detail image.',
+    fit: 'contain',
+    widths: DETAIL_WIDTHS,
+    sizes: DETAIL_SIZES,
+    filename: 'case-study-luxury-listings-dr-detail.png',
+    note: 'Luxury Listings DR detail — case-study secondary media. 1122x1402.',
   },
   'joan-leonardo-case-study': {
+    image: joanLeonardoPrimary,
+    alt: 'The Joan Leonardo & Asociados homepage on a laptop and phone, with the practice headline and introduction.',
     decorative: false,
-    filename: 'work-joan-leonardo-card.webp',
-    note: 'Joan Leonardo — 16:9 card crop.',
+    fit: 'contain',
+    widths: PRIMARY_WIDTHS,
+    sizes: PRIMARY_SIZES,
+    filename: 'case-study-joan-leonardo-primary.png',
+    note: 'Joan Leonardo primary — /work card and case-study lead band. 1915x821.',
   },
   'joan-leonardo-case-study-detail': {
+    image: joanLeonardoDetail,
+    alt: 'Joan Leonardo & Asociados services and legal news pages shown on laptop and phone screens.',
     decorative: false,
-    filename: 'work-joan-leonardo-detail.webp',
-    note: 'Joan Leonardo — case-study detail image.',
+    fit: 'contain',
+    widths: DETAIL_WIDTHS,
+    sizes: DETAIL_SIZES,
+    filename: 'case-study-joan-leonardo-detail.png',
+    note: 'Joan Leonardo detail — case-study secondary media. 1254x1254.',
   },
   'custom-real-estate-crm-case-study': {
+    image: customCrmPrimary,
+    alt: 'The Custom Real Estate CRM dashboard and reporting views shown on two laptops.',
     decorative: false,
-    filename: 'work-custom-real-estate-crm-card.webp',
-    note: 'Custom Real Estate CRM — 16:9 card crop.',
+    fit: 'contain',
+    widths: PRIMARY_WIDTHS,
+    sizes: PRIMARY_SIZES,
+    filename: 'case-study-custom-real-estate-crm-primary.png',
+    note: 'Custom Real Estate CRM primary — /work card and case-study lead band. 1915x821.',
   },
   'custom-real-estate-crm-case-study-detail': {
+    image: customCrmDetail,
+    alt: 'Custom Real Estate CRM calendar and commission tracking views on laptop screens.',
     decorative: false,
-    filename: 'work-custom-real-estate-crm-detail.webp',
-    note: 'Custom Real Estate CRM — case-study detail image.',
+    fit: 'contain',
+    widths: DETAIL_WIDTHS,
+    sizes: DETAIL_SIZES,
+    filename: 'case-study-custom-real-estate-crm-detail.png',
+    note: 'Custom Real Estate CRM detail — case-study secondary media. 1122x1402.',
   },
   'create-studio-case-study': {
+    image: createStudioPrimary,
+    alt: 'The Create Studio homepage on a laptop and phone, showing the Ideas that move business forward hero.',
     decorative: false,
-    filename: 'work-create-studio-card.webp',
-    note: 'Create Studio — 21:9 card crop.',
+    fit: 'contain',
+    widths: PRIMARY_WIDTHS,
+    sizes: PRIMARY_SIZES,
+    filename: 'case-study-create-studio-primary.png',
+    note: 'Create Studio primary — /work card and case-study lead band. 1939x811.',
   },
   'create-studio-case-study-detail': {
+    image: createStudioDetail,
+    alt: 'The Create Studio pricing and process pages on a laptop and phone.',
     decorative: false,
-    filename: 'work-create-studio-detail.webp',
-    note: 'Create Studio — case-study detail image.',
+    fit: 'contain',
+    widths: DETAIL_WIDTHS,
+    sizes: DETAIL_SIZES,
+    filename: 'case-study-create-studio-detail.png',
+    note: 'Create Studio detail — case-study secondary media. 1448x1086.',
   },
 };
 
