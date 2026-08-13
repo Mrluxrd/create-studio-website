@@ -19,31 +19,51 @@
 
 import type { ImageMetadata } from 'astro';
 
-import serviceWebDesignDevelopment from '../assets/services/service-web-design-development.png';
-import serviceWebsiteRedesign from '../assets/services/service-website-redesign.png';
-import serviceCrmCustomSystems from '../assets/services/service-crm-custom-systems.png';
-import serviceSeoPerformance from '../assets/services/service-seo-performance.png';
-import serviceHostingMaintenance from '../assets/services/service-hosting-maintenance.png';
-import serviceDigitalBranding from '../assets/services/service-digital-branding.png';
+import servicesHeroDeviceCluster from '../assets/hero/services-hero-device-cluster-1600x1200.png';
 
-import luxuryListingsPrimary from '../assets/work/case-study-luxury-listings-dr-primary.png';
-import luxuryListingsDetail from '../assets/work/case-study-luxury-listings-dr-detail.png';
-import joanLeonardoPrimary from '../assets/work/case-study-joan-leonardo-primary.png';
-import joanLeonardoDetail from '../assets/work/case-study-joan-leonardo-detail.png';
-import customCrmPrimary from '../assets/work/case-study-custom-real-estate-crm-primary.png';
-import customCrmDetail from '../assets/work/case-study-custom-real-estate-crm-detail.png';
-import createStudioPrimary from '../assets/work/case-study-create-studio-primary.png';
-import createStudioDetail from '../assets/work/case-study-create-studio-detail.png';
+import serviceWebDesignDevelopment from '../assets/services/service-web-design-development-1030x663.png';
+import serviceWebsiteRedesign from '../assets/services/service-website-redesign-1050x524.png';
+import serviceCrmCustomSystems from '../assets/services/service-crm-custom-systems-1050x524.png';
+import serviceSeoPerformance from '../assets/services/service-seo-performance-1050x524.png';
+import serviceHostingMaintenance from '../assets/services/service-hosting-maintenance-1050x524.png';
+import serviceDigitalBranding from '../assets/services/service-digital-branding-1050x524.png';
+
+import homepageLuxuryListings from '../assets/work/homepage-luxury-listings-dr-990x303.png';
+import homepageJoanLeonardo from '../assets/work/homepage-joan-leonardo-990x303.png';
+import homepageCustomCrm from '../assets/work/homepage-custom-real-estate-crm-990x303.png';
+import homepageCreateStudioFeatured from '../assets/work/homepage-create-studio-featured-1420x1523.png';
+
+import workLuxuryListings from '../assets/work/work-luxury-listings-dr-830x469.png';
+import workJoanLeonardo from '../assets/work/work-joan-leonardo-830x469.png';
+import workCustomCrm from '../assets/work/work-custom-real-estate-crm-830x469.png';
+import workCreateStudioFeatured from '../assets/work/work-create-studio-featured-2590x1112.png';
+
+import luxuryListingsPrimary from '../assets/work/case-study-luxury-listings-dr-primary-2590x1043.png';
+import luxuryListingsDetail from '../assets/work/case-study-luxury-listings-dr-detail-1240x1128.png';
+import joanLeonardoPrimary from '../assets/work/case-study-joan-leonardo-primary-2590x1043.png';
+import joanLeonardoDetail from '../assets/work/case-study-joan-leonardo-detail-1240x1128.png';
+import customCrmPrimary from '../assets/work/case-study-custom-real-estate-crm-primary-2590x1043.png';
+import customCrmDetail from '../assets/work/case-study-custom-real-estate-crm-detail-1240x1128.png';
+import createStudioPrimary from '../assets/work/case-study-create-studio-primary-2590x1043.png';
+import createStudioDetail from '../assets/work/case-study-create-studio-detail-1240x1128.png';
 
 /**
- * Case-study placements render at very different sizes for the same asset —
- * a 415px card in the /work grid and a 1296px band on the case-study page —
- * so they carry their own variant widths rather than the service-card defaults.
+ * Variant widths per placement family. Each family now has its own master cut
+ * to the measured box, so the `sizes` hint describes that one box rather than
+ * trying to cover several placements at once.
  */
 const PRIMARY_WIDTHS = [400, 700, 1100, 1440];
 const PRIMARY_SIZES = '(max-width: 900px) 92vw, 1300px';
 const DETAIL_WIDTHS = [360, 620, 900];
 const DETAIL_SIZES = '(max-width: 900px) 92vw, 620px';
+/** Homepage portfolio cards: 496px standard, 708px featured, full width below 900px. */
+const HOME_CARD_WIDTHS = [320, 520, 760, 1000];
+const HOME_CARD_SIZES = '(max-width: 900px) 92vw, 500px';
+const HOME_FEATURED_WIDTHS = [360, 620, 900, 1420];
+const HOME_FEATURED_SIZES = '(max-width: 900px) 92vw, 710px';
+/** /work grid cards top out at 880px wide; the featured band at 1296px. */
+const WORK_CARD_WIDTHS = [320, 520, 830];
+const WORK_CARD_SIZES = '(max-width: 900px) 92vw, 480px';
 
 export interface ArtworkEntry {
   /**
@@ -137,12 +157,18 @@ export const ARTWORK: Record<string, ArtworkEntry> = {
    * `cover` would crop through the device mockups and dashboard content that
    * carry the meaning. The card's own #0B0B0E background fills the remainder.
    */
-  // The /services hero band (id `create-service-web`, top-right, desktop only)
-  // is NOT one of the six cards, so it is deliberately left unfilled.
+  // The /services hero device cluster, top-right, desktop only. The approved
+  // markup reserves this box with an outlined SVG placeholder; the stylesheet
+  // hides that placeholder once a real asset renders, so the two never stack.
   'create-service-web': {
+    image: servicesHeroDeviceCluster,
     decorative: true,
-    filename: 'create-service-web-design-development.webp',
-    note: 'Web Design & Development service artwork — hero band placement, no asset approved for it.',
+    routes: ['/services'],
+    fit: 'contain',
+    widths: [320, 520, 800, 1600],
+    sizes: '(max-width: 900px) 38vw, 520px',
+    filename: 'services-hero-device-cluster-1600x1200.png',
+    note: 'Services hero device cluster — monitor, tablet and phone. Transparent 1600x1200 master.',
   },
   // The Web Design & Development *card* on /services.
   'create-service-web-2': {
@@ -150,40 +176,40 @@ export const ARTWORK: Record<string, ArtworkEntry> = {
     decorative: true,
     routes: ['/services'],
     fit: 'contain',
-    filename: 'service-web-design-development.png',
-    note: 'Web Design & Development card on /services. Square master, 1254x1254.',
+    filename: 'service-web-design-development-1030x663.png',
+    note: 'Web Design & Development card on /services. Cut to the 516x332 box at 2x.',
   },
   'create-service-redesign': {
     image: serviceWebsiteRedesign,
     decorative: true,
     routes: ['/services'],
     fit: 'contain',
-    filename: 'service-website-redesign.png',
-    note: 'Website Redesign card on /services. Square master, 1254x1254.',
+    filename: 'service-website-redesign-1050x524.png',
+    note: 'Website Redesign card on /services. Cut to the 525x262 box at 2x.',
   },
   'create-service-crm': {
     image: serviceCrmCustomSystems,
     decorative: true,
     routes: ['/services'],
     fit: 'contain',
-    filename: 'service-crm-custom-systems.png',
-    note: 'CRM & Custom Systems card on /services. Square master, 1254x1254.',
+    filename: 'service-crm-custom-systems-1050x524.png',
+    note: 'CRM & Custom Systems card on /services. Cut to the 525x262 box at 2x.',
   },
   'create-service-seo': {
     image: serviceSeoPerformance,
     decorative: true,
     routes: ['/services'],
     fit: 'contain',
-    filename: 'service-seo-performance.png',
-    note: 'SEO & Performance card on /services. Square master, 1254x1254.',
+    filename: 'service-seo-performance-1050x524.png',
+    note: 'SEO & Performance card on /services. Cut to the 525x262 box at 2x.',
   },
   'create-service-hosting': {
     image: serviceHostingMaintenance,
     decorative: true,
     routes: ['/services'],
     fit: 'contain',
-    filename: 'service-hosting-maintenance.png',
-    note: 'Hosting & Maintenance card on /services. Square master, 1254x1254.',
+    filename: 'service-hosting-maintenance-1050x524.png',
+    note: 'Hosting & Maintenance card on /services. Cut to the 525x262 box at 2x.',
   },
   // The master carries an intentional near-black background rather than an
   // alpha channel, matching the card's own #0B0B0E so the artwork reads as
@@ -193,22 +219,110 @@ export const ARTWORK: Record<string, ArtworkEntry> = {
     decorative: true,
     routes: ['/services'],
     fit: 'contain',
-    filename: 'service-digital-branding.png',
-    note: 'Digital Branding card on /services. Square master, 1254x1254, near-black background by design.',
+    filename: 'service-digital-branding-1050x524.png',
+    note: 'Digital Branding card on /services. Cut to the 525x262 box at 2x, designed background by intent.',
+  },
+
+  /* --- homepage portfolio preview ----------------------------------------
+   * Each project now has a master cut to the homepage box rather than sharing
+   * the wide case-study asset, because the three boxes a project appears in
+   * are shaped very differently: 3.27:1 on the homepage standard cards, 0.93:1
+   * on the homepage featured card, 1.77:1 in the /work grid and 2.48:1 on the
+   * case-study lead band. One file cannot fill all of them.
+   */
+  'homepage-create-studio-featured': {
+    image: homepageCreateStudioFeatured,
+    alt: 'The Create Studio pricing page on a laptop and phone, showing the written-scope packages.',
+    decorative: false,
+    fit: 'contain',
+    widths: HOME_FEATURED_WIDTHS,
+    sizes: HOME_FEATURED_SIZES,
+    filename: 'homepage-create-studio-featured-1420x1523.png',
+    note: 'Create Studio featured card on the homepage. Cut to the 708x760 box at 2x.',
+  },
+  'homepage-luxury-listings-dr': {
+    image: homepageLuxuryListings,
+    alt: 'The Luxury Listings DR homepage on a laptop and phone, showing the luxury real estate hero and property search.',
+    decorative: false,
+    fit: 'contain',
+    widths: HOME_CARD_WIDTHS,
+    sizes: HOME_CARD_SIZES,
+    filename: 'homepage-luxury-listings-dr-990x303.png',
+    note: 'Luxury Listings DR standard card on the homepage. Cut to the 496x152 box at 2x.',
+  },
+  'homepage-joan-leonardo': {
+    image: homepageJoanLeonardo,
+    alt: 'The Joan Leonardo & Asociados homepage on a laptop and phone, with the practice headline and introduction.',
+    decorative: false,
+    fit: 'contain',
+    widths: HOME_CARD_WIDTHS,
+    sizes: HOME_CARD_SIZES,
+    filename: 'homepage-joan-leonardo-990x303.png',
+    note: 'Joan Leonardo standard card on the homepage. Cut to the 496x152 box at 2x.',
+  },
+  'homepage-custom-real-estate-crm': {
+    image: homepageCustomCrm,
+    alt: 'The Custom Real Estate CRM dashboard and reporting views shown on two laptops.',
+    decorative: false,
+    fit: 'contain',
+    widths: HOME_CARD_WIDTHS,
+    sizes: HOME_CARD_SIZES,
+    filename: 'homepage-custom-real-estate-crm-990x303.png',
+    note: 'Custom Real Estate CRM standard card on the homepage. Cut to the 496x152 box at 2x.',
+  },
+
+  /* --- /work grid --------------------------------------------------------- */
+  'work-create-studio-featured': {
+    image: workCreateStudioFeatured,
+    alt: 'The Create Studio pricing page on a laptop and phone, showing the written-scope packages.',
+    decorative: false,
+    fit: 'contain',
+    widths: PRIMARY_WIDTHS,
+    sizes: PRIMARY_SIZES,
+    filename: 'work-create-studio-featured-2590x1112.png',
+    note: 'Create Studio featured band on /work. Cut to the 1296x557 box at 2x.',
+  },
+  'work-luxury-listings-dr': {
+    image: workLuxuryListings,
+    alt: 'The Luxury Listings DR homepage on a laptop and phone, showing the luxury real estate hero and property search.',
+    decorative: false,
+    fit: 'contain',
+    widths: WORK_CARD_WIDTHS,
+    sizes: WORK_CARD_SIZES,
+    filename: 'work-luxury-listings-dr-830x469.png',
+    note: 'Luxury Listings DR grid card on /work. Cut to the 415x234 box at 2x.',
+  },
+  'work-joan-leonardo': {
+    image: workJoanLeonardo,
+    alt: 'The Joan Leonardo & Asociados homepage on a laptop and phone, with the practice headline and introduction.',
+    decorative: false,
+    fit: 'contain',
+    widths: WORK_CARD_WIDTHS,
+    sizes: WORK_CARD_SIZES,
+    filename: 'work-joan-leonardo-830x469.png',
+    note: 'Joan Leonardo grid card on /work. Cut to the 415x234 box at 2x.',
+  },
+  'work-custom-real-estate-crm': {
+    image: workCustomCrm,
+    alt: 'The Custom Real Estate CRM dashboard and reporting views shown on two laptops.',
+    decorative: false,
+    fit: 'contain',
+    widths: WORK_CARD_WIDTHS,
+    sizes: WORK_CARD_SIZES,
+    filename: 'work-custom-real-estate-crm-830x469.png',
+    note: 'Custom Real Estate CRM grid card on /work. Cut to the 415x234 box at 2x.',
   },
 
   /* --- case-study imagery ------------------------------------------------
    * These communicate real client work, so each carries meaningful alt text
    * describing what is actually on screen.
    *
-   * A project's primary asset is intentionally shared between its card in the
-   * /work grid and the lead band on its own case-study page, so no `routes`
-   * scoping is applied — both placements are approved and visible. The detail
-   * asset appears only on the case-study page.
+   * These ids now serve the case-study routes only — the homepage and /work
+   * placements have their own masters above, cut to their own boxes.
    *
-   * `fit: 'contain'` throughout: the masters range from 2.39:1 to 0.80:1 while
-   * the boxes range from 2.48:1 to 1.10:1, so `cover` would crop through
-   * devices and screens. The placement's own dark background fills the rest.
+   * `fit: 'contain'` throughout, and every master is a transparent PNG whose
+   * canvas matches its box, so the placement's own dark background reads as
+   * the surround rather than a second panel.
    */
   'luxury-listings-dr-case-study': {
     image: luxuryListingsPrimary,
@@ -217,8 +331,8 @@ export const ARTWORK: Record<string, ArtworkEntry> = {
     fit: 'contain',
     widths: PRIMARY_WIDTHS,
     sizes: PRIMARY_SIZES,
-    filename: 'case-study-luxury-listings-dr-primary.png',
-    note: 'Luxury Listings DR primary — /work card and case-study lead band. 1915x821.',
+    filename: 'case-study-luxury-listings-dr-primary-2590x1043.png',
+    note: 'Luxury Listings DR lead band on /work/luxury-listings-dr. Cut to the 1296x522 box at 2x.',
   },
   'luxury-listings-dr-case-study-detail': {
     image: luxuryListingsDetail,
@@ -227,8 +341,8 @@ export const ARTWORK: Record<string, ArtworkEntry> = {
     fit: 'contain',
     widths: DETAIL_WIDTHS,
     sizes: DETAIL_SIZES,
-    filename: 'case-study-luxury-listings-dr-detail.png',
-    note: 'Luxury Listings DR detail — case-study secondary media. 1122x1402.',
+    filename: 'case-study-luxury-listings-dr-detail-1240x1128.png',
+    note: 'Luxury Listings DR detail — case-study secondary media. Cut to the 618x562 box at 2x.',
   },
   'joan-leonardo-case-study': {
     image: joanLeonardoPrimary,
@@ -237,8 +351,8 @@ export const ARTWORK: Record<string, ArtworkEntry> = {
     fit: 'contain',
     widths: PRIMARY_WIDTHS,
     sizes: PRIMARY_SIZES,
-    filename: 'case-study-joan-leonardo-primary.png',
-    note: 'Joan Leonardo primary — /work card and case-study lead band. 1915x821.',
+    filename: 'case-study-joan-leonardo-primary-2590x1043.png',
+    note: 'Joan Leonardo lead band on /work/joan-leonardo. Cut to the 1296x522 box at 2x.',
   },
   'joan-leonardo-case-study-detail': {
     image: joanLeonardoDetail,
@@ -247,8 +361,8 @@ export const ARTWORK: Record<string, ArtworkEntry> = {
     fit: 'contain',
     widths: DETAIL_WIDTHS,
     sizes: DETAIL_SIZES,
-    filename: 'case-study-joan-leonardo-detail.png',
-    note: 'Joan Leonardo detail — case-study secondary media. 1254x1254.',
+    filename: 'case-study-joan-leonardo-detail-1240x1128.png',
+    note: 'Joan Leonardo detail — case-study secondary media. Cut to the 618x562 box at 2x.',
   },
   'custom-real-estate-crm-case-study': {
     image: customCrmPrimary,
@@ -257,8 +371,8 @@ export const ARTWORK: Record<string, ArtworkEntry> = {
     fit: 'contain',
     widths: PRIMARY_WIDTHS,
     sizes: PRIMARY_SIZES,
-    filename: 'case-study-custom-real-estate-crm-primary.png',
-    note: 'Custom Real Estate CRM primary — /work card and case-study lead band. 1915x821.',
+    filename: 'case-study-custom-real-estate-crm-primary-2590x1043.png',
+    note: 'Custom Real Estate CRM lead band on /work/custom-real-estate-crm. Cut to the 1296x522 box at 2x.',
   },
   'custom-real-estate-crm-case-study-detail': {
     image: customCrmDetail,
@@ -267,28 +381,28 @@ export const ARTWORK: Record<string, ArtworkEntry> = {
     fit: 'contain',
     widths: DETAIL_WIDTHS,
     sizes: DETAIL_SIZES,
-    filename: 'case-study-custom-real-estate-crm-detail.png',
-    note: 'Custom Real Estate CRM detail — case-study secondary media. 1122x1402.',
+    filename: 'case-study-custom-real-estate-crm-detail-1240x1128.png',
+    note: 'Custom Real Estate CRM detail — case-study secondary media. Cut to the 618x562 box at 2x.',
   },
   'create-studio-case-study': {
     image: createStudioPrimary,
-    alt: 'The Create Studio homepage on a laptop and phone, showing the Ideas that move business forward hero.',
+    alt: 'The Create Studio pricing page on a laptop and phone, showing the written-scope packages.',
     decorative: false,
     fit: 'contain',
     widths: PRIMARY_WIDTHS,
     sizes: PRIMARY_SIZES,
-    filename: 'case-study-create-studio-primary.png',
-    note: 'Create Studio primary — /work card and case-study lead band. 1939x811.',
+    filename: 'case-study-create-studio-primary-2590x1043.png',
+    note: 'Create Studio lead band on /work/create-studio. Cut to the 1296x522 box at 2x.',
   },
   'create-studio-case-study-detail': {
     image: createStudioDetail,
-    alt: 'The Create Studio pricing and process pages on a laptop and phone.',
+    alt: 'Create Studio service and package pages shown across a laptop, tablet and phone.',
     decorative: false,
     fit: 'contain',
     widths: DETAIL_WIDTHS,
     sizes: DETAIL_SIZES,
-    filename: 'case-study-create-studio-detail.png',
-    note: 'Create Studio detail — case-study secondary media. 1448x1086.',
+    filename: 'case-study-create-studio-detail-1240x1128.png',
+    note: 'Create Studio detail — case-study secondary media. Cut to the 618x562 box at 2x.',
   },
 };
 

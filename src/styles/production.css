@@ -69,6 +69,17 @@ html:not([data-art-notes='show']) [data-art-note] {
   object-fit: contain;
 }
 
+/*
+ * The /services hero reserves its box with an outlined SVG device cluster.
+ * Once a real asset renders into that slot the outline is a placeholder behind
+ * the artwork, so it is hidden — but with `visibility`, not `display`, because
+ * the SVG is what gives the slot its height. The reserved box is unchanged and
+ * nothing moves; only the placeholder stops painting.
+ */
+[data-art-slot]:has(> img[data-art-img]) > svg {
+  visibility: hidden;
+}
+
 /* Touch and keyboard parity for hover-only affordances: the services dropdown
    is opened by click/Enter as well as hover, and card hover states have
    matching focus-visible states (see prototype rules). */
