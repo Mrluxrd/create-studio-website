@@ -6,3 +6,10 @@ dist/
 .env.production
 .DS_Store
 *.log
+
+# Scratch harness copies placed at the repo root only so they can resolve
+# node_modules. Real tooling lives in scripts/.
+/scratch-*.mjs
+/tmp-*.mjs
+/ms.mjs
+/fp.mjs
