@@ -17,8 +17,21 @@
  * meaning should have `decorative` flipped to false at the same time.
  */
 
+import type { ImageMetadata } from 'astro';
+
+import serviceWebDesignDevelopment from '../assets/services/service-web-design-development.png';
+import serviceWebsiteRedesign from '../assets/services/service-website-redesign.png';
+import serviceCrmCustomSystems from '../assets/services/service-crm-custom-systems.png';
+import serviceSeoPerformance from '../assets/services/service-seo-performance.png';
+import serviceHostingMaintenance from '../assets/services/service-hosting-maintenance.png';
+
 export interface ArtworkEntry {
-  /** Path under /public. Leave empty until the final asset is supplied. */
+  /**
+   * Imported asset, processed by Astro's image pipeline (optimised, intrinsic
+   * dimensions carried through so nothing shifts). Preferred over `src`.
+   */
+  image?: ImageMetadata;
+  /** Path under /public. Alternative to `image` for unprocessed assets. */
   src?: string;
   /** Intrinsic pixel dimensions — required with `src` to prevent layout shift. */
   width?: number;
@@ -29,6 +42,18 @@ export interface ArtworkEntry {
   decorative: boolean;
   /** Hero-critical artwork loads eagerly; everything else is lazy. */
   eager?: boolean;
+  /**
+   * Restrict rendering to these routes. An asset id can be shared by several
+   * placements across the site; this keeps a supplied asset to the placements
+   * it was approved for, leaving the others exactly as they are.
+   */
+  routes?: string[];
+  /**
+   * How the asset sits in its reserved box. `contain` keeps a whole composition
+   * visible and lets the card's existing background fill the remaining space;
+   * `cover` fills the box and crops. Defaults to `cover`.
+   */
+  fit?: 'cover' | 'contain';
   /** Suggested filename for the final asset, kept descriptive on purpose. */
   filename: string;
   /** What the placement is for — kept out of the rendered page. */
@@ -74,36 +99,78 @@ export const ARTWORK: Record<string, ArtworkEntry> = {
     note: 'Pricing page atmosphere band.',
   },
 
-  /* --- service artwork -------------------------------------------------- */
+  /* --- service artwork ---------------------------------------------------
+   * The approved square masters are placed in the six service cards on
+   * /services only. Every entry below is scoped with `routes: ['/services']`
+   * because these ids are shared with the hero bands on the individual service
+   * routes, which the approved stylesheet retires — scoping leaves those
+   * exactly as they are rather than relying on them staying hidden.
+   *
+   * `fit: 'contain'` because the masters are 1:1 and the cards are landscape;
+   * `cover` would crop through the device mockups and dashboard content that
+   * carry the meaning. The card's own #0B0B0E background fills the remainder.
+   */
+  // The /services hero band (id `create-service-web`, top-right, desktop only)
+  // is NOT one of the six cards, so it is deliberately left unfilled.
   'create-service-web': {
     decorative: true,
     filename: 'create-service-web-design-development.webp',
-    note: 'Web Design & Development service artwork.',
+    note: 'Web Design & Development service artwork — hero band placement, no asset approved for it.',
+  },
+  // The Web Design & Development *card* on /services.
+  'create-service-web-2': {
+    image: serviceWebDesignDevelopment,
+    decorative: true,
+    routes: ['/services'],
+    fit: 'contain',
+    filename: 'service-web-design-development.png',
+    note: 'Web Design & Development card on /services. Square master, 1254x1254.',
   },
   'create-service-redesign': {
+    image: serviceWebsiteRedesign,
     decorative: true,
-    filename: 'create-service-website-redesign.webp',
-    note: 'Website Redesign service artwork.',
+    routes: ['/services'],
+    fit: 'contain',
+    filename: 'service-website-redesign.png',
+    note: 'Website Redesign card on /services. Square master, 1254x1254.',
   },
   'create-service-crm': {
+    image: serviceCrmCustomSystems,
     decorative: true,
-    filename: 'create-service-crm-custom-systems.webp',
-    note: 'CRM & Custom Systems service artwork.',
+    routes: ['/services'],
+    fit: 'contain',
+    filename: 'service-crm-custom-systems.png',
+    note: 'CRM & Custom Systems card on /services. Square master, 1254x1254.',
   },
   'create-service-seo': {
+    image: serviceSeoPerformance,
     decorative: true,
-    filename: 'create-service-seo-performance.webp',
-    note: 'SEO & Performance service artwork.',
+    routes: ['/services'],
+    fit: 'contain',
+    filename: 'service-seo-performance.png',
+    note: 'SEO & Performance card on /services. Square master, 1254x1254.',
   },
   'create-service-hosting': {
+    image: serviceHostingMaintenance,
     decorative: true,
-    filename: 'create-service-hosting-maintenance.webp',
-    note: 'Hosting & Maintenance service artwork.',
+    routes: ['/services'],
+    fit: 'contain',
+    filename: 'service-hosting-maintenance.png',
+    note: 'Hosting & Maintenance card on /services. Square master, 1254x1254.',
   },
+  // HELD BACK — not rendered. The supplied master
+  // (src/assets/services/service-digital-branding.png) has no alpha channel:
+  // its transparency was flattened onto a light checkerboard that is baked
+  // into the pixels. Rendering it would put a pale checkered panel inside the
+  // dark card. Removing that background would mean editing the artwork, which
+  // is out of scope. Register `image` here once a re-export with real
+  // transparency (or a near-black background, matching the other five) arrives.
   'create-service-branding': {
     decorative: true,
-    filename: 'create-service-digital-branding.webp',
-    note: 'Digital Branding service artwork.',
+    routes: ['/services'],
+    fit: 'contain',
+    filename: 'service-digital-branding.png',
+    note: 'Digital Branding card on /services. Awaiting a master with a real alpha channel.',
   },
 
   /* --- case-study imagery ------------------------------------------------ */

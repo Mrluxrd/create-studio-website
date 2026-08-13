@@ -6,7 +6,12 @@
  * leaving the approved temporary presentation of the placement exactly as it
  * is. The reserved box lives in the page markup, so adding an asset later
  * cannot shift the layout.
+ *
+ * An asset id can be shared by several placements across the site. When a
+ * registry entry lists `routes`, the asset renders only on those routes and
+ * every other placement sharing the id is left untouched.
  */
+import { Image } from 'astro:assets';
 import { resolveArtwork } from '../data/artwork';
 
 interface Props {
@@ -15,21 +20,58 @@ interface Props {
 
 const { id } = Astro.props;
 const art = resolveArtwork(id);
-const show = Boolean(art?.src);
+
+/**
+ * Normalise to the route as written in the registry. The static build emits
+ * files (`/services.html`), the dev server serves clean paths (`/services`),
+ * and a trailing slash may or may not be present — all three mean one route.
+ */
+const path =
+  Astro.url.pathname
+    .replace(/index\.html$/, '')
+    .replace(/\.html$/, '')
+    .replace(/(.)\/$/, '$1') || '/';
+const inScope = !art?.routes || art.routes.includes(path);
+
+const hasImage = Boolean(art?.image);
+const hasSrc = Boolean(art?.src);
+const show = Boolean(art) && inScope && (hasImage || hasSrc);
+
+// `contain` keeps the whole composition visible and lets the placement's own
+// background fill the space around it; `cover` fills the box and crops.
+const fit = art?.fit ?? 'cover';
+const alt = art?.decorative ? '' : (art?.alt ?? '');
+const ariaHidden = art?.decorative ? 'true' : undefined;
+const loading = art?.eager ? 'eager' : 'lazy';
 ---
 
 {
   show && art && (
-    <img
-      data-art-img
-      src={art.src}
-      alt={art.decorative ? '' : (art.alt ?? '')}
-      aria-hidden={art.decorative ? 'true' : undefined}
-      width={art.width}
-      height={art.height}
-      loading={art.eager ? 'eager' : 'lazy'}
-      decoding="async"
-      fetchpriority={art.eager ? 'high' : undefined}
-    />
+    hasImage ? (
+      <Image
+        data-art-img
+        data-art-fit={fit}
+        src={art.image!}
+        alt={alt}
+        aria-hidden={ariaHidden}
+        widths={[320, 520, 780]}
+        sizes="(max-width: 900px) 78vw, 340px"
+        format="webp"
+        loading={loading}
+        decoding="async"
+      />
+    ) : (
+      <img
+        data-art-img
+        data-art-fit={fit}
+        src={art.src}
+        alt={alt}
+        aria-hidden={ariaHidden}
+        width={art.width}
+        height={art.height}
+        loading={loading}
+        decoding="async"
+      />
+    )
   )
 }
