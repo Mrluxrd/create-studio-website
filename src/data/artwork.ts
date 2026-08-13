@@ -24,6 +24,7 @@ import serviceWebsiteRedesign from '../assets/services/service-website-redesign.
 import serviceCrmCustomSystems from '../assets/services/service-crm-custom-systems.png';
 import serviceSeoPerformance from '../assets/services/service-seo-performance.png';
 import serviceHostingMaintenance from '../assets/services/service-hosting-maintenance.png';
+import serviceDigitalBranding from '../assets/services/service-digital-branding.png';
 
 export interface ArtworkEntry {
   /**
@@ -158,19 +159,16 @@ export const ARTWORK: Record<string, ArtworkEntry> = {
     filename: 'service-hosting-maintenance.png',
     note: 'Hosting & Maintenance card on /services. Square master, 1254x1254.',
   },
-  // HELD BACK — not rendered. The supplied master
-  // (src/assets/services/service-digital-branding.png) has no alpha channel:
-  // its transparency was flattened onto a light checkerboard that is baked
-  // into the pixels. Rendering it would put a pale checkered panel inside the
-  // dark card. Removing that background would mean editing the artwork, which
-  // is out of scope. Register `image` here once a re-export with real
-  // transparency (or a near-black background, matching the other five) arrives.
+  // The master carries an intentional near-black background rather than an
+  // alpha channel, matching the card's own #0B0B0E so the artwork reads as
+  // part of the card. No transparency is required or expected here.
   'create-service-branding': {
+    image: serviceDigitalBranding,
     decorative: true,
     routes: ['/services'],
     fit: 'contain',
     filename: 'service-digital-branding.png',
-    note: 'Digital Branding card on /services. Awaiting a master with a real alpha channel.',
+    note: 'Digital Branding card on /services. Square master, 1254x1254, near-black background by design.',
   },
 
   /* --- case-study imagery ------------------------------------------------ */
