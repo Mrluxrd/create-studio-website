@@ -23,7 +23,7 @@ import servicesHeroDeviceCluster from '../assets/hero/services-hero-device-clust
 
 import serviceWebDesignDevelopment from '../assets/services/service-web-design-development-1030x663.png';
 import serviceWebsiteRedesign from '../assets/services/service-website-redesign-1050x524.png';
-import serviceCrmCustomSystems from '../assets/services/service-crm-custom-systems-1050x524.png';
+import serviceCrmCustomSystems from '../assets/services/service-crm-custom-systems-1254x1254.png';
 import serviceSeoPerformance from '../assets/services/service-seo-performance-1050x524.png';
 import serviceHostingMaintenance from '../assets/services/service-hosting-maintenance-1050x524.png';
 import serviceDigitalBranding from '../assets/services/service-digital-branding-1050x524.png';
@@ -192,8 +192,9 @@ export const ARTWORK: Record<string, ArtworkEntry> = {
     decorative: true,
     routes: ['/services'],
     fit: 'contain',
-    filename: 'service-crm-custom-systems-1050x524.png',
-    note: 'CRM & Custom Systems card on /services. Cut to the 525x262 box at 2x.',
+    filename: 'service-crm-custom-systems-1254x1254.png',
+    note:
+      'CRM & Custom Systems card on /services. The v3 package shipped brand stationery under the CRM filename, flattened onto a transparency checkerboard, so this is the approved square CRM master restored from ef5c9a9. It pillarboxes in the 525x262 box until a corrected 1050x524 CRM export arrives.',
   },
   'create-service-seo': {
     image: serviceSeoPerformance,
