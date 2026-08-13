@@ -9,11 +9,15 @@
   display: block;
 }
 
-/* Skip link — visually out of the way until focused. */
+/*
+ * Skip link — off-screen until focused, then instantly in place. No transition:
+ * an accessibility affordance should never be mid-animation when a keyboard
+ * user reaches it.
+ */
 .cs-skip {
   position: absolute;
   left: 16px;
-  top: 12px;
+  top: -200px;
   z-index: 200;
   padding: 12px 20px;
   border-radius: 999px;
@@ -22,11 +26,10 @@
   color: #f8fafc;
   font-size: 14px;
   font-weight: 600;
-  transform: translateY(-160%);
-  transition: transform 0.2s ease;
 }
+.cs-skip:focus,
 .cs-skip:focus-visible {
-  transform: translateY(0);
+  top: 12px;
 }
 
 /*

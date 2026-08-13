@@ -1,15 +1,21 @@
 import { chromium } from 'playwright';
+import fs from 'node:fs';
 
 const BASE = process.argv[2] || 'http://localhost:4321';
 const EXEC = '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
 const browser = await chromium.launch({ executablePath: EXEC });
 const out = [];
-const ok = (label, pass, detail = '') => out.push(`${pass ? 'PASS' : 'FAIL'}  ${label}${detail ? ' — ' + detail : ''}`);
+const LOG = process.env.VERIFY_LOG || '';
+const ok = (label, pass, detail = '') => {
+  const line = `${pass ? 'PASS' : 'FAIL'}  ${label}${detail ? ' \u2014 ' + detail : ''}`;
+  out.push(line);
+  if (LOG) fs.appendFileSync(LOG, line + '\n');
+};
 
 const newPage = async (opts = {}) => {
   const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, ...opts });
   const p = await ctx.newPage();
-  p.on('pageerror', (e) => out.push('FAIL  pageerror: ' + e.message.slice(0, 120)));
+  p.on('pageerror', (e) => ok('pageerror: ' + e.message.slice(0, 120), false));
   return p;
 };
 
@@ -275,6 +281,8 @@ const newPage = async (opts = {}) => {
   await p.context().close();
 }
 
+const summary = out.filter((l) => l.startsWith('FAIL')).length + ' failure(s) of ' + out.length + ' checks';
 console.log(out.join('\n'));
-console.log('\n' + out.filter((l) => l.startsWith('FAIL')).length + ' failure(s) of ' + out.length + ' checks');
+console.log('\n' + summary);
+if (LOG) fs.appendFileSync(LOG, '\n' + summary + '\n');
 await browser.close();
