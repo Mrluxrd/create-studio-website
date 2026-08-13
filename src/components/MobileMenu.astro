@@ -1,0 +1,27 @@
+---
+// Full-screen navigation dialog for narrow viewports. Markup preserved from the
+// approved prototype.
+import { Image } from 'astro:assets';
+import logoLockup from '../assets/logo-lockup.png';
+---
+<div data-menu="" role="dialog" aria-modal="true" aria-label="Menu" style="display:none;position:fixed;inset:0;z-index:80;background:#09090B;flex-direction:column">
+  <div style="padding:18px 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(248,250,252,.07)">
+    <Image src={logoLockup} alt="Create Studio logo" loading="eager" decoding="async" style="height:28px;width:auto" />
+    <button aria-label="Close menu" data-on-click="closeMenu" style="width:46px;height:46px;border-radius:14px;border:1px solid rgba(248,250,252,.14);background:transparent;color:#F8FAFC;font-size:24px;line-height:1;cursor:pointer">×</button>
+  </div>
+  <div style="flex:1;overflow-y:auto;padding:24px 22px 40px;display:flex;flex-direction:column;gap:2px">
+    <a href="/" data-route="home" style="padding:17px 4px;font-family:Sora,sans-serif;font-size:25px;font-weight:600;border-bottom:1px solid rgba(248,250,252,.07)">Home</a>
+    <button type="button" data-on-click="toggleSub" aria-expanded="false" data-sub-toggle="" style="padding:17px 4px;font-family:Sora,sans-serif;font-size:25px;font-weight:600;background:transparent;border:none;border-bottom:1px solid rgba(248,250,252,.07);color:#F8FAFC;text-align:left;display:flex;align-items:center;justify-content:space-between;cursor:pointer;width:100%">Services<span data-sub-icon="" style="font-size:21px;color:#8B5CF6;transition:transform .3s ease">+</span></button>
+    <div data-sub="" style="display:none;flex-direction:column;gap:2px;padding:8px 0 12px 4px;border-bottom:1px solid rgba(248,250,252,.07)">
+      <a href="/services/web-design-development" data-route="service-web-design-development" style="padding:13px 0;font-size:16px;color:#A1A1AA;display:flex;align-items:center;gap:10px;min-height:44px"><span style="width:5px;height:5px;border-radius:99px;background:linear-gradient(90deg,#2563FF,#8B5CF6);flex:none"></span>Web Design &amp; Development</a><a href="/services/website-redesign" data-route="service-website-redesign" style="padding:13px 0;font-size:16px;color:#A1A1AA;display:flex;align-items:center;gap:10px;min-height:44px"><span style="width:5px;height:5px;border-radius:99px;background:linear-gradient(90deg,#2563FF,#8B5CF6);flex:none"></span>Website Redesign</a><a href="/services/crm-custom-systems" data-route="service-crm-custom-systems" style="padding:13px 0;font-size:16px;color:#A1A1AA;display:flex;align-items:center;gap:10px;min-height:44px"><span style="width:5px;height:5px;border-radius:99px;background:linear-gradient(90deg,#2563FF,#8B5CF6);flex:none"></span>CRM &amp; Custom Systems</a><a href="/services/seo-performance" data-route="service-seo-performance" style="padding:13px 0;font-size:16px;color:#A1A1AA;display:flex;align-items:center;gap:10px;min-height:44px"><span style="width:5px;height:5px;border-radius:99px;background:linear-gradient(90deg,#2563FF,#8B5CF6);flex:none"></span>SEO &amp; Performance</a><a href="/services/hosting-maintenance" data-route="service-hosting-maintenance" style="padding:13px 0;font-size:16px;color:#A1A1AA;display:flex;align-items:center;gap:10px;min-height:44px"><span style="width:5px;height:5px;border-radius:99px;background:linear-gradient(90deg,#2563FF,#8B5CF6);flex:none"></span>Hosting &amp; Maintenance</a><a href="/services/digital-branding" data-route="service-digital-branding" style="padding:13px 0;font-size:16px;color:#A1A1AA;display:flex;align-items:center;gap:10px;min-height:44px"><span style="width:5px;height:5px;border-radius:99px;background:linear-gradient(90deg,#2563FF,#8B5CF6);flex:none"></span>Digital Branding</a>
+    </div>
+    <a href="/work" data-route="work" style="padding:17px 4px;font-family:Sora,sans-serif;font-size:25px;font-weight:600;border-bottom:1px solid rgba(248,250,252,.07)">Work</a>
+    <a href="/process" data-route="process" style="padding:17px 4px;font-family:Sora,sans-serif;font-size:25px;font-weight:600;border-bottom:1px solid rgba(248,250,252,.07)">Process</a>
+    <a href="/pricing" data-route="pricing" style="padding:17px 4px;font-family:Sora,sans-serif;font-size:25px;font-weight:600;border-bottom:1px solid rgba(248,250,252,.07)">Pricing</a>
+    <a href="/seo-growth-maintenance" data-route="seo-growth-maintenance" style="padding:17px 4px;font-size:16px;color:#A1A1AA;border-bottom:1px solid rgba(248,250,252,.07)">SEO Growth &amp; Maintenance</a>
+    <a href="/about" data-route="about" style="padding:17px 4px;font-family:Sora,sans-serif;font-size:25px;font-weight:600;border-bottom:1px solid rgba(248,250,252,.07)">About</a>
+    <a href="/contact" data-route="contact" style="padding:17px 4px;font-family:Sora,sans-serif;font-size:25px;font-weight:600;border-bottom:1px solid rgba(248,250,252,.07)">Contact</a>
+    <a href="/contact" data-route="contact" style="margin-top:24px;padding:18px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6);text-align:center;font-weight:600;font-size:16px">Start a Project</a>
+    <div style="margin-top:24px;font-size:13.5px;color:#A1A1AA;line-height:1.8">Oscar Lauzardo<br><a href="tel:+18297786137" style="color:#A1A1AA">+1 829.778.6137</a><br><a href="mailto:lauzardo1991@gmail.com" style="color:#A1A1AA">lauzardo1991@gmail.com</a></div>
+  </div>
+</div>

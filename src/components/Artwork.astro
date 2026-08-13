@@ -1,0 +1,35 @@
+---
+/**
+ * Renders the final asset for an approved image placement.
+ *
+ * Until an asset is registered in `src/data/artwork.ts` this renders nothing,
+ * leaving the approved temporary presentation of the placement exactly as it
+ * is. The reserved box lives in the page markup, so adding an asset later
+ * cannot shift the layout.
+ */
+import { resolveArtwork } from '../data/artwork';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+const art = resolveArtwork(id);
+const show = Boolean(art?.src);
+---
+
+{
+  show && art && (
+    <img
+      data-art-img
+      src={art.src}
+      alt={art.decorative ? '' : (art.alt ?? '')}
+      aria-hidden={art.decorative ? 'true' : undefined}
+      width={art.width}
+      height={art.height}
+      loading={art.eager ? 'eager' : 'lazy'}
+      decoding="async"
+      fetchpriority={art.eager ? 'high' : undefined}
+    />
+  )
+}
