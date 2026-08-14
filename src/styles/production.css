@@ -70,6 +70,34 @@ html:not([data-art-notes='show']) [data-art-note] {
 }
 
 /*
+ * Explicit fitting for the six service cards in the /services grid, and for the
+ * Solution media box on the Create Studio case study. Both already resolved to
+ * `contain` through the shared rules above; stating it here scopes it to these
+ * placements so a later change to the shared rule cannot start cropping them,
+ * and sets the surround to the page ground so any space left by an image that
+ * does not match its box reads as part of the page rather than a panel.
+ *
+ * Deliberately narrow: `article` excludes the /services hero, and the case-study
+ * rule names one placement. Homepage, /work, the other case studies and the
+ * individual service pages are untouched.
+ */
+/* `!important` because the reserved box carries its background inline, which a
+   stylesheet rule cannot otherwise outrank. Only the colour is overridden — the
+   box, its border and its radius are left exactly as approved. */
+[data-page='services'] article [data-art-slot],
+[data-page='work-create-studio'] [data-art-id='create-studio-case-study-detail'] {
+  background-color: #09090b !important;
+}
+
+[data-page='services'] article [data-art-slot] > img[data-art-img],
+[data-page='work-create-studio'] [data-art-id='create-studio-case-study-detail'] > img[data-art-img] {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/*
  * The /services hero reserves its box with an outlined SVG device cluster.
  * Once a real asset renders into that slot the outline is a placeholder behind
  * the artwork, so it is hidden — but with `visibility`, not `display`, because
