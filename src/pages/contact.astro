@@ -1,0 +1,207 @@
+---
+import Base from '../layouts/Base.astro';
+import Artwork from '../components/Artwork.astro';
+---
+
+<Base pageKey="contact">
+<main>
+<section data-hero="" data-pad="" style="position:relative;overflow:hidden;padding:100px 72px 60px;max-width:1440px;margin:0 auto">
+  <div data-art-id="create-contact-expansion" data-art="create-contact-expansion" data-art-slot="" style="position:absolute;top:-160px;right:-160px;width:700px;height:700px;border-radius:36px;overflow:hidden;background:#0B0B0E;border:1px solid rgba(248,250,252,.07);display:flex;align-items:flex-end;pointer-events:none"><Artwork id="create-contact-expansion" />
+    <div data-art-note="" data-art-label="" style="position:absolute;left:0;top:0;box-sizing:border-box;display:flex;padding:14px 18px;border-radius:12px;background:rgba(9,9,11,.82);border:1px solid rgba(248,250,252,.14);flex-direction:column;gap:6px;max-width:480px">
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B5CF6">ARTWORK — CONTACT</span>
+      <span style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#71717A">Artwork Placeholder</span>
+      <span style="font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#52525B">1:1 desktop corner crop · 16:9 mobile band · no moving detail behind form fields</span>
+      <span style="font-family:Inter,system-ui,sans-serif;font-size:10.5px;line-height:1.6;color:#3F3F46">Final artwork supplied separately</span>
+    </div>
+  </div>
+<div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:20px;max-width:720px">
+    <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Contact</div>
+    <h1 data-h1="" style="margin:0;font-family:Sora,sans-serif;font-size:62px;font-weight:700;letter-spacing:-0.035em;line-height:1.03">Tell us what you’re building.</h1>
+    <p data-lead="" style="margin:0;font-size:18px;line-height:1.75;color:#A1A1AA;max-width:620px;text-wrap:pretty">Whether you need a new digital presence, a sharper brand, or a system designed around your operation, start with the details below. We use them to understand the project and define the right next step — with scope, timing and investment set out in writing.</p>
+  </div>
+</section>
+
+<section data-sect="" data-pad="" data-cols="" style="max-width:1440px;margin:0 auto;padding:40px 72px 110px;display:grid;grid-template-columns:1.5fr 1fr;gap:44px;align-items:start">
+  <div style="padding:44px;border-radius:28px;background:#0E0E12;border:1px solid rgba(248,250,252,.08)">
+    <form data-form="" novalidate="" data-on-submit="submit" style="display:flex;flex-direction:column;gap:22px">
+  <div aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">
+    <label for="company_website">Leave this field empty</label>
+    <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+  </div>
+      <h2 data-h2="" data-rv="" style="margin:0;font-family:Sora,sans-serif;font-size:26px;font-weight:600;letter-spacing:-0.02em">Project inquiry</h2>
+      <div data-summary="" role="alert" style="display:none;padding:14px 16px;border-radius:14px;border:1px solid rgba(248,113,113,.4);background:rgba(248,113,113,.08);font-size:13.5px;color:#F87171"></div>
+      <div data-cols="" style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+        <div style="display:flex;flex-direction:column">
+  <label for="name" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Name <span style="color:#8B5CF6">*</span></label>
+  <input id="name" name="name" type="text" placeholder="Your full name" required="required" aria-required="true" aria-describedby="name-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease" style-focus="border-color:#8B5CF6">
+  <div id="name-error" id="err-name" data-error-for="name" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div>
+</div>
+        <div style="display:flex;flex-direction:column">
+  <label for="company" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Company</label>
+  <input id="company" name="company" type="text" placeholder="Business name" aria-describedby="company-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease" style-focus="border-color:#8B5CF6">
+  <div id="company-error" id="err-company" data-error-for="company" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div>
+</div>
+        <div style="display:flex;flex-direction:column">
+  <label for="email" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Email <span style="color:#8B5CF6">*</span></label>
+  <input id="email" name="email" type="email" placeholder="you@company.com" required="required" aria-required="true" aria-describedby="email-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease" style-focus="border-color:#8B5CF6">
+  <div id="email-error" id="err-email" data-error-for="email" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div>
+</div>
+        <div style="display:flex;flex-direction:column">
+  <label for="phone" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Phone or WhatsApp</label>
+  <input id="phone" name="phone" type="tel" placeholder="+1 809 000 0000" aria-describedby="phone-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease" style-focus="border-color:#8B5CF6">
+  <div id="phone-error" id="err-phone" data-error-for="phone" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div>
+</div>
+      </div>
+      <div style="display:flex;flex-direction:column">
+  <label for="website" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Existing website</label>
+  <input id="website" name="website" type="url" placeholder="https://" aria-describedby="website-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease" style-focus="border-color:#8B5CF6">
+  <div id="website-error" id="err-website" data-error-for="website" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div>
+</div>
+      <div data-cols="" style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+        <div style="display:flex;flex-direction:column">
+  <label for="projectType" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Project type <span style="color:#8B5CF6">*</span></label>
+  <select id="projectType" name="projectType" required="required" aria-required="true" aria-describedby="projectType-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#A1A1AA 50%),linear-gradient(135deg,#A1A1AA 50%,transparent 50%);background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px;background-size:6px 6px,6px 6px;background-repeat:no-repeat" style-focus="border-color:#8B5CF6">
+    <option value="">Select a project type</option><option value="New Website">New Website</option><option value="Website Redesign">Website Redesign</option><option value="CRM or Custom System">CRM or Custom System</option><option value="Digital Branding">Digital Branding</option><option value="SEO &amp; Performance">SEO &amp; Performance</option><option value="Hosting &amp; Maintenance">Hosting &amp; Maintenance</option><option value="Multiple Services">Multiple Services</option><option value="Other">Other</option>
+  </select>
+  <div id="projectType-error" id="err-projectType" data-error-for="projectType" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div>
+</div>
+        <div style="display:flex;flex-direction:column">
+  <label for="package" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Selected package</label>
+  <select id="package" name="package" aria-describedby="package-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#A1A1AA 50%),linear-gradient(135deg,#A1A1AA 50%,transparent 50%);background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px;background-size:6px 6px,6px 6px;background-repeat:no-repeat" style-focus="border-color:#8B5CF6">
+    <option value="">Select if you already know</option><option value="essential">Essential — US$800</option><option value="business">Business — US$1,000</option><option value="premium">Premium — US$1,500</option><option value="custom-website">Custom Website Quote</option>
+      <option value="crm-custom-quote">CRM or Custom System — Custom Quote</option><option value="essential-care">Essential Care — from US$100/month</option><option value="growth">Growth — from US$200/month</option><option value="growth-pro">Growth Pro — from US$350/month</option><option value="help-me-choose">Help Me Choose</option>
+  </select>
+  <div id="package-error" id="err-package" data-error-for="package" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div>
+</div>
+        <div style="display:flex;flex-direction:column">
+  <label for="budget" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Estimated budget</label>
+  <select id="budget" name="budget" aria-describedby="budget-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#A1A1AA 50%),linear-gradient(135deg,#A1A1AA 50%,transparent 50%);background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px;background-size:6px 6px,6px 6px;background-repeat:no-repeat" style-focus="border-color:#8B5CF6">
+    <option value="">Select a range</option><option value="Under US$800">Under US$800</option><option value="US$800 – US$1,000">US$800 – US$1,000</option><option value="US$1,000 – US$1,500">US$1,000 – US$1,500</option><option value="US$1,500 – US$3,000">US$1,500 – US$3,000</option><option value="US$3,000+">US$3,000+</option><option value="Monthly plan only">Monthly plan only</option><option value="Not sure yet">Not sure yet</option>
+  </select>
+  <div data-budget-note="" style="display:none;font-size:12.5px;color:#52525B;margin-top:7px;line-height:1.6">Not applicable — CRM and custom systems are individually scoped and quoted, with no package subtotal.</div>
+  <div id="budget-error" id="err-budget" data-error-for="budget" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div>
+</div>
+        <div style="display:flex;flex-direction:column">
+  <label for="timeline" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Desired timeline</label>
+  <select id="timeline" name="timeline" aria-describedby="timeline-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#A1A1AA 50%),linear-gradient(135deg,#A1A1AA 50%,transparent 50%);background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px;background-size:6px 6px,6px 6px;background-repeat:no-repeat" style-focus="border-color:#8B5CF6">
+    <option value="">Select a timeline</option><option value="As soon as possible">As soon as possible</option><option value="Within 1 month">Within 1 month</option><option value="1–3 months">1–3 months</option><option value="3+ months">3+ months</option><option value="Just exploring">Just exploring</option>
+  </select>
+  <div id="timeline-error" id="err-timeline" data-error-for="timeline" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div>
+</div>
+      </div>
+      <div data-crm-live="" role="status" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap"></div>
+      <div data-crm-fields="" role="region" aria-label="CRM and custom system questions" style="display:none;flex-direction:column;gap:20px;padding:28px;border-radius:20px;background:#0B0B0E;border:1px solid rgba(139,92,246,.28)">
+  <div style="display:flex;flex-direction:column;gap:6px">
+    <h3 style="margin:0;font-family:Sora,sans-serif;font-size:19px;font-weight:600">CRM &amp; Custom Systems — Custom Quote</h3>
+    <p style="margin:0;font-size:13px;color:#A1A1AA;line-height:1.7">Based on the approved features, workflows, users, integrations, data requirements, infrastructure and overall system complexity. A few questions help us understand the project.</p>
+  </div>
+  <div style="display:flex;flex-direction:column">
+  <label for="crmType" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">What type of system do you need?</label>
+  <select id="crmType" name="crmType" aria-describedby="crmType-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#A1A1AA 50%),linear-gradient(135deg,#A1A1AA 50%,transparent 50%);background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px;background-size:6px 6px,6px 6px;background-repeat:no-repeat" style-focus="border-color:#8B5CF6">
+    <option value="Select an option">Select an option</option><option value="CRM">CRM</option><option value="Internal Management System">Internal Management System</option><option value="Client Portal">Client Portal</option><option value="Sales or Lead Management System">Sales or Lead Management System</option><option value="Property or Inventory Management System">Property or Inventory Management System</option><option value="Workflow Automation System">Workflow Automation System</option><option value="Custom Dashboard">Custom Dashboard</option><option value="Other">Other</option><option value="I’m not sure">I’m not sure</option>
+  </select><div id="crmType-error" id="err-crmType" data-error-for="crmType" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div></div>
+  <div style="display:flex;flex-direction:column">
+  <label for="crmGoal" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">What would you like the system to help you manage or improve?</label>
+  <textarea id="crmGoal" name="crmGoal" rows="4" placeholder="Describe the process you are trying to organize or replace." style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;resize:vertical;line-height:1.6" style-focus="border-color:#8B5CF6"></textarea></div>
+  <fieldset style="border:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
+  <legend style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px;padding:0">Which functions do you think you need?</legend>
+  <div style="display:flex;flex-wrap:wrap;gap:9px">
+    <label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="Contacts or Clients" style="accent-color:#8B5CF6;width:15px;height:15px">Contacts or Clients</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="Leads and Sales Pipeline" style="accent-color:#8B5CF6;width:15px;height:15px">Leads and Sales Pipeline</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="Tasks and Follow-Ups" style="accent-color:#8B5CF6;width:15px;height:15px">Tasks and Follow-Ups</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="Properties or Inventory" style="accent-color:#8B5CF6;width:15px;height:15px">Properties or Inventory</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="Documents and Files" style="accent-color:#8B5CF6;width:15px;height:15px">Documents and Files</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="Calendar or Appointments" style="accent-color:#8B5CF6;width:15px;height:15px">Calendar or Appointments</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="Dashboards and Reports" style="accent-color:#8B5CF6;width:15px;height:15px">Dashboards and Reports</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="Workflow Automations" style="accent-color:#8B5CF6;width:15px;height:15px">Workflow Automations</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="Notifications" style="accent-color:#8B5CF6;width:15px;height:15px">Notifications</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="User Roles and Permissions" style="accent-color:#8B5CF6;width:15px;height:15px">User Roles and Permissions</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="External Integrations" style="accent-color:#8B5CF6;width:15px;height:15px">External Integrations</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="Other" style="accent-color:#8B5CF6;width:15px;height:15px">Other</label><label style="display:flex;align-items:center;gap:9px;padding:10px 15px;border-radius:999px;border:1px solid rgba(248,250,252,.14);font-size:13px;color:#A1A1AA;cursor:pointer;min-height:44px"><input type="checkbox" name="crmFunctions" value="I’m not sure yet" style="accent-color:#8B5CF6;width:15px;height:15px">I’m not sure yet</label>
+  </div></fieldset>
+  <div data-cols="" style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+    <div style="display:flex;flex-direction:column">
+  <label for="crmUsers" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Who will use the system?</label>
+  <select id="crmUsers" name="crmUsers" aria-describedby="crmUsers-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#A1A1AA 50%),linear-gradient(135deg,#A1A1AA 50%,transparent 50%);background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px;background-size:6px 6px,6px 6px;background-repeat:no-repeat" style-focus="border-color:#8B5CF6">
+    <option value="Select an option">Select an option</option><option value="Only me">Only me</option><option value="A small team">A small team</option><option value="Multiple departments">Multiple departments</option><option value="Employees and clients">Employees and clients</option><option value="I’m not sure yet">I’m not sure yet</option>
+  </select><div id="crmUsers-error" id="err-crmUsers" data-error-for="crmUsers" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div></div>
+    <div style="display:flex;flex-direction:column">
+  <label for="crmUserCount" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Approximately how many users will need access?</label>
+  <input id="crmUserCount" name="crmUserCount" type="text" placeholder="e.g. 5" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease" style-focus="border-color:#8B5CF6"></div>
+    <div style="display:flex;flex-direction:column">
+  <label for="crmExisting" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Are you currently using another CRM or system?</label>
+  <select id="crmExisting" name="crmExisting" aria-describedby="crmExisting-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#A1A1AA 50%),linear-gradient(135deg,#A1A1AA 50%,transparent 50%);background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px;background-size:6px 6px,6px 6px;background-repeat:no-repeat" style-focus="border-color:#8B5CF6">
+    <option value="Select an option">Select an option</option><option value="Yes">Yes</option><option value="No">No</option><option value="I’m not sure">I’m not sure</option>
+  </select><div id="crmExisting-error" id="err-crmExisting" data-error-for="crmExisting" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div></div>
+    <div style="display:flex;flex-direction:column">
+  <label for="crmMigration" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Do you need information migrated from an existing system?</label>
+  <select id="crmMigration" name="crmMigration" aria-describedby="crmMigration-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#A1A1AA 50%),linear-gradient(135deg,#A1A1AA 50%,transparent 50%);background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px;background-size:6px 6px,6px 6px;background-repeat:no-repeat" style-focus="border-color:#8B5CF6">
+    <option value="Select an option">Select an option</option><option value="Yes">Yes</option><option value="No">No</option><option value="I’m not sure">I’m not sure</option>
+  </select><div id="crmMigration-error" id="err-crmMigration" data-error-for="crmMigration" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div></div>
+  </div>
+  <div data-crm-existing="" style="display:none"><div style="display:flex;flex-direction:column">
+  <label for="crmExistingDetail" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">What system are you currently using, and what would you like to improve or replace?</label>
+  <textarea id="crmExistingDetail" name="crmExistingDetail" rows="4" placeholder="Current tool and what is not working." style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;resize:vertical;line-height:1.6" style-focus="border-color:#8B5CF6"></textarea></div></div>
+  <div style="display:flex;flex-direction:column">
+  <label for="crmIntegrations" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Do you need the system to connect with tools you already use?</label>
+  <select id="crmIntegrations" name="crmIntegrations" aria-describedby="crmIntegrations-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#A1A1AA 50%),linear-gradient(135deg,#A1A1AA 50%,transparent 50%);background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px;background-size:6px 6px,6px 6px;background-repeat:no-repeat" style-focus="border-color:#8B5CF6">
+    <option value="Select an option">Select an option</option><option value="Yes">Yes</option><option value="No">No</option><option value="I’m not sure">I’m not sure</option>
+  </select><div id="crmIntegrations-error" id="err-crmIntegrations" data-error-for="crmIntegrations" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div></div>
+  <div data-crm-integrations="" style="display:none"><div style="display:flex;flex-direction:column">
+  <label for="crmIntegrationDetail" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Which tools or services should the system connect with?</label>
+  <textarea id="crmIntegrationDetail" name="crmIntegrationDetail" rows="4" placeholder="We review compatibility before confirming any integration." style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;resize:vertical;line-height:1.6" style-focus="border-color:#8B5CF6"></textarea></div></div>
+  <div style="display:flex;flex-direction:column">
+  <label for="crmAssets" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Do you already own a domain or hosting account for this project?</label>
+  <select id="crmAssets" name="crmAssets" aria-describedby="crmAssets-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#A1A1AA 50%),linear-gradient(135deg,#A1A1AA 50%,transparent 50%);background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px;background-size:6px 6px,6px 6px;background-repeat:no-repeat" style-focus="border-color:#8B5CF6">
+    <option value="Select an option">Select an option</option><option value="I own both">I own both</option><option value="I own a domain only">I own a domain only</option><option value="I own hosting only">I own hosting only</option><option value="I do not own either">I do not own either</option><option value="I’m not sure">I’m not sure</option>
+  </select><div id="crmAssets-error" id="err-crmAssets" data-error-for="crmAssets" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div></div>
+  <p style="margin:0;font-size:12.5px;line-height:1.75;color:#52525B">Existing domain and hosting services must be reviewed before their suitability can be confirmed. If new services are required, they will be purchased and registered under the client’s name.</p>
+  <div style="display:flex;flex-direction:column">
+  <label for="crmNotes" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Is there anything else Create Studio should understand about your project?</label>
+  <textarea id="crmNotes" name="crmNotes" rows="4" placeholder="Anything that affects scope, timing or technical requirements." style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;resize:vertical;line-height:1.6" style-focus="border-color:#8B5CF6"></textarea></div>
+  <p style="margin:0;font-size:12.5px;line-height:1.8;color:#A1A1AA;padding-top:14px;border-top:1px solid rgba(248,250,252,.08)">The information provided will help Create Studio understand your project. CRM &amp; Custom Systems are individually scoped and quoted. This submission is a project inquiry and does not constitute a final price or confirmed technical scope. Create Studio will review the requirements before preparing a custom proposal.</p>
+  <p style="margin:0;font-size:12px;line-height:1.7;color:#52525B">Never send passwords, API keys, access tokens or account credentials through this form.</p>
+</div>
+      <div style="display:flex;flex-direction:column">
+        <label for="description" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">Project description <span style="color:#8B5CF6">*</span></label>
+        <textarea id="description" name="description" rows="5" required="required" placeholder="What does the business do, and what should the project achieve?" aria-required="true" aria-describedby="description-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;resize:vertical;line-height:1.6" style-focus="border-color:#8B5CF6"></textarea>
+        <div id="description-error" id="err-description" data-error-for="description" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div>
+      </div>
+      <div style="display:flex;flex-direction:column">
+  <label for="source" style="display:block;font-size:13px;color:#A1A1AA;margin-bottom:8px">How did you hear about Create Studio?</label>
+  <select id="source" name="source" aria-describedby="source-error" style="width:100%;box-sizing:border-box;padding:15px 16px;border-radius:14px;background:#0B0B0E;border:1px solid rgba(248,250,252,.12);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;font-size:15px;min-height:52px;transition:border-color .25s ease;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#A1A1AA 50%),linear-gradient(135deg,#A1A1AA 50%,transparent 50%);background-position:calc(100% - 20px) 23px,calc(100% - 14px) 23px;background-size:6px 6px,6px 6px;background-repeat:no-repeat" style-focus="border-color:#8B5CF6">
+    <option value="">Select an option</option><option value="Referral">Referral</option><option value="Instagram">Instagram</option><option value="LinkedIn">LinkedIn</option><option value="Google search">Google search</option><option value="Existing client">Existing client</option><option value="Other">Other</option>
+  </select>
+  <div id="source-error" id="err-source" data-error-for="source" role="alert" style="display:none;font-size:12.5px;color:#F87171;margin-top:7px"></div>
+</div>
+      <button data-submit="" type="submit" style="margin-top:6px;padding:17px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6);color:#F8FAFC;font-family:Inter,sans-serif;font-weight:600;font-size:15px;border:none;cursor:pointer;min-height:56px;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .25s ease,box-shadow .25s ease" data-sh="19">
+        <span data-spinner="" style="display:none;width:16px;height:16px;border-radius:99px;border:2px solid rgba(248,250,252,.35);border-top-color:#F8FAFC;animation:csSpin .8s linear infinite"></span>
+        <span data-submit-label="">Send Project Inquiry</span>
+      </button>
+      <p style="margin:0;font-size:12.5px;color:#A1A1AA;line-height:1.7">Your details are used only to answer this inquiry and prepare a proposal. They are never sold or shared. See the <a href="/privacy" data-route="privacy" style="color:#8B5CF6">Privacy Policy</a>.</p>
+    </form>
+    <div data-success="" role="status" style="display:none;flex-direction:column;gap:16px;padding:40px;border-radius:22px;border:1px solid rgba(139,92,246,.4);background:linear-gradient(120deg,rgba(37,99,255,.1),rgba(139,92,246,.06));text-align:center">
+      <div style="width:48px;height:48px;border-radius:99px;background:linear-gradient(90deg,#2563FF,#8B5CF6);display:flex;align-items:center;justify-content:center;align-self:center;font-size:22px">✓</div>
+      <h2 data-h3="" data-rv="" style="margin:0;font-family:Sora,sans-serif;font-size:24px;font-weight:600">Inquiry sent.</h2>
+      <p style="margin:0;font-size:14.5px;color:#A1A1AA;line-height:1.75">We have your details and will follow up personally. If it is urgent, write on WhatsApp at <a href="https://wa.me/18297786137" style="color:#8B5CF6">+1 829.778.6137</a>.</p>
+      <button data-reset="" type="button" data-on-click="reset" style="align-self:center;margin-top:6px;padding:13px 26px;border-radius:999px;border:1px solid rgba(248,250,252,.18);background:transparent;color:#F8FAFC;font-family:Inter,sans-serif;font-size:14px;cursor:pointer;min-height:44px">Send Another Inquiry</button>
+    </div>
+    <div data-failure="" role="alert" style="display:none;flex-direction:column;gap:14px;padding:36px;border-radius:22px;border:1px solid rgba(248,113,113,.4);background:rgba(248,113,113,.06)">
+      <h2 data-h3="" data-rv="" style="margin:0;font-family:Sora,sans-serif;font-size:22px;font-weight:600">That did not send.</h2>
+      <p style="margin:0;font-size:14.5px;color:#A1A1AA;line-height:1.75">Something failed on our side. Please try again, or write directly to <a href="mailto:lauzardo1991@gmail.com" style="color:#8B5CF6">lauzardo1991@gmail.com</a>.</p>
+      <button type="button" data-on-click="retry" style="align-self:flex-start;padding:13px 26px;border-radius:999px;border:1px solid rgba(248,250,252,.18);background:transparent;color:#F8FAFC;font-family:Inter,sans-serif;font-size:14px;cursor:pointer;min-height:44px">Try again</button>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <div style="padding:34px;border-radius:26px;background:#0B0B0E;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:16px">
+      <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Direct contact</div>
+      <div style="display:flex;flex-direction:column;gap:14px;font-size:15px;line-height:1.7">
+        <div><div style="color:#A1A1AA;font-size:12.5px;margin-bottom:3px">Studio contact</div>Oscar Lauzardo</div>
+        <div><div style="color:#A1A1AA;font-size:12.5px;margin-bottom:3px">Phone / WhatsApp</div><a href="tel:+18297786137" style="color:#F8FAFC">+1 829.778.6137</a></div>
+        <div><div style="color:#A1A1AA;font-size:12.5px;margin-bottom:3px">Email</div><a href="mailto:lauzardo1991@gmail.com" style="color:#F8FAFC">lauzardo1991@gmail.com</a></div>
+        <div><div style="color:#A1A1AA;font-size:12.5px;margin-bottom:3px">Location</div>Santo Domingo, Dominican Republic</div>
+        <div><div style="color:#A1A1AA;font-size:12.5px;margin-bottom:3px">Languages</div>Español and English</div>
+      </div>
+      <a href="https://wa.me/18297786137" style="margin-top:4px;padding:15px;border-radius:999px;border:1px solid rgba(248,250,252,.16);text-align:center;font-size:14.5px;font-weight:500;min-height:48px;display:flex;align-items:center;justify-content:center" data-sh="2">Message on WhatsApp</a>
+    </div>
+    <div style="padding:30px 34px;border-radius:26px;background:#0E0E12;border:1px solid rgba(248,250,252,.08);display:flex;flex-direction:column;gap:10px">
+      <h2 data-h3="" data-rv="" style="margin:0;font-family:Sora,sans-serif;font-size:18px;font-weight:600">How we reply</h2>
+      <p style="margin:0;font-size:13.5px;color:#A1A1AA;line-height:1.75">Every inquiry is read and answered personally. There is no automated pipeline and no sales sequence.</p>
+    </div>
+  </div>
+</section>
+<section data-slogan="" data-pad="" style="position:relative;z-index:1;padding:104px 72px 120px;max-width:1440px;margin:0 auto;display:flex;justify-content:center;text-align:center">
+  <p style="margin:0;font-family:Sora,sans-serif;font-weight:700;font-size:54px;letter-spacing:-0.035em;line-height:1.05;text-wrap:pretty">We Create. <span style="background:linear-gradient(90deg,#2563FF,#8B5CF6);-webkit-background-clip:text;background-clip:text;color:transparent">You Grow.</span></p>
+</section>
+</main>
+</Base>

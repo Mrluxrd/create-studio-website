@@ -1,0 +1,37 @@
+---
+// Fallback for invalid routes. Built from approved design elements only —
+// the same type scale, buttons, spacing and closing slogan used site-wide.
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  noindex
+  fallback={{
+    key: 'privacy',
+    route: '/404',
+    navActive: '',
+    title: 'Page not found — Create Studio',
+    description: 'That page does not exist. Explore the studio’s work, services and pricing instead.',
+  }}
+>
+<main data-pad="" style="max-width:900px;margin:0 auto;padding:120px 72px 40px;display:flex;flex-direction:column;gap:26px">
+  <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">404</div>
+  <h1 data-h1="" style="margin:0;font-family:Sora,sans-serif;font-size:52px;font-weight:700;letter-spacing:-0.035em;line-height:1.05">This page does not exist.</h1>
+  <p data-lead="" style="margin:0;font-size:17px;line-height:1.75;color:#A1A1AA;max-width:640px">The address may have changed, or the link may be incomplete. Everything else is one step away.</p>
+  <div data-row="" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-top:8px">
+    <a href="/" data-route="home" data-btn-primary="" style="padding:17px 32px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6);font-weight:600;font-size:15px">Back to Home</a>
+    <a href="/work" data-route="work" data-btn-ghost="" style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px">Explore Our Work</a>
+    <a href="/contact" data-route="contact" data-btn-ghost="" style="padding:16px 30px;border-radius:999px;border:1px solid rgba(248,250,252,.16);font-weight:500;font-size:15px">Contact</a>
+  </div>
+  <nav aria-label="Site sections" style="display:flex;flex-wrap:wrap;gap:18px;padding-top:26px;margin-top:14px;border-top:1px solid rgba(248,250,252,.1);font-size:14px">
+    <a href="/services" data-route="services" style="color:#A1A1AA">Services</a>
+    <a href="/process" data-route="process" style="color:#A1A1AA">Process</a>
+    <a href="/pricing" data-route="pricing" style="color:#A1A1AA">Pricing</a>
+    <a href="/seo-growth-maintenance" data-route="seo-growth-maintenance" style="color:#A1A1AA">SEO Growth &amp; Maintenance</a>
+    <a href="/about" data-route="about" style="color:#A1A1AA">About</a>
+  </nav>
+<section data-slogan="" data-pad="" style="position:relative;z-index:1;padding:104px 72px 120px;max-width:1440px;margin:0 auto;display:flex;justify-content:center;text-align:center">
+  <p style="margin:0;font-family:Sora,sans-serif;font-weight:700;font-size:54px;letter-spacing:-0.035em;line-height:1.05;text-wrap:pretty">We Create. <span style="background:linear-gradient(90deg,#2563FF,#8B5CF6);-webkit-background-clip:text;background-clip:text;color:transparent">You Grow.</span></p>
+</section>
+</main>
+</Base>

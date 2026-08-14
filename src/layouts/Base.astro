@@ -1,0 +1,124 @@
+---
+/**
+ * Site shell for every public route.
+ *
+ * Page markup is carried over from the approved Claude Design prototype and is
+ * rendered inside the same `[data-page]` container the prototype used, so the
+ * scroll-linked ribbon, reveal and hover systems behave identically — the only
+ * difference is that a production route renders exactly one page rather than
+ * switching between nineteen of them in the browser.
+ */
+import Header from '../components/Header.astro';
+import MobileMenu from '../components/MobileMenu.astro';
+import Footer from '../components/Footer.astro';
+import { ROUTE_BY_KEY, type PageKey } from '../data/routes';
+import { SITE, absoluteUrl } from '../data/site';
+import '../styles/prototype.css';
+import '../styles/production.css';
+
+interface Props {
+  /** A public route from the central route table. */
+  pageKey?: PageKey;
+  /** Used by non-indexed utility pages (the 404 fallback) instead of pageKey. */
+  fallback?: { key: string; route: string; navActive: string; title: string; description: string };
+  noindex?: boolean;
+}
+
+const { pageKey, fallback, noindex = false } = Astro.props;
+const meta = pageKey
+  ? ROUTE_BY_KEY[pageKey]
+  : fallback && { ...fallback, ogType: 'website' as const };
+if (!meta) throw new Error(`Unknown page key: ${pageKey}`);
+const pageId = pageKey ?? fallback!.key;
+
+const canonical = absoluteUrl(meta.route);
+const ogImage = absoluteUrl(SITE.ogImage);
+
+/**
+ * Structured data is limited to visible, verified business information.
+ * No review, rating, client-count or results markup — none of it is verified
+ * and none of it appears on the site. `sameAs` is omitted until social profile
+ * URLs are confirmed.
+ */
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: SITE.name,
+  url: absoluteUrl('/'),
+  description: ROUTE_BY_KEY.home.description,
+  image: ogImage,
+  logo: absoluteUrl('/assets/logo-lockup.png'),
+  telephone: SITE.contact.phone,
+  email: SITE.contact.email,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: SITE.contact.locality,
+    addressCountry: SITE.contact.country,
+  },
+  areaServed: 'Dominican Republic',
+};
+---
+
+<!doctype html>
+<html lang={SITE.locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
+    {noindex ? <meta name="robots" content="noindex, follow" /> : <link rel="canonical" href={canonical} />}
+
+    <meta property="og:type" content={meta.ogType} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={meta.title} />
+    <meta property="og:description" content={meta.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="en" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={meta.title} />
+    <meta name="twitter:description" content={meta.description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <meta name="theme-color" content="#09090B" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    {!noindex && <script is:inline type="application/ld+json" set:html={JSON.stringify(organization)} />}
+
+    <noscript>
+      <style>
+        [data-rv] {
+          opacity: 1 !important;
+          animation: none !important;
+        }
+      </style>
+    </noscript>
+  </head>
+
+  <body>
+    <a class="cs-skip" href="#main-content">Skip to content</a>
+
+    <Header navActive={meta.navActive} />
+    <MobileMenu />
+
+    <div data-page={pageId} data-nav-active={meta.navActive} class="csv-on" id="main-content">
+      <slot />
+    </div>
+
+    <Footer />
+
+    <script>
+      import '../scripts/site';
+    </script>
+  </body>
+</html>

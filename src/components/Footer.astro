@@ -1,0 +1,45 @@
+---
+// Site footer. Markup preserved from the approved prototype.
+import { Image } from 'astro:assets';
+import logoLockup from '../assets/logo-lockup.png';
+---
+<footer style="border-top:1px solid rgba(248,250,252,.07);background:#0B0B0E">
+  <div data-pad="" style="max-width:1440px;margin:0 auto;padding:96px 72px 40px;display:flex;flex-direction:column;gap:60px">
+    <div data-row="" style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;padding-bottom:52px;border-bottom:1px solid rgba(248,250,252,.08)">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B5CF6">Ideas, designed to move business forward</div>
+        <h2 data-h2="" style="margin:0;font-family:Sora,sans-serif;font-size:42px;font-weight:600;letter-spacing:-0.03em;line-height:1.06;max-width:560px">A sharper digital presence starts here.</h2>
+      </div>
+      <a href="/contact" data-route="contact" style="flex:none;padding:17px 32px;border-radius:999px;background:linear-gradient(90deg,#2563FF,#8B5CF6);font-weight:600;font-size:15px;transition:transform .25s ease,box-shadow .25s ease" data-sh="4">Start a Project</a>
+    </div>
+    <div data-cols="" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1.1fr;gap:44px">
+      <div style="display:flex;flex-direction:column;gap:16px;max-width:320px">
+        <Image src={logoLockup} alt="Create Studio logo" loading="lazy" decoding="async" style="height:46px;width:auto;align-self:flex-start;object-fit:contain" />
+        <div style="font-size:13.5px;color:#A1A1AA;line-height:1.7">A digital studio where we combine creative direction, design, technology and strategy to help businesses present themselves clearly and operate with more confidence.</div>
+      </div>
+      <nav aria-label="Footer navigation" style="display:flex;flex-direction:column;gap:12px;font-size:13.5px">
+        <div style="font-weight:600;margin-bottom:4px">Studio</div>
+        <a href="/work" data-route="work" style="color:#A1A1AA">Work</a><a href="/services" data-route="services" style="color:#A1A1AA">Services</a><a href="/process" data-route="process" style="color:#A1A1AA">Process</a><a href="/about" data-route="about" style="color:#A1A1AA">About</a><a href="/contact" data-route="contact" style="color:#A1A1AA">Contact</a>
+      </nav>
+      <nav aria-label="Services navigation" style="display:flex;flex-direction:column;gap:12px;font-size:13.5px">
+        <div style="font-weight:600;margin-bottom:4px">Services</div>
+        <a href="/services/web-design-development" data-route="service-web-design-development" style="color:#A1A1AA">Web Design &amp; Development</a><a href="/services/website-redesign" data-route="service-website-redesign" style="color:#A1A1AA">Website Redesign</a><a href="/services/crm-custom-systems" data-route="service-crm-custom-systems" style="color:#A1A1AA">CRM &amp; Custom Systems</a><a href="/services/seo-performance" data-route="service-seo-performance" style="color:#A1A1AA">SEO &amp; Performance</a><a href="/services/hosting-maintenance" data-route="service-hosting-maintenance" style="color:#A1A1AA">Hosting &amp; Maintenance</a><a href="/services/digital-branding" data-route="service-digital-branding" style="color:#A1A1AA">Digital Branding</a>
+      </nav>
+      <div style="display:flex;flex-direction:column;gap:12px;font-size:13.5px">
+        <div style="font-weight:600;margin-bottom:4px">Pricing &amp; support</div>
+        <a href="/pricing" data-route="pricing" style="color:#A1A1AA">Website packages</a>
+        <a href="/seo-growth-maintenance" data-route="seo-growth-maintenance" style="color:#A1A1AA">SEO Growth &amp; Maintenance</a>
+        <div style="height:8px"></div>
+        <div style="font-weight:600;margin-bottom:2px">Contact</div>
+        <span style="color:#A1A1AA">Oscar Lauzardo</span>
+        <a href="tel:+18297786137" style="color:#A1A1AA">+1 829.778.6137</a>
+        <a href="mailto:lauzardo1991@gmail.com" style="color:#A1A1AA">lauzardo1991@gmail.com</a>
+        <div style="font-size:12px;color:#52525B;margin-top:6px;line-height:1.6">Social profile links pending verified URLs.</div>
+      </div>
+    </div>
+    <div data-row="" style="display:flex;justify-content:space-between;gap:16px;padding-top:24px;border-top:1px solid rgba(248,250,252,.06);font-size:12.5px;color:#A1A1AA">
+      <div>© 2026 Create Studio · Santo Domingo, Dominican Republic</div>
+      <div style="display:flex;gap:20px"><a href="/privacy" data-route="privacy" style="color:#A1A1AA">Privacy Policy</a></div>
+    </div>
+  </div>
+</footer>
